@@ -1,0 +1,62 @@
+{
+  "name": "inferno-bootstrap",
+  "version": "0.1.0",
+  "description": "Bootstrap as Inferno.js components, adapted from Reactstrap",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-browser": "npm run build-test && node test/browser/server.js",
+    "prepublish": "npm run build",
+    "postversion": "git push && git push --tags",
+    "build": "rm -rf ./dist && NODE_ENV=production babel lib --out-dir dist  --source-maps",
+    "build-dev": "rm -rf ./dist && babel lib --out-dir dist --watch --source-maps",
+    "build-test": "rm -rf ./test/dist && node_modules/.bin/webpack --config ./test/browser/webpack.config.js",
+    "build-test-dev": "rm -rf ./test/dist && node_modules/.bin/webpack --watch --config ./test/browser/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jhsware/inferno-bootstrap.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "inferno"
+  ],
+  "author": "Sebastian Ware <sebastian@urbantalk.se> (https://github.com/jhsware)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jhsware/inferno-bootstrap/issues"
+  },
+  "homepage": "https://github.com/jhsware/inferno-bootstrap#readme",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "inferno-animation": "^0.4.0",
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isobject": "^3.0.2",
+    "lodash.tonumber": "^4.0.3"
+  },
+  "peerDependencies": {
+    "inferno": "^3.7.0",
+    "inferno-component": "^3.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-inferno": "^3.2.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "bootstrap": "^4.0.0-alpha.6",
+    "express": "^4.15.3",
+    "history": "^4.6.3",
+    "inferno": "^3.7.0",
+    "inferno-component": "^3.7.0",
+    "inferno-router": "^3.7.0",
+    "inferno-test-utils": "^3.7.0",
+    "jest": "^20.0.4",
+    "sinon": "^2.3.8",
+    "webpack": "^2.7.0"
+  }
+}

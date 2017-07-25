@@ -1,0 +1,20 @@
+{
+  "presets": [
+    "stage-0",
+    "es2015"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "babel-plugin-syntax-jsx",
+    ["babel-plugin-inferno", {"imports": true}]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "transform-object-rest-spread",
+        "babel-plugin-syntax-jsx",
+        ["babel-plugin-inferno", {"imports": true}]
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+/* Box sizing reset */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+/* /END Box sizing reset */
+
+.Menu {
+  margin: 2rem 1rem;
+}
+
+.Menu a {
+  margin-right: 2em;
+}
+
+.Content {
+  max-width: 90rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Make sure we don't get jumps att beginning and end of animation */
+
+.ExampleSection {
+  padding: 0 0 5rem;
+}
+
+.ExampleStage {
+  border: 1px solid lightgray;
+  background-color: #fdfdfd;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.ExampleScene {
+  margin: 1rem 0;
+}

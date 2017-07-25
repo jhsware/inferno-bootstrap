@@ -1,0 +1,67 @@
+import Inferno from 'inferno';
+import classNames from 'classnames';
+import toNumber from 'lodash.tonumber';
+import { mapToCssModules } from './utils';
+
+const defaultProps = {
+  el: 'div',
+  value: 0,
+  max: 100,
+};
+
+const Progress = (props) => {
+  const {
+    children,
+    className,
+    barClassName,
+    cssModule,
+    value,
+    max,
+    animated,
+    striped,
+    color, // success | info | warning | danger
+    bar,
+    multi,
+    el: El,
+    ...attributes
+  } = props;
+
+  const percent = ((toNumber(value) / toNumber(max)) * 100);
+
+  const progressClasses = mapToCssModules(classNames(
+    className,
+    'progress'
+  ), cssModule);
+
+  const progressBarClasses = mapToCssModules(classNames(
+    'progress-bar',
+    bar ? className || barClassName : barClassName,
+    animated ? 'progress-bar-animated' : null,
+    color ? `bg-${color}` : null,
+    striped || animated ? 'progress-bar-striped' : null
+  ), cssModule);
+
+  const ProgressBar = multi ? children : (
+    <div
+      className={progressBarClasses}
+      style={{ width: `${percent}%` }}
+      role="progressbar"
+      aria-valuenow={value}
+      aria-valuemin="0"
+      aria-valuemax={max}
+      children={children}
+    />
+  );
+
+  if (bar) {
+    return ProgressBar;
+  }
+
+  return (
+    <El {...attributes} className={progressClasses} children={ProgressBar} />
+  );
+};
+
+Progress.defaultProps = defaultProps;
+
+export default Progress;
