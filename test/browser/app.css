@@ -8,7 +8,9 @@ html {
 /* /END Box sizing reset */
 
 .Menu {
-  margin: 2rem 1rem;
+  max-width: 65rem;
+  width: 100%;
+  margin: 2rem auto;
 }
 
 .Menu a {
@@ -16,7 +18,7 @@ html {
 }
 
 .Content {
-  max-width: 90rem;
+  max-width: 65rem;
   width: 100%;
   margin: 0 auto;
   padding: 1rem;
@@ -35,6 +37,28 @@ html {
   border-radius: 0.5rem;
 }
 
+.ExampleStage :first-child {
+    margin-top: 0em;
+}
+
+.ExampleStage :last-child {
+    margin-bottom: 0em;
+}
+
+.ExampleStage :last-child .ExampleScene-Code:last-child {
+    margin-bottom: -1rem;
+}
+
 .ExampleScene {
   margin: 1rem 0;
+}
+
+.ExampleScene-Code {
+  font-family: Courier New, Courier, monospace;
+  background-color: #333;
+  margin: 1rem -1rem;
+  padding: 1rem;
+} .ExampleScene-Code pre {
+  color: white;
+  margin: 0;
 }

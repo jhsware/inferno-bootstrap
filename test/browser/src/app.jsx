@@ -5,7 +5,6 @@ import createBrowserHistory from 'history/createBrowserHistory'
 
 import BasicPage from './BasicPage.jsx'
 import CardPage from './CardPage.jsx'
-import CarouselPage from './CarouselPage.jsx'
 import FormPage from './FormPage.jsx'
 
 
@@ -15,7 +14,6 @@ function AppLayout (props) {
       <div className="Menu">
         <Link to="/basic">Basic</Link>
         <Link to="/card">Card</Link>
-        <Link to="/carousel">Carousel</Link>
         <Link to="/form">Form</Link>
       </div>
       <div className="Content">
@@ -34,7 +32,6 @@ if (typeof window !== 'undefined') {
         <IndexRoute component={ BasicPage } />
         <Route path="/basic" component={ BasicPage } />
         <Route path="/card" component={ CardPage } />
-        <Route path="/carousel" component={ CarouselPage } />
         <Route path="/form" component={ FormPage } />
       </Route>
     </Router>

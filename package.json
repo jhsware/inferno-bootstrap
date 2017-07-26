@@ -56,6 +56,7 @@
     "inferno-router": "^3.7.0",
     "inferno-test-utils": "^3.7.0",
     "jest": "^20.0.4",
+    "prismjs": "^1.6.0",
     "sinon": "^2.3.8",
     "webpack": "^2.7.0"
   }
