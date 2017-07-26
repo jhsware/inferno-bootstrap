@@ -20,7 +20,7 @@ class Carousel extends Component {
     if (this.props.interval) {
       this.cycleInterval = setInterval(() => {
         if (!this.props.paused) {
-          this.props.next();
+          this.props.onShowNext();
         }
       }, parseInt(this.props.interval, 10));
     }
@@ -50,9 +50,9 @@ class Carousel extends Component {
 
   handleKeyPress(evt) {
     if (this.props.keyboard && evt.keyCode === 37) {
-      this.props.previous();
+      this.props.onShowPrevious();
     } else if (this.props.keyboard && evt.keyCode === 39) {
-      this.props.next();
+      this.props.onShowNext();
     }
   }
 

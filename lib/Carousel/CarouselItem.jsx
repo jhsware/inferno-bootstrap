@@ -3,13 +3,13 @@ import Component from 'inferno-component';
 import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 import { animateOnAdd, animateOnRemove } from 'inferno-animation/dist/animatedComponent';
-import CarouselCaption from './CarouselCaption';
+import CarouselCaption from './CarouselCaption.jsx';
 
 class CarouselItem extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { animation: [] };
+    this.state = { animation: ['active'] };
   }
 
   componentDidMount() {
@@ -17,12 +17,13 @@ class CarouselItem extends Component {
       'carousel-item-next carousel-item-left' :
       'carousel-item-prev carousel-item-right';
 
+    const self = this
     animateOnAdd(this, {
       start: classes,
-      active: 'active',
+      active: '',
       end: ''
     }, () => {
-      this.setState({
+      self.setState({
         animation: ['active']
       })
     })
@@ -32,20 +33,17 @@ class CarouselItem extends Component {
     this.slide.dispatchEvent(new CustomEvent('slide.bs.carousel'));
 
     const classes = this.context.direction === 'right' ?
-      'carousel-item-left active' :
-      'carousel-item-right active';
+      'carousel-item-left' :
+      'carousel-item-right';
     
+    const self = this
     animateOnRemove(this, {
-      start: classes,
+      start: '',
       active: 'active',
-      end: ''
-    }, () => {
+      end: classes
+    }, (node) => {
       // Component didLeave
-      this.setState({
-        animation: []
-      });
-
-      this.slide.dispatchEvent(new CustomEvent('slid.bs.carousel'));
+      node.dispatchEvent(new CustomEvent('slid.bs.carousel'));
     })
   }
 

@@ -1,17 +1,6 @@
 import Component from 'inferno-component'
 
-import { Section, Stage } from './components.jsx'
-
-function ContentSection () {
-  return (
-    <Section>
-      <h2>Content Examples</h2>
-      <Stage>
-        
-      </Stage>
-    </Section>
-  )
-}
+import ExampleSection from './Carousel/Example.jsx'
 
 class CarouselPage extends Component {
   constructor (props) {
@@ -34,7 +23,7 @@ class CarouselPage extends Component {
 
     return (
       <div className={!this.state.active ? 'InfernoAnimation--noAnim' : ''}>
-        <ContentSection />
+        <ExampleSection />
       </div>
     )
   }
