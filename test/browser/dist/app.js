@@ -63,31 +63,39 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 23);
+/******/ 	return __webpack_require__(__webpack_require__.s = 42);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(33).default;
+"use strict";
+
+
+module.exports = __webpack_require__(53).default;
 module.exports.default = module.exports;
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* unused harmony export getTetherAttachments */
-/* unused harmony export getScrollbarWidth */
-/* unused harmony export setScrollbarWidth */
-/* unused harmony export isBodyOverflowing */
-/* unused harmony export getOriginalBodyPadding */
-/* unused harmony export conditionallyUpdateScrollbar */
-/* harmony export (immutable) */ __webpack_exports__["a"] = mapToCssModules;
-/* unused harmony export omit */
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getTetherAttachments = getTetherAttachments;
+exports.getScrollbarWidth = getScrollbarWidth;
+exports.setScrollbarWidth = setScrollbarWidth;
+exports.isBodyOverflowing = isBodyOverflowing;
+exports.getOriginalBodyPadding = getOriginalBodyPadding;
+exports.conditionallyUpdateScrollbar = conditionallyUpdateScrollbar;
+exports.mapToCssModules = mapToCssModules;
+exports.omit = omit;
 function getTetherAttachments(placement) {
-  let attachments = {};
+  var attachments = {};
   switch (placement) {
     case 'top':
     case 'top center':
@@ -175,13 +183,11 @@ function getTetherAttachments(placement) {
   return attachments;
 }
 
-const tetherAttachements = ['top', 'bottom', 'left', 'right', 'top left', 'top center', 'top right', 'right top', 'right middle', 'right bottom', 'bottom right', 'bottom center', 'bottom left', 'left top', 'left middle', 'left bottom'];
-/* unused harmony export tetherAttachements */
-
+var tetherAttachements = exports.tetherAttachements = ['top', 'bottom', 'left', 'right', 'top left', 'top center', 'top right', 'right top', 'right middle', 'right bottom', 'bottom right', 'bottom center', 'bottom left', 'left top', 'left middle', 'left bottom'];
 
 // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/js/src/modal.js#L436-L443
 function getScrollbarWidth() {
-  let scrollDiv = document.createElement('div');
+  var scrollDiv = document.createElement('div');
   // .modal-scrollbar-measure styles // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/scss/_modal.scss#L106-L113
   scrollDiv.style.position = 'absolute';
   scrollDiv.style.top = '-9999px';
@@ -189,13 +195,13 @@ function getScrollbarWidth() {
   scrollDiv.style.height = '50px';
   scrollDiv.style.overflow = 'scroll';
   document.body.appendChild(scrollDiv);
-  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
   document.body.removeChild(scrollDiv);
   return scrollbarWidth;
 }
 
 function setScrollbarWidth(padding) {
-  document.body.style.paddingRight = padding > 0 ? `${padding}px` : null;
+  document.body.style.paddingRight = padding > 0 ? padding + 'px' : null;
 }
 
 function isBodyOverflowing() {
@@ -207,10 +213,10 @@ function getOriginalBodyPadding() {
 }
 
 function conditionallyUpdateScrollbar() {
-  const scrollbarWidth = getScrollbarWidth();
+  var scrollbarWidth = getScrollbarWidth();
   // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/js/src/modal.js#L420
-  const fixedContent = document.querySelectorAll('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed')[0];
-  const bodyPadding = fixedContent ? parseInt(fixedContent.style.paddingRight || 0, 10) : 0;
+  var fixedContent = document.querySelectorAll('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed')[0];
+  var bodyPadding = fixedContent ? parseInt(fixedContent.style.paddingRight || 0, 10) : 0;
 
   if (isBodyOverflowing()) {
     setScrollbarWidth(bodyPadding + scrollbarWidth);
@@ -219,15 +225,17 @@ function conditionallyUpdateScrollbar() {
 
 function mapToCssModules(className, cssModule) {
   if (!cssModule) return className;
-  return className.split(' ').map(c => cssModule[c] || c).join(' ');
+  return className.split(' ').map(function (c) {
+    return cssModule[c] || c;
+  }).join(' ');
 }
 
 /**
  * Returns a new object with the key/value pairs from `obj` that are not in the array `omitKeys`.
  */
 function omit(obj, omitKeys) {
-  const result = {};
-  Object.keys(obj).forEach(key => {
+  var result = {};
+  Object.keys(obj).forEach(function (key) {
     if (omitKeys.indexOf(key) === -1) {
       result[key] = obj[key];
     }
@@ -239,7 +247,12 @@ function omit(obj, omitKeys) {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+"use strict";
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/*!
   Copyright (c) 2016 Jed Watson.
   Licensed under the MIT License (MIT), see
   http://jedwatson.github.io/classnames
@@ -258,7 +271,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 			var arg = arguments[i];
 			if (!arg) continue;
 
-			var argType = typeof arg;
+			var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
 
 			if (argType === 'string' || argType === 'number') {
 				classes.push(arg);
@@ -278,7 +291,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 	if (typeof module !== 'undefined' && module.exports) {
 		module.exports = classNames;
-	} else if (true) {
+	} else if ("function" === 'function' && _typeof(__webpack_require__(14)) === 'object' && __webpack_require__(14)) {
 		// register as 'classnames', consistent with npm package name
 		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 			return classNames;
@@ -293,12 +306,52 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(27).default;
+"use strict";
+
+
+module.exports = __webpack_require__(47).default;
 module.exports.default = module.exports;
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Section = Section;
+exports.Stage = Stage;
+exports.Scene = Scene;
+
+var _inferno = __webpack_require__(0);
+
+function Section(_ref) {
+  var children = _ref.children;
+
+  return (0, _inferno.createVNode)(2, "div", "ExampleSection", children);
+}
+
+function Stage(_ref2) {
+  var children = _ref2.children;
+
+  return (0, _inferno.createVNode)(2, "div", "ExampleStage", children);
+}
+
+function Scene(_ref3) {
+  var children = _ref3.children;
+
+  return (0, _inferno.createVNode)(2, "div", "ExampleScene", children);
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 // shim for using process in browser
 var process = module.exports = {};
@@ -487,30 +540,411 @@ process.umask = function () {
 };
 
 /***/ }),
-/* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Section;
-/* harmony export (immutable) */ __webpack_exports__["b"] = Stage;
-/* harmony export (immutable) */ __webpack_exports__["c"] = Scene;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
 
-function Section({ children }) {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, "div", "ExampleSection", children);
-}
 
-function Stage({ children }) {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, "div", "ExampleStage", children);
-}
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-function Scene({ children }) {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, "div", "ExampleScene", children);
-}
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var defaultProps = {
+  color: 'secondary',
+  el: 'button'
+};
+
+var Button = function (_Component) {
+  _inherits(Button, _Component);
+
+  function Button(props) {
+    _classCallCheck(this, Button);
+
+    var _this = _possibleConstructorReturn(this, (Button.__proto__ || Object.getPrototypeOf(Button)).call(this, props));
+
+    _this.onClick = _this.onClick.bind(_this);
+    return _this;
+  }
+
+  _createClass(Button, [{
+    key: 'onClick',
+    value: function onClick(e) {
+      if (this.props.disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      if (this.props.onClick) {
+        this.props.onClick(e);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          active = _props.active,
+          block = _props.block,
+          className = _props.className,
+          cssModule = _props.cssModule,
+          color = _props.color,
+          outline = _props.outline,
+          size = _props.size,
+          El = _props.el,
+          getRef = _props.getRef,
+          attributes = _objectWithoutProperties(_props, ['active', 'block', 'className', 'cssModule', 'color', 'outline', 'size', 'el', 'getRef']);
+
+      var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'btn', 'btn' + (outline ? '-outline' : '') + '-' + color, size ? 'btn-' + size : false, block ? 'btn-block' : false, { active: active, disabled: this.props.disabled }), cssModule);
+
+      if (attributes.href && El === 'button') {
+        El = 'a';
+      }
+
+      return (0, _inferno.createVNode)(16, El, null, null, _extends({
+        'type': El === 'button' && attributes.onClick ? 'button' : undefined
+      }, attributes, {
+        'className': classes,
+        'onClick': this.onClick
+      }), null, getRef);
+    }
+  }]);
+
+  return Button;
+}(_infernoComponent2.default);
+
+Button.defaultProps = defaultProps;
+
+exports.default = Button;
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CarouselCaption = function CarouselCaption(props) {
+  var captionHeader = props.captionHeader,
+      captionText = props.captionText,
+      cssModule = props.cssModule;
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)('carousel-caption', 'd-none', 'd-md-block'), cssModule);
+
+  return (0, _inferno.createVNode)(2, 'div', classes, [(0, _inferno.createVNode)(2, 'h3', null, captionHeader), (0, _inferno.createVNode)(2, 'p', null, captionText)]);
+};
+
+exports.default = CarouselCaption;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'form'
+};
+
+var Form = function Form(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      getRef = props.getRef,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el', 'getRef']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }), null, getRef);
+};
+
+Form.defaultProps = defaultProps;
+
+exports.default = Form;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'div'
+};
+
+var FormGroup = function FormGroup(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      row = props.row,
+      disabled = props.disabled,
+      color = props.color,
+      check = props.check,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'row', 'disabled', 'color', 'check', 'el']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, color ? 'has-' + color : false, row ? 'row' : false, check ? 'form-check' : 'form-group', check && disabled ? 'disabled' : false), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+FormGroup.defaultProps = defaultProps;
+
+exports.default = FormGroup;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint react/prefer-stateless-function: 0 */
+
+var defaultProps = {
+  el: 'p',
+  type: 'text'
+};
+
+var Input = function (_Component) {
+  _inherits(Input, _Component);
+
+  function Input() {
+    _classCallCheck(this, Input);
+
+    return _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).apply(this, arguments));
+  }
+
+  _createClass(Input, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          className = _props.className,
+          cssModule = _props.cssModule,
+          type = _props.type,
+          size = _props.size,
+          state = _props.state,
+          el = _props.el,
+          addon = _props.addon,
+          staticInput = _props.static,
+          getRef = _props.getRef,
+          attributes = _objectWithoutProperties(_props, ['className', 'cssModule', 'type', 'size', 'state', 'el', 'addon', 'static', 'getRef']);
+
+      var checkInput = ['radio', 'checkbox'].indexOf(type) > -1;
+
+      var fileInput = type === 'file';
+      var textareaInput = type === 'textarea';
+      var selectInput = type === 'select';
+      var El = selectInput || textareaInput ? type : 'input';
+
+      var formControlClass = 'form-control';
+
+      if (staticInput) {
+        formControlClass = formControlClass + '-static';
+        El = el;
+      } else if (fileInput) {
+        formControlClass = formControlClass + '-file';
+      } else if (checkInput) {
+        if (addon) {
+          formControlClass = null;
+        } else {
+          formControlClass = 'form-check-input';
+        }
+      }
+
+      var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, state ? 'form-control-' + state : false, size ? 'form-control-' + size : false, formControlClass), cssModule);
+
+      if (El === 'input') {
+        attributes.type = type;
+      }
+
+      return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+        'className': classes
+      }), null, getRef);
+    }
+  }]);
+
+  return Input;
+}(_infernoComponent2.default);
+
+Input.defaultProps = defaultProps;
+
+exports.default = Input;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'label'
+};
+
+var Label = function Label(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      hidden = props.hidden,
+      El = props.el,
+      check = props.check,
+      disabled = props.disabled,
+      htmlFor = props.htmlFor,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'hidden', 'el', 'check', 'disabled', 'htmlFor']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, hidden ? 'sr-only' : false, check ? 'form-check-label' : 'form-control-label', check && disabled ? 'disabled' : false), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({
+    'htmlFor': htmlFor
+  }, attributes, {
+    'className': classes
+  }));
+};
+
+Label.defaultProps = defaultProps;
+
+exports.default = Label;
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -576,7 +1010,7 @@ var createPath = exports.createPath = function createPath(location) {
 };
 
 /***/ }),
-/* 7 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -598,10 +1032,10 @@ var createPath = exports.createPath = function createPath(location) {
  * same logic and follow the same code paths.
  */
 
-var warning = function () {};
+var warning = function warning() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  warning = function (condition, format, args) {
+  warning = function warning(condition, format, args) {
     var len = arguments.length;
     args = new Array(len > 2 ? len - 2 : 0);
     for (var key = 2; key < len; key++) {
@@ -633,215 +1067,344 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 14 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno_component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Basic_Alert_jsx__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Basic_Badge_jsx__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Basic_Breadcrumb_jsx__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__lib_Button_jsx__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__lib_ButtonGroup_jsx__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__lib_ButtonToolbar_jsx__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lib_Modal_jsx__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__lib_Modal_jsx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__lib_Modal_jsx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__lib_Progress_jsx__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_inferno__);
+/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {/* globals __webpack_amd_options__ */
+module.exports = __webpack_amd_options__;
 
-
-
-
-
-
-
-
-
-
-
-
-
-class BasicPage extends __WEBPACK_IMPORTED_MODULE_0_inferno_component___default.a {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      active: false
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        active: true
-      });
-    }, 10);
-  }
-
-  render() {
-
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9_inferno__["createVNode"])(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__Basic_Alert_jsx__["a" /* default */]), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_2__Basic_Badge_jsx__["a" /* default */]), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_9_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_3__Basic_Breadcrumb_jsx__["a" /* default */])]);
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (BasicPage);
+/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno_component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_jsx__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_inferno__);
-
-
-
-
-
-function ContentSection() {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__components_jsx__["a" /* Section */], null, null, {
-    children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h2', null, 'Content Examples'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__components_jsx__["b" /* Stage */])]
-  });
-}
-
-class CardPage extends __WEBPACK_IMPORTED_MODULE_0_inferno_component___default.a {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      active: false
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        active: true
-      });
-    }, 10);
-  }
-
-  render() {
-
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, ContentSection));
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (CardPage);
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno_component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_jsx__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_inferno__);
-
-
-
-
-
-function ContentSection() {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__components_jsx__["a" /* Section */], null, null, {
-    children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h2', null, 'Content Examples'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__components_jsx__["b" /* Stage */])]
-  });
-}
-
-class CarouselPage extends __WEBPACK_IMPORTED_MODULE_0_inferno_component___default.a {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      active: false
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        active: true
-      });
-    }, 10);
-  }
-
-  render() {
-
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, ContentSection));
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (CarouselPage);
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno_component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_jsx__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_inferno__);
-
-
-
-
-
-function ContentSection() {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__components_jsx__["a" /* Section */], null, null, {
-    children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h2', null, 'Content Examples'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__components_jsx__["b" /* Stage */])]
-  });
-}
-
-class FormPage extends __WEBPACK_IMPORTED_MODULE_0_inferno_component___default.a {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      active: false
-    };
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        active: true
-      });
-    }, 10);
-  }
-
-  render() {
-
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, ContentSection));
-  }
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (FormPage);
-
-/***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _Alert = __webpack_require__(36);
+
+var _Alert2 = _interopRequireDefault(_Alert);
+
+var _Badge = __webpack_require__(37);
+
+var _Badge2 = _interopRequireDefault(_Badge);
+
+var _Breadcrumb = __webpack_require__(38);
+
+var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
+
+var _Button = __webpack_require__(6);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _ButtonGroup = __webpack_require__(25);
+
+var _ButtonGroup2 = _interopRequireDefault(_ButtonGroup);
+
+var _ButtonToolbar = __webpack_require__(26);
+
+var _ButtonToolbar2 = _interopRequireDefault(_ButtonToolbar);
+
+var _Modal = __webpack_require__(34);
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
+var _Progress = __webpack_require__(35);
+
+var _Progress2 = _interopRequireDefault(_Progress);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var BasicPage = function (_Component) {
+  _inherits(BasicPage, _Component);
+
+  function BasicPage(props) {
+    _classCallCheck(this, BasicPage);
+
+    var _this = _possibleConstructorReturn(this, (BasicPage.__proto__ || Object.getPrototypeOf(BasicPage)).call(this, props));
+
+    _this.state = {
+      active: false
+    };
+    return _this;
+  }
+
+  _createClass(BasicPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          active: true
+        });
+      }, 10);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return (0, _inferno.createVNode)(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', [(0, _inferno.createVNode)(16, _Alert2.default), (0, _inferno.createVNode)(16, _Badge2.default), (0, _inferno.createVNode)(16, _Breadcrumb2.default)]);
+    }
+  }]);
+
+  return BasicPage;
+}(_infernoComponent2.default);
+
+exports.default = BasicPage;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _components = __webpack_require__(4);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function ContentSection() {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Content Examples'), (0, _inferno.createVNode)(16, _components.Stage)]
+  });
+}
+
+var CardPage = function (_Component) {
+  _inherits(CardPage, _Component);
+
+  function CardPage(props) {
+    _classCallCheck(this, CardPage);
+
+    var _this = _possibleConstructorReturn(this, (CardPage.__proto__ || Object.getPrototypeOf(CardPage)).call(this, props));
+
+    _this.state = {
+      active: false
+    };
+    return _this;
+  }
+
+  _createClass(CardPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          active: true
+        });
+      }, 10);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return (0, _inferno.createVNode)(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', (0, _inferno.createVNode)(16, ContentSection));
+    }
+  }]);
+
+  return CardPage;
+}(_infernoComponent2.default);
+
+exports.default = CardPage;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _Example = __webpack_require__(39);
+
+var _Example2 = _interopRequireDefault(_Example);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CarouselPage = function (_Component) {
+  _inherits(CarouselPage, _Component);
+
+  function CarouselPage(props) {
+    _classCallCheck(this, CarouselPage);
+
+    var _this = _possibleConstructorReturn(this, (CarouselPage.__proto__ || Object.getPrototypeOf(CarouselPage)).call(this, props));
+
+    _this.state = {
+      active: false
+    };
+    return _this;
+  }
+
+  _createClass(CarouselPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          active: true
+        });
+      }, 10);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return (0, _inferno.createVNode)(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', (0, _inferno.createVNode)(16, _Example2.default));
+    }
+  }]);
+
+  return CarouselPage;
+}(_infernoComponent2.default);
+
+exports.default = CarouselPage;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _Input = __webpack_require__(40);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _InputGroup = __webpack_require__(41);
+
+var _InputGroup2 = _interopRequireDefault(_InputGroup);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FormPage = function (_Component) {
+  _inherits(FormPage, _Component);
+
+  function FormPage(props) {
+    _classCallCheck(this, FormPage);
+
+    var _this = _possibleConstructorReturn(this, (FormPage.__proto__ || Object.getPrototypeOf(FormPage)).call(this, props));
+
+    _this.state = {
+      active: false
+    };
+    return _this;
+  }
+
+  _createClass(FormPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          active: true
+        });
+      }, 10);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return (0, _inferno.createVNode)(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', [(0, _inferno.createVNode)(16, _Input2.default), (0, _inferno.createVNode)(16, _InputGroup2.default)]);
+    }
+  }]);
+
+  return FormPage;
+}(_infernoComponent2.default);
+
+exports.default = FormPage;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 exports.__esModule = true;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 } : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 };
 
 var _extends = Object.assign || function (target) {
@@ -854,23 +1417,23 @@ var _extends = Object.assign || function (target) {
   }return target;
 };
 
-var _warning = __webpack_require__(7);
+var _warning = __webpack_require__(13);
 
 var _warning2 = _interopRequireDefault(_warning);
 
-var _invariant = __webpack_require__(34);
+var _invariant = __webpack_require__(54);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _LocationUtils = __webpack_require__(25);
+var _LocationUtils = __webpack_require__(44);
 
-var _PathUtils = __webpack_require__(6);
+var _PathUtils = __webpack_require__(12);
 
-var _createTransitionManager = __webpack_require__(26);
+var _createTransitionManager = __webpack_require__(45);
 
 var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-var _DOMUtils = __webpack_require__(24);
+var _DOMUtils = __webpack_require__(43);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -1154,55 +1717,64 @@ var createBrowserHistory = function createBrowserHistory() {
 exports.default = createBrowserHistory;
 
 /***/ }),
-/* 13 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(30).default;
+"use strict";
+
+
+module.exports = __webpack_require__(50).default;
 module.exports.default = module.exports;
 
 /***/ }),
-/* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-
-
-
-
-const defaultProps = {
+var defaultProps = {
   color: 'success',
   el: 'div'
 };
 
+var Alert = function Alert(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      color = props.color,
+      onClose = props.onClose,
+      children = props.children,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el', 'color', 'onClose', 'children']);
 
-const Alert = props => {
-  const {
-    className,
-    cssModule,
-    el: El,
-    color, // success || info || warning || danger
-    onClose,
-    children
-  } = props,
-        attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el', 'color', 'onClose', 'children']);
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'alert', 'alert-' + color, { 'alert-dismissible': onClose }), cssModule);
 
-  const classes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, 'alert', `alert-${color}`, { 'alert-dismissible': onClose }), cssModule);
+  var closeClasses = (0, _utils.mapToCssModules)('close', cssModule);
 
-  const closeClasses = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* mapToCssModules */])('close', cssModule);
-
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({}, attributes, {
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
     'className': classes,
     'role': 'alert',
-    children: [onClose ? __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, 'button', closeClasses, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, 'span', null, '\xD7', {
+    children: [onClose ? (0, _inferno.createVNode)(2, 'button', closeClasses, (0, _inferno.createVNode)(2, 'span', null, '\xD7', {
       'aria-hidden': 'true'
     }), {
       'type': 'button',
@@ -1214,363 +1786,875 @@ const Alert = props => {
 
 Alert.defaultProps = defaultProps;
 
-/* harmony default export */ __webpack_exports__["a"] = (Alert);
+exports.default = Alert;
 
 /***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-
-
-
-
-const defaultProps = {
+var defaultProps = {
   color: 'default',
   pill: false,
   el: 'span'
 };
 
+var Badge = function Badge(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      color = props.color,
+      pill = props.pill,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'color', 'pill', 'el']);
 
-const Badge = props => {
-  const {
-    className,
-    cssModule,
-    color,
-    pill,
-    el: El
-  } = props,
-        attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'color', 'pill', 'el']);
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'badge', 'badge-' + color, pill ? 'badge-pill' : false), cssModule);
 
-  const classes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, 'badge', 'badge-' + color, pill ? 'badge-pill' : false), cssModule);
-
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({}, attributes, {
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
     'className': classes
   }));
 };
 
 Badge.defaultProps = defaultProps;
 
-/* harmony default export */ __webpack_exports__["a"] = (Badge);
+exports.default = Badge;
 
 /***/ }),
-/* 16 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-
-
-
-
-const defaultProps = {
+var defaultProps = {
   el: 'ol'
 };
 
+var Breadcrumb = function Breadcrumb(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
 
-const Breadcrumb = props => {
-  const {
-    className,
-    cssModule,
-    el: El
-  } = props,
-        attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
-  const classes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, 'breadcrumb'), cssModule);
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'breadcrumb'), cssModule);
 
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({}, attributes, {
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
     'className': classes
   }));
 };
 
 Breadcrumb.defaultProps = defaultProps;
 
-/* harmony default export */ __webpack_exports__["a"] = (Breadcrumb);
+exports.default = Breadcrumb;
 
 /***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-
-
-
-
-const defaultProps = {
+var defaultProps = {
   el: 'li'
 };
 
+var BreadcrumbItem = function BreadcrumbItem(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      active = props.active,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'active', 'el']);
 
-const BreadcrumbItem = props => {
-  const {
-    className,
-    cssModule,
-    active,
-    el: El
-  } = props,
-        attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'active', 'el']);
-  const classes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, active ? 'active' : false, 'breadcrumb-item'), cssModule);
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, active ? 'active' : false, 'breadcrumb-item'), cssModule);
 
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({}, attributes, {
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
     'className': classes
   }));
 };
 
 BreadcrumbItem.defaultProps = defaultProps;
 
-/* harmony default export */ __webpack_exports__["a"] = (BreadcrumbItem);
+exports.default = BreadcrumbItem;
 
 /***/ }),
-/* 18 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_inferno_component__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_inferno_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_inferno_component__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(1);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-
-
-
-
-
-const defaultProps = {
-  color: 'secondary',
-  el: 'button'
-};
-
-
-class Button extends __WEBPACK_IMPORTED_MODULE_1_inferno_component___default.a {
-  constructor(props) {
-    super(props);
-
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick(e) {
-    if (this.props.disabled) {
-      e.preventDefault();
-      return;
-    }
-
-    if (this.props.onClick) {
-      this.props.onClick(e);
-    }
-  }
-
-  render() {
-    let _props = this.props,
-        {
-      active,
-      block,
-      className,
-      cssModule,
-      color, // primary | secondary | success | info | warning | danger | link
-      outline,
-      size,
-      el: El,
-      getRef
-    } = _props,
-        attributes = _objectWithoutProperties(_props, ['active', 'block', 'className', 'cssModule', 'color', 'outline', 'size', 'el', 'getRef']);
-
-    const classes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_2_classnames___default()(className, 'btn', `btn${outline ? '-outline' : ''}-${color}`, size ? `btn-${size}` : false, block ? 'btn-block' : false, { active, disabled: this.props.disabled }), cssModule);
-
-    if (attributes.href && El === 'button') {
-      El = 'a';
-    }
-
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({
-      'type': El === 'button' && attributes.onClick ? 'button' : undefined
-    }, attributes, {
-      'className': classes,
-      'onClick': this.onClick
-    }), null, getRef);
-  }
-}
-
-Button.defaultProps = defaultProps;
-
-/* unused harmony default export */ var _unused_webpack_default_export = (Button);
-
-/***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-
-
-
-
-const defaultProps = {
+var defaultProps = {
   el: 'div',
   role: 'group'
 };
 
+var ButtonGroup = function ButtonGroup(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      size = props.size,
+      vertical = props.vertical,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'size', 'vertical', 'el']);
 
-const ButtonGroup = props => {
-  const {
-    className,
-    cssModule,
-    size,
-    vertical,
-    el: El
-  } = props,
-        attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'size', 'vertical', 'el']);
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, size ? 'btn-group-' + size : false, vertical ? 'btn-group-vertical' : 'btn-group'), cssModule);
 
-  const classes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, size ? 'btn-group-' + size : false, vertical ? 'btn-group-vertical' : 'btn-group'), cssModule);
-
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({}, attributes, {
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
     'className': classes
   }));
 };
 
 ButtonGroup.defaultProps = defaultProps;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (ButtonGroup);
+exports.default = ButtonGroup;
 
 /***/ }),
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(1);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-
-
-
-
-const defaultProps = {
+var defaultProps = {
   el: 'div',
   role: 'toolbar'
 };
 
+var ButtonToolbar = function ButtonToolbar(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
 
-const ButtonToolbar = props => {
-  const {
-    className,
-    cssModule,
-    el: El
-  } = props,
-        attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'btn-toolbar'), cssModule);
 
-  const classes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, 'btn-toolbar'), cssModule);
-
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({}, attributes, {
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
     'className': classes
   }));
 };
 
 ButtonToolbar.defaultProps = defaultProps;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (ButtonToolbar);
+exports.default = ButtonToolbar;
 
 /***/ }),
-/* 21 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_tonumber__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_tonumber___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_tonumber__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(1);
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Carousel = function (_Component) {
+  _inherits(Carousel, _Component);
+
+  function Carousel(props) {
+    _classCallCheck(this, Carousel);
+
+    var _this = _possibleConstructorReturn(this, (Carousel.__proto__ || Object.getPrototypeOf(Carousel)).call(this, props));
+
+    _this.handleKeyPress = _this.handleKeyPress.bind(_this);
+    _this.state = { direction: 'right' };
+    return _this;
+  }
+
+  _createClass(Carousel, [{
+    key: 'getChildContext',
+    value: function getChildContext() {
+      return { direction: this.state.direction };
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      // Set up the cycle
+      if (this.props.interval) {
+        this.cycleInterval = setInterval(function () {
+          if (!_this2.props.paused) {
+            _this2.props.onShowNext();
+          }
+        }, parseInt(this.props.interval, 10));
+      }
+
+      if (this.props.keyboard) {
+        document.addEventListener('keyup', this.handleKeyPress);
+      }
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      // Calculate the direction to turn
+      if (this.props.activeIndex + 1 === nextProps.activeIndex) {
+        this.setState({ direction: 'right' });
+      } else if (this.props.activeIndex - 1 === nextProps.activeIndex) {
+        this.setState({ direction: 'left' });
+      } else if (this.props.activeIndex > nextProps.activeIndex) {
+        this.setState({ direction: 'right' });
+      } else {
+        this.setState({ direction: 'left' });
+      }
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.cycleInterval);
+      document.removeEventListener('key', this.handleKeyPress);
+    }
+  }, {
+    key: 'handleKeyPress',
+    value: function handleKeyPress(evt) {
+      if (this.props.keyboard && evt.keyCode === 37) {
+        this.props.onShowPrevious();
+      } else if (this.props.keyboard && evt.keyCode === 39) {
+        this.props.onShowNext();
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      var _props = this.props,
+          children = _props.children,
+          cssModule = _props.cssModule,
+          activeIndex = _props.activeIndex,
+          animationPrefix = _props.animationPrefix,
+          hoverStart = _props.hoverStart,
+          hoverEnd = _props.hoverEnd;
+
+      var outerClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)('carousel', 'slide'), cssModule);
+
+      var innerClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)('carousel-inner'), cssModule);
+
+      var slidesOnly = children.every(function (child) {
+        return child.type && child.type.name === 'CarouselItem';
+      });
+
+      // Rendering only slides
+      if (slidesOnly) {
+        return (0, _inferno.createVNode)(2, 'div', outerClasses, (0, _inferno.createVNode)(2, 'div', innerClasses, children[activeIndex], {
+          'role': 'listbox'
+        }), {
+          'onMouseEnter': hoverStart,
+          'onMouseLeave': hoverEnd
+        });
+      }
+
+      // Rendering slides and controls
+      if (children[0] instanceof Array) {
+        var _carouselItems = children[0];
+        var _controlLeft = children[1];
+        var _controlRight = children[2];
+
+        return (0, _inferno.createVNode)(2, 'div', outerClasses, [(0, _inferno.createVNode)(2, 'div', innerClasses, _carouselItems[activeIndex], {
+          'role': 'listbox'
+        }), _controlLeft, _controlRight], {
+          'onMouseEnter': hoverStart,
+          'onMouseLeave': hoverEnd
+        });
+      }
+
+      // Rendering indicators, slides and controls
+      var indicators = children[0];
+      var carouselItems = children[1];
+      var controlLeft = children[2];
+      var controlRight = children[3];
+
+      return (0, _inferno.createVNode)(2, 'div', outerClasses, [indicators, (0, _inferno.createVNode)(2, 'div', innerClasses, carouselItems[activeIndex], {
+        'role': 'listbox'
+      }), controlLeft, controlRight], {
+        'onMouseEnter': hoverStart,
+        'onMouseLeave': hoverEnd
+      }, null, function (carousel) {
+        _this3.carousel = carousel;
+      });
+    }
+  }]);
+
+  return Carousel;
+}(_infernoComponent2.default);
+
+Carousel.defaultProps = {
+  interval: 5000,
+  hover: false,
+  paused: false,
+  keyboard: true
+};
+
+exports.default = Carousel;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CarouselControl = function CarouselControl(props) {
+  var direction = props.direction,
+      onClickHandler = props.onClickHandler,
+      cssModule = props.cssModule,
+      directionText = props.directionText;
+
+
+  var anchorClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)('carousel-control-' + direction), cssModule);
+
+  var iconClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)('carousel-control-' + direction + '-icon'), cssModule);
+
+  var screenReaderClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)('sr-only'), cssModule);
+
+  return (0, _inferno.createVNode)(2, 'a', anchorClasses, [(0, _inferno.createVNode)(2, 'span', iconClasses, null, {
+    'aria-hidden': 'true'
+  }), (0, _inferno.createVNode)(2, 'span', screenReaderClasses, directionText || direction)], {
+    'role': 'button',
+    'onClick': function onClick(e) {
+      e.preventDefault();
+      onClickHandler();
+    }
+  });
+};
+
+exports.default = CarouselControl;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CarouselIndicators = function CarouselIndicators(props) {
+  var items = props.items,
+      activeIndex = props.activeIndex,
+      cssModule = props.cssModule,
+      onClickHandler = props.onClickHandler;
+
+
+  var listClasses = (0, _utils.mapToCssModules)('carousel-indicators', cssModule);
+  var indicators = items.map(function (item, idx) {
+    var indicatorClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)({ active: activeIndex === idx }), cssModule);
+    return (0, _inferno.createVNode)(2, 'li', indicatorClasses, null, {
+      'onClick': function onClick(e) {
+        e.preventDefault();
+        onClickHandler(idx);
+      }
+    }, idx);
+  });
+
+  return (0, _inferno.createVNode)(2, 'ol', listClasses, indicators);
+};
+
+exports.default = CarouselIndicators;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+var _animatedComponent = __webpack_require__(46);
+
+var _CarouselCaption = __webpack_require__(7);
+
+var _CarouselCaption2 = _interopRequireDefault(_CarouselCaption);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var CarouselItem = function (_Component) {
+  _inherits(CarouselItem, _Component);
+
+  function CarouselItem(props) {
+    _classCallCheck(this, CarouselItem);
+
+    var _this = _possibleConstructorReturn(this, (CarouselItem.__proto__ || Object.getPrototypeOf(CarouselItem)).call(this, props));
+
+    _this.state = { animation: ['active'] };
+    return _this;
+  }
+
+  _createClass(CarouselItem, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var classes = this.context.direction === 'right' ? 'carousel-item-next carousel-item-left' : 'carousel-item-prev carousel-item-right';
+
+      var self = this;
+      (0, _animatedComponent.animateOnAdd)(this, {
+        start: classes,
+        active: '',
+        end: ''
+      }, function () {
+        self.setState({
+          animation: ['active']
+        });
+      });
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      this.slide.dispatchEvent(new CustomEvent('slide.bs.carousel'));
+
+      var classes = this.context.direction === 'right' ? 'carousel-item-left' : 'carousel-item-right';
+
+      var self = this;
+      (0, _animatedComponent.animateOnRemove)(this, {
+        start: '',
+        active: 'active',
+        end: classes
+      }, function (node) {
+        // Component didLeave
+        node.dispatchEvent(new CustomEvent('slid.bs.carousel'));
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          src = _props.src,
+          altText = _props.altText,
+          children = _props.children,
+          cssModule = _props.cssModule;
+
+      var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)('d-block', 'img-fluid'), cssModule);
+
+      var itemClasses = (0, _utils.mapToCssModules)(_classnames2.default.apply(undefined, ['carousel-item'].concat(_toConsumableArray(this.state.animation))), cssModule);
+
+      return (0, _inferno.createVNode)(2, 'div', itemClasses, [(0, _inferno.createVNode)(2, 'img', classes, null, {
+        'src': src,
+        'alt': altText
+      }), children], null, null, function (slide) {
+        _this2.slide = slide;
+      });
+    }
+  }]);
+
+  return CarouselItem;
+}(_infernoComponent2.default);
+
+exports.default = CarouselItem;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
+var defaultProps = {
+  el: 'div'
+};
+
+var InputGroup = function InputGroup(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      size = props.size,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el', 'size']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'input-group', size ? 'input-group-' + size : null), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+InputGroup.defaultProps = defaultProps;
+
+exports.default = InputGroup;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'div'
+};
+
+var InputGroupAddon = function InputGroupAddon(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'input-group-addon'), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+InputGroupAddon.defaultProps = defaultProps;
+
+exports.default = InputGroupAddon;
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-const defaultProps = {
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+var _Button = __webpack_require__(6);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'div'
+};
+
+var InputGroupButton = function InputGroupButton(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      children = props.children,
+      groupClassName = props.groupClassName,
+      groupAttributes = props.groupAttributes,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el', 'children', 'groupClassName', 'groupAttributes']);
+
+  if (typeof children === 'string') {
+    var groupClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)(groupClassName, 'input-group-btn'), cssModule);
+
+    return (0, _inferno.createVNode)(16, El, null, null, _extends({}, groupAttributes, {
+      'className': groupClasses,
+      children: (0, _inferno.createVNode)(16, _Button2.default, null, null, _extends({}, attributes, {
+        'className': className,
+        'children': children
+      }))
+    }));
+  }
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'input-group-btn'), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes,
+    'children': children
+  }));
+};
+
+InputGroupButton.defaultProps = defaultProps;
+
+exports.default = InputGroupButton;
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _lodash = __webpack_require__(55);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
   el: 'div',
   value: 0,
   max: 100
 };
 
+var Progress = function Progress(props) {
+  var children = props.children,
+      className = props.className,
+      barClassName = props.barClassName,
+      cssModule = props.cssModule,
+      value = props.value,
+      max = props.max,
+      animated = props.animated,
+      striped = props.striped,
+      color = props.color,
+      bar = props.bar,
+      multi = props.multi,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['children', 'className', 'barClassName', 'cssModule', 'value', 'max', 'animated', 'striped', 'color', 'bar', 'multi', 'el']);
 
-const Progress = props => {
-  const {
-    children,
-    className,
-    barClassName,
-    cssModule,
-    value,
-    max,
-    animated,
-    striped,
-    color, // success | info | warning | danger
-    bar,
-    multi,
-    el: El
-  } = props,
-        attributes = _objectWithoutProperties(props, ['children', 'className', 'barClassName', 'cssModule', 'value', 'max', 'animated', 'striped', 'color', 'bar', 'multi', 'el']);
+  var percent = (0, _lodash2.default)(value) / (0, _lodash2.default)(max) * 100;
 
-  const percent = __WEBPACK_IMPORTED_MODULE_2_lodash_tonumber___default()(value) / __WEBPACK_IMPORTED_MODULE_2_lodash_tonumber___default()(max) * 100;
+  var progressClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'progress'), cssModule);
 
-  const progressClasses = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()(className, 'progress'), cssModule);
+  var progressBarClasses = (0, _utils.mapToCssModules)((0, _classnames2.default)('progress-bar', bar ? className || barClassName : barClassName, animated ? 'progress-bar-animated' : null, color ? 'bg-' + color : null, striped || animated ? 'progress-bar-striped' : null), cssModule);
 
-  const progressBarClasses = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils__["a" /* mapToCssModules */])(__WEBPACK_IMPORTED_MODULE_1_classnames___default()('progress-bar', bar ? className || barClassName : barClassName, animated ? 'progress-bar-animated' : null, color ? `bg-${color}` : null, striped || animated ? 'progress-bar-striped' : null), cssModule);
-
-  const ProgressBar = multi ? children : __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, 'div', progressBarClasses, null, {
-    'style': { width: `${percent}%` },
+  var ProgressBar = multi ? children : (0, _inferno.createVNode)(2, 'div', progressBarClasses, null, {
+    'style': { width: percent + '%' },
     'role': 'progressbar',
     'aria-valuenow': value,
     'aria-valuemin': '0',
@@ -1582,7 +2666,7 @@ const Progress = props => {
     return ProgressBar;
   }
 
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, El, null, null, _extends({}, attributes, {
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
     'className': progressClasses,
     'children': ProgressBar
   }));
@@ -1590,80 +2674,487 @@ const Progress = props => {
 
 Progress.defaultProps = defaultProps;
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Progress);
+exports.default = Progress;
 
 /***/ }),
-/* 23 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_inferno__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_inferno_router__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_inferno_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_inferno_router__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_history_createBrowserHistory__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_history_createBrowserHistory__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__BasicPage_jsx__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CardPage_jsx__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__CarouselPage_jsx__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__FormPage_jsx__ = __webpack_require__(11);
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Alert Examples'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: [(0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
+          'color': 'success',
+          children: ['Some cool text in a ', (0, _inferno.createVNode)(2, 'b', null, 'success'), ' alert box!']
+        })
+      }), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
+          'color': 'warning',
+          children: ['Some cool text in a ', (0, _inferno.createVNode)(2, 'b', null, 'warning'), ' alert box!']
+        })
+      }), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
+          'color': 'danger',
+          children: ['Some cool text in a ', (0, _inferno.createVNode)(2, 'b', null, 'danger'), ' alert box!']
+        })
+      })]
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Alert = __webpack_require__(21);
+
+var _Alert2 = _interopRequireDefault(_Alert);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Badge Examples'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: [(0, _inferno.createVNode)(2, 'h2', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
+        children: 'new'
+      })]), (0, _inferno.createVNode)(2, 'h3', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
+        children: 'new'
+      })]), (0, _inferno.createVNode)(2, 'h4', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
+        children: 'new'
+      })])]
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Badge = __webpack_require__(22);
+
+var _Badge2 = _interopRequireDefault(_Badge);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Breadcrumb Examples'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: (0, _inferno.createVNode)(16, _Breadcrumb2.default, null, null, {
+          children: [(0, _inferno.createVNode)(16, _BreadcrumbItem2.default, null, null, {
+            children: (0, _inferno.createVNode)(2, 'a', null, 'Home', {
+              'href': '#'
+            })
+          }), (0, _inferno.createVNode)(16, _BreadcrumbItem2.default, null, null, {
+            children: (0, _inferno.createVNode)(2, 'a', null, 'Section', {
+              'href': '#'
+            })
+          }), (0, _inferno.createVNode)(16, _BreadcrumbItem2.default, null, null, {
+            'active': 'true',
+            children: 'This page'
+          })]
+        })
+      })
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Breadcrumb = __webpack_require__(23);
+
+var _Breadcrumb2 = _interopRequireDefault(_Breadcrumb);
+
+var _BreadcrumbItem = __webpack_require__(24);
+
+var _BreadcrumbItem2 = _interopRequireDefault(_BreadcrumbItem);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _components = __webpack_require__(4);
+
+var _Carousel = __webpack_require__(27);
+
+var _Carousel2 = _interopRequireDefault(_Carousel);
+
+var _CarouselItem = __webpack_require__(30);
+
+var _CarouselItem2 = _interopRequireDefault(_CarouselItem);
+
+var _CarouselIndicators = __webpack_require__(29);
+
+var _CarouselIndicators2 = _interopRequireDefault(_CarouselIndicators);
+
+var _CarouselControl = __webpack_require__(28);
+
+var _CarouselControl2 = _interopRequireDefault(_CarouselControl);
+
+var _CarouselCaption = __webpack_require__(7);
+
+var _CarouselCaption2 = _interopRequireDefault(_CarouselCaption);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var items = [{ src: 'http://www.telegraph.co.uk/content/dam/Travel/hotels/europe/cyprus/alexander-the-great-cyprus-p.jpg', altText: 'Some text here', header: 'Do this now', caption: '1. What an amazing day!' }, { src: 'http://www.aquabluhotel.gr/wp-content/uploads/2016/04/drz-aqua-1106-copy.jpg', altText: 'More text here', header: 'Do this later', caption: '2. Another amazing day!' }, { src: 'http://www.luxuryhotelexperts.com/images/showcase/luxury_hotels_920/qualia_great_barrier_reef_04.jpg', altText: 'Final text here', header: 'Do this never', caption: '3. The last amazing day!' }];
+
+var Example = function (_Component) {
+  _inherits(Example, _Component);
+
+  function Example() {
+    _classCallCheck(this, Example);
+
+    var _this = _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).call(this));
+
+    _this.state = {
+      activeIndex: 0
+    };
+
+    _this.doShowNext = _this.doShowNext.bind(_this);
+    _this.doShowPrevious = _this.doShowPrevious.bind(_this);
+    return _this;
+  }
+
+  _createClass(Example, [{
+    key: 'doShowNext',
+    value: function doShowNext() {
+      this.setState({
+        activeIndex: (this.state.activeIndex + 1) % items.length
+      });
+    }
+  }, {
+    key: 'doShowPrevious',
+    value: function doShowPrevious() {
+      this.setState({
+        activeIndex: this.state.activeIndex > 0 ? this.state.activeIndex - 1 : items.length - 1
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+        children: [(0, _inferno.createVNode)(2, 'h2', null, 'Carousel Examples', {
+          'onClick': this.doShowNext
+        }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+          children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+            children: (0, _inferno.createVNode)(16, _Carousel2.default, null, null, {
+              'activeIndex': this.state.activeIndex,
+              'onShowNext': this.doShowNext,
+              'onShowPrevious': this.doShowPrevious,
+              'interval': '100000',
+              children: items.map(function (item, index) {
+                return (0, _inferno.createVNode)(16, _CarouselItem2.default, null, null, {
+                  'src': item.src,
+                  'altText': item.altText,
+                  children: (0, _inferno.createVNode)(16, _CarouselCaption2.default, null, null, {
+                    'captionHeader': item.header,
+                    'captionText': item.caption
+                  })
+                }, index);
+              })
+            })
+          })
+        })]
+      });
+    }
+  }]);
+
+  return Example;
+}(_infernoComponent2.default);
+
+exports.default = Example;
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Basic Input Elements'), (0, _inferno.createVNode)(2, 'p', null, 'Form elements'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: (0, _inferno.createVNode)(16, _Form2.default, null, null, {
+          children: [(0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _Label2.default, null, null, {
+              children: 'Title:'
+            }), (0, _inferno.createVNode)(16, _Input2.default, null, null, {
+              'type': 'text',
+              'name': 'title'
+            })]
+          }), (0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _Label2.default, null, null, {
+              children: 'Age:'
+            }), (0, _inferno.createVNode)(16, _Input2.default, null, null, {
+              'type': 'number',
+              'name': 'age'
+            })]
+          }), (0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _Label2.default, null, null, {
+              children: 'Filter:'
+            }), (0, _inferno.createVNode)(16, _Input2.default, null, null, {
+              'type': 'text',
+              'name': 'filter',
+              'placeholder': 'Type here...'
+            })]
+          }), (0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _Label2.default, null, null, {
+              children: 'Password:'
+            }), (0, _inferno.createVNode)(16, _Input2.default, null, null, {
+              'type': 'password',
+              'name': 'password',
+              'placeholder': 'Choose wisely...'
+            })]
+          })]
+        })
+      })
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Form = __webpack_require__(8);
+
+var _Form2 = _interopRequireDefault(_Form);
+
+var _FormGroup = __webpack_require__(9);
+
+var _FormGroup2 = _interopRequireDefault(_FormGroup);
+
+var _Label = __webpack_require__(11);
+
+var _Label2 = _interopRequireDefault(_Label);
+
+var _Input = __webpack_require__(10);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Input Elements With Addons'), (0, _inferno.createVNode)(2, 'p', null, 'Form elements'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: (0, _inferno.createVNode)(16, _Form2.default, null, null, {
+          children: [(0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _Label2.default, null, null, {
+              children: 'Email:'
+            }), (0, _inferno.createVNode)(16, _InputGroup2.default, null, null, {
+              children: [(0, _inferno.createVNode)(16, _InputGroupAddon2.default, null, null, {
+                children: '@'
+              }), (0, _inferno.createVNode)(16, _Input2.default, null, null, {
+                'type': 'email',
+                'name': 'email',
+                'placeholder': 'example@email.com'
+              })]
+            })]
+          }), (0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _Label2.default, null, null, {
+              children: 'Price:'
+            }), (0, _inferno.createVNode)(16, _InputGroup2.default, null, null, {
+              children: [(0, _inferno.createVNode)(16, _Input2.default, null, null, {
+                'type': 'number',
+                'name': 'Age'
+              }), (0, _inferno.createVNode)(16, _InputGroupAddon2.default, null, null, {
+                children: 'SEK'
+              })]
+            })]
+          })]
+        })
+      })
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Form = __webpack_require__(8);
+
+var _Form2 = _interopRequireDefault(_Form);
+
+var _FormGroup = __webpack_require__(9);
+
+var _FormGroup2 = _interopRequireDefault(_FormGroup);
+
+var _Input = __webpack_require__(10);
+
+var _Input2 = _interopRequireDefault(_Input);
+
+var _InputGroup = __webpack_require__(31);
+
+var _InputGroup2 = _interopRequireDefault(_InputGroup);
+
+var _InputGroupAddon = __webpack_require__(32);
+
+var _InputGroupAddon2 = _interopRequireDefault(_InputGroupAddon);
+
+var _InputGroupButton = __webpack_require__(33);
+
+var _InputGroupButton2 = _interopRequireDefault(_InputGroupButton);
+
+var _Label = __webpack_require__(11);
+
+var _Label2 = _interopRequireDefault(_Label);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _infernoRouter = __webpack_require__(20);
+
+var _createBrowserHistory = __webpack_require__(19);
+
+var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
+
+var _BasicPage = __webpack_require__(15);
+
+var _BasicPage2 = _interopRequireDefault(_BasicPage);
+
+var _CardPage = __webpack_require__(16);
+
+var _CardPage2 = _interopRequireDefault(_CardPage);
+
+var _CarouselPage = __webpack_require__(17);
+
+var _CarouselPage2 = _interopRequireDefault(_CarouselPage);
+
+var _FormPage = __webpack_require__(18);
+
+var _FormPage2 = _interopRequireDefault(_FormPage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function AppLayout(props) {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, 'div', null, [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, 'div', 'Menu', [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Link"], null, null, {
+  return (0, _inferno.createVNode)(2, 'div', null, [(0, _inferno.createVNode)(2, 'div', 'Menu', [(0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
     'to': '/basic',
     children: 'Basic'
-  }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Link"], null, null, {
+  }), (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
     'to': '/card',
     children: 'Card'
-  }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Link"], null, null, {
+  }), (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
     'to': '/carousel',
     children: 'Carousel'
-  }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Link"], null, null, {
+  }), (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
     'to': '/form',
     children: 'Form'
-  })]), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(2, 'div', 'Content', props.children)]);
+  })]), (0, _inferno.createVNode)(2, 'div', 'Content', props.children)]);
 }
 
 if (typeof window !== 'undefined') {
-  const browserHistory = __WEBPACK_IMPORTED_MODULE_2_history_createBrowserHistory___default()();
+  var browserHistory = (0, _createBrowserHistory2.default)();
 
-  const appRoutes = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Router"], null, null, {
+  var appRoutes = (0, _inferno.createVNode)(16, _infernoRouter.Router, null, null, {
     'history': browserHistory,
-    children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Route"], null, null, {
+    children: (0, _inferno.createVNode)(16, _infernoRouter.Route, null, null, {
       'component': AppLayout,
-      children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["IndexRoute"], null, null, {
-        'component': __WEBPACK_IMPORTED_MODULE_3__BasicPage_jsx__["a" /* default */]
-      }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Route"], null, null, {
+      children: [(0, _inferno.createVNode)(16, _infernoRouter.IndexRoute, null, null, {
+        'component': _BasicPage2.default
+      }), (0, _inferno.createVNode)(16, _infernoRouter.Route, null, null, {
         'path': '/basic',
-        'component': __WEBPACK_IMPORTED_MODULE_3__BasicPage_jsx__["a" /* default */]
-      }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Route"], null, null, {
+        'component': _BasicPage2.default
+      }), (0, _inferno.createVNode)(16, _infernoRouter.Route, null, null, {
         'path': '/card',
-        'component': __WEBPACK_IMPORTED_MODULE_4__CardPage_jsx__["a" /* default */]
-      }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Route"], null, null, {
+        'component': _CardPage2.default
+      }), (0, _inferno.createVNode)(16, _infernoRouter.Route, null, null, {
         'path': '/carousel',
-        'component': __WEBPACK_IMPORTED_MODULE_5__CarouselPage_jsx__["a" /* default */]
-      }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1_inferno_router__["Route"], null, null, {
+        'component': _CarouselPage2.default
+      }), (0, _inferno.createVNode)(16, _infernoRouter.Route, null, null, {
         'path': '/form',
-        'component': __WEBPACK_IMPORTED_MODULE_6__FormPage_jsx__["a" /* default */]
+        'component': _FormPage2.default
       })]
     })
   });
-  __WEBPACK_IMPORTED_MODULE_0_inferno___default.a.render(appRoutes, document.getElementById('app'));
+  _inferno2.default.render(appRoutes, document.getElementById('app'));
 }
 
 /***/ }),
-/* 24 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1724,7 +3215,7 @@ var isExtraneousPopstateEvent = exports.isExtraneousPopstateEvent = function isE
 };
 
 /***/ }),
-/* 25 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1743,15 +3234,15 @@ var _extends = Object.assign || function (target) {
   }return target;
 };
 
-var _resolvePathname = __webpack_require__(36);
+var _resolvePathname = __webpack_require__(56);
 
 var _resolvePathname2 = _interopRequireDefault(_resolvePathname);
 
-var _valueEqual = __webpack_require__(37);
+var _valueEqual = __webpack_require__(57);
 
 var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-var _PathUtils = __webpack_require__(6);
+var _PathUtils = __webpack_require__(12);
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -1818,7 +3309,7 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 };
 
 /***/ }),
-/* 26 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1826,7 +3317,7 @@ var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a
 
 exports.__esModule = true;
 
-var _warning = __webpack_require__(7);
+var _warning = __webpack_require__(13);
 
 var _warning2 = _interopRequireDefault(_warning);
 
@@ -1911,11 +3402,228 @@ var createTransitionManager = function createTransitionManager() {
 exports.default = createTransitionManager;
 
 /***/ }),
-/* 27 */
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.animateOnAdd = exports.animateOnRemove = undefined;
+
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+};
+
+var _inferno = __webpack_require__(0);
+
+function _addClassName(node, className) {
+  if (className) {
+    var tmp = className.split(' ');
+    for (var i = 0; i < tmp.length; i++) {
+      node.classList.add(tmp[i]);
+    }
+  }
+}
+
+function _removeClassName(node, className) {
+  if (className) {
+    var tmp = className.split(' ');
+    for (var i = 0; i < tmp.length; i++) {
+      node.classList.remove(tmp[i]);
+    }
+  }
+}
+
+var animateOnRemove = exports.animateOnRemove = function animateOnRemove(component, animationName, callback) {
+  var domEl = component._vNode.dom;
+  // Do not animate if this class is set (should I do this by passing prop through context?)
+  if (domEl.closest && domEl.closest('.InfernoAnimation--noAnim')) {
+    return;
+  }
+
+  var animCls = {};
+  if ((typeof animationName === 'undefined' ? 'undefined' : _typeof(animationName)) === 'object') {
+    animCls = animationName;
+  } else {
+    animCls['start'] = animationName + '-leave';
+    animCls['active'] = animationName + '-leave-active';
+    animCls['end'] = animationName + '-leave-end';
+  }
+
+  // 1. Clone DOM node, inject it and hide original
+  var clone = domEl.cloneNode(true);
+
+  var height = domEl.offsetHeight;
+  var width = domEl.offsetWidth;
+
+  clone.style.height = height + 'px';
+  clone.style.width = width + 'px';
+  _addClassName(clone, animCls.start);
+
+  // Leaving original element so it can be removed in the normal way
+  domEl.style['display'] = 'none';
+  domEl.insertAdjacentElement('beforebegin', clone);
+
+  // 2. Set an animation listener, code at end
+  var done = false;
+  var nrofTransitionsLeft;
+  var onTransitionEnd = function onTransitionEnd(event) {
+    // Make sure it isn't a child that is triggering the event
+    if (event && event.target !== clone) {
+      return;
+    }
+    if (event !== undefined && nrofTransitionsLeft > 0) {
+      nrofTransitionsLeft--;
+      return;
+    }
+    if (done) return;
+    done = true;
+
+    // 5. Call callback to allow stuff to happen
+    callback && callback(clone);
+
+    // 6. Remove the element
+    // Note: If I don't declare an anonymous function immediately here this callback isn't called!
+    // const parent = clone.parentElement
+    // parent.removeChild(clone)
+    // Why does inferno use removeChild?
+    clone.remove();
+    // console.log('----- removed')
+  };
+
+  clone.addEventListener("transitionend", onTransitionEnd, false);
+  // 3. Activate transitions
+  _addClassName(clone, animCls.active);
+  // The following is needed so we can prevent nested animations from playing slower
+  // than parent animation causing a jump (in for example a cross-fade)
+  clone.classList.add('InfernoAnimation-active');
+
+  var cs = window.getComputedStyle(clone);
+  var dur = cs.getPropertyValue('transition-duration').split(',');
+  var del = cs.getPropertyValue('transition-delay').split(',');
+  var animTimeout = dur.map(function (v, index) {
+    return parseFloat(v) + parseFloat(del[index]);
+  }).reduce(function (prev, curr) {
+    return prev > curr ? prev : curr;
+  }, 0);
+  nrofTransitionsLeft = dur.length - 1;
+  setTimeout(onTransitionEnd, Math.round(animTimeout * 1000) + 50); // Fallback if transitionend fails
+
+  /*
+  console.log('----- transition-duration', cs.getPropertyValue('transition-duration'))
+  console.log('----- transition-delay', cs.getPropertyValue('transition-delay'))
+  console.log('----- animTimeout', Math.round(animTimeout * 1000) + 50)
+  */
+
+  // 4. Activate target state
+  setTimeout(function () {
+    _addClassName(clone, animCls.end);
+    _removeClassName(clone, animCls.start);
+    clone.style.height = clone.style.width = '';
+  }, 5);
+};
+
+var animateOnAdd = exports.animateOnAdd = function animateOnAdd(component, animationName, callback) {
+  var node = component._vNode.dom;
+
+  // Do not animate if this class is set (should I do this by passing prop through context?)
+  if (node.closest && node.closest('.InfernoAnimation--noAnim')) {
+    return;
+  }
+
+  var animCls = {};
+  if ((typeof animationName === 'undefined' ? 'undefined' : _typeof(animationName)) === 'object') {
+    animCls = animationName;
+  } else {
+    animCls['start'] = animationName + '-enter';
+    animCls['active'] = animationName + '-enter-active';
+    animCls['end'] = animationName + '-enter-end';
+  }
+
+  var isDisplayNone = window.getComputedStyle(node).getPropertyValue('display') === 'none';
+
+  // 1. Get height and set start of animation
+  var height = node.offsetHeight;
+  var width = node.offsetWidth;
+  _addClassName(node, animCls.start);
+
+  // 2. Set an animation listener, code at end
+  var done = false;
+  var nrofTransitionsLeft;
+  var onTransitionEnd = function onTransitionEnd(event) {
+    // Make sure it isn't a child that is triggering the event
+    if (event && event.target !== node) {
+      return;
+    }
+    if (event !== undefined && nrofTransitionsLeft > 0) {
+      nrofTransitionsLeft--;
+      return;
+    }
+    if (done) return;
+    done = true;
+    // 5. Remove the element
+    // Note: If I don't declare an anonymous function immediately here this callback isn't called!
+    node.style.height = node.style.width = '';
+    _removeClassName(node, animCls.active);
+    _removeClassName(node, animCls.end);
+    node.classList.remove('InfernoAnimation-active');
+
+    // 6. Call callback to allow stuff to happen
+    callback && callback(node);
+  };
+  node.addEventListener("transitionend", onTransitionEnd, false);
+  var dummy = node.clientHeight;
+
+  // 3. Activate transition
+  _addClassName(node, animCls.active);
+  // The following is needed so we can prevent nested animations from playing slower
+  // than parent animation causing a jump (in for example a cross-fade)
+  node.classList.add('InfernoAnimation-active');
+
+  var cs = window.getComputedStyle(node);
+  var dur = cs.getPropertyValue('transition-duration').split(',');
+  var del = cs.getPropertyValue('transition-delay').split(',');
+  var animTimeout = dur.map(function (v, index) {
+    return parseFloat(v) + parseFloat(del[index]);
+  }).reduce(function (prev, curr) {
+    return prev > curr ? prev : curr;
+  }, 0);
+  nrofTransitionsLeft = dur.length - 1;
+  setTimeout(onTransitionEnd, Math.round(animTimeout * 1000) + 50); // Fallback if transitionend fails
+
+  /*
+  console.log('----- transition-duration', cs.getPropertyValue('transition-duration'))
+  console.log('----- transition-delay', cs.getPropertyValue('transition-delay'))
+  console.log('----- animTimeout', Math.round(animTimeout * 1000) + 50)
+  */
+
+  // 4. Activate target state
+  setTimeout(function () {
+    if (!isDisplayNone) {
+      node.style.height = height + 'px';
+      node.style.width = width + 'px';
+    }
+    _addClassName(node, animCls.end);
+    _removeClassName(node, animCls.start);
+  }, 5);
+};
+//# sourceMappingURL=animatedComponent.js.map
+
+/***/ }),
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
@@ -1932,7 +3640,7 @@ var isBrowser = !!(typeof window !== "undefined" && window.document);
 // in Node 7 and the later versions of V8, slower in older versions though
 var isArray = Array.isArray;
 function isStringOrNumber(o) {
-    var type = typeof o;
+    var type = typeof o === 'undefined' ? 'undefined' : _typeof(o);
     return type === "string" || type === "number";
 }
 function isNullOrUndef(o) {
@@ -2223,14 +3931,16 @@ Component.prototype._updateComponent = function _updateComponent(prevState, next
 Component.prototype.render = function render(nextProps, nextState, nextContext) {};
 
 exports['default'] = Component;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 28 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
@@ -2258,7 +3968,7 @@ function isUndefined(o) {
     return o === void 0;
 }
 function isObject(o) {
-    return typeof o === "object";
+    return (typeof o === 'undefined' ? 'undefined' : _typeof(o)) === "object";
 }
 
 /**
@@ -2281,9 +3991,9 @@ componentHooks.add("onComponentDidUpdate");
 function createElement(type, props) {
     var _children = [],
         len = arguments.length - 2;
-    while (len-- > 0) _children[len] = arguments[len + 2];
-
-    if (isInvalid(type) || isObject(type)) {
+    while (len-- > 0) {
+        _children[len] = arguments[len + 2];
+    }if (isInvalid(type) || isObject(type)) {
         throw new Error("Inferno Error: createElement() name parameter cannot be undefined, null, false or true, It must be a string, class or function.");
     }
     var children = _children;
@@ -2348,30 +4058,35 @@ function createElement(type, props) {
 exports['default'] = createElement;
 
 /***/ }),
-/* 29 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(28).default;
+"use strict";
+
+
+module.exports = __webpack_require__(48).default;
 module.exports.default = module.exports;
 
 /***/ }),
-/* 30 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 Object.defineProperty(exports, '__esModule', { value: true });
 
 function _interopDefault(ex) {
-    return ex && typeof ex === 'object' && 'default' in ex ? ex['default'] : ex;
+    return ex && (typeof ex === 'undefined' ? 'undefined' : _typeof(ex)) === 'object' && 'default' in ex ? ex['default'] : ex;
 }
 
-var createElement = _interopDefault(__webpack_require__(29));
+var createElement = _interopDefault(__webpack_require__(49));
 var Component = _interopDefault(__webpack_require__(3));
 var Inferno = __webpack_require__(0);
 var Inferno__default = _interopDefault(Inferno);
-__webpack_require__(32);
+__webpack_require__(52);
 
 /**
  * @module Inferno-Shared
@@ -2612,13 +4327,13 @@ var Route = function (Component$$1) {
 /**
  * @module Inferno-Router
  */ /** TypeDoc Comment */
-var handleIndexRoute = function (indexRouteNode) {
+var handleIndexRoute = function handleIndexRoute(indexRouteNode) {
     return createElement(Route, indexRouteNode);
 };
-var handleChildRoute = function (childRouteNode) {
+var handleChildRoute = function handleChildRoute(childRouteNode) {
     return handleRouteNode(childRouteNode);
 };
-var handleChildRoutes = function (childRouteNodes) {
+var handleChildRoutes = function handleChildRoutes(childRouteNodes) {
     return childRouteNodes.map(handleChildRoute);
 };
 function handleRouteNode(routeConfigNode) {
@@ -2652,7 +4367,7 @@ function handleRouteNode(routeConfigNode) {
     return createElement(Route, node);
     var ref;
 }
-var createRoutes = function (routeConfig) {
+var createRoutes = function createRoutes(routeConfig) {
     return routeConfig.map(handleRouteNode);
 };
 
@@ -2914,7 +4629,7 @@ function tokensToFunction(tokens) {
 
     // Compile all the patterns before compilation.
     for (var i = 0; i < tokens.length; i++) {
-        if (typeof tokens[i] === 'object') {
+        if (_typeof(tokens[i]) === 'object') {
             matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$');
         }
     }
@@ -3493,21 +5208,29 @@ exports.RouterContext = RouterContext;
 exports.createRoutes = createRoutes;
 exports.match = match;
 exports['default'] = index;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 31 */
-/***/ (function(module, exports) {
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
 /***/ }),
-/* 32 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(31);
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var isarray = __webpack_require__(51);
 
 /**
  * Expose `pathToRegexp`.
@@ -3652,7 +5375,7 @@ function tokensToFunction(tokens) {
 
   // Compile all the patterns before compilation.
   for (var i = 0; i < tokens.length; i++) {
-    if (typeof tokens[i] === 'object') {
+    if (_typeof(tokens[i]) === 'object') {
       matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$');
     }
   }
@@ -3934,11 +5657,13 @@ function pathToRegexp(path, keys, options) {
 }
 
 /***/ }),
-/* 33 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
@@ -3956,7 +5681,7 @@ function isStatefulComponent(o) {
     return !isUndefined(o.prototype) && !isUndefined(o.prototype.render);
 }
 function isStringOrNumber(o) {
-    var type = typeof o;
+    var type = typeof o === 'undefined' ? 'undefined' : _typeof(o);
     return type === "string" || type === "number";
 }
 function isNullOrUndef(o) {
@@ -3984,7 +5709,7 @@ function isUndefined(o) {
     return o === void 0;
 }
 function isObject(o) {
-    return typeof o === "object";
+    return (typeof o === 'undefined' ? 'undefined' : _typeof(o)) === "object";
 }
 function throwError(message) {
     if (!message) {
@@ -4198,7 +5923,7 @@ function stopPropagation() {
     this.stopImmediatePropagation();
 }
 function attachEventToDocument(name, delegatedRoots) {
-    var docEvent = function (event) {
+    var docEvent = function docEvent(event) {
         var count = delegatedRoots.items.size;
         if (count > 0) {
             event.stopPropagation = stopPropagation;
@@ -4706,7 +6431,7 @@ function hydrate(vNode, dom, lifecycle, context, isSVG) {
             hydrateVoid(vNode, dom);
         } else {
         if (process.env.NODE_ENV !== "production") {
-            throwError("hydrate() expects a valid VNode, instead it received an object with the type \"" + typeof vNode + "\".");
+            throwError("hydrate() expects a valid VNode, instead it received an object with the type \"" + (typeof vNode === 'undefined' ? 'undefined' : _typeof(vNode)) + "\".");
         }
         throwError();
     }
@@ -5807,10 +7532,10 @@ function mount(vNode, parentDom, lifecycle, context, isSVG) {
             return mountText(vNode, parentDom);
         } else {
         if (process.env.NODE_ENV !== "production") {
-            if (typeof vNode === "object") {
+            if ((typeof vNode === 'undefined' ? 'undefined' : _typeof(vNode)) === "object") {
                 throwError("mount() received an object that's not a valid VNode, you should stringify it first. Object: \"" + JSON.stringify(vNode) + "\".");
             } else {
-                throwError("mount() expects a valid VNode, instead it received an object with the type \"" + typeof vNode + "\".");
+                throwError("mount() expects a valid VNode, instead it received an object with the type \"" + (typeof vNode === 'undefined' ? 'undefined' : _typeof(vNode)) + "\".");
             }
         }
         throwError();
@@ -6278,9 +8003,9 @@ function directClone(vNodeToClone) {
 function cloneVNode(vNodeToClone, props) {
     var _children = [],
         len$2 = arguments.length - 2;
-    while (len$2-- > 0) _children[len$2] = arguments[len$2 + 2];
-
-    var children = _children;
+    while (len$2-- > 0) {
+        _children[len$2] = arguments[len$2 + 2];
+    }var children = _children;
     var childrenLen = _children.length;
     if (childrenLen > 0 && !isUndefined(_children[0])) {
         if (!props) {
@@ -6521,7 +8246,7 @@ function normalize(vNode) {
     if (process.env.NODE_ENV !== "production") {
         // This code will be stripped out from production CODE
         // It helps users to track errors in their applications.
-        var verifyKeys = function (vNodes) {
+        var verifyKeys = function verifyKeys(vNodes) {
             var keyValues = vNodes.map(function (vnode) {
                 return vnode.key;
             });
@@ -6602,10 +8327,10 @@ exports.linkEvent = linkEvent;
 exports.options = options;
 exports.render = render;
 exports.version = version;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 34 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6631,7 +8356,7 @@ exports.version = version;
  * will remain to ensure logic does not differ in production.
  */
 
-var invariant = function (condition, format, a, b, c, d, e, f) {
+var invariant = function invariant(condition, format, a, b, c, d, e, f) {
   if (process.env.NODE_ENV !== 'production') {
     if (format === undefined) {
       throw new Error('invariant requires an error message argument');
@@ -6657,11 +8382,16 @@ var invariant = function (condition, format, a, b, c, d, e, f) {
 };
 
 module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 35 */
-/***/ (function(module, exports) {
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
  * lodash (Custom Build) <https://lodash.com/>
@@ -6729,7 +8459,7 @@ var objectToString = objectProto.toString;
  * // => false
  */
 function isObject(value) {
-  var type = typeof value;
+  var type = typeof value === 'undefined' ? 'undefined' : _typeof(value);
   return !!value && (type == 'object' || type == 'function');
 }
 
@@ -6758,7 +8488,7 @@ function isObject(value) {
  * // => false
  */
 function isObjectLike(value) {
-  return !!value && typeof value == 'object';
+  return !!value && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'object';
 }
 
 /**
@@ -6779,7 +8509,7 @@ function isObjectLike(value) {
  * // => false
  */
 function isSymbol(value) {
-  return typeof value == 'symbol' || isObjectLike(value) && objectToString.call(value) == symbolTag;
+  return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) == 'symbol' || isObjectLike(value) && objectToString.call(value) == symbolTag;
 }
 
 /**
@@ -6827,7 +8557,7 @@ function toNumber(value) {
 module.exports = toNumber;
 
 /***/ }),
-/* 36 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6903,18 +8633,20 @@ var resolvePathname = function resolvePathname(to) {
 module.exports = resolvePathname;
 
 /***/ }),
-/* 37 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 exports.__esModule = true;
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
+var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 } : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
 };
 
 var valueEqual = function valueEqual(a, b) {
@@ -6951,110 +8683,6 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_jsx__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_Alert_jsx__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_inferno__);
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["a" /* Section */], null, null, {
-    children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h2', null, 'Alert Examples'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["b" /* Stage */], null, null, {
-      children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["c" /* Scene */], null, null, {
-        children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__lib_Alert_jsx__["a" /* default */], null, null, {
-          'color': 'success',
-          children: ['Some cool text in a ', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'b', null, 'success'), ' alert box!']
-        })
-      }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["c" /* Scene */], null, null, {
-        children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__lib_Alert_jsx__["a" /* default */], null, null, {
-          'color': 'warning',
-          children: ['Some cool text in a ', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'b', null, 'warning'), ' alert box!']
-        })
-      }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["c" /* Scene */], null, null, {
-        children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__lib_Alert_jsx__["a" /* default */], null, null, {
-          'color': 'danger',
-          children: ['Some cool text in a ', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'b', null, 'danger'), ' alert box!']
-        })
-      })]
-    })]
-  });
-});
-
-/***/ }),
-/* 39 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_jsx__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_Badge_jsx__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_inferno__);
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["a" /* Section */], null, null, {
-    children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h2', null, 'Badge Examples'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["b" /* Stage */], null, null, {
-      children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h2', null, ['Some nice text ', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__lib_Badge_jsx__["a" /* default */], null, null, {
-        children: 'new'
-      })]), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h3', null, ['Some nice text ', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__lib_Badge_jsx__["a" /* default */], null, null, {
-        children: 'new'
-      })]), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(2, 'h4', null, ['Some nice text ', __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__lib_Badge_jsx__["a" /* default */], null, null, {
-        children: 'new'
-      })])]
-    })]
-  });
-});
-
-/***/ }),
-/* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_jsx__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__lib_Breadcrumb_jsx__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__lib_BreadcrumbItem_jsx__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_inferno__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_inferno___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_inferno__);
-
-
-
-
-
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-  return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["a" /* Section */], null, null, {
-    children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(2, 'h2', null, 'Breadcrumb Examples'), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["b" /* Stage */], null, null, {
-      children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_0__components_jsx__["c" /* Scene */], null, null, {
-        children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_1__lib_Breadcrumb_jsx__["a" /* default */], null, null, {
-          children: [__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_2__lib_BreadcrumbItem_jsx__["a" /* default */], null, null, {
-            children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(2, 'a', null, 'Home', {
-              'href': '#'
-            })
-          }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_2__lib_BreadcrumbItem_jsx__["a" /* default */], null, null, {
-            children: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(2, 'a', null, 'Section', {
-              'href': '#'
-            })
-          }), __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_inferno__["createVNode"])(16, __WEBPACK_IMPORTED_MODULE_2__lib_BreadcrumbItem_jsx__["a" /* default */], null, null, {
-            'active': 'true',
-            children: 'This page'
-          })]
-        })
-      })
-    })]
-  });
-});
 
 /***/ })
 /******/ ]);

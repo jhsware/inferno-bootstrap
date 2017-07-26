@@ -1,17 +1,8 @@
 import Component from 'inferno-component'
 
-import { Section, Stage } from './components.jsx'
+import InputSection from './Form/Input.jsx'
+import InputGroupSection from './Form/InputGroup.jsx'
 
-function ContentSection () {
-  return (
-    <Section>
-      <h2>Content Examples</h2>
-      <Stage>
-        
-      </Stage>
-    </Section>
-  )
-}
 
 class FormPage extends Component {
   constructor (props) {
@@ -34,7 +25,8 @@ class FormPage extends Component {
 
     return (
       <div className={!this.state.active ? 'InfernoAnimation--noAnim' : ''}>
-        <ContentSection />
+        <InputSection />
+        <InputGroupSection />
       </div>
     )
   }

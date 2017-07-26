@@ -7,7 +7,7 @@ import {
   isVNodeOfType
 } from 'inferno-test-utils'
 
-import { hasClass, getTagName } from "../utils"
+import { hasClass, getTagName, getInnerHTML } from "../utils"
 
 import FormFeedback from "../../lib/Form/FormFeedback.jsx"
 

@@ -7,7 +7,7 @@ import {
   isVNodeOfType
 } from 'inferno-test-utils'
 
-import { hasClass, getTagName } from "../utils"
+import { hasClass, getTagName, getInnerHTML } from "../utils"
 
 import FormGroup from "../../lib/Form/FormGroup.jsx"
 
