@@ -4,8 +4,8 @@ const express = require('express')
 const app = express()
 
 
-app.use('/prism', express.static('../../node_modules/prismjs/themes'))
-app.use('/bootstrap', express.static('../../node_modules/bootstrap/dist'))
+app.use('/bootstrap', express.static(__dirname + '/../../node_modules/bootstrap/dist'))
+app.use('/prism', express.static(__dirname + '/../../node_modules/prismjs/themes'))
 app.use('/static', express.static(__dirname))
 app.use((req, res) => {
   res.sendFile(path.resolve(__dirname, './index.html'))

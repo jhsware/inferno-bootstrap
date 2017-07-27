@@ -5,7 +5,7 @@ import { Section, Stage } from './components.jsx'
 function ContentSection () {
   return (
     <Section>
-      <h2>Content Examples</h2>
+      <h2>Contents</h2>
       <Stage>
         
       </Stage>

@@ -32,7 +32,8 @@
     "inferno-animation": "^0.4.4",
     "lodash.isfunction": "^3.0.8",
     "lodash.isobject": "^3.0.2",
-    "lodash.tonumber": "^4.0.3"
+    "lodash.tonumber": "^4.0.3",
+    "popper.js": "^1.11.0"
   },
   "peerDependencies": {
     "inferno": "^3.7.0",

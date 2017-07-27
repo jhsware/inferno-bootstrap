@@ -1,5 +1,6 @@
 import Component from "inferno-component"
 import Prism from "prismjs"
+require('prismjs/components/prism-jsx')
 
 export function Section ({ children }) {
   return (
@@ -20,6 +21,14 @@ export function Stage ({ children }) {
 export function Scene ({ children }) {
   return (
     <div class="ExampleScene">
+      {children}
+    </div>
+  )
+}
+
+export function Narrative ({ children }) {
+  return (
+    <div class="ExampleNarrative">
       {children}
     </div>
   )
@@ -48,8 +57,10 @@ export class Code extends Component {
   render ({ children }) {
     return (
       <div className="ExampleScene-Code">
-        <pre className="language-javascript" ref={(domNode) => this._domNode = domNode}>
-          {children}
+        <pre>
+          <code className="language-jsx" ref={(domNode) => this._domNode = domNode}>
+            {children}
+          </code>
         </pre>
       </div>
     )  
