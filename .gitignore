@@ -2,3 +2,4 @@ package-lock.json
 launch.json
 coverage
 node_modules
+.vscode
