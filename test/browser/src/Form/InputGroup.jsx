@@ -10,8 +10,7 @@ import Label from '../../../../lib/Form/Label.jsx'
 
 export default function () {
   return (
-    <Section>
-      <h2>Input Elements With Addons</h2>
+    <Section title="Input Elements With Addons">
       <p>Form elements</p>
       <Stage>
         <Scene>

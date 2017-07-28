@@ -5,8 +5,7 @@ import BreadcrumbItem from '../../../../lib/BreadcrumbItem.jsx'
 
 export default function () {
   return (
-    <Section>
-      <h2>Breadcrumbs</h2>
+    <Section title="Breadcrumbs">
       <Narrative>
         <p>Indicate the current page’s location within a navigational hierarchy. Separators are automatically added in CSS through <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/::before"><code class="highlighter-rouge">::before</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content"> <code class="highlighter-rouge">content</code></a>.</p>
       </Narrative>

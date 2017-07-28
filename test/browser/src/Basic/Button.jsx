@@ -14,8 +14,7 @@ import DropdownItem from '../../../../lib/DropdownItem.jsx';
 export default function () {
   return (
     <div>
-      <Section>
-        <h2>Buttons</h2>
+      <Section title="Buttons">
         <Narrative>
           <p>Use Bootstrap’s custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.</p>
         </Narrative>
@@ -104,13 +103,11 @@ export default function () {
         </Stage>
       </Section>
 
-      <Section>
-        <h2>Radio Buttons</h2>
+      <Section title="Radio Buttons">
         <RadioButtonStage />
       </Section>
 
-      <Section>
-        <h2>Button Group</h2>
+      <Section title="Button Group">
         <Narrative>
           <p>Group a series of buttons together on a single line with the button group.</p>
         </Narrative>  
@@ -133,8 +130,7 @@ export default function () {
         </Stage>
       </Section>
 
-      <Section>
-        <h2>Button Toolbar</h2>
+      <Section title="Button Toolbar">
         <Narrative>
           <p>Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.</p>
         </Narrative>
@@ -179,8 +175,7 @@ export default function () {
         </Stage>
       </Section>
 
-      <Section>
-        <h2>Button Vertical</h2>
+      <Section title="Button Vertical">
         <Stage>
           <Scene>
             <ButtonGroup vertical>
@@ -280,6 +275,14 @@ class RadioButtonStage extends Component {
             <Button color="primary" onClick={() => this.onRadioBtnClick(3)} active={this.state.rSelected === 3}>Three</Button>
           </ButtonGroup>
           <p>Selected: {this.state.rSelected}</p>
+
+          <Code>
+{`<ButtonGroup>
+  <Button color="primary" onClick={() => this.onRadioBtnClick(1)} active={this.state.rSelected === 1}>One</Button>
+  <Button color="primary" onClick={() => this.onRadioBtnClick(2)} active={this.state.rSelected === 2}>Two</Button>
+  <Button color="primary" onClick={() => this.onRadioBtnClick(3)} active={this.state.rSelected === 3}>Three</Button>
+</ButtonGroup>`}
+          </Code>  
         </Scene>
         <Scene>
           <h5>Checkbox Buttons</h5>
@@ -289,6 +292,13 @@ class RadioButtonStage extends Component {
             <Button color="primary" onClick={() => this.onCheckboxBtnClick(3)} active={this.state.cSelected.includes(3)}>Three</Button>
           </ButtonGroup>
           <p>Selected: {JSON.stringify(this.state.cSelected)}</p>
+          <Code>
+{`<ButtonGroup>
+  <Button color="primary" onClick={() => this.onCheckboxBtnClick(1)} active={this.state.cSelected.includes(1)}>One</Button>
+  <Button color="primary" onClick={() => this.onCheckboxBtnClick(2)} active={this.state.cSelected.includes(2)}>Two</Button>
+  <Button color="primary" onClick={() => this.onCheckboxBtnClick(3)} active={this.state.cSelected.includes(3)}>Three</Button>
+</ButtonGroup>`}
+          </Code>
         </Scene>
       </Stage>
     );

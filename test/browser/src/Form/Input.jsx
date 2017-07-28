@@ -9,8 +9,7 @@ import Input from '../../../../lib/Form/Input.jsx'
 
 export default function () {
   return (
-    <Section>
-      <h2>Basic Input Elements</h2>
+    <Section title="Basic Input Elements">
       <p>Form elements</p>
       <Stage>
         <Scene>

@@ -322,11 +322,10 @@ module.exports.default = module.exports;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Code = undefined;
+exports.Page = exports.Code = exports.Section = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-exports.Section = Section;
 exports.Stage = Stage;
 exports.Scene = Scene;
 exports.Narrative = Narrative;
@@ -334,6 +333,12 @@ exports.Narrative = Narrative;
 var _infernoComponent = __webpack_require__(3);
 
 var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _infernoRouter = __webpack_require__(20);
 
 var _prismjs = __webpack_require__(59);
 
@@ -351,71 +356,198 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 __webpack_require__(61);
 
-function Section(_ref) {
-  var children = _ref.children;
+var Section = exports.Section = function (_Component) {
+  _inherits(Section, _Component);
 
-  return (0, _inferno.createVNode)(2, "div", "ExampleSection", children);
-}
+  function Section() {
+    _classCallCheck(this, Section);
+
+    return _possibleConstructorReturn(this, (Section.__proto__ || Object.getPrototypeOf(Section)).apply(this, arguments));
+  }
+
+  _createClass(Section, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.context.addSection(this.props.title, this.props.title.toLowerCase());
+    }
+  }, {
+    key: 'render',
+    value: function render(_ref) {
+      var title = _ref.title,
+          children = _ref.children;
+
+      return (0, _inferno.createVNode)(2, 'div', 'ExampleSection', [title && (0, _inferno.createVNode)(2, 'h2', null, title), children], {
+        'id': this.props.title.toLowerCase()
+      });
+    }
+  }]);
+
+  return Section;
+}(_infernoComponent2.default);
 
 function Stage(_ref2) {
   var children = _ref2.children;
 
-  return (0, _inferno.createVNode)(2, "div", "ExampleStage", children);
+  return (0, _inferno.createVNode)(2, 'div', 'ExampleStage', children);
 }
 
 function Scene(_ref3) {
   var children = _ref3.children;
 
-  return (0, _inferno.createVNode)(2, "div", "ExampleScene", children);
+  return (0, _inferno.createVNode)(2, 'div', 'ExampleScene', children);
 }
 
 function Narrative(_ref4) {
   var children = _ref4.children;
 
-  return (0, _inferno.createVNode)(2, "div", "ExampleNarrative", children);
+  return (0, _inferno.createVNode)(2, 'div', 'ExampleNarrative', children);
 }
 
-var Code = exports.Code = function (_Component) {
-  _inherits(Code, _Component);
+var Code = exports.Code = function (_Component2) {
+  _inherits(Code, _Component2);
 
   function Code(props) {
     _classCallCheck(this, Code);
 
-    var _this = _possibleConstructorReturn(this, (Code.__proto__ || Object.getPrototypeOf(Code)).call(this, props));
+    var _this2 = _possibleConstructorReturn(this, (Code.__proto__ || Object.getPrototypeOf(Code)).call(this, props));
 
-    _this._hightlight = _this._hightlight.bind(_this);
-    return _this;
+    _this2._hightlight = _this2._hightlight.bind(_this2);
+    return _this2;
   }
 
   _createClass(Code, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {
       this._hightlight();
     }
   }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this._hightlight();
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      if (nextProps.children !== this.props.children) {
+        this._hightlight();
+      }
     }
   }, {
-    key: "_hightlight",
+    key: '_hightlight',
     value: function _hightlight() {
       _prismjs2.default.highlightElement(this._domNode, this.props.async);
     }
   }, {
-    key: "render",
+    key: 'render',
     value: function render(_ref5) {
-      var _this2 = this;
+      var _this3 = this;
 
       var children = _ref5.children;
 
-      return (0, _inferno.createVNode)(2, "div", "ExampleScene-Code", (0, _inferno.createVNode)(2, "pre", null, (0, _inferno.createVNode)(2, "code", "language-jsx", children, null, null, function (domNode) {
-        return _this2._domNode = domNode;
+      return (0, _inferno.createVNode)(2, 'div', 'ExampleScene-Code', (0, _inferno.createVNode)(2, 'pre', null, (0, _inferno.createVNode)(2, 'code', 'language-jsx', children, null, null, function (domNode) {
+        return _this3._domNode = domNode;
       })));
     }
   }]);
 
   return Code;
+}(_infernoComponent2.default);
+
+function smoothScrollVertTo(y, durMs) {
+  var k = Math.log(y - window.scrollY) / durMs * 16;
+  newSmoothScrollVertTo(y, k);
+}
+
+function newSmoothScrollVertTo(y, k) {
+  var delta = y - window.scrollY;
+  var step = k * delta;
+  requestAnimationFrame(function () {
+    var scrollStep = delta < 2 * step ? delta : step;
+    window.scrollTo(0, window.scrollY + scrollStep);
+    if (scrollStep >= 1 && window.scrollY + window.innerHeight !== document.body.scrollHeight) {
+      newSmoothScrollVertTo(y, k);
+    }
+  });
+}
+
+function PageMenu(props) {
+  return (0, _inferno.createVNode)(2, 'div', 'PageMenuContainer', (0, _inferno.createVNode)(2, 'ul', 'PageMenu nav flex-column', [(0, _inferno.createVNode)(2, 'li', 'nav-item', (0, _inferno.createVNode)(2, 'h4', 'PageMenu-Header', 'Components')), (0, _inferno.createVNode)(2, 'li', 'nav-item', (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
+    'className': 'nav-link PageLink',
+    'to': '/basic',
+    children: 'Basic'
+  })), (0, _inferno.createVNode)(2, 'li', 'nav-item', (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
+    'className': 'nav-link PageLink',
+    'to': '/card',
+    children: 'Card'
+  })), (0, _inferno.createVNode)(2, 'li', 'nav-item', (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
+    'className': 'nav-link PageLink',
+    'to': '/form',
+    children: 'Form'
+  })), props.pageSections.map(function (item) {
+    return (0, _inferno.createVNode)(2, 'li', 'nav-item', (0, _inferno.createVNode)(2, 'a', 'nav-link SectionLink', item.title, {
+      'href': '#' + item.anchor,
+      'onClick': function onClick(e) {
+        e.preventDefault();
+        var el = document.getElementById(e.target.hash.split('#')[1]);
+        var y = el.offsetTop;
+        // smoothScrollVertTo(y, 500)
+        smoothScrollVertTo(y, 500);
+      }
+    }));
+  })]));
+}
+
+var Page = exports.Page = function (_Component3) {
+  _inherits(Page, _Component3);
+
+  function Page(props) {
+    _classCallCheck(this, Page);
+
+    var _this4 = _possibleConstructorReturn(this, (Page.__proto__ || Object.getPrototypeOf(Page)).call(this, props));
+
+    _this4.state = {
+      active: false,
+      pageSections: []
+    };
+    return _this4;
+  }
+
+  _createClass(Page, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this5 = this;
+
+      setTimeout(function () {
+        _this5.setState({
+          active: true
+        });
+      }, 10);
+    }
+  }, {
+    key: 'getChildContext',
+    value: function getChildContext() {
+      return {
+        addSection: this.addSection.bind(this)
+      };
+    }
+  }, {
+    key: 'addSection',
+    value: function addSection(title, anchor) {
+      var tmp = this.state.pageSections;
+      tmp.push({ title: title, anchor: anchor });
+      this.setState({
+        pageSections: tmp
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var cls = {
+        PageContent: true,
+        'InfernoAnimation--noAnim': !this.state.active
+      };
+      return (0, _inferno.createVNode)(2, 'div', (0, _classnames2.default)(cls), [(0, _inferno.createVNode)(16, PageMenu, null, null, {
+        'pageSections': this.state.pageSections
+      }), this.props.children]);
+    }
+  }]);
+
+  return Page;
 }(_infernoComponent2.default);
 
 /***/ }),
@@ -1126,12 +1258,9 @@ module.exports = __webpack_amd_options__;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = BasicPage;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _infernoComponent = __webpack_require__(3);
-
-var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+var _components = __webpack_require__(4);
 
 var _Alert = __webpack_require__(36);
 
@@ -1149,61 +1278,27 @@ var _Button = __webpack_require__(58);
 
 var _Button2 = _interopRequireDefault(_Button);
 
+var _Jumbotron = __webpack_require__(264);
+
+var _Jumbotron2 = _interopRequireDefault(_Jumbotron);
+
+var _Progress = __webpack_require__(265);
+
+var _Progress2 = _interopRequireDefault(_Progress);
+
 var _Modal = __webpack_require__(34);
 
 var _Modal2 = _interopRequireDefault(_Modal);
-
-var _Progress = __webpack_require__(35);
-
-var _Progress2 = _interopRequireDefault(_Progress);
 
 var _inferno = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var BasicPage = function (_Component) {
-  _inherits(BasicPage, _Component);
-
-  function BasicPage(props) {
-    _classCallCheck(this, BasicPage);
-
-    var _this = _possibleConstructorReturn(this, (BasicPage.__proto__ || Object.getPrototypeOf(BasicPage)).call(this, props));
-
-    _this.state = {
-      active: false
-    };
-    return _this;
-  }
-
-  _createClass(BasicPage, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      setTimeout(function () {
-        _this2.setState({
-          active: true
-        });
-      }, 10);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-
-      return (0, _inferno.createVNode)(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', [(0, _inferno.createVNode)(16, _Alert2.default), (0, _inferno.createVNode)(16, _Badge2.default), (0, _inferno.createVNode)(16, _Breadcrumb2.default), (0, _inferno.createVNode)(16, _Button2.default)]);
-    }
-  }]);
-
-  return BasicPage;
-}(_infernoComponent2.default);
-
-exports.default = BasicPage;
+function BasicPage(props) {
+  return (0, _inferno.createVNode)(16, _components.Page, null, null, {
+    children: [(0, _inferno.createVNode)(16, _Alert2.default), (0, _inferno.createVNode)(16, _Badge2.default), (0, _inferno.createVNode)(16, _Breadcrumb2.default), (0, _inferno.createVNode)(16, _Button2.default), (0, _inferno.createVNode)(16, _Jumbotron2.default), (0, _inferno.createVNode)(16, _Progress2.default)]
+  });
+}
 
 /***/ }),
 /* 16 */
@@ -1215,68 +1310,23 @@ exports.default = BasicPage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _infernoComponent = __webpack_require__(3);
-
-var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+exports.default = CardPage;
 
 var _components = __webpack_require__(4);
+
+var _TextCard = __webpack_require__(260);
+
+var _TextCard2 = _interopRequireDefault(_TextCard);
 
 var _inferno = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function ContentSection() {
-  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Contents'), (0, _inferno.createVNode)(16, _components.Stage)]
+function CardPage(props) {
+  return (0, _inferno.createVNode)(16, _components.Page, null, null, {
+    children: (0, _inferno.createVNode)(16, _TextCard2.default)
   });
 }
-
-var CardPage = function (_Component) {
-  _inherits(CardPage, _Component);
-
-  function CardPage(props) {
-    _classCallCheck(this, CardPage);
-
-    var _this = _possibleConstructorReturn(this, (CardPage.__proto__ || Object.getPrototypeOf(CardPage)).call(this, props));
-
-    _this.state = {
-      active: false
-    };
-    return _this;
-  }
-
-  _createClass(CardPage, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      setTimeout(function () {
-        _this2.setState({
-          active: true
-        });
-      }, 10);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-
-      return (0, _inferno.createVNode)(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', (0, _inferno.createVNode)(16, ContentSection));
-    }
-  }]);
-
-  return CardPage;
-}(_infernoComponent2.default);
-
-exports.default = CardPage;
 
 /***/ }),
 /* 17 */,
@@ -1289,12 +1339,9 @@ exports.default = CardPage;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = FormPage;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _infernoComponent = __webpack_require__(3);
-
-var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+var _components = __webpack_require__(4);
 
 var _Input = __webpack_require__(40);
 
@@ -1308,49 +1355,11 @@ var _inferno = __webpack_require__(0);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FormPage = function (_Component) {
-  _inherits(FormPage, _Component);
-
-  function FormPage(props) {
-    _classCallCheck(this, FormPage);
-
-    var _this = _possibleConstructorReturn(this, (FormPage.__proto__ || Object.getPrototypeOf(FormPage)).call(this, props));
-
-    _this.state = {
-      active: false
-    };
-    return _this;
-  }
-
-  _createClass(FormPage, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      setTimeout(function () {
-        _this2.setState({
-          active: true
-        });
-      }, 10);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-
-      return (0, _inferno.createVNode)(2, 'div', !this.state.active ? 'InfernoAnimation--noAnim' : '', [(0, _inferno.createVNode)(16, _Input2.default), (0, _inferno.createVNode)(16, _InputGroup2.default)]);
-    }
-  }]);
-
-  return FormPage;
-}(_infernoComponent2.default);
-
-exports.default = FormPage;
+function FormPage(props) {
+  return (0, _inferno.createVNode)(16, _components.Page, null, null, {
+    children: [(0, _inferno.createVNode)(16, _Input2.default), (0, _inferno.createVNode)(16, _InputGroup2.default)]
+  });
+}
 
 /***/ }),
 /* 19 */
@@ -2269,24 +2278,23 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function () {
   return (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Alerts'), (0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+    'title': 'Alerts',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
       children: (0, _inferno.createVNode)(2, 'p', null, 'Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.')
     }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
-      children: [(0, _inferno.createVNode)(16, _components.Scene, null, null, {
-        children: (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
+      children: [(0, _inferno.createVNode)(2, 'h3', null, 'Standard alert box'), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: [(0, _inferno.createVNode)(16, _Alert2.default, null, null, {
           'color': 'success',
           children: ['Some cool text in a ', (0, _inferno.createVNode)(2, 'b', null, 'success'), ' alert box!']
-        })
-      }), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
-        children: (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
+        }), (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
           'color': 'warning',
           children: ['Some cool text in a ', (0, _inferno.createVNode)(2, 'b', null, 'warning'), ' alert box!']
-        })
-      }), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
-        children: (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
+        }), (0, _inferno.createVNode)(16, _Alert2.default, null, null, {
           'color': 'danger',
           children: ['Some cool text in a ', (0, _inferno.createVNode)(2, 'b', null, 'danger'), ' alert box!']
-        })
+        }), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+          children: '<Alert color="success">\n  Some cool text in a <b>success</b> alert box!\n</Alert>\n<Alert color="warning">\n  Some cool text in a <b>warning</b> alert box!\n</Alert>\n<Alert color="danger">\n  Some cool text in a <b>danger</b> alert box!\n</Alert>'
+        })]
       }), (0, _inferno.createVNode)(2, 'h3', null, 'Alert box with close button'), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
         children: [(0, _inferno.createVNode)(16, _Alert2.default, null, null, {
           'onClose': function onClose() {},
@@ -2322,18 +2330,33 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function () {
   return (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Badges'), (0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+    'title': 'Badges',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
       children: (0, _inferno.createVNode)(2, 'p', null, 'Small and adaptive tag for adding context to just about any content.')
     }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
-      children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+      children: [(0, _inferno.createVNode)(16, _components.Scene, null, null, {
         children: [(0, _inferno.createVNode)(2, 'h2', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
           children: 'new'
         })]), (0, _inferno.createVNode)(2, 'h3', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
           children: 'new'
         })]), (0, _inferno.createVNode)(2, 'h4', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
           children: 'new'
-        })])]
-      })
+        })]), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+          children: '<h2>Some nice text <Badge>new</Badge></h2>\n<h3>Some nice text <Badge>new</Badge></h3>\n<h4>Some nice text <Badge>new</Badge></h4>'
+        })]
+      }), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: [(0, _inferno.createVNode)(2, 'h5', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
+          'pill': true,
+          'color': 'danger',
+          children: '10'
+        })]), (0, _inferno.createVNode)(2, 'p', null, ['Some nice text ', (0, _inferno.createVNode)(16, _Badge2.default, null, null, {
+          'pill': true,
+          'color': 'danger',
+          children: '10'
+        })]), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+          children: '<h5>Some nice text <Badge pill color="danger">10</Badge></h5>\n<p>Some nice text <Badge pill color="danger">10</Badge></p>'
+        })]
+      })]
     })]
   });
 };
@@ -2361,7 +2384,8 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function () {
   return (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Breadcrumbs'), (0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+    'title': 'Breadcrumbs',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
       children: (0, _inferno.createVNode)(2, 'p', null, ['Indicate the current page\u2019s location within a navigational hierarchy. Separators are automatically added in CSS through ', (0, _inferno.createVNode)(2, 'a', null, (0, _inferno.createVNode)(2, 'code', 'highlighter-rouge', '::before'), {
         'href': 'https://developer.mozilla.org/en-US/docs/Web/CSS/::before'
       }), ' and ', (0, _inferno.createVNode)(2, 'a', null, [' ', (0, _inferno.createVNode)(2, 'code', 'highlighter-rouge', 'content')], {
@@ -2418,7 +2442,8 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function () {
   return (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Basic Input Elements'), (0, _inferno.createVNode)(2, 'p', null, 'Form elements'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+    'title': 'Basic Input Elements',
+    children: [(0, _inferno.createVNode)(2, 'p', null, 'Form elements'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
       children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
         children: (0, _inferno.createVNode)(16, _Form2.default, null, null, {
           children: [(0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
@@ -2493,7 +2518,8 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function () {
   return (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Input Elements With Addons'), (0, _inferno.createVNode)(2, 'p', null, 'Form elements'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+    'title': 'Input Elements With Addons',
+    children: [(0, _inferno.createVNode)(2, 'p', null, 'Form elements'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
       children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
         children: (0, _inferno.createVNode)(16, _Form2.default, null, null, {
           children: [(0, _inferno.createVNode)(16, _FormGroup2.default, null, null, {
@@ -2571,6 +2597,10 @@ var _inferno = __webpack_require__(0);
 
 var _inferno2 = _interopRequireDefault(_inferno);
 
+var _infernoComponent = __webpack_require__(3);
+
+var _infernoComponent2 = _interopRequireDefault(_infernoComponent);
+
 var _infernoRouter = __webpack_require__(20);
 
 var _createBrowserHistory = __webpack_require__(19);
@@ -2592,16 +2622,7 @@ var _FormPage2 = _interopRequireDefault(_FormPage);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function AppLayout(props) {
-  return (0, _inferno.createVNode)(2, 'div', null, [(0, _inferno.createVNode)(2, 'div', 'Menu', [(0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
-    'to': '/basic',
-    children: 'Basic'
-  }), (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
-    'to': '/card',
-    children: 'Card'
-  }), (0, _inferno.createVNode)(16, _infernoRouter.Link, null, null, {
-    'to': '/form',
-    children: 'Form'
-  })]), (0, _inferno.createVNode)(2, 'div', 'Content', props.children)]);
+  return (0, _inferno.createVNode)(2, 'div', 'Content', props.children);
 }
 
 if (typeof window !== 'undefined') {
@@ -7962,7 +7983,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 exports.default = function () {
   return (0, _inferno.createVNode)(2, 'div', null, [(0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Buttons'), (0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+    'title': 'Buttons',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
       children: (0, _inferno.createVNode)(2, 'p', null, 'Use Bootstrap\u2019s custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.')
     }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
       children: [(0, _inferno.createVNode)(2, 'h3', null, 'Standard Buttons'), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
@@ -8073,9 +8095,11 @@ exports.default = function () {
       })]
     })]
   }), (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Radio Buttons'), (0, _inferno.createVNode)(16, RadioButtonStage)]
+    'title': 'Radio Buttons',
+    children: (0, _inferno.createVNode)(16, RadioButtonStage)
   }), (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Button Group'), (0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+    'title': 'Button Group',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
       children: (0, _inferno.createVNode)(2, 'p', null, 'Group a series of buttons together on a single line with the button group.')
     }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
       children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
@@ -8093,7 +8117,8 @@ exports.default = function () {
       })
     })]
   }), (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Button Toolbar'), (0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+    'title': 'Button Toolbar',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
       children: (0, _inferno.createVNode)(2, 'p', null, 'Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.')
     }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
       children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
@@ -8129,7 +8154,8 @@ exports.default = function () {
       })
     })]
   }), (0, _inferno.createVNode)(16, _components.Section, null, null, {
-    children: [(0, _inferno.createVNode)(2, 'h2', null, 'Button Vertical'), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+    'title': 'Button Vertical',
+    children: (0, _inferno.createVNode)(16, _components.Stage, null, null, {
       children: [(0, _inferno.createVNode)(16, _components.Scene, null, null, {
         children: [(0, _inferno.createVNode)(16, _ButtonGroup2.default, null, null, {
           'vertical': true,
@@ -8157,7 +8183,7 @@ exports.default = function () {
           children: 'class SampleDropdownButton extends Component {\n  constructor(props) {\n    super(props)\n    this.state = {\n      isOpen: false\n    }\n\n    this.doToggle = this.doToggle.bind(this)\n  }\n\n  doToggle() {\n    this.setState({\n      isOpen: !this.state.isOpen\n    })\n  }\n\n  render({ children, ...props }) {\n    return (\n      <ButtonDropdown isOpen={this.state.isOpen} toggle={this.doToggle}>\n        <DropdownToggle {...props}>{children}</DropdownToggle>\n        <DropdownMenu>\n          <DropdownItem>Item 1</DropdownItem>\n          <DropdownItem>Item 2</DropdownItem>\n          <DropdownItem>Item 3</DropdownItem>\n        </DropdownMenu>\n      </ButtonDropdown>\n    )\n  }\n}'
         })]
       })]
-    })]
+    })
   })]);
 };
 
@@ -8270,7 +8296,9 @@ var RadioButtonStage = function (_Component) {
               'active': this.state.rSelected === 3,
               children: 'Three'
             })]
-          }), (0, _inferno.createVNode)(2, 'p', null, ['Selected: ', this.state.rSelected])]
+          }), (0, _inferno.createVNode)(2, 'p', null, ['Selected: ', this.state.rSelected]), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+            children: '<ButtonGroup>\n  <Button color="primary" onClick={() => this.onRadioBtnClick(1)} active={this.state.rSelected === 1}>One</Button>\n  <Button color="primary" onClick={() => this.onRadioBtnClick(2)} active={this.state.rSelected === 2}>Two</Button>\n  <Button color="primary" onClick={() => this.onRadioBtnClick(3)} active={this.state.rSelected === 3}>Three</Button>\n</ButtonGroup>'
+          })]
         }), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
           children: [(0, _inferno.createVNode)(2, 'h5', null, 'Checkbox Buttons'), (0, _inferno.createVNode)(16, _ButtonGroup2.default, null, null, {
             children: [(0, _inferno.createVNode)(16, _Button2.default, null, null, {
@@ -8295,7 +8323,9 @@ var RadioButtonStage = function (_Component) {
               'active': this.state.cSelected.includes(3),
               children: 'Three'
             })]
-          }), (0, _inferno.createVNode)(2, 'p', null, ['Selected: ', JSON.stringify(this.state.cSelected)])]
+          }), (0, _inferno.createVNode)(2, 'p', null, ['Selected: ', JSON.stringify(this.state.cSelected)]), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+            children: '<ButtonGroup>\n  <Button color="primary" onClick={() => this.onCheckboxBtnClick(1)} active={this.state.cSelected.includes(1)}>One</Button>\n  <Button color="primary" onClick={() => this.onCheckboxBtnClick(2)} active={this.state.cSelected.includes(2)}>Two</Button>\n  <Button color="primary" onClick={() => this.onCheckboxBtnClick(3)} active={this.state.cSelected.includes(3)}>Three</Button>\n</ButtonGroup>'
+          })]
         })]
       });
     }
@@ -34299,6 +34329,626 @@ function isObject(value) {
 }
 
 module.exports = isFunction;
+
+/***/ }),
+/* 255 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'div'
+};
+
+var Card = function Card(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      color = props.color,
+      block = props.block,
+      inverse = props.inverse,
+      outline = props.outline,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'color', 'block', 'inverse', 'outline', 'el']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'card', inverse ? 'card-inverse' : false, block ? 'card-block' : false, color ? 'card' + (outline ? '-outline' : '') + '-' + color : false), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+Card.defaultProps = defaultProps;
+
+exports.default = Card;
+
+/***/ }),
+/* 256 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'div'
+};
+
+var CardBlock = function CardBlock(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'card-block'), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+CardBlock.defaultProps = defaultProps;
+
+exports.default = CardBlock;
+
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'img'
+};
+
+var CardImg = function CardImg(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      top = props.top,
+      bottom = props.bottom,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'top', 'bottom', 'el']);
+
+  var cardImgClassName = 'card-img';
+  if (top) {
+    cardImgClassName = 'card-img-top';
+  }
+  if (bottom) {
+    cardImgClassName = 'card-img-bottom';
+  }
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, cardImgClassName), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+CardImg.defaultProps = defaultProps;
+
+exports.default = CardImg;
+
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'p'
+};
+
+var CardText = function CardText(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'card-text'), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+CardText.defaultProps = defaultProps;
+
+exports.default = CardText;
+
+/***/ }),
+/* 259 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'h4'
+};
+
+var CardTitle = function CardTitle(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'card-title'), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+CardTitle.defaultProps = defaultProps;
+
+exports.default = CardTitle;
+
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    'title': 'Card',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+      children: (0, _inferno.createVNode)(2, 'p', null, 'Use a card to display content in an engaging and concise manner.')
+    }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: [(0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: [(0, _inferno.createVNode)(16, _Card2.default, null, null, {
+          children: [(0, _inferno.createVNode)(16, _CardImg2.default, null, null, {
+            'top': true,
+            'width': '100%',
+            'src': 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
+            'alt': 'Card image cap'
+          }), (0, _inferno.createVNode)(16, _CardBlock2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _CardTitle2.default, null, null, {
+              children: 'Card title'
+            }), (0, _inferno.createVNode)(16, _CardText2.default, null, null, {
+              children: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+            }), (0, _inferno.createVNode)(16, _Button2.default, null, null, {
+              children: 'Button'
+            })]
+          })]
+        }), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+          children: '<Card>\n  <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />\n  <CardBlock>\n    <CardTitle>Card title</CardTitle>\n    <CardText>Some quick example text to build on the card title and make up the bulk of the card\'s content.</CardText>\n    <Button>Button</Button>\n  </CardBlock>\n</Card>'
+        })]
+      }), (0, _inferno.createVNode)(2, 'h3', null, 'Card with different design'), (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: [(0, _inferno.createVNode)(16, _Card2.default, null, null, {
+          children: [(0, _inferno.createVNode)(16, _CardBlock2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _CardTitle2.default, null, null, {
+              children: 'Card title'
+            }), (0, _inferno.createVNode)(16, _CardSubtitle2.default, null, null, {
+              children: 'Card subtitle goes here'
+            })]
+          }), (0, _inferno.createVNode)(2, 'img', null, null, {
+            'width': '100%',
+            'src': 'https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180',
+            'alt': 'Card image cap'
+          }), (0, _inferno.createVNode)(16, _CardBlock2.default, null, null, {
+            children: [(0, _inferno.createVNode)(16, _CardText2.default, null, null, {
+              children: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+            }), (0, _inferno.createVNode)(16, _CardLink2.default, null, null, {
+              'href': '#',
+              children: 'Card Link'
+            }), (0, _inferno.createVNode)(16, _CardLink2.default, null, null, {
+              'href': '#',
+              children: 'Another Link'
+            })]
+          })]
+        }), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+          children: '<Card>\n  <CardBlock>\n    <CardTitle>Card title</CardTitle>\n    <CardSubtitle>Card subtitle goes here</CardSubtitle>\n  </CardBlock>\n  <img width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />\n  <CardBlock>\n    <CardText>Some quick example text to build on the card title and make up the bulk of the card\'s content.</CardText>\n    <CardLink href="#">Card Link</CardLink>\n    <CardLink href="#">Another Link</CardLink>\n  </CardBlock>\n</Card>'
+        })]
+      })]
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Card = __webpack_require__(255);
+
+var _Card2 = _interopRequireDefault(_Card);
+
+var _CardImg = __webpack_require__(257);
+
+var _CardImg2 = _interopRequireDefault(_CardImg);
+
+var _CardBlock = __webpack_require__(256);
+
+var _CardBlock2 = _interopRequireDefault(_CardBlock);
+
+var _CardLink = __webpack_require__(262);
+
+var _CardLink2 = _interopRequireDefault(_CardLink);
+
+var _CardSubtitle = __webpack_require__(261);
+
+var _CardSubtitle2 = _interopRequireDefault(_CardSubtitle);
+
+var _CardText = __webpack_require__(258);
+
+var _CardText2 = _interopRequireDefault(_CardText);
+
+var _CardTitle = __webpack_require__(259);
+
+var _CardTitle2 = _interopRequireDefault(_CardTitle);
+
+var _Button = __webpack_require__(6);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'h6'
+};
+
+var CardSubtitle = function CardSubtitle(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'card-subtitle'), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+CardSubtitle.defaultProps = defaultProps;
+
+exports.default = CardSubtitle;
+
+/***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'a'
+};
+
+var CardLink = function CardLink(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      getRef = props.getRef,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el', 'getRef']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'card-link'), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }), null, getRef);
+};
+
+CardLink.defaultProps = defaultProps;
+
+exports.default = CardLink;
+
+/***/ }),
+/* 263 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _inferno = __webpack_require__(0);
+
+var _inferno2 = _interopRequireDefault(_inferno);
+
+var _classnames = __webpack_require__(2);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _utils = __webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var defaultProps = {
+  el: 'div'
+};
+
+var Jumbotron = function Jumbotron(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      El = props.el,
+      fluid = props.fluid,
+      attributes = _objectWithoutProperties(props, ['className', 'cssModule', 'el', 'fluid']);
+
+  var classes = (0, _utils.mapToCssModules)((0, _classnames2.default)(className, 'jumbotron', fluid ? 'jumbotron-fluid' : false), cssModule);
+
+  return (0, _inferno.createVNode)(16, El, null, null, _extends({}, attributes, {
+    'className': classes
+  }));
+};
+
+Jumbotron.defaultProps = defaultProps;
+
+exports.default = Jumbotron;
+
+/***/ }),
+/* 264 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    'title': 'Jumbotron',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+      children: (0, _inferno.createVNode)(2, 'p', null, 'The jumbotron or hero is a content section that gives a nice entry point to important content')
+    }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: [(0, _inferno.createVNode)(16, _Jumbotron2.default, null, null, {
+          children: [(0, _inferno.createVNode)(2, 'h1', 'display-3', 'Hello, world!'), (0, _inferno.createVNode)(2, 'p', 'lead', 'This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.'), (0, _inferno.createVNode)(2, 'hr', 'my-2'), (0, _inferno.createVNode)(2, 'p', null, 'It uses utility classes for typgraphy and spacing to space content out within the larger container.'), (0, _inferno.createVNode)(2, 'p', 'lead', (0, _inferno.createVNode)(16, _Button2.default, null, null, {
+            'color': 'primary',
+            children: 'Learn More'
+          }))]
+        }), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+          children: '<Jumbotron>\n  <h1 className="display-3">Hello, world!</h1>\n  <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>\n  <hr className="my-2" />\n  <p>It uses utility classes for typgraphy and spacing to space content out within the larger container.</p>\n  <p className="lead">\n    <Button color="primary">Learn More</Button>\n  </p>\n</Jumbotron>'
+        })]
+      })
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Jumbotron = __webpack_require__(263);
+
+var _Jumbotron2 = _interopRequireDefault(_Jumbotron);
+
+var _Button = __webpack_require__(6);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ }),
+/* 265 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  return (0, _inferno.createVNode)(16, _components.Section, null, null, {
+    'title': 'Progress Bars',
+    children: [(0, _inferno.createVNode)(16, _components.Narrative, null, null, {
+      children: (0, _inferno.createVNode)(2, 'p', null, 'Use progress bars to give feedback on a process completing.')
+    }), (0, _inferno.createVNode)(16, _components.Stage, null, null, {
+      children: (0, _inferno.createVNode)(16, _components.Scene, null, null, {
+        children: [(0, _inferno.createVNode)(2, 'div', 'text-center', '0%'), (0, _inferno.createVNode)(16, _Progress2.default), (0, _inferno.createVNode)(2, 'div', 'text-center', '25%'), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+          'value': '25'
+        }), (0, _inferno.createVNode)(2, 'div', 'text-center', '50%'), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+          'value': 50
+        }), (0, _inferno.createVNode)(2, 'div', 'text-center', '75%'), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+          'value': 75
+        }), (0, _inferno.createVNode)(2, 'div', 'text-center', '100%'), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+          'value': '100'
+        }), (0, _inferno.createVNode)(2, 'div', 'text-center', 'Multiple bars'), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+          'multi': true,
+          children: [(0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+            'bar': true,
+            'value': '15'
+          }), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+            'bar': true,
+            'color': 'success',
+            'value': '30'
+          }), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+            'bar': true,
+            'color': 'info',
+            'value': '25'
+          }), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+            'bar': true,
+            'color': 'warning',
+            'value': '20'
+          }), (0, _inferno.createVNode)(16, _Progress2.default, null, null, {
+            'bar': true,
+            'color': 'danger',
+            'value': '5'
+          })]
+        }), (0, _inferno.createVNode)(16, _components.Code, null, null, {
+          children: '<div className="text-center">0%</div>\n<Progress />\n<div className="text-center">25%</div>\n<Progress value="25" />\n<div className="text-center">50%</div>\n<Progress value={50} />\n<div className="text-center">75%</div>\n<Progress value={75} />\n<div className="text-center">100%</div>\n<Progress value="100" />\n<div className="text-center">Multiple bars</div>\n<Progress multi>\n  <Progress bar value="15" />\n  <Progress bar color="success" value="30" />\n  <Progress bar color="info" value="25" />\n  <Progress bar color="warning" value="20" />\n  <Progress bar color="danger" value="5" />\n</Progress>'
+        })]
+      })
+    })]
+  });
+};
+
+var _components = __webpack_require__(4);
+
+var _Progress = __webpack_require__(35);
+
+var _Progress2 = _interopRequireDefault(_Progress);
+
+var _Button = __webpack_require__(6);
+
+var _Button2 = _interopRequireDefault(_Button);
+
+var _inferno = __webpack_require__(0);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ })
 /******/ ]);
