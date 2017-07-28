@@ -113,6 +113,9 @@ function PageMenu(props) {
         <li class="nav-item">
           <Link className="nav-link PageLink" to="/form">Form</Link>
         </li>
+        <li class="nav-item">
+          <Link className="nav-link PageLink" to="/modal">Modal</Link>
+        </li>
         {
           props.pageSections.map((item) => {
             return (

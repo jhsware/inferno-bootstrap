@@ -1,6 +1,6 @@
 import { Page } from './components.jsx'
 
-import AlertSection from './Basic/Alert.jsx'
+import BasicModalSection from './Modal/BasicModal.jsx'
 import BadgeSection from './Basic/Badge.jsx'
 import BreadcrumbSection from './Basic/Breadcrumb.jsx'
 import ButtonSection from './Basic/Button.jsx'
@@ -13,12 +13,7 @@ import ProgressSection from './Basic/Progress.jsx'
 export default function BasicPage (props) {
   return (
     <Page>
-      <AlertSection />
-      <BadgeSection />
-      <BreadcrumbSection />
-      <ButtonSection />
-      <JumbotronSection />
-      <ProgressSection />
+      <BasicModalSection />
     </Page>
   )
 }

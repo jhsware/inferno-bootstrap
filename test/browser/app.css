@@ -60,7 +60,7 @@ html {
   border: 1px solid lightgray;
   background-color: #fdfdfd;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
 }
 
 .ExampleStage :first-child {
@@ -113,4 +113,68 @@ pre[class*="language-"]:before {
 
 .ExampleStage > h3:first-child {
   margin-top: 0.5em;
+}
+
+
+.modal {
+  display: flex!important;
+}
+
+.modal-backdrop {
+  background-color: rgba(0,0,0,0.75)!important;
+}
+
+.ModalFade-leave {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.ModalFade-leave-active {
+  overflow: hidden;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+}
+
+.ModalFade-leave-end {
+  transform: translateY(-150%);
+  opacity: 0;
+}
+
+.ModalFade-enter {
+  transform: translateY(-150%);
+  opacity: 0;
+}
+
+.ModalFade-enter-active {
+  transition: transform 0.5s ease-out, opacity 0.4s ease-in;
+}
+
+.ModalFade-enter-end {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+.ModalBackdropFade-leave {
+  opacity: 1;
+}
+
+.ModalBackdropFade-leave-active {
+  overflow: hidden;
+  transition: opacity 0.3s ease-in;
+}
+
+.ModalBackdropFade-leave-end {
+  opacity: 0;
+}
+
+.ModalBackdropFade-enter {
+  opacity: 0;
+}
+
+.ModalBackdropFade-enter-active {
+  transition: opacity 0.8s ease-in;
+}
+
+.ModalBackdropFade-enter-end {
+  opacity: 1;
 }
