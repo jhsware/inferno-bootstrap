@@ -11,7 +11,7 @@ import Button from '../../../../lib/Button.jsx'
 
 export default function () {
   return (
-    <Section title="Card">
+    <Section title="Basic Card">
       <Narrative>
         <p>Use a card to display content in an engaging and concise manner.</p>  
       </Narrative>  

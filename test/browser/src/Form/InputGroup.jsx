@@ -1,4 +1,4 @@
-import { Section, Stage, Scene } from '../components.jsx'
+import { Section, Stage, Scene, Code } from '../components.jsx'
 
 import Form from '../../../../lib/Form/Form.jsx'
 import FormGroup from '../../../../lib/Form/FormGroup.jsx'
@@ -10,8 +10,7 @@ import Label from '../../../../lib/Form/Label.jsx'
 
 export default function () {
   return (
-    <Section title="Input Elements With Addons">
-      <p>Form elements</p>
+    <Section title="Input With Addon">
       <Stage>
         <Scene>
           <Form>
@@ -30,6 +29,25 @@ export default function () {
               </InputGroup>
             </FormGroup>
           </Form>
+
+          <Code>
+{`<Form>
+  <FormGroup>
+    <Label>Email:</Label>
+    <InputGroup>
+      <InputGroupAddon>@</InputGroupAddon>
+      <Input type="email" name="email" placeholder="example@email.com" />
+    </InputGroup>
+  </FormGroup>
+  <FormGroup>
+    <Label>Price:</Label>
+    <InputGroup>
+      <Input type="number" name="Age" />
+      <InputGroupAddon>SEK</InputGroupAddon>
+    </InputGroup>
+  </FormGroup>
+</Form>`}  
+          </Code>  
         </Scene>
       </Stage>
     </Section>
