@@ -36,15 +36,7 @@ const propsToOmit = [
   'contentClassName',
   'fade',
   'cssModule',
-  'zIndex',
-  'backdropTransitionTimeout',
-  'backdropTransitionAppearTimeout',
-  'backdropTransitionEnterTimeout',
-  'backdropTransitionLeaveTimeout',
-  'modalTransitionTimeout',
-  'modalTransitionAppearTimeout',
-  'modalTransitionEnterTimeout',
-  'modalTransitionLeaveTimeout',
+  'zIndex'
 ];
 
 const defaultProps = {
@@ -53,9 +45,7 @@ const defaultProps = {
   backdrop: true,
   keyboard: true,
   zIndex: 1050,
-  fade: true,
-  modalTransitionTimeout: 300,
-  backdropTransitionTimeout: 150,
+  fade: true
 };
 
 class Modal extends Component {
@@ -70,6 +60,7 @@ class Modal extends Component {
     this.destroy = this.destroy.bind(this);
     this.onOpened = this.onOpened.bind(this);
     this.onClosed = this.onClosed.bind(this);
+    this.createEventListeners = this.createEventListeners.bind(this);
   }
 
   componentDidMount() {
@@ -112,13 +103,13 @@ class Modal extends Component {
   }
 
   handleEscape(e) {
-    if (this.props.keyboard && e.keyCode === 27 && this.props.toggle) {
+    if (this._dialog && this.props.keyboard && e.keyCode === 27 && this.props.toggle) {
       this.props.toggle();
     }
   }
 
   handleBackdropClick(e) {
-    if (this.props.backdrop !== true) return;
+    if (!this._dialog || this.props.backdrop !== true) return;
 
     const container = this._dialog;
 
@@ -127,32 +118,25 @@ class Modal extends Component {
     }
   }
 
-  hasTransition() {
-    if (this.props.fade === false) {
-      return false;
-    }
-
-    return this.props.modalTransitionTimeout > 0;
-  }
-
   togglePortal() {
     if (this.props.isOpen) {
       if (this.props.autoFocus) {
         this._focus = true;
       }
       this.show();
-      //if (!this.hasTransition()) {
-      //  this.onOpened();
-      //}
     } else {
       this.hide();
-      //if (!this.hasTransition()) {
-      //  this.onClosed();
-      //}
     }
   }
 
+  createEventListeners() {
+    window.addEventListener('keyup', this.handleEscape)
+    window.addEventListener('click', this.handleBackdropClick, true)
+  }
+
   destroy() {
+    window.removeEventListener('keyup', this.handleEscape)
+    window.removeEventListener('click', this.handleBackdropClick, true)
     if (this._element) {
       unmountComponentAtNode(this._element);
       document.body.removeChild(this._element);
@@ -178,6 +162,7 @@ class Modal extends Component {
     this.originalBodyPadding = getOriginalBodyPadding();
 
     conditionallyUpdateScrollbar();
+    this.createEventListeners()
 
     document.body.appendChild(this._element);
 
@@ -240,34 +225,32 @@ class Modal extends Component {
     } = this.props;
 
     const modalAttributes = {
-      onClickCapture: this.handleBackdropClick,
-      onKeyUp: this.handleEscape,
       style: { display: 'block' },
       tabIndex: '-1'
     };
 
-    if (this.hasTransition()) {
+    if (this.props.fade) {
       return (
         <div className={mapToCssModules(wrapClassName)}>
-          {isOpen && (
-            <Animated prefix="ModalFade"
-              key="modal-dialog"
-              onEnter={this.onEntered}
-              onLeave={this.onLeft}
-              cssModule={cssModule}
-              className={mapToCssModules(classNames('modal', 'show', modalClassName), cssModule)}
-              {...modalAttributes}
-            >
-              {this.renderModalDialog()}
-            </Animated>
-          )}
-          {isOpen && backdrop && (
-            <Animated prefix="ModalBackdropFade"
-              key="modal-backdrop"
-              cssModule={cssModule}
-              className={mapToCssModules(classNames('modal-backdrop', backdropClassName), cssModule)}
-            />
-          )}
+          
+          <AnimatedSpecial prefix="ModalFade"  
+            key="modal-dialog"
+            isOpen={isOpen}
+            cssModule={cssModule}
+            className={mapToCssModules(classNames('modal', 'show', modalClassName), cssModule)}
+            onDidEnter={this.onOpened}
+            onDidLeave={this.onClosed}
+            {...modalAttributes}
+          >
+            {this.renderModalDialog()}
+          </AnimatedSpecial>
+
+          <AnimatedSpecial prefix="ModalBackdropFade"
+            key="modal-backdrop"
+            isOpen={isOpen && backdrop}
+            cssModule={cssModule}
+            className={mapToCssModules(classNames('modal-backdrop', 'show', backdropClassName), cssModule)}
+          />
         </div>
       );
     }
@@ -297,5 +280,25 @@ class Modal extends Component {
 }
 
 Modal.defaultProps = defaultProps;
+
+class AnimatedSpecial extends Component {
+  /*
+  I need to create a separate component to get unmount to work properly
+  since animations are triggered on unmount and I don't want inferno to
+  remove all the elements until the animation is completed.
+   */
+
+  render({ isOpen, children, ...props }) {
+    if (isOpen) {
+      return (
+        <Animated {...props}>
+          {children}
+        </Animated>
+      )
+    } else {
+      return null
+    }
+  }
+}
 
 export default Modal;
