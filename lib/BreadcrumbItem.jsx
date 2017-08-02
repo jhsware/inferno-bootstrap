@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
 const defaultProps = {
-  el: 'li'
+  tag: 'li'
 };
 
 const BreadcrumbItem = (props) => {
@@ -11,7 +11,7 @@ const BreadcrumbItem = (props) => {
     className,
     cssModule,
     active,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
   const classes = mapToCssModules(classNames(
@@ -21,7 +21,7 @@ const BreadcrumbItem = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

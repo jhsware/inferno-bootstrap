@@ -4,7 +4,7 @@ import toNumber from 'lodash.tonumber';
 import { mapToCssModules } from './utils';
 
 const defaultProps = {
-  el: 'div',
+  tag: 'div',
   value: 0,
   max: 100,
 };
@@ -22,7 +22,7 @@ const Progress = (props) => {
     color, // success | info | warning | danger
     bar,
     multi,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -58,7 +58,7 @@ const Progress = (props) => {
   }
 
   return (
-    <El {...attributes} className={progressClasses} children={ProgressBar} />
+    <Tag {...attributes} className={progressClasses} children={ProgressBar} />
   );
 };
 

@@ -27,7 +27,7 @@ describe('CardDeck', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardDeck el="main">Yo!</CardDeck>);
+    const tree = renderIntoDocument(<CardDeck tag="main">Yo!</CardDeck>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-deck')).toBe(true);

@@ -27,7 +27,7 @@ describe('CardFooter', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardFooter el="main">Yo!</CardFooter>);
+    const tree = renderIntoDocument(<CardFooter tag="main">Yo!</CardFooter>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-footer')).toBe(true);

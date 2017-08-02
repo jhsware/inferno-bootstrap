@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'div'
+  tag: 'div'
 };
 
 const Card = (props) => {
@@ -14,7 +14,7 @@ const Card = (props) => {
     block,
     inverse,
     outline,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
   const classes = mapToCssModules(classNames(
@@ -26,7 +26,7 @@ const Card = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

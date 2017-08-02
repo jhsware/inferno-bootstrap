@@ -37,7 +37,7 @@ describe('InputGroupAddon', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<InputGroupAddon el="main">Yo!</InputGroupAddon>);
+    const tree = renderIntoDocument(<InputGroupAddon tag="main">Yo!</InputGroupAddon>);
 
     expect(getTagName(tree._vNode)).toBe('main');
   });

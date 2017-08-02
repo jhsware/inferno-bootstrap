@@ -43,7 +43,7 @@ describe('InputGroup', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<InputGroup el="main">Yo!</InputGroup>);
+    const tree = renderIntoDocument(<InputGroup tag="main">Yo!</InputGroup>);
 
     expect(getTagName(tree._vNode)).toBe('main');
   });

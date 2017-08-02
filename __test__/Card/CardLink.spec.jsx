@@ -27,7 +27,7 @@ describe('CardLink', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardLink el="button">Yo!</CardLink>);
+    const tree = renderIntoDocument(<CardLink tag="button">Yo!</CardLink>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-link')).toBe(true);

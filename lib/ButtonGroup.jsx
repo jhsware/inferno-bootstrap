@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
 const defaultProps = {
-  el: 'div',
+  tag: 'div',
   role: 'group',
 };
 
@@ -13,7 +13,7 @@ const ButtonGroup = (props) => {
     cssModule,
     size,
     vertical,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -24,7 +24,7 @@ const ButtonGroup = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'div'
+  tag: 'div'
 }
 
 const FormGroup = (props) => {
@@ -14,7 +14,7 @@ const FormGroup = (props) => {
     disabled,
     color, // success | warning | danger
     check,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -27,7 +27,7 @@ const FormGroup = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

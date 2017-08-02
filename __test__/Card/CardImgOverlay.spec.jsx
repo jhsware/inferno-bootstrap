@@ -27,7 +27,7 @@ describe('CardImgOverlay', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardImgOverlay el="main">Yo!</CardImgOverlay>);
+    const tree = renderIntoDocument(<CardImgOverlay tag="main">Yo!</CardImgOverlay>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-img-overlay')).toBe(true);

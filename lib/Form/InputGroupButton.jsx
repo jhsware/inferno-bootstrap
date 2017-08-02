@@ -4,14 +4,14 @@ import { mapToCssModules } from '../utils';
 import Button from '../Button.jsx';
 
 const defaultProps = {
-  el: 'div'
+  tag: 'div'
 };
 
 const InputGroupButton = (props) => {
   let {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     children,
     groupClassName,
     groupAttributes,
@@ -25,9 +25,9 @@ const InputGroupButton = (props) => {
     ), cssModule);
 
     return (
-      <El {...groupAttributes} className={groupClasses}>
+      <Tag {...groupAttributes} className={groupClasses}>
         <Button {...attributes} className={className} children={children} />
-      </El>
+      </Tag>
     );
   }
 
@@ -37,7 +37,7 @@ const InputGroupButton = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} children={children} />
+    <Tag {...attributes} className={classes} children={children} />
   );
 };
 

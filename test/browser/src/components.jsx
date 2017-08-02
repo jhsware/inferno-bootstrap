@@ -11,7 +11,7 @@ export class Section extends Component {
 
   render({ title, children }) {
     return (
-      <div class="ExampleSection" id={this.props.title.toLowerCase()}>
+      <div class={classnames(this.props.className, "ExampleSection")} id={this.props.title.toLowerCase()}>
         {title && <h2>{title}</h2>}
         {children}
       </div>
@@ -65,11 +65,12 @@ export class Code extends Component {
     Prism.highlightElement(this._domNode, this.props.async);
   }
 
-  render ({ children }) {
+  render({ children }) {
+    const languageCls = 'language-' + (this.props.language || 'jsx')
     return (
       <div className="ExampleScene-Code">
         <pre>
-          <code className="language-jsx" ref={(domNode) => this._domNode = domNode}>
+          <code className={languageCls} ref={(domNode) => this._domNode = domNode}>
             {children}
           </code>
         </pre>
@@ -115,6 +116,9 @@ function PageMenu(props) {
         </li>
         <li class="nav-item">
           <Link className="nav-link PageLink" to="/modal">Modal</Link>
+        </li>
+        <li class="nav-item">
+          <Link className="nav-link PageLink" to="/navigation">Navigation</Link>
         </li>
         {
           props.pageSections.map((item) => {

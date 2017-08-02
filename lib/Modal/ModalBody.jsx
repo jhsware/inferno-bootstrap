@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'div',
+  tag: 'div',
 };
 
 const ModalBody = (props) => {
   const {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     ...attributes } = props;
   const classes = mapToCssModules(classNames(
     className,
@@ -18,7 +18,7 @@ const ModalBody = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

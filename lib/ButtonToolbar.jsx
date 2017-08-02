@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
 const defaultProps = {
-  el: 'div',
+  tag: 'div',
   role: 'toolbar',
 };
 
@@ -11,7 +11,7 @@ const ButtonToolbar = (props) => {
   const {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -21,7 +21,7 @@ const ButtonToolbar = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

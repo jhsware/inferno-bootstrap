@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'p',
+  tag: 'p',
   type: 'text',
 };
 
@@ -18,7 +18,7 @@ class Input extends Component {
       type,
       size,
       state,
-      el,
+      tag,
       addon,
       static: staticInput,
       getRef,
@@ -30,13 +30,13 @@ class Input extends Component {
     const fileInput = type === 'file';
     const textareaInput = type === 'textarea';
     const selectInput = type === 'select';
-    let El = selectInput || textareaInput ? type : 'input';
+    let Tag = selectInput || textareaInput ? type : 'input';
 
     let formControlClass = 'form-control';
 
     if (staticInput) {
       formControlClass = `${formControlClass}-static`;
-      El = el;
+      Tag = tag;
     } else if (fileInput) {
       formControlClass = `${formControlClass}-file`;
     } else if (checkInput) {
@@ -54,12 +54,12 @@ class Input extends Component {
       formControlClass
     ), cssModule);
 
-    if (El === 'input') {
+    if (Tag === 'input') {
       attributes.type = type;
     }
 
     return (
-      <El {...attributes} ref={getRef} className={classes} />
+      <Tag {...attributes} ref={getRef} className={classes} />
     );
   }
 }

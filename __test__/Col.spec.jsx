@@ -96,7 +96,7 @@ describe('Col', () => {
   });
 
   it('should render custom element', () => {
-    const tree = renderIntoDocument(<Col el="main">Yo!</Col>);
+    const tree = renderIntoDocument(<Col tag="main">Yo!</Col>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'col')).toBe(true);

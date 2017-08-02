@@ -6,6 +6,9 @@ import BreadcrumbSection from './Basic/Breadcrumb.jsx'
 import ButtonSection from './Basic/Button.jsx'
 import JumbotronSection from './Basic/Jumbotron.jsx'
 import ProgressSection from './Basic/Progress.jsx'
+import CollapseSection from './Basic/Collapse.jsx'
+import LayoutSection from './Basic/Layout.jsx'
+import TabsSection from './Basic/Tabs.jsx'
 
 // import Modal from '../../../lib/Modal.jsx'
 
@@ -19,6 +22,9 @@ export default function BasicPage (props) {
       <ButtonSection />
       <JumbotronSection />
       <ProgressSection />
+      <CollapseSection />
+      <LayoutSection />
+      <TabsSection />
     </Page>
   )
 }

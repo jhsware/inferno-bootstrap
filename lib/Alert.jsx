@@ -4,14 +4,14 @@ import { mapToCssModules } from './utils';
 
 const defaultProps = {
   color: 'success',
-  el: 'div'
+  tag: 'div'
 };
 
 const Alert = (props) => {
   const {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     color, // success || info || warning || danger
     onClose,
     children,
@@ -28,14 +28,14 @@ const Alert = (props) => {
   const closeClasses = mapToCssModules('close', cssModule);
 
   return (
-    <El {...attributes} className={classes} role="alert">
+    <Tag {...attributes} className={classes} role="alert">
       { onClose ?
         <button type="button" className={closeClasses} aria-label="Close" onClick={onClose}>
           <span aria-hidden="true">&times;</span>
         </button>
         : null }
       { children }
-    </El>
+    </Tag>
   )
 
 };

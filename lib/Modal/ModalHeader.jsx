@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'h4',
+  tag: 'h4',
   wrapTag: 'div',
 };
 
@@ -14,7 +14,7 @@ const ModalHeader = (props) => {
     cssModule,
     children,
     toggle,
-    el: El,
+    tag: Tag,
     wrapTag: WrapTag,
     ...attributes } = props;
 
@@ -33,9 +33,9 @@ const ModalHeader = (props) => {
 
   return (
     <WrapTag {...attributes} className={classes}>
-      <El className={mapToCssModules('modal-title', cssModule)}>
+      <Tag className={mapToCssModules('modal-title', cssModule)}>
         {children}
-      </El>
+      </Tag>
       {closeButton}
     </WrapTag>
   );

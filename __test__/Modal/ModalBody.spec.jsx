@@ -21,7 +21,7 @@ describe('ModalBody', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<ModalBody el="main">Yo!</ModalBody>);
+    const tree = renderIntoDocument(<ModalBody tag="main">Yo!</ModalBody>);
 
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');

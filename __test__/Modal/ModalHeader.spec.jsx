@@ -32,7 +32,7 @@ describe('ModalHeader', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<ModalHeader el="p">Yo!</ModalHeader>);
+    const tree = renderIntoDocument(<ModalHeader tag="p">Yo!</ModalHeader>);
 
     expect(getInnerHTML(tree._vNode)).toBe('<p class=\"modal-title\">Yo!</p>');
     expect(findRenderedDOMElementWithTag(tree, 'p')).toBeDefined();

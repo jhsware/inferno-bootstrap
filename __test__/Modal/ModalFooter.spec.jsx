@@ -20,7 +20,7 @@ describe('ModalFooter', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<ModalFooter el="main">Yo!</ModalFooter>);
+    const tree = renderIntoDocument(<ModalFooter tag="main">Yo!</ModalFooter>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'modal-footer')).toBe(true);

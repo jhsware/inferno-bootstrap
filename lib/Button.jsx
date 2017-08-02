@@ -5,7 +5,7 @@ import { mapToCssModules } from './utils';
 
 const defaultProps = {
   color: 'secondary',
-  el: 'button',
+  tag: 'button',
 };
 
 class Button extends Component {
@@ -35,7 +35,7 @@ class Button extends Component {
       color, // primary | secondary | success | info | warning | danger | link
       outline,
       size,
-      el: El,
+      tag: Tag,
       getRef,
       ...attributes
     } = this.props;
@@ -49,13 +49,13 @@ class Button extends Component {
       { active, disabled: this.props.disabled }
     ), cssModule);
 
-    if (attributes.href && El === 'button') {
-      El = 'a';
+    if (attributes.href && Tag === 'button') {
+      Tag = 'a';
     }
 
     return (
-      <El
-        type={(El === 'button' && attributes.onClick) ? 'button' : undefined}
+      <Tag
+        type={(Tag === 'button' && attributes.onClick) ? 'button' : undefined}
         {...attributes}
         className={classes}
         ref={getRef}

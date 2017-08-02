@@ -27,7 +27,7 @@ describe('CardTitle', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardTitle el="h1">Yo!</CardTitle>);
+    const tree = renderIntoDocument(<CardTitle tag="h1">Yo!</CardTitle>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-title')).toBe(true);

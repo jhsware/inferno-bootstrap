@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'img'
+  tag: 'img'
 };
 
 const CardImg = (props) => {
@@ -12,7 +12,7 @@ const CardImg = (props) => {
     cssModule,
     top,
     bottom,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -30,7 +30,7 @@ const CardImg = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

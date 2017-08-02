@@ -3,11 +3,11 @@ import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
 const defaultProps = {
-  el: 'div',
+  tag: 'div',
 };
 
 const DropdownMenu = (props, context) => {
-  const { className, cssModule, right, el: El, ...attributes } = props;
+  const { className, cssModule, right, tag: Tag, ...attributes } = props;
   const classes = mapToCssModules(classNames(
     className,
     'dropdown-menu',
@@ -15,7 +15,7 @@ const DropdownMenu = (props, context) => {
   ), cssModule);
 
   return (
-    <El {...attributes} tabIndex="-1" aria-hidden={!context.isOpen} role="menu" className={classes} />
+    <Tag {...attributes} tabIndex="-1" aria-hidden={!context.isOpen} role="menu" className={classes} />
   );
 };
 

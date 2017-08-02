@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import Form from "../../lib//Form/Form.jsx"
+import Form from "../../lib/Form/Form.jsx"
 
 describe('Form', () => {
   it('should render with "form" tag', () => {
@@ -31,7 +31,7 @@ describe('Form', () => {
   })
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<Form el="main">Yo!</Form>)
+    const tree = renderIntoDocument(<Form tag="main">Yo!</Form>)
 
     expect(getTagName(tree._vNode)).toBe('main')
   })

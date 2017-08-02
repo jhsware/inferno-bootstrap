@@ -31,7 +31,7 @@ describe('CardImg', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardImg el="image" src="/path/image.png" />);
+    const tree = renderIntoDocument(<CardImg tag="image" src="/path/image.png" />);
 
     expect(getTagName(tree._vNode)).toBe('image');
   });

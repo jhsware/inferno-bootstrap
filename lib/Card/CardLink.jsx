@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'a'
+  tag: 'a'
 };
 
 const CardLink = (props) => {
   const {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     getRef,
     ...attributes
   } = props;
@@ -20,7 +20,7 @@ const CardLink = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} ref={getRef} className={classes} />
+    <Tag {...attributes} ref={getRef} className={classes} />
   );
 };
 

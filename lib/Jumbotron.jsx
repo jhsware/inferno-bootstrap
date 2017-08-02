@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
 const defaultProps = {
-  el: 'div'
+  tag: 'div'
 };
 
 const Jumbotron = (props) => {
   const {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     fluid,
     ...attributes
   } = props;
@@ -22,7 +22,7 @@ const Jumbotron = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

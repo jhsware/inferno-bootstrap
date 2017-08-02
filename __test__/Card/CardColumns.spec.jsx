@@ -27,7 +27,7 @@ describe('CardColumns', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardColumns el="main">Yo!</CardColumns>);
+    const tree = renderIntoDocument(<CardColumns tag="main">Yo!</CardColumns>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-columns')).toBe(true);

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules, omit } from './utils';
 
 const defaultProps = {
-  el: 'button',
+  tag: 'button',
   toggle: true
 };
 
@@ -44,7 +44,7 @@ class DropdownItem extends Component {
       className,
       cssModule,
       divider,
-      el: El,
+      tag: Tag,
       header,
       active,
       ...props } = omit(this.props, ['toggle']);
@@ -60,19 +60,19 @@ class DropdownItem extends Component {
       }
     ), cssModule);
 
-    if (El === 'button') {
+    if (Tag === 'button') {
       if (header) {
-        El = 'h6';
+        Tag = 'h6';
       } else if (divider) {
-        El = 'div';
+        Tag = 'div';
       } else if (props.href) {
-        El = 'a';
+        Tag = 'a';
       }
     }
 
     return (
-      <El
-        type={(El === 'button' && (props.onClick || this.props.toggle)) ? 'button' : undefined}
+      <Tag
+        type={(Tag === 'button' && (props.onClick || this.props.toggle)) ? 'button' : undefined}
         {...props}
         tabIndex={tabIndex}
         className={classes}

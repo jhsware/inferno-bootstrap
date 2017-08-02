@@ -63,11 +63,11 @@ html {
   border-radius: 0.3rem;
 }
 
-.ExampleStage :first-child {
+.ExampleStage > :first-child {
     margin-top: 0em;
 }
 
-.ExampleStage :last-child {
+.ExampleStage > :last-child {
     margin-bottom: 0em;
 }
 
@@ -81,6 +81,10 @@ html {
 
 .ExampleScene .card {
   max-width: 320px;
+}
+
+.ExampleScene .nav-tabs {
+  margin-bottom: 1rem;
 }
 
 .ExampleScene-Code {
@@ -168,4 +172,48 @@ pre[class*="language-"]:before {
 
 .ModalBackdropFade-enter-end {
   opacity: 0.5;
+}
+
+/* Collapse */
+
+.ExampleCollapseContainer {
+  background-color: aliceblue;
+  padding: 1rem;
+}
+
+.CollapseAnimation-leave {
+}
+
+.CollapseAnimation-leave-active {
+  overflow: hidden;
+  transition: all 0.3s ease-in;
+}
+
+.CollapseAnimation-leave-end {
+  height: 0!important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.CollapseAnimation-enter {
+  height: 0!important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.CollapseAnimation-enter-active {
+  transition: all 0.3s ease-in;
+  overflow: hidden;
+}
+
+.CollapseAnimation-enter-end {
+}
+
+.ExampleLayout .row {
+  margin-bottom: 0.5rem;
+}
+.ExampleLayout .row div {
+  background-color: aliceblue;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
 }

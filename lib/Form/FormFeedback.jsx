@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'div',
+  tag: 'div',
 };
 
 const FormFeedback = (props) => {
   const {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -20,7 +20,7 @@ const FormFeedback = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

@@ -27,7 +27,7 @@ describe('CardText', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardText el="span">Yo!</CardText>);
+    const tree = renderIntoDocument(<CardText tag="span">Yo!</CardText>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-text')).toBe(true);

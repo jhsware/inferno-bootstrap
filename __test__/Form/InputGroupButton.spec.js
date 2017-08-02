@@ -25,7 +25,7 @@ describe('InputGroupButton', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<InputGroupButton el="main">Yo!</InputGroupButton>);
+    const tree = renderIntoDocument(<InputGroupButton tag="main">Yo!</InputGroupButton>);
 
     expect(getTagName(tree._vNode)).toBe('main');
   });

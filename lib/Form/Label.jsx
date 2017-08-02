@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'label',
+  tag: 'label',
 };
 
 const Label = (props) => {
@@ -11,7 +11,7 @@ const Label = (props) => {
     className,
     cssModule,
     hidden,
-    el: El,
+    tag: Tag,
     check,
     disabled,
     htmlFor,
@@ -26,7 +26,7 @@ const Label = (props) => {
   ), cssModule);
 
   return (
-    <El htmlFor={htmlFor} {...attributes} className={classes} />
+    <Tag htmlFor={htmlFor} {...attributes} className={classes} />
   );
 };
 

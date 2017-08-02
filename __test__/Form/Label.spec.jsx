@@ -73,7 +73,7 @@ describe('Label', () => {
   })
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<Label el="main">Yo!</Label>)
+    const tree = renderIntoDocument(<Label tag="main">Yo!</Label>)
 
     expect(getTagName(tree._vNode)).toBe('main')
   })

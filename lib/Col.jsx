@@ -6,7 +6,7 @@ import isobject from "lodash.isobject"
 const colWidths = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 const defaultProps = {
-  el: 'div',
+  tag: 'div',
   widths: colWidths,
 };
 
@@ -25,7 +25,7 @@ const Col = (props) => {
     className,
     cssModule,
     widths,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
   const colClasses = [];
@@ -68,7 +68,7 @@ const Col = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

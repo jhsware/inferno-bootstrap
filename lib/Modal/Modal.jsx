@@ -18,6 +18,8 @@ import {
 } from '../compat.js'
 
 const propsToOmit = [
+  'animationPrefix',
+  'backgroundAnimationPrefix',
   'isOpen',
   'autoFocus',
   'size',
@@ -229,11 +231,14 @@ class Modal extends Component {
       tabIndex: '-1'
     };
 
+    const prefix = this.props.animationPrefix || "ModalFade"
+    const backgroundPrefix = this.props.backgroundAnimationPrefix || "ModalBackdropFade"
+
     if (this.props.fade) {
       return (
         <div className={mapToCssModules(wrapClassName)}>
           
-          <AnimatedSpecial prefix="ModalFade"  
+          <AnimatedSpecial prefix={prefix}
             key="modal-dialog"
             isOpen={isOpen}
             cssModule={cssModule}
@@ -245,7 +250,7 @@ class Modal extends Component {
             {this.renderModalDialog()}
           </AnimatedSpecial>
 
-          <AnimatedSpecial prefix="ModalBackdropFade"
+          <AnimatedSpecial prefix={backgroundPrefix}
             key="modal-backdrop"
             isOpen={isOpen && backdrop}
             cssModule={cssModule}

@@ -61,7 +61,7 @@ const Children = {
 
 const defaultProps = {
   isOpen: false,
-  el: 'div'
+  tag: 'div'
 };
 
 const defaultTetherConfig = {
@@ -198,7 +198,7 @@ class Dropdown extends Component {
       dropup,
       group,
       size,
-      el: El,
+      tag: Tag,
       isOpen,
       ...attributes
     } = omit(this.props, ['toggle', 'tether']);
@@ -215,12 +215,12 @@ class Dropdown extends Component {
     ), cssModule);
 
     return (
-      <El
+      <Tag
         {...attributes}
         className={classes}
       >
         {this.renderChildren()}
-      </El>
+      </Tag>
     );
   }
 }

@@ -5,7 +5,7 @@ import { mapToCssModules } from './utils';
 const defaultProps = {
   color: 'default',
   pill: false,
-  el: 'span'
+  tag: 'span'
 };
 
 const Badge = (props) => {
@@ -14,7 +14,7 @@ const Badge = (props) => {
     cssModule,
     color,
     pill,
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -26,7 +26,7 @@ const Badge = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

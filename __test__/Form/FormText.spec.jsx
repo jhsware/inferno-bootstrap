@@ -43,7 +43,7 @@ describe('FormText', () => {
   })
 
   it('should render custom element', () => {
-    const tree = renderIntoDocument(<FormText el="main">Yo!</FormText>)
+    const tree = renderIntoDocument(<FormText tag="main">Yo!</FormText>)
 
     expect(getTagName(tree._vNode)).toBe('main')
   })

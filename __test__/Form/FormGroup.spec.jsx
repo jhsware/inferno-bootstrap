@@ -87,7 +87,7 @@ describe('FormGroup', () => {
   })
 
   it('should render custom element', () => {
-    const tree = renderIntoDocument(<FormGroup el="main">Yo!</FormGroup>)
+    const tree = renderIntoDocument(<FormGroup tag="main">Yo!</FormGroup>)
 
     expect(getTagName(tree._vNode)).toBe('main')
   })

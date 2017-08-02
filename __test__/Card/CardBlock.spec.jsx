@@ -27,7 +27,7 @@ describe('CardBlock', () => {
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardBlock el="main">Yo!</CardBlock>);
+    const tree = renderIntoDocument(<CardBlock tag="main">Yo!</CardBlock>);
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card-block')).toBe(true);

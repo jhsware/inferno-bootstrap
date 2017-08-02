@@ -48,13 +48,13 @@ describe('Input', () => {
   })
 
   it('should render with custom tag when static prop is truthy and tag is provided', () => {
-    const tree = renderIntoDocument(<Input type="select" static el="div" />)
+    const tree = renderIntoDocument(<Input type="select" static tag="div" />)
 
     expect(getTagName(tree._vNode)).toBe('div')
   })
 
   it('should not render with custom tag when static prop is not truthy and tag is provided', () => {
-    const tree = renderIntoDocument(<Input type="select" el="div" />)
+    const tree = renderIntoDocument(<Input type="select" tag="div" />)
 
     expect(getTagName(tree._vNode)).toBe('select')
   })

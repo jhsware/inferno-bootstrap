@@ -3,14 +3,14 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'div'
+  tag: 'div'
 };
 
 const InputGroup = (props) => {
   const {
     className,
     cssModule,
-    el: El,
+    tag: Tag,
     size,
     ...attributes
   } = props;
@@ -21,7 +21,7 @@ const InputGroup = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 

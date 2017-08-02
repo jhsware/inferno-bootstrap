@@ -37,7 +37,7 @@ describe('FormFeedback', () => {
   })
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<FormFeedback el="main">Yo!</FormFeedback>)
+    const tree = renderIntoDocument(<FormFeedback tag="main">Yo!</FormFeedback>)
 
     expect(getTagName(tree._vNode)).toBe('main')
   })

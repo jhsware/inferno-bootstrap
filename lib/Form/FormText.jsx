@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { mapToCssModules } from '../utils';
 
 const defaultProps = {
-  el: 'small',
+  tag: 'small',
 };
 
 const FormText = (props) => {
@@ -12,7 +12,7 @@ const FormText = (props) => {
     cssModule,
     inline,
     color, // muted || success || warning || info || danger
-    el: El,
+    tag: Tag,
     ...attributes
   } = props;
 
@@ -23,7 +23,7 @@ const FormText = (props) => {
   ), cssModule);
 
   return (
-    <El {...attributes} className={classes} />
+    <Tag {...attributes} className={classes} />
   );
 };
 
