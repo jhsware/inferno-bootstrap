@@ -121,7 +121,7 @@ function PageMenu(props) {
           <Link className="nav-link PageLink" to="/navigation">Navigation</Link>
         </li>
         {
-          props.pageSections.map((item) => {
+          props.pageSections.sort().map((item) => {
             return (
               <li class="nav-item">
                 <a className="nav-link SectionLink" href={'#' + item.anchor} onClick={(e) => { 

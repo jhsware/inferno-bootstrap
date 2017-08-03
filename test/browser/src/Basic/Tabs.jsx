@@ -26,7 +26,7 @@ export default function () {
           <TabExample />
         </Scene>
 
-        <h3>Example Code</h3>
+        <h3>Example Code:</h3>
         <Scene>
           <Code>
 {`<Alert onClose={() => {}}>
@@ -35,7 +35,7 @@ export default function () {
           </Code>  
         </Scene>
 
-        <h3>Example Code</h3>
+        <h3>Example CSS:</h3>
         <Scene>
           <Code language="css">
 {`.FadeIn-enter {
