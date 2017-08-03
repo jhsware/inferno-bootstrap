@@ -57,6 +57,7 @@ export default function () {
 <Button outline color="danger">danger</Button>`}
             </Code>
           </Scene>
+          
           <h3>Different sizes</h3>
           <Scene>
             <Button color="primary" size="lg">Large Button</Button>{' '}

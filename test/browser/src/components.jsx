@@ -121,7 +121,7 @@ function PageMenu(props) {
           <Link className="nav-link PageLink" to="/navigation">Navigation</Link>
         </li>
         {
-          props.pageSections.sort().map((item) => {
+          props.pageSections.sort((a, b) => a.title == b.title ? 0 : (a.title < b.title ? -1 : 1)).map((item) => {
             return (
               <li class="nav-item">
                 <a className="nav-link SectionLink" href={'#' + item.anchor} onClick={(e) => { 
@@ -177,6 +177,7 @@ export class Page extends Component {
       PageContent: true,
       'InfernoAnimation--noAnim': !this.state.active
     }
+
     return (
       <div className={classnames(cls)}>
         <PageMenu pageSections={this.state.pageSections} />
