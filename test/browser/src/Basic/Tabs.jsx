@@ -34,6 +34,23 @@ export default function () {
 </Alert>`}
           </Code>  
         </Scene>
+
+        <h3>Example Code</h3>
+        <Scene>
+          <Code language="css">
+{`.FadeIn-enter {
+  opacity: 0;
+}
+.FadeIn-enter-active {
+  overflow: hidden!important;
+  transition: opacity 0.1s ease-in, height .2s ease-in-out, width .2s ease-in-out;
+}
+
+.FadeIn-enter-end {
+  opacity: 1;
+}`}
+          </Code>  
+        </Scene>
       </Stage>
     </Section>
   )
@@ -78,7 +95,7 @@ class TabExample extends Component {
             </NavLink>
           </NavItem>
         </Nav>
-        <TabContent activeTab={this.state.activeTab}>
+        <TabContent className="ExampleTab" fade activeTab={this.state.activeTab}>
           <TabPane tabId="1">
             <Row>
               <Col sm="12">

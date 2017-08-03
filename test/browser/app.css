@@ -217,3 +217,16 @@ pre[class*="language-"]:before {
   border: 1px solid #ddd;
   padding: 0.5rem;
 }
+
+/* Tab fadein */
+.FadeIn-enter {
+  opacity: 0;
+}
+.FadeIn-enter-active {
+  overflow: hidden!important;
+  transition: opacity 0.1s ease-in, height .2s ease-in-out, width .2s ease-in-out;
+}
+
+.FadeIn-enter-end {
+  opacity: 1;
+}
