@@ -9,6 +9,7 @@ import ProgressSection from './Basic/Progress.jsx'
 import CollapseSection from './Basic/Collapse.jsx'
 import LayoutSection from './Basic/Layout.jsx'
 import TabsSection from './Basic/Tabs.jsx'
+import PopoversSection from './Basic/Popovers.jsx'
 
 // import Modal from '../../../lib/Modal.jsx'
 
@@ -25,6 +26,7 @@ export default function BasicPage (props) {
       <CollapseSection />
       <LayoutSection />
       <TabsSection />
+      <PopoversSection />
     </Page>
   )
 }
