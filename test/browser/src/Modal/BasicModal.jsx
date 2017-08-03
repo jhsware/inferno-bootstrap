@@ -72,7 +72,14 @@ export default function () {
         <h3>CSS for modal transitions:</h3>
         <Scene>
           <Code language="css">
-{`/* The actual modal */
+{`/* You need to override Bootstrap .modal because inferno-animation does animations */
+
+.modal {
+  display: block;
+}
+
+/* The actual modal */
+
 .ModalFade-leave {
   transform: translateY(0);
   opacity: 1;

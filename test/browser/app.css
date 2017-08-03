@@ -119,6 +119,10 @@ pre[class*="language-"]:before {
   margin-top: 0.5em;
 }
 
+.modal {
+  display: block;
+}
+
 .ModalFade-leave {
   transform: translateY(0);
   opacity: 1;
