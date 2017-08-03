@@ -1,3 +1,11 @@
 language: node_js
 node_js:
 - '6.1'
+deploy:
+  provider: npm
+  email: sebastian@urbantalk.se
+  api_key:
+    secure: nnPaygB7iLZEzdCJzecG8Ph/R6UJSu9c4BjtlXIN5eRUFfbr0Rhcfwlmo21yNI4dI/K4Ygn5tvtb7avVi/l7emqOUmg7du93g2zJstyy8iYwFqysTTDGe1yzJtSsgjJxCK+EUUDgo/mfgEGJRiepTP9DLycIVIYQm76Sy+HbLhlYu4FTZMn+XzJF+z2riSFGj07bZii3t8I00X3QQov5dQzE/uy1qW2Mabj7WnNU+1Ue3VH2azaAHExsgZPUVGC/Gqv44MspnrJHEoUSCwVm0ostsTuclUOjkzCwvYdG2M+Y4KKho0eUtMvknFY7QIh4doyj4WDf1jSalKuTbUSeVssO6G8t6gNBPNkVHm3KgDGqg5l+X/EDPe7/amvHY3B7EnLsK0zmTV6GKUiRwpf/3OECAode1rWYbaX7OQeLrHP3hAO0UWUZLDUELldn3bOHY2ygabmtgZUQS6F+fKM8XaCAbUztCk8uss9G74tshMKj1c6lHPdj1i4CAfT1njfzgOwebtL/zegTCXMulAOdwGVo12UyKuEMRPx7fGoRv3xx3EiKRdUe6imHstcUHqhvkuZCZ0wMZw8oz9I4YQ7sDOa1b/Uoh6MykWslG1QoUI5kNzWyoanVDKPwluqVBrwTYeAwGnsbxpGZfzCDGIQ9Kq32zloWj5DaZFkLQBkp0ZA=
+  on:
+    tags: true
+    repo: jhsware/inferno-bootstrap
