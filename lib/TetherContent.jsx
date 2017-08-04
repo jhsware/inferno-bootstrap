@@ -1,6 +1,5 @@
 import { cloneVNode } from "inferno";
 import Component from 'inferno-component';
-import ReactDOM from 'react-dom';
 import isFunction from 'lodash.isfunction';
 import Tether from 'reactstrap-tether';
 import {
