@@ -1,7 +1,7 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
 require('inferno-devtools')
-import { Router, Route, IndexRoute, Link } from 'inferno-router'
+import { Router, Route, Redirect, IndexRoute, Link } from 'inferno-router'
 import createBrowserHistory from 'history/createBrowserHistory'
 
 import BasicPage from './BasicPage.jsx'
@@ -23,7 +23,7 @@ if (typeof window !== 'undefined') {
 
   const appRoutes = (
     <Router history={ browserHistory }>
-      <Route component={ AppLayout }>
+      <Route path="/inferno-bootstrap-docs" component={ AppLayout }>
         <IndexRoute component={ BasicPage } />
         <Route path="/basic" component={BasicPage} />
         <Route path="/card" component={ CardPage } />
@@ -31,6 +31,7 @@ if (typeof window !== 'undefined') {
         <Route path="/modal" component={ModalPage} />
         <Route path="/navigation" component={NavigationPage} />
       </Route>
+      <Redirect from="/*" to="/inferno-bootstrap-docs" />
     </Router>
   )
   Inferno.render(appRoutes, document.getElementById('app'))

@@ -106,19 +106,19 @@ function PageMenu(props) {
           <h4 className="PageMenu-Header">Components</h4>  
         </li>  
         <li class="nav-item">
-          <Link className="nav-link PageLink" to="/basic">Basic</Link>
+          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/basic">Basic</Link>
         </li>
         <li class="nav-item">
-          <Link className="nav-link PageLink" to="/card">Card</Link>
+          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/card">Card</Link>
         </li>
         <li class="nav-item">
-          <Link className="nav-link PageLink" to="/form">Form</Link>
+          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/form">Form</Link>
         </li>
         <li class="nav-item">
-          <Link className="nav-link PageLink" to="/modal">Modal</Link>
+          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/modal">Modal</Link>
         </li>
         <li class="nav-item">
-          <Link className="nav-link PageLink" to="/navigation">Navigation</Link>
+          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/navigation">Navigation</Link>
         </li>
         {
           props.pageSections.sort((a, b) => a.title == b.title ? 0 : (a.title < b.title ? -1 : 1)).map((item) => {
