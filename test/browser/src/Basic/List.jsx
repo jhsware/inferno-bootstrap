@@ -30,9 +30,7 @@ export default function () {
 </ListGroup>`}
           </Code> 
         </Scene>
-      </Stage>
 
-      <Stage>
         <h3>List With Badges</h3>
         <Scene>
           <ListGroup>
@@ -48,9 +46,7 @@ export default function () {
 </ListGroup>`}
           </Code>  
         </Scene>
-      </Stage>
 
-      <Stage>
         <h3>List With Links and Buttons</h3>
         <Scene>
           <ListGroup>
