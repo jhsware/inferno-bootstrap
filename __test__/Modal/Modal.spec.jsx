@@ -36,9 +36,11 @@ describe('Modal', () => {
     // fast forward time for modal to fade out
     // jasmine.clock().tick(300);
     // jasmine.clock().uninstall();
+    document.body.innerHTML = ''
     jest.runTimersToTime(300)
   });
 
+  
   it('should render with the class "modal-dialog"', () => {
     isOpen = true;
     const tree = renderIntoDocument(
@@ -49,13 +51,10 @@ describe('Modal', () => {
 
     // jasmine.clock().tick(300);
     jest.runTimersToTime(300)
-    debugger;
     // expect(wrapper.children().length).toBe(0);
-    console.log(getOuterHTML(tree._vNode))
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);
+    expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
     
   });
-/*
   it('should render with the backdrop with the class "modal-backdrop" by default', () => {
     isOpen = true;
     const tree = renderIntoDocument(
@@ -64,9 +63,9 @@ describe('Modal', () => {
       </Modal>
     );
 
-    jasmine.clock().tick(300);
-    expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-backdrop').length).toBe(1);
+    jest.runTimersToTime(300)
+    expect(tree._vNode.children.length).toBe(undefined);
+    expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
     
   });
 
@@ -78,10 +77,9 @@ describe('Modal', () => {
       </Modal>
     );
 
-    jasmine.clock().tick(300);
-    expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-backdrop').length).toBe(1);
-    
+    jest.runTimersToTime(300)
+    expect(tree._vNode.children.length).toBe(undefined);
+    expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
   });
 
   it('should not render with the backdrop with the class "modal-backdrop" when backdrop is "false"', () => {
@@ -92,11 +90,10 @@ describe('Modal', () => {
       </Modal>
     );
 
-    jasmine.clock().tick(300);
-    expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-backdrop').length).toBe(0);
-    
+    jest.runTimersToTime(300)
+    expect(tree._vNode.children.length).toBe(undefined);
+    expect(document.getElementsByClassName('modal-backdrop').length).toBe(0);
+    expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
   });
 
   it('should render with class "modal-dialog" and have custom class name if provided', () => {
@@ -106,14 +103,16 @@ describe('Modal', () => {
         Yo!
       </Modal>
     );
-
-    jasmine.clock().tick(300);
-    expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);
-    expect(scryRenderedDOMElementsWithClass(tree, 'my-custom-modal').length).toBe(1);
     
+    jest.runTimersToTime(300)
+    expect(tree._vNode.children.length).toBe(undefined);
+    expect(document.getElementsByClassName('my-custom-modal').length).toBe(1);
+    expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
+    // expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);
+    // expect(scryRenderedDOMElementsWithClass(tree, 'my-custom-modal').length).toBe(1);
   });
 
+  /*
   it('should render with additional props if provided', () => {
     isOpen = true;
     const tree = renderIntoDocument(

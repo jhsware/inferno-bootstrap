@@ -7,7 +7,7 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import { hasClass, getTagName, getInnerHTML, getInstance } from "./utils"
+import { hasClass, getTagName, getOuterHTML, getInnerHTML, getInstance } from "./utils"
 
 import Collapse from "../lib/Collapse.jsx"
 
@@ -29,93 +29,27 @@ describe('Collapse', () => {
     jest.runTimersToTime(400)
   });
 
-  describe('delay', () => {
-    it('should accept a number', (done) => {
-      const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
-      toggle();
-      const instance = tree.props.children
-      instance.props['isOpen'] = isOpen
-      debugger
-      // tree.forceUpdate()
-      tree.repaint().then((res) => {
-        const html = getInnerHTML(tree._vNode)
-        debugger
-      })
-
-      //jasmine.clock().tick(200);
-      // jest.runAllTimers()
-      setTimeout(() => {
-        const html = getInnerHTML(tree._vNode)
-        debugger
-        expect(instance.state['collapse']).toEqual('SHOWN');
-        done();
-      }, 210)
-      jest.runTimersToTime(210)
-    });
-
-    it('should accept an object', () => {
-      const tree = renderIntoDocument(<Collapse isOpen={isOpen} delay={{ show: 110, hide: 120 }} />);
-      toggle();
-      wrapper.setProps({ isOpen: isOpen });
-      jasmine.clock().tick(110);
-      expect(wrapper.state('collapse')).toEqual('SHOWN');
-
-      toggle();
-      wrapper.setProps({ isOpen: isOpen });
-      jasmine.clock().tick(120);
-      expect(wrapper.state('collapse')).toEqual('HIDDEN');
-    });
-
-    it('should use default value if value is missing from object', () => {
-      const tree = renderIntoDocument(<Collapse isOpen={isOpen} delay={{ show: 110 }} />);
-      toggle();
-      wrapper.setProps({ isOpen: isOpen });
-      jasmine.clock().tick(110);
-      expect(wrapper.state('collapse')).toEqual('SHOWN');
-
-      toggle();
-      wrapper.setProps({ isOpen: isOpen });
-      jasmine.clock().tick(350);
-      expect(wrapper.state('collapse')).toEqual('HIDDEN');
-    });
-  });
-
   it('should render children', () => {
-    const wrapper = shallow(<Collapse><p>hello</p></Collapse>).find('p');
-    expect(wrapper.text()).toBe('hello');
+    const tree = renderIntoDocument(<Collapse isOpen><p>hello</p></Collapse>);
+    expect(getInnerHTML(tree._vNode)).toBe('<p>hello</p>');
   });
 
   it('should have default isOpen value', () => {
-    const wrapper = shallow(<Collapse />);
-    expect(wrapper.instance().props.isOpen).toEqual(false);
+    const tree = renderIntoDocument(<Collapse />);
+    const instance = getInstance(tree)
+    expect(instance.props.isOpen).toEqual(false);
   });
 
-  it('should render with class "collapse"', () => {
-    const wrapper = shallow(<Collapse />);
-    expect(wrapper.hasClass('collapse')).toEqual(true);
-  });
-
+  /*
+  // Have I removed this, do we want it? (it can be a simple className)
   it('should render with class "navbar"', () => {
-    const wrapper = shallow(<Collapse navbar />);
-    expect(wrapper.hasClass('navbar-collapse')).toEqual(true);
+    const tree = renderIntoDocument(<Collapse navbar isOpen />);
+    console.log(getOuterHTML(tree._vNode))
+    expect(hasClass(tree._vNode, 'navbar')).toEqual(true);
   });
+  */
 
-  it('should render with class "show" when isOpen is true', () => {
-    const wrapper = shallow(<Collapse isOpen />);
-    expect(wrapper.hasClass('show')).toEqual(true);
-  });
-
-  it('should set height to null when isOpen is true', () => {
-    isOpen = true;
-    const wrapper = shallow(<Collapse isOpen={isOpen} />);
-    expect(wrapper.state('height')).toBe(null);
-  });
-
-  it('should not set height when isOpen is false', () => {
-    const wrapper = shallow(<Collapse isOpen={isOpen} />);
-    expect(wrapper.state('height')).toBe(null);
-  });
-
+  /*
   it('should render with class "collapse" with default collapse state', () => {
     const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
     wrapper.setState({ collapse: null });
@@ -226,4 +160,5 @@ describe('Collapse', () => {
 
     wrapper.unmount();
   });
+  */
 });

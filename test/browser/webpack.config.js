@@ -15,7 +15,7 @@ const babelPlugins = [
 module.exports = {
   entry: {
     app: path.resolve(__dirname, './src/app.jsx'),
-    test: path.resolve(__dirname, './src/testContext.jsx')
+    context: path.resolve(__dirname, './src/testContext.jsx')
   },
   output: {
     path: path.resolve(__dirname, './dist'),
