@@ -99,6 +99,7 @@ function newSmoothScrollVertTo(y, k) {
 }
 
 function PageMenu(props) {
+
   return (
     <div className="PageMenuContainer">
       <ul className="PageMenu nav flex-column">
@@ -112,22 +113,21 @@ function PageMenu(props) {
                 <Link className="nav-link PageLink" to={page.link}>{page.title}</Link>
               </li> 
             )
-          })
-        }
-        {
-          props.pageSections.sort((a, b) => a.title == b.title ? 0 : (a.title < b.title ? -1 : 1)).map((item) => {
-            return (
-              <li class="nav-item">
-                <a className="nav-link SectionLink" href={'#' + item.anchor} onClick={(e) => { 
-                  e.preventDefault()
-                  const el = document.getElementById(e.target.hash.split('#')[1])
-                  const y = el.offsetTop
-                  // smoothScrollVertTo(y, 500)
-                  smoothScrollVertTo(y, 500)
-                }}>{item.title}</a>
-              </li>
-            )  
-          })
+          }).concat(
+            props.pageSections.sort((a, b) => a.title == b.title ? 0 : (a.title < b.title ? -1 : 1)).map((item) => {
+              return (
+                <li class="nav-item">
+                  <a className="nav-link SectionLink" href={'#' + item.anchor} onClick={(e) => { 
+                    e.preventDefault()
+                    const el = document.getElementById(e.target.hash.split('#')[1])
+                    const y = el.offsetTop
+                    // smoothScrollVertTo(y, 500)
+                    smoothScrollVertTo(y, 500)
+                  }}>{item.title}</a>
+                </li>
+              )  
+            })
+          )
         }
       </ul>  
     </div>  
