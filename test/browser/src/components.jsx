@@ -104,22 +104,16 @@ function PageMenu(props) {
       <ul className="PageMenu nav flex-column">
         <li class="nav-item">
           <h4 className="PageMenu-Header">Components</h4>  
-        </li>  
-        <li class="nav-item">
-          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/basic">Basic</Link>
         </li>
-        <li class="nav-item">
-          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/card">Card</Link>
-        </li>
-        <li class="nav-item">
-          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/form">Form</Link>
-        </li>
-        <li class="nav-item">
-          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/modal">Modal</Link>
-        </li>
-        <li class="nav-item">
-          <Link className="nav-link PageLink" to="/inferno-bootstrap-docs/navigation">Navigation</Link>
-        </li>
+        {
+          props.pageLinks.map((page) => {
+            return (
+              <li class="nav-item">
+                <Link className="nav-link PageLink" to={page.link}>{page.title}</Link>
+              </li> 
+            )
+          })
+        }
         {
           props.pageSections.sort((a, b) => a.title == b.title ? 0 : (a.title < b.title ? -1 : 1)).map((item) => {
             return (
@@ -180,7 +174,7 @@ export class Page extends Component {
 
     return (
       <div className={classnames(cls)}>
-        <PageMenu pageSections={this.state.pageSections} />
+        <PageMenu pageSections={this.state.pageSections} pageLinks={this.context.pageLinks} />
         {this.props.children}
       </div>
     )
