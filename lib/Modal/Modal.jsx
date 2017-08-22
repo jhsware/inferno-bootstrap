@@ -153,6 +153,11 @@ class Modal extends Component {
 
   hide() {
     this.renderIntoSubtree();
+
+    // Need to trigger cleanup if the animation doesn't play
+    if (!this.props.fade) {
+      this.destroy()
+    }
   }
 
   show() {
