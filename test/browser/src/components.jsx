@@ -159,11 +159,7 @@ export class Page extends Component {
   }
 
   addSection(title, anchor) {
-    const tmp = this.state.pageSections
-    tmp.push({ title, anchor })
-    this.setState({
-      pageSections: tmp
-    })
+    this.state.pageSections.push({ title, anchor })
   }
 
   render() {
