@@ -11,7 +11,10 @@ const DropdownMenu = (props, context) => {
   const classes = mapToCssModules(classNames(
     className,
     'dropdown-menu',
-    { 'dropdown-menu-right': right }
+    { 
+      'dropdown-menu-right': right,
+      'show': context.isOpen
+    }
   ), cssModule);
 
   return (
