@@ -4,6 +4,7 @@ import AlertSection from './Basic/Alert.jsx'
 import BadgeSection from './Basic/Badge.jsx'
 import BreadcrumbSection from './Basic/Breadcrumb.jsx'
 import ButtonSection from './Basic/Button.jsx'
+import DropdownSection from './Basic/Dropdown.jsx'
 import JumbotronSection from './Basic/Jumbotron.jsx'
 import ProgressSection from './Basic/Progress.jsx'
 import CollapseSection from './Basic/Collapse.jsx'
@@ -15,7 +16,6 @@ import ListSection from './Basic/List.jsx'
 
 // import Modal from '../../../lib/Modal.jsx'
 
-
 export default function BasicPage (props) {
   return (
     <Page>
@@ -23,6 +23,7 @@ export default function BasicPage (props) {
       <BadgeSection />
       <BreadcrumbSection />
       <ButtonSection />
+      <DropdownSection />
       <JumbotronSection />
       <ProgressSection />
       <CollapseSection />

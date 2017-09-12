@@ -3,8 +3,8 @@ import { Section, Stage, Scene, Code, Narrative } from '../components.jsx'
 
 import Button from '../../../../lib/Button.jsx'
 import Popover from '../../../../lib/Popover.jsx'
-import PopoverTitle from '../../../../lib/PopoverTitle.jsx'
-import PopoverContent from '../../../../lib/PopoverContent.jsx'
+import PopoverHeader from '../../../../lib/PopoverHeader.jsx'
+import PopoverBody from '../../../../lib/PopoverBody.jsx'
 
 export default function () {
   return (
@@ -58,6 +58,8 @@ export default function () {
   )
 }
 
+import { Manager, Target, Popper, Arrow, Travel } from 'inferno-popper'
+
 class ExamplePopover extends Component {
   constructor(props) {
     super(props);
@@ -76,15 +78,17 @@ class ExamplePopover extends Component {
 
   render() {
     return (
-      <div>
-        <Button id="Popover1" onClick={this.toggle}>
-          Launch Popover
-        </Button>
+      <Manager>
+        <Target>
+          <Button id="Popover1" onClick={this.toggle}>
+            Launch Popover
+          </Button>
+        </Target>
         <Popover placement="bottom" isOpen={this.state.popoverOpen} target="Popover1" toggle={this.toggle}>
-          <PopoverTitle>Popover Title</PopoverTitle>
-          <PopoverContent>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverContent>
+          <PopoverHeader>Popover Title</PopoverHeader>
+          <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
         </Popover>
-      </div>
+      </Manager>
     );
   }
 }

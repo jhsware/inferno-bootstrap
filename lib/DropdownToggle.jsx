@@ -1,7 +1,7 @@
 import Component from 'inferno-component';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';
-
+import { Target } from 'inferno-popper';
 import Button from './Button.jsx';
 
 const defaultProps = {
@@ -31,7 +31,7 @@ class DropdownToggle extends Component {
       this.props.onClick(e);
     }
 
-    this.context.toggle();
+    this.context.toggle(e);
   }
 
   render() {
@@ -42,7 +42,6 @@ class DropdownToggle extends Component {
       {
         'dropdown-toggle': caret || split,
         'dropdown-toggle-split': split,
-        active: this.context.isOpen,
         'nav-link': nav
       }
     ), cssModule);
@@ -56,14 +55,16 @@ class DropdownToggle extends Component {
     } else if (!tag) {
       Tag = Button;
       props.color = color;
+      props.cssModule = cssModule;
     } else {
       Tag = tag;
     }
 
     return (
-      <Tag
+      <Target
         {...props}
         className={classes}
+        component={Tag}
         onClick={this.onClick}
         aria-haspopup="true"
         aria-expanded={this.context.isOpen}

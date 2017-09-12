@@ -1,3 +1,4 @@
+import inferno from 'inferno';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';
 
@@ -5,7 +6,7 @@ const defaultProps = {
   tag: 'h3'
 };
 
-const PopoverTitle = (props) => {
+const PopoverHeader = (props) => {
   const {
     className,
     cssModule,
@@ -15,7 +16,7 @@ const PopoverTitle = (props) => {
 
   const classes = mapToCssModules(classNames(
     className,
-    'popover-title'
+    'popover-header'
   ), cssModule);
 
   return (
@@ -23,6 +24,6 @@ const PopoverTitle = (props) => {
   );
 };
 
-PopoverTitle.defaultProps = defaultProps;
+PopoverHeader.defaultProps = defaultProps;
 
-export default PopoverTitle;
+export default PopoverHeader;
