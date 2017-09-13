@@ -21,7 +21,7 @@ class Input extends Component {
       tag,
       addon,
       static: staticInput,
-      getRef,
+      innerRef,
       ...attributes
     } = this.props;
 
@@ -59,7 +59,7 @@ class Input extends Component {
     }
 
     return (
-      <Tag {...attributes} ref={getRef} className={classes} />
+      <Tag {...attributes} ref={innerRef} className={classes} />
     );
   }
 }

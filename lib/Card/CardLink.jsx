@@ -11,7 +11,7 @@ const CardLink = (props) => {
     className,
     cssModule,
     tag: Tag,
-    getRef,
+    innerRef,
     ...attributes
   } = props;
   const classes = mapToCssModules(classNames(
@@ -20,7 +20,7 @@ const CardLink = (props) => {
   ), cssModule);
 
   return (
-    <Tag {...attributes} ref={getRef} className={classes} />
+    <Tag {...attributes} ref={innerRef} className={classes} />
   );
 };
 

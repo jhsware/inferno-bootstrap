@@ -36,7 +36,7 @@ class Button extends Component {
       outline,
       size,
       tag: Tag,
-      getRef,
+      innerRef,
       ...attributes
     } = this.props;
 
@@ -58,7 +58,7 @@ class Button extends Component {
         type={(Tag === 'button' && attributes.onClick) ? 'button' : undefined}
         {...attributes}
         className={classes}
-        ref={getRef}
+        ref={innerRef}
         onClick={this.onClick}
       />
     );

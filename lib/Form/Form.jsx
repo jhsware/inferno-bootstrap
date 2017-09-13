@@ -11,7 +11,7 @@ const Form = (props) => {
     className,
     cssModule,
     tag: Tag,
-    getRef,
+    innerRef,
     ...attributes
   } = props;
 
@@ -20,7 +20,7 @@ const Form = (props) => {
   ), cssModule);
 
   return (
-    <Tag {...attributes} ref={getRef} className={classes} />
+    <Tag {...attributes} ref={innerRef} className={classes} />
   );
 };
 

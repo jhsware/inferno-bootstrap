@@ -34,7 +34,7 @@ class NavLink extends Component {
       cssModule,
       active,
       tag: Tag,
-      getRef,
+      innerRef,
       ...attributes
     } = this.props;
 
@@ -48,7 +48,7 @@ class NavLink extends Component {
     ), cssModule);
 
     return (
-      <Tag {...attributes} ref={getRef} onClick={this.onClick} className={classes} />
+      <Tag {...attributes} ref={innerRef} onClick={this.onClick} className={classes} />
     );
   }
 }
