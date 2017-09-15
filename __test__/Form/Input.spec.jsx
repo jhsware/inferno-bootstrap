@@ -8,7 +8,7 @@ import {
 } from 'inferno-test-utils'
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import Input from "../../lib/Form/Input.jsx"
+import Input from "../../lib/Form/Input"
 
 describe('Input', () => {
   it('should render with "input" tag when no type is provided', () => {

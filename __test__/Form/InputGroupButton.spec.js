@@ -8,8 +8,8 @@ import {
 } from 'inferno-test-utils'
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import InputGroupButton from '../../lib/Form/InputGroupButton.jsx';
-import Button from '../../lib/Button.jsx';
+import InputGroupButton from '../../lib/Form/InputGroupButton';
+import Button from '../../lib/Button';
 
 describe('InputGroupButton', () => {
   it('should render with "div" tag', () => {

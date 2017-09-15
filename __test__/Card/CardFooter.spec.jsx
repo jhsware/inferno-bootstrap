@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardFooter from '../../lib/Card/CardFooter.jsx';
+import CardFooter from '../../lib/Card/CardFooter';
 
 describe('CardFooter', () => {
   it('should render with "card-footer" class', () => {

@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardLink from '../../lib/Card/CardLink.jsx';
+import CardLink from '../../lib/Card/CardLink';
 
 describe('CardLink', () => {
   it('should render with "card-link" class', () => {

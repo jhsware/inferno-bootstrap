@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import Form from "../../lib/Form/Form.jsx"
+import Form from "../../lib/Form/Form"
 
 describe('Form', () => {
   it('should render with "form" tag', () => {

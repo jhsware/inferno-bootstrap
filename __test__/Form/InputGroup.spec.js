@@ -8,7 +8,7 @@ import {
 } from 'inferno-test-utils'
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import InputGroup from '../../lib/Form/InputGroup.jsx';
+import InputGroup from '../../lib/Form/InputGroup';
 
 describe('InputGroup', () => {
   it('should render with "div" tag', () => {

@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardSubtitle from '../../lib/Card/CardSubtitle.jsx';
+import CardSubtitle from '../../lib/Card/CardSubtitle';
 
 describe('CardSubtitle', () => {
   it('should render with "card-subtitle" class', () => {

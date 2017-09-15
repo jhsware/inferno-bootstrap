@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardImgOverlay from '../../lib/Card/CardImgOverlay.jsx';
+import CardImgOverlay from '../../lib/Card/CardImgOverlay';
 
 describe('CardImgOverlay', () => {
   it('should render with "card-img-overlay" class', () => {

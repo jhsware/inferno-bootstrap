@@ -7,7 +7,7 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import Alert from "../lib/Alert.jsx"
+import Alert from "../lib/Alert"
 
 describe("Alert", () => {
   it("Can be rendered", () => {

@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getOuterHTML, getInnerHTML, getInstance } from "./utils"
 
-import Collapse from "../lib/Collapse.jsx"
+import Collapse from "../lib/Collapse"
 
 jest.useFakeTimers();
 

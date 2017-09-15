@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardImg from '../../lib/Card/CardImg.jsx';
+import CardImg from '../../lib/Card/CardImg';
 
 describe('CardImg', () => {
   it('should render with "card-img" class', () => {

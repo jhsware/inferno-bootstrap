@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import FormText from "../../lib/Form/FormText.jsx"
+import FormText from "../../lib/Form/FormText"
 
 describe('FormText', () => {
   it('should render with "small" el', () => {

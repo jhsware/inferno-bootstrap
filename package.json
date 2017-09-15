@@ -1,17 +1,17 @@
 {
   "name": "inferno-bootstrap",
   "version": "0.2.1",
-  "description": "Bootstrap as Inferno.js components, adapted from Reactstrap",
-  "main": "index.js",
+  "description": "Bootstrap as Inferno components, adapted from Reactstrap",
+  "main": "index",
   "scripts": {
     "test": "jest",
-    "test-browser": "npm run build-test && node test/browser/server.js",
+    "test-browser": "npm run build-test && node test/browser/server",
     "prepublish": "npm run build",
     "postversion": "git push && git push --tags",
     "build": "rm -rf ./dist && NODE_ENV=production babel lib --out-dir dist  --source-maps",
     "build-dev": "rm -rf ./dist && babel lib --out-dir dist --watch --source-maps",
-    "build-test": "rm -rf ./test/dist && node_modules/.bin/webpack --config ./test/browser/webpack.config.js",
-    "build-test-dev": "rm -rf ./test/dist && node_modules/.bin/webpack --watch --config ./test/browser/webpack.config.js"
+    "build-test": "rm -rf ./test/dist && node_modules/.bin/webpack --config ./test/browser/webpack.config",
+    "build-test-dev": "rm -rf ./test/dist && node_modules/.bin/webpack --watch --config ./test/browser/webpack.config"
   },
   "repository": {
     "type": "git",

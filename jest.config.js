@@ -1,4 +1,4 @@
 module.exports = {
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: ["lib/**/*.{js,jsx}"]
 }

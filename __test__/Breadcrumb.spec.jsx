@@ -6,8 +6,8 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import Breadcrumb from "../lib/Breadcrumb.jsx"
-import BreadcrumbItem from "../lib/BreadcrumbItem.jsx"
+import Breadcrumb from "../lib/Breadcrumb"
+import BreadcrumbItem from "../lib/BreadcrumbItem"
 
 describe("Breadcrumb", () => {
   it("Can be rendered", () => {

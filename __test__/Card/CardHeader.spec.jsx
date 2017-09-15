@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardHeader from '../../lib/Card/CardHeader.jsx';
+import CardHeader from '../../lib/Card/CardHeader';
 
 describe('CardHeader', () => {
   it('should render with "card-header" class', () => {

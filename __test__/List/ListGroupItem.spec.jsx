@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode } from "../utils"
 
-import ListGroupItem from "../../lib/List/ListGroupItem.jsx"
+import ListGroupItem from "../../lib/List/ListGroupItem"
 
 describe('ListGroupItem', () => {
   it('should render children', () => {

@@ -12,8 +12,8 @@ import {
 import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode } from "./utils"
 
 import { Arrow, Manager, Popper } from 'inferno-popper';
-import PopperContent from '../lib/PopperContent.jsx';
-import PopperTargetHelper from '../lib/PopperTargetHelper.jsx';
+import PopperContent from '../lib/PopperContent';
+import PopperTargetHelper from '../lib/PopperTargetHelper';
 
 describe('TetherContent', () => {
   let element;
