@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import Label from "../../lib/Form/Label"
+import Label from "../../dist/Form/Label"
 
 describe('Label', () => {
   it('should render a label tag by default', () => {

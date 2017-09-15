@@ -6,7 +6,7 @@ import {
 } from 'inferno-test-utils'
 
 import { getInstance, hasClass, getTagName, getInnerHTML, getOuterHTML } from "../utils"
-import ModalHeader from '../../lib/Modal/ModalHeader';
+import ModalHeader from '../../dist/Modal/ModalHeader';
 
 describe('ModalHeader', () => {
   it('should render with "modal-header" class', () => {

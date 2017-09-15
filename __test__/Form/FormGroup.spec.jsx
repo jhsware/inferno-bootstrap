@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import FormGroup from "../../lib/Form/FormGroup"
+import FormGroup from "../../dist/Form/FormGroup"
 
 describe('FormGroup', () => {
   it('should render with "div" tag by default', () => {

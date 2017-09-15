@@ -9,14 +9,16 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode, getAnimationFramPolyfill } from "./utils"
+import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode, getAnimationFramePolyfill } from "./utils"
 
-getAnimationFramPolyfill()
+getAnimationFramePolyfill()
 
 import ButtonDropdown from '../dist/ButtonDropdown';
 import DropdownToggle from '../dist/DropdownToggle';
 import DropdownMenu from '../dist/DropdownMenu';
 import DropdownItem from '../dist/DropdownItem';
+
+debugger
 
 describe('ButtonDropdown', () => {
   let isOpen;
@@ -35,7 +37,7 @@ describe('ButtonDropdown', () => {
 
   it('should render multiple children when isOpen', () => {
     isOpen = true;
-    debugger
+    
     const tree = renderIntoDocument(
       <ButtonDropdown isOpen={isOpen} toggle={toggle}>
         <DropdownToggle>Toggle</DropdownToggle>

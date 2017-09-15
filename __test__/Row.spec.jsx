@@ -6,7 +6,7 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import Row from "../lib/Row"
+import Row from "../dist/Row"
 
 describe("Row", () => {
   it("Can be rendered", () => {

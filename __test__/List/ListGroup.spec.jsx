@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode } from "../utils"
 
-import ListGroup from "../../lib/List/ListGroup"
+import ListGroup from "../../dist/List/ListGroup"
 
 describe('ListGroup', () => {
   it('should render with "list-group" class', () => {

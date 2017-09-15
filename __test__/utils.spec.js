@@ -1,4 +1,4 @@
-import * as Utils from '../lib/utils';
+import * as Utils from '../dist/utils';
 
 describe('Utils', () => {
   describe('mapToCssModules', () => {

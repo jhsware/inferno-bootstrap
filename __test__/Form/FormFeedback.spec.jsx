@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import FormFeedback from "../../lib/Form/FormFeedback"
+import FormFeedback from "../../dist/Form/FormFeedback"
 
 describe('FormFeedback', () => {
   it('should render with "div" tag by default', () => {

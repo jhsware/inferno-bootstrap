@@ -7,7 +7,7 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import Progress from "../lib/Progress"
+import Progress from "../dist/Progress"
 
 describe("Progress", () => {
   it("Can be rendered", () => {

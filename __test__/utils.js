@@ -27,7 +27,7 @@ export function unmountComponentAtNode(container) {
   return true;
 }
 
-export function getAnimationFramPolyfill () {
+export function getAnimationFramePolyfill () {
   if (window.requestAnimationFrame) return
     
   var lastTime = 0;

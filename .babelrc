@@ -6,6 +6,7 @@
   "plugins": [
     "transform-object-rest-spread",
     "babel-plugin-syntax-jsx",
+    "add-module-exports",
     ["babel-plugin-inferno", {"imports": true}]
   ],
   "env": {
@@ -13,6 +14,7 @@
       "plugins": [
         "transform-object-rest-spread",
         "babel-plugin-syntax-jsx",
+        "add-module-exports",
         ["babel-plugin-inferno", {"imports": true}]
       ]
     }

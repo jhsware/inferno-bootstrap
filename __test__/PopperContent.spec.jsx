@@ -9,11 +9,13 @@ import {
   isVNodeOfType
 } from 'inferno-test-utils'
 
-import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode } from "./utils"
+import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode, getAnimationFramePolyfill } from "./utils"
+
+getAnimationFramePolyfill()
 
 import { Arrow, Manager, Popper } from 'inferno-popper';
-import PopperContent from '../lib/PopperContent';
-import PopperTargetHelper from '../lib/PopperTargetHelper';
+import PopperContent from '../dist/PopperContent';
+import PopperTargetHelper from '../dist/PopperTargetHelper';
 
 describe('TetherContent', () => {
   let element;
@@ -39,47 +41,44 @@ describe('TetherContent', () => {
   it('faking for now', () => {
   });
 
-  /*
   it('should render a Manager by default', () => {
     const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
 
-    expect(isVNodeOfType(tree._vNode, Manager)).toBe(true);
+    expect(tree._vNode.props.children.children._lastInput.children instanceof Manager).toBe(true);
   });
-
+  
   it('should render a Manager as a span by default', () => {
-    const wrapper = mount(<PopperContent target="target">Yo!</PopperContent>);
+    const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
 
-    expect(wrapper.find('span').length).toBe(1);
+    const instance = getInstance(tree._vNode);
+    expect(instance._lastInput.children instanceof Manager).toBe(true);
   });
-
+  
+  /*
   it('should render a PopperTargetHelper', () => {
     const wrapper = mount(<PopperContent target="target">Yo!</PopperContent>);
 
     expect(wrapper.containsMatchingElement(<PopperTargetHelper target="target" />)).toBe(true);
   });
+  */
 
   it('should NOT render children when isOpen is false', () => {
-    const wrapper = mount(<PopperContent target="target">Yo!</PopperContent>);
+    const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
 
-    expect(wrapper.text()).toBe('');
+    expect(getInnerHTML(tree._vNode)).toBe('');
   });
 
   it('should render children when isOpen is true', () => {
-    const wrapper = mount(<PopperContent target="target" isOpen>Yo!</PopperContent>);
+    const tree = renderIntoDocument(<PopperContent target="target" isOpen>Yo!</PopperContent>);
 
-    expect(wrapper.text()).toBe('Yo!');
+    expect(getInnerHTML(tree._vNode.props.children)).toBe('<div style=\"position: absolute; pointer-events: none; opacity: 0;\" class=\"auto\">Yo!<span class=\"arrow\"></span></div>');
   });
-
+  
+  /*
   it('should render an Arrow in the Popper when isOpen is true', () => {
     const wrapper = mount(<PopperContent target="target" isOpen>Yo!</PopperContent>);
 
     expect(wrapper.containsMatchingElement(<Arrow />)).toBe(true);
-  });
-
-  it('should not render children', () => {
-    const wrapper = mount(<PopperContent target="target">Yo!</PopperContent>);
-
-    expect(wrapper.text()).toBe('');
   });
 
   it('should pass additional classNames to the wrap', () => {
@@ -87,20 +86,22 @@ describe('TetherContent', () => {
 
     expect(wrapper.hasClass('extra')).toBe(true);
   });
+  */
 
+  
   it('should pass additional classNames to the popper', () => {
-    const wrapper = shallow(<PopperContent className="extra" target="target" isOpen>Yo!</PopperContent>);
+    const tree = renderIntoDocument(<PopperContent className="extra" target="target" isOpen>Yo!</PopperContent>);
 
-    expect(wrapper.hasClass('extra')).toBe(false);
-    expect(wrapper.find('.extra').exists()).toBe(true);
+    expect(scryRenderedDOMElementsWithClass(tree, 'extra').length).toBe(1);
   });
 
   it('should have placement class of top by default', () => {
-    const wrapper = shallow(<PopperContent target="target" isOpen>Yo!</PopperContent>);
-
-    expect(wrapper.find('.auto').exists()).toBe(true);
+    const tree = renderIntoDocument(<PopperContent target="target" isOpen>Yo!</PopperContent>);
+    
+    expect(scryRenderedDOMElementsWithClass(tree, 'auto').length).toBe(1);
   });
-
+  
+  /*
   it('should override placement class', () => {
     const wrapper = shallow(<PopperContent placement="top" target="target" isOpen>Yo!</PopperContent>);
 

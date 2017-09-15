@@ -8,7 +8,7 @@ import {
 } from 'inferno-test-utils'
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import InputGroupAddon from '../../lib/Form/InputGroupAddon';
+import InputGroupAddon from '../../dist/Form/InputGroupAddon';
 
 describe('InputGroupAddon', () => {
   it('should render with "div" tag', () => {

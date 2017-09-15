@@ -3,7 +3,7 @@ import { renderIntoDocument } from 'inferno-test-utils'
 
 import { getInstance, hasClass, getTagName, getInnerHTML } from "../utils"
 
-import ModalBody from '../../lib/Modal/ModalBody'
+import ModalBody from '../../dist/Modal/ModalBody'
 
 describe('ModalBody', () => {
   it('should render with "modal-body" class', () => {

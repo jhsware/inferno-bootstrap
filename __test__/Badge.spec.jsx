@@ -6,7 +6,7 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import Badge from "../lib/Badge"
+import Badge from "../dist/Badge"
 
 describe("Badge", () => {
   it("Can be rendered", () => {
