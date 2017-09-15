@@ -12,6 +12,7 @@ const Card = (props) => {
     cssModule,
     color,
     block,
+    body,
     inverse,
     outline,
     tag: Tag,
@@ -20,9 +21,9 @@ const Card = (props) => {
   const classes = mapToCssModules(classNames(
     className,
     'card',
-    inverse ? 'card-inverse' : false,
-    block ? 'card-block' : false,
-    color ? `card${outline ? '-outline' : ''}-${color}` : false
+    inverse ? 'text-white' : false,
+    block || body ? 'card-body' : false,
+    color ? `${outline ? 'border' : 'bg'}-${color}` : false
   ), cssModule);
 
   return (

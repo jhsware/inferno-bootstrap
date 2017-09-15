@@ -5,6 +5,7 @@ import { mapToCssModules } from '../utils';
 const defaultProps = {
   tag: 'h4',
   wrapTag: 'div',
+  closeAriaLabel: 'Close'
 };
 
 const ModalHeader = (props) => {
@@ -16,6 +17,7 @@ const ModalHeader = (props) => {
     toggle,
     tag: Tag,
     wrapTag: WrapTag,
+    closeAriaLabel,
     ...attributes } = props;
 
   const classes = mapToCssModules(classNames(
@@ -25,7 +27,7 @@ const ModalHeader = (props) => {
 
   if (toggle) {
     closeButton = (
-      <button type="button" onClick={toggle} className="close" aria-label="Close">
+      <button type="button" onClick={toggle} className="close" aria-label={closeAriaLabel}>
         <span aria-hidden="true">{String.fromCharCode(215)}</span>
       </button>
     );

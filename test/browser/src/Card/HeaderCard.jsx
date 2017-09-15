@@ -1,7 +1,7 @@
 import { Section, Stage, Scene, Code, Narrative,  } from '../components.jsx'
 
 import Card from '../../../../lib/Card/Card.jsx'
-import CardBlock from '../../../../lib/Card/CardBlock.jsx'
+import CardBody from '../../../../lib/Card/CardBody.jsx'
 import CardHeader from '../../../../lib/Card/CardHeader.jsx'
 import CardFooter from '../../../../lib/Card/CardFooter.jsx'
 import CardText from '../../../../lib/Card/CardText.jsx'
@@ -18,20 +18,20 @@ export default function () {
         <Scene>
           <Card>
             <CardHeader>The Header</CardHeader>
-            <CardBlock>
+            <CardBody>
               <CardTitle>Special Title Treatment</CardTitle>
               <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-            </CardBlock>
+            </CardBody>
             <CardFooter className="text-right"><Button color="link">Go now...</Button></CardFooter>
           </Card>
 
           <Code>
 {`<Card>
   <CardHeader>The Header</CardHeader>
-  <CardBlock>
+  <CardBody>
     <CardTitle>Special Title Treatment</CardTitle>
     <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-  </CardBlock>
+  </CardBody>
   <CardFooter className="text-right"><Button color="link">Go now...</Button></CardFooter>
 </Card>`}
           </Code>  

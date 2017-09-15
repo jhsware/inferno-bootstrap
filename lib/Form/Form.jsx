@@ -6,6 +6,12 @@ const defaultProps = {
   tag: 'form',
 };
 
+/**
+ * 
+ * NOTE: I have removed the `inline`-attribute, this can be done with CSS
+ * which gives cleaner code and better separation of semantics and styling.
+ */
+
 const Form = (props) => {
   const {
     className,

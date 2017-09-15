@@ -6,6 +6,14 @@ const defaultProps = {
   tag: 'label',
 };
 
+/**
+ * 
+ * NOTE: I have removed the `inline`-attribute, this can be done with CSS
+ * which gives cleaner code and better separation of semantics and styling.
+ * 
+ * This affects widths property
+ */
+
 const Label = (props) => {
   const {
     className,

@@ -6,29 +6,23 @@ const defaultProps = {
   type: 'button'
 };
 
-const navbarToggleIcon = <span className="navbar-toggler-icon" />;
-
 const NavbarToggler = (props) => {
   const {
     className,
     cssModule,
     children,
-    right,
-    left,
     tag: Tag,
     ...attributes
   } = props;
 
   const classes = mapToCssModules(classNames(
     className,
-    'navbar-toggler',
-    right && 'navbar-toggler-right',
-    left && 'navbar-toggler-left'
+    'navbar-toggler'
   ), cssModule);
 
   return (
     <Tag {...attributes} className={classes}>
-      {children || navbarToggleIcon}
+      {children || <span className={mapToCssModules('navbar-toggler-icon', cssModule)} />}
     </Tag>
   );
 };

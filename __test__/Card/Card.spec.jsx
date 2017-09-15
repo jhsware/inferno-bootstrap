@@ -24,9 +24,9 @@ describe('Card', () => {
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card')).toBe(true);
-    expect(hasClass(tree._vNode, 'card-block')).toBe(true);
-    expect(hasClass(tree._vNode, 'card-primary')).toBe(true);
-    expect(hasClass(tree._vNode, 'card-inverse')).toBe(true);
+    expect(hasClass(tree._vNode, 'card-body')).toBe(true);
+    expect(hasClass(tree._vNode, 'bg-primary')).toBe(true);
+    expect(hasClass(tree._vNode, 'text-white')).toBe(true);
   });
 
   it('should render with "outline" class when a color is provided', () => {
@@ -34,8 +34,8 @@ describe('Card', () => {
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card')).toBe(true);
-    expect(hasClass(tree._vNode, 'card-block')).toBe(true);
-    expect(hasClass(tree._vNode, 'card-outline-primary')).toBe(true);
+    expect(hasClass(tree._vNode, 'card-body')).toBe(true);
+    expect(hasClass(tree._vNode, 'border-primary')).toBe(true);
   });
 
   it('should not render with "outline" class when a color is not provided (no default)', () => {
@@ -43,8 +43,7 @@ describe('Card', () => {
 
     expect(getInnerHTML(tree._vNode)).toBe('Yo!');
     expect(hasClass(tree._vNode, 'card')).toBe(true);
-    expect(hasClass(tree._vNode, 'card-block')).toBe(true);
-    expect(getOuterHTML(tree._vNode)).not.toContain('card-outline');
+    expect(hasClass(tree._vNode, 'card-body')).toBe(true);
   });
 
   it('should render additional classes', () => {

@@ -9,7 +9,9 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode } from "./utils"
+import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode, getAnimationFramPolyfill } from "./utils"
+
+getAnimationFramPolyfill()
 
 import ButtonDropdown from '../lib/ButtonDropdown.jsx';
 import DropdownToggle from '../lib/DropdownToggle.jsx';
