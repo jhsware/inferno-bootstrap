@@ -13,7 +13,7 @@ describe("Badge", () => {
     const tree = renderIntoDocument(<Badge>new</Badge>)
     
     expect(tree._vNode.dom.outerHTML).toBe(
-      '<span class="badge badge-default">new</span>'
+      '<span class="badge badge-secondary">new</span>'
     )
   })
 
@@ -29,7 +29,7 @@ describe("Badge", () => {
     const tree = renderIntoDocument(<Badge pill="true">new</Badge>)
     
     expect(tree._vNode.dom.outerHTML).toBe(
-      '<span class="badge badge-default badge-pill">new</span>'
+      '<span class="badge badge-secondary badge-pill">new</span>'
     )
   })
 })
