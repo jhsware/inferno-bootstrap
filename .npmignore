@@ -1,0 +1,12 @@
+launchon
+coverage
+node_modules
+.vscode
+docs
+npm-debug.log
+package-lock.json
+jest.config.js
+.travis.yml
+scripts
+test
+__test__
