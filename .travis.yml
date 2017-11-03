@@ -1,6 +1,9 @@
 language: node_js
 node_js:
 - '6.1'
+- '8.7'
+before_script:
+  - npm install -g babel-cli
 deploy:
   provider: npm
   email: sebastian@urbantalk.se
