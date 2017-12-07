@@ -74,12 +74,6 @@ describe('FormGroup', () => {
     expect(hasClass(tree._vNode, 'row')).toBe(false)
   })
 
-  it('should render with "has-${color}" class when color prop is provided', () => {
-    const tree = renderIntoDocument(<FormGroup color="yoyo">Yo!</FormGroup>)
-
-    expect(hasClass(tree._vNode, 'has-yoyo')).toBe(true)
-  })
-
   it('should render additional classes', () => {
     const tree = renderIntoDocument(<FormGroup className="other">Yo!</FormGroup>)
 

@@ -29,7 +29,7 @@
   "homepage": "https://github.com/jhsware/inferno-bootstrap#readme",
   "dependencies": {
     "classnames": "^2.2.5",
-    "inferno-animation": "^0.4.4",
+    "inferno-animation": "^0.4.10",
     "inferno-popper": "^0.1.9",
     "lodash.isfunction": "^3.0.8",
     "lodash.isobject": "^3.0.2",
@@ -39,7 +39,7 @@
     "inferno": "^3.8.0",
     "inferno-component": "^3.8.0",
     "inferno-shared": "^3.8.0",
-    "bootstrap": "^4.0.0-beta"
+    "bootstrap": "^4.0.0-beta.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

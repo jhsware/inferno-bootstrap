@@ -30,6 +30,19 @@ describe('FormText', () => {
     expect(hasClass(tree._vNode, 'form-text')).toBe(true)
   })
 
+  it('should render with "text-muted" class by default', () => {
+    const tree = renderIntoDocument(<FormText>Yo!</FormText>)
+
+    expect(hasClass(tree._vNode, 'text-muted')).toBe(true)
+  });
+
+  it('should render without "text-*" class when color is and empty string', () => {
+    const tree = renderIntoDocument(<FormText color="">Yo!</FormText>)
+
+    expect(hasClass(tree._vNode, 'text-muted')).toBe(false)
+    expect(hasClass(tree._vNode, 'text-')).toBe(false)
+  });
+
   it('should render with "text-${color}" class when color is provided', () => {
     const tree = renderIntoDocument(<FormText color="yoyo">Yo!</FormText>)
 

@@ -24,10 +24,10 @@ describe('FormFeedback', () => {
     expect(tree._vNode.dom.innerHTML).toBe('Yo!')
   })
 
-  it('should render with "form-control-feedback" class', () => {
+  it('should render with "invalid-feedback" class', () => {
     const tree = renderIntoDocument(<FormFeedback>Yo!</FormFeedback>)
 
-    expect(hasClass(tree._vNode, 'form-control-feedback')).toBe(true)
+    expect(hasClass(tree._vNode, 'invalid-feedback')).toBe(true)
   })
 
   it('should render additional classes', () => {
