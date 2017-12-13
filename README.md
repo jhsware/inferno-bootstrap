@@ -18,7 +18,7 @@ import Input from 'inferno-bootstrap/lib/Form/Input'
 ```
 
 You will find a working webpack.config file in the folder `test/browser`. Don't forget to add your .babelrc
-file and babel package devDepenecies.
+file and babel package devDepencies.
 
 ## Animations ##
 To simplify customising of animations `inferno-bootstrap` uses the [inferno-animation](https://github.com/jhsware/inferno-animation) library. To activate default animations, include the CSS from `node_modules/inferno-animation/css/defaultAnimations.css`. Check `inferno-animation` docs on how to customise your animations.
