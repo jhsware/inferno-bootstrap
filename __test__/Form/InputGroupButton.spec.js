@@ -13,76 +13,76 @@ import Button from '../../dist/Button';
 
 describe('InputGroupButton', () => {
   it('should render with "div" tag', () => {
-    const tree = renderIntoDocument(<InputGroupButton>Yo!</InputGroupButton>);
+    const tree = renderIntoDocument(<InputGroupButton addonType="append">Yo!</InputGroupButton>);
 
     expect(getTagName(tree._vNode)).toBe('div');
   });
 
-  it('should render with "input-group-btn" class', () => {
-    const tree = renderIntoDocument(<InputGroupButton>Yo!</InputGroupButton>);
+  it('should render with "input-group-append" class', () => {
+    const tree = renderIntoDocument(<InputGroupButton addonType="append">Yo!</InputGroupButton>);
 
-    expect(hasClass(tree._vNode, 'input-group-btn')).toBe(true);
+    expect(hasClass(tree._vNode, 'input-group-append')).toBe(true);
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<InputGroupButton tag="main">Yo!</InputGroupButton>);
+    const tree = renderIntoDocument(<InputGroupButton addonType="append" tag="main">Yo!</InputGroupButton>);
 
     expect(getTagName(tree._vNode)).toBe('main');
   });
 
   describe('Standard usage', () => {
     it('should render children provided', () => {
-      const tree = renderIntoDocument(<InputGroupButton><span>Yo!</span></InputGroupButton>);
+      const tree = renderIntoDocument(<InputGroupButton addonType="append"><span>Yo!</span></InputGroupButton>);
 
       expect(getTagName(tree.props.children.props.children)).toBe('span');
     });
 
     it('should render additional classes', () => {
-      const tree = renderIntoDocument(<InputGroupButton className="other"><span>Yo!</span></InputGroupButton>);
+      const tree = renderIntoDocument(<InputGroupButton addonType="append" className="other"><span>Yo!</span></InputGroupButton>);
 
       expect(hasClass(tree._vNode, 'other')).toBe(true);
-      expect(hasClass(tree._vNode, 'input-group-btn')).toBe(true);
+      expect(hasClass(tree._vNode, 'input-group-append')).toBe(true);
     });
   });
 
   describe('Shorthand usage', () => {
     it('should render a child Button', () => {
-      const tree = renderIntoDocument(<InputGroupButton>Yo!</InputGroupButton>);
+      const tree = renderIntoDocument(<InputGroupButton addonType="append">Yo!</InputGroupButton>);
 
       const elButton = findRenderedDOMElementWithClass(tree, 'btn')
       expect(elButton.tagName.toLowerCase()).toBe('button');
     });
 
     it('should render the string provided in the child Button', () => {
-      const tree = renderIntoDocument(<InputGroupButton>Yo!</InputGroupButton>);
+      const tree = renderIntoDocument(<InputGroupButton addonType="append">Yo!</InputGroupButton>);
       const elButton = findRenderedDOMElementWithClass(tree, 'btn')
       
       expect(elButton.textContent).toBe('Yo!');
     });
 
     it('should render additional props on the child Button', () => {
-      const tree = renderIntoDocument(<InputGroupButton color="rad">Yo!</InputGroupButton>);
+      const tree = renderIntoDocument(<InputGroupButton addonType="append" color="rad">Yo!</InputGroupButton>);
       const elButton = findRenderedDOMElementWithClass(tree, 'btn')
       
       expect(elButton.classList.contains('btn-rad')).toBe(true);
     });
 
     it('should render additional classes on the child Button', () => {
-      const tree = renderIntoDocument(<InputGroupButton className="yo">Yo!</InputGroupButton>);
+      const tree = renderIntoDocument(<InputGroupButton addonType="append" className="yo">Yo!</InputGroupButton>);
       const elButton = findRenderedDOMElementWithClass(tree, 'btn')
 
       expect(elButton.classList.contains('yo')).toBe(true);
     });
 
-    it('should render groupClassName as additional classes on the input-group-btn wrapper', () => {
-      const tree = renderIntoDocument(<InputGroupButton groupClassName="other">Yo!</InputGroupButton>);
+    it('should render groupClassName as additional classes on the input-group-append wrapper', () => {
+      const tree = renderIntoDocument(<InputGroupButton addonType="append" groupClassName="other">Yo!</InputGroupButton>);
 
       expect(hasClass(tree._vNode, 'other')).toBe(true);
-      expect(hasClass(tree._vNode, 'input-group-btn')).toBe(true);
+      expect(hasClass(tree._vNode, 'input-group-append')).toBe(true);
     });
 
-    it('should render groupAttributes as additional attributes on the input-group-btn wrapper', () => {
-      const tree = renderIntoDocument(<InputGroupButton groupAttributes={{ style: { textAlign: 'left' } }}>Yo!</InputGroupButton>);
+    it('should render groupAttributes as additional attributes on the input-group-append wrapper', () => {
+      const tree = renderIntoDocument(<InputGroupButton addonType="append" groupAttributes={{ style: { textAlign: 'left' } }}>Yo!</InputGroupButton>);
       
       expect(tree._vNode.dom.style['text-align']).toBe('left');
     });

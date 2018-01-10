@@ -32,3 +32,5 @@ $ ./scripts/generateDocs.sh
 ```
 
 Your docs will be placed in `project/docs`.
+
+TODO: Implement https://github.com/reactstrap/reactstrap/commit/5c5c2056b08b21502d8543e54cbc5341c966bf33
