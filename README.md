@@ -10,14 +10,14 @@ To use `infern-bootstrap` you need to include the Bootstrap CSS files, but not a
 $ npm install -S inferno-bootstrap inferno inferno-component bootstrap@4.0.0-beta.2
 ```
 
-To import transpiled code you import from the `/dist` directory:
+To use the components without requiring transpilation you import from the `/dist` directory:
 
 ```JavaScript
 import Input from 'inferno-bootstrap/dist/Form/Input'
 ```
  
 You can get a nicer debugging experience by importing your
-components from the original source code in the `/lib` directory. However this requires that you transpile node_module imports and add the contents of the .babelrc config file from this repos to your project:
+components from the original source code in the `/lib` directory. However this requires that you transpile `node_module/inferno-bootstrap` imports and add the contents of the .babelrc config file from this repos to your project:
 
 ```JavaScript
 import Input from 'inferno-bootstrap/lib/Form/Input'

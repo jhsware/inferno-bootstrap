@@ -1,15 +1,16 @@
 import Component from 'inferno-component'
-import { Section, Stage, Scene, Code } from '../components'
+import { Section, Stage, Scene, Code, Narrative } from '../components'
 
 import Form from '../../../../lib/Form/Form'
 import FormGroup from '../../../../lib/Form/FormGroup'
 import Input from '../../../../lib/Form/Input'
 import InputGroup from '../../../../lib/Form/InputGroup'
-import InputGroupButton from '../../../../lib/Form/InputGroupButton'
+import InputGroupAddon from '../../../../lib/Form/InputGroupAddon'
+import InputGroupButtonDropdown from '../../../../lib/Form/InputGroupButtonDropdown'
+
 import Label from '../../../../lib/Form/Label'
 
 import Button from '../../../../lib/Button';
-import ButtonGroup from '../../../../lib/ButtonGroup';
 import ButtonDropdown from '../../../../lib/ButtonDropdown';
 import DropdownToggle from '../../../../lib/DropdownToggle';
 import DropdownMenu from '../../../../lib/DropdownMenu';
@@ -24,18 +25,16 @@ export default function () {
             <FormGroup>
               <Label>Email:</Label>
               <InputGroup>
-                <InputGroupButton><Button>I'm a button</Button></InputGroupButton>
+                <InputGroupAddon addonType="prepend"><Button>I'm a button</Button></InputGroupAddon>
                 <Input type="email" name="email" placeholder="example@email.com" />
               </InputGroup>
             </FormGroup>
             <FormGroup>
               <Label>Price:</Label>
               <InputGroup>
-                <InputGroupButton><Button>Button life</Button></InputGroupButton>  
+                <InputGroupAddon addonType="prepend"><Button>Button life</Button></InputGroupAddon>
                 <Input type="number" name="Age" />
-                <InputGroupButton>
-                  <SampleDropdownButton color="primary" split/>
-                </InputGroupButton>
+                <SampleDropdownAddonButton addonType="append" color="primary" split/>
               </InputGroup>
             </FormGroup>
           </Form>
@@ -44,29 +43,25 @@ export default function () {
   <FormGroup>
     <Label>Email:</Label>
     <InputGroup>
-      <InputGroupButton><Button>I'm a button</Button></InputGroupButton>
+      <InputGroupAddon addonType="prepend"><Button>I'm a button</Button></InputGroupAddon>
       <Input type="email" name="email" placeholder="example@email.com" />
     </InputGroup>
   </FormGroup>
   <FormGroup>
     <Label>Price:</Label>
     <InputGroup>
-      <InputGroupButton><Button>Button life</Button></InputGroupButton>  
+      <InputGroupAddon addonType="prepend"><Button>Button life</Button></InputGroupAddon>
       <Input type="number" name="Age" />
-      <InputGroupButton>
-        <SampleDropdownButton color="primary" split/>
-      </InputGroupButton>
+      <SampleDropdownAddonButton addonType="append" color="primary" split/>
     </InputGroup>
   </FormGroup>
 </Form>`}  
-          </Code>  
-        </Scene>
-      </Stage>
-    </Section>
-  )
-}
-
-class SampleDropdownButton extends Component {
+          </Code>
+          <Narrative>
+            This is what the SampleDropdownAddonButton looks like:
+          </Narrative>
+          <Code>
+{`class SampleDropdownAddonButton extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -82,16 +77,53 @@ class SampleDropdownButton extends Component {
     })
   }
 
-  render({ children, ...props }) {
+  render({ children, addonType, ...props }) {
     return (
-      <ButtonDropdown isOpen={this.state.isOpen} toggle={this.doToggle}>
+      <InputGroupButtonDropdown addonType={addonType} isOpen={this.state.isOpen} toggle={this.doToggle}>
         <DropdownToggle {...props}>{children}</DropdownToggle>
         <DropdownMenu>
           <DropdownItem>Item 1</DropdownItem>
           <DropdownItem>Item 2</DropdownItem>
           <DropdownItem>Item 3</DropdownItem>
         </DropdownMenu>
-      </ButtonDropdown>
+      </InputGroupButtonDropdown>
+    )
+  }
+}`}
+
+          </Code>
+        </Scene>
+      </Stage>
+    </Section>
+  )
+}
+
+class SampleDropdownAddonButton extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isOpen: false
+    }
+
+    this.doToggle = this.doToggle.bind(this)
+  }
+
+  doToggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
+  render({ children, addonType, ...props }) {
+    return (
+      <InputGroupButtonDropdown addonType={addonType} isOpen={this.state.isOpen} toggle={this.doToggle}>
+        <DropdownToggle {...props}>{children}</DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem>Item 1</DropdownItem>
+          <DropdownItem>Item 2</DropdownItem>
+          <DropdownItem>Item 3</DropdownItem>
+        </DropdownMenu>
+      </InputGroupButtonDropdown>
     )
   }
 }

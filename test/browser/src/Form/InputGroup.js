@@ -5,7 +5,6 @@ import FormGroup from '../../../../lib/Form/FormGroup'
 import Input from '../../../../lib/Form/Input'
 import InputGroup from '../../../../lib/Form/InputGroup'
 import InputGroupAddon from '../../../../lib/Form/InputGroupAddon'
-import InputGroupButton from '../../../../lib/Form/InputGroupButton'
 import Label from '../../../../lib/Form/Label'
 
 export default function () {
@@ -17,7 +16,7 @@ export default function () {
             <FormGroup>
               <Label>Email:</Label>
               <InputGroup>
-                <InputGroupAddon>@</InputGroupAddon>
+                <InputGroupAddon addonType="prepend">@</InputGroupAddon>
                 <Input type="email" name="email" placeholder="example@email.com" />
               </InputGroup>
             </FormGroup>
@@ -25,7 +24,7 @@ export default function () {
               <Label>Price:</Label>
               <InputGroup>
                 <Input type="number" name="Age" />
-                <InputGroupAddon>SEK</InputGroupAddon>
+                <InputGroupAddon addonType="append">SEK</InputGroupAddon>
               </InputGroup>
             </FormGroup>
           </Form>
@@ -35,7 +34,7 @@ export default function () {
   <FormGroup>
     <Label>Email:</Label>
     <InputGroup>
-      <InputGroupAddon>@</InputGroupAddon>
+      <InputGroupAddon addonType="prepend">@</InputGroupAddon>
       <Input type="email" name="email" placeholder="example@email.com" />
     </InputGroup>
   </FormGroup>
@@ -43,7 +42,7 @@ export default function () {
     <Label>Price:</Label>
     <InputGroup>
       <Input type="number" name="Age" />
-      <InputGroupAddon>SEK</InputGroupAddon>
+      <InputGroupAddon addonType="append">SEK</InputGroupAddon>
     </InputGroup>
   </FormGroup>
 </Form>`}  
