@@ -1,4 +1,4 @@
-import Component from "inferno-component"
+import { Component } from 'inferno'
 import classnames from 'classnames'
 import { Link } from 'inferno-router'
 import Prism from "prismjs"

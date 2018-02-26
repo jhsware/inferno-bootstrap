@@ -1,4 +1,4 @@
-import Component from 'inferno-component'
+import { Component } from 'inferno'
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
 import Button from '../../../../lib/Button'

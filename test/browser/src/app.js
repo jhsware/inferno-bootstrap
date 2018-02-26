@@ -1,8 +1,6 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
+import { render, Component } from 'inferno'
 require('inferno-devtools')
-import { Router, Route, Redirect, IndexRoute, Link } from 'inferno-router'
-import createBrowserHistory from 'history/createBrowserHistory'
+import { BrowserRouter, Route, Link } from 'inferno-router'
 
 import BasicPage from './BasicPage'
 import CardPage from './CardPage'
@@ -10,44 +8,35 @@ import FormPage from './FormPage'
 import ModalPage from './ModalPage'
 import NavigationPage from './NavigationPage'
 
-class AppLayout extends Component {
+class App extends Component {
   
   getChildContext() {
     return {
       pageLinks: [
-        {link: "/inferno-bootstrap-docs/basic", title: "Basic"},
-        {link: "/inferno-bootstrap-docs/card", title: "Card"},
-        {link: "/inferno-bootstrap-docs/form", title: "Form"},
-        {link: "/inferno-bootstrap-docs/modal", title: "Modal"},
-        {link: "/inferno-bootstrap-docs/navigation", title: "Navigation"}
+        {link: "/basic", title: "Basic"},
+        {link: "/card", title: "Card"},
+        {link: "/form", title: "Form"},
+        {link: "/modal", title: "Modal"},
+        {link: "/navigation", title: "Navigation"}
       ]
     }
   }
 
   render () {
     return (
+      <BrowserRouter>
         <div className="Content">
-          {this.props.children}
+           <Route path="/basic" component={ BasicPage } />
+           <Route path="/card" component={ CardPage } />
+           <Route path="/form" component={ FormPage } />
+           <Route path="/modal" component={ ModalPage } />
+           <Route path="/navigation" component={ NavigationPage } />
         </div>
+      </BrowserRouter>
     )
   }
 }
 
 if (typeof window !== 'undefined') {
-  const browserHistory = createBrowserHistory()
-
-  const appRoutes = (
-    <Router history={ browserHistory }>
-      <Route path="/inferno-bootstrap-docs" component={ AppLayout }>
-        <IndexRoute component={ BasicPage } />
-        <Route path="/basic" component={BasicPage} />
-        <Route path="/card" component={CardPage } />
-        <Route path="/form" component={FormPage} />
-        <Route path="/modal" component={ModalPage} />
-        <Route path="/navigation" component={NavigationPage} />
-      </Route>
-      <Redirect from="/*" to="/inferno-bootstrap-docs" />
-    </Router>
-  )
-  Inferno.render(appRoutes, document.getElementById('app'))
+  render(<App />, document.getElementById('app'))
 }
