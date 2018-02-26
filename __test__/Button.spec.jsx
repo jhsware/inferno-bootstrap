@@ -17,7 +17,7 @@ describe("Buttons", () => {
     it("Can be rendered", () => {
       const tree = renderIntoDocument(<Button>Click me!</Button>)
       
-      expect(tree._vNode.dom.outerHTML).toBe(
+      expect(tree.$V.dom.outerHTML).toBe(
         '<button class="btn btn-secondary">Click me!</button>'
       )
     })
@@ -25,7 +25,7 @@ describe("Buttons", () => {
     it("Can be rendered with color primary", () => {
       const tree = renderIntoDocument(<Button color="primary">Click me!</Button>)
       
-      expect(tree._vNode.dom.outerHTML).toBe(
+      expect(tree.$V.dom.outerHTML).toBe(
         '<button class="btn btn-primary">Click me!</button>'
       )
     })
@@ -33,7 +33,7 @@ describe("Buttons", () => {
     it("Renders as a-tag when href provided", () => {
       const tree = renderIntoDocument(<Button href="#">Click me!</Button>)
       
-      expect(tree._vNode.dom.outerHTML).toBe(
+      expect(tree.$V.dom.outerHTML).toBe(
         '<a href="#" class="btn btn-secondary">Click me!</a>'
       )
     })
@@ -72,7 +72,7 @@ describe("Buttons", () => {
     it("Can be rendered", () => {
       const tree = renderIntoDocument(<ButtonGroup>Content</ButtonGroup>)
       
-      expect(tree._vNode.dom.outerHTML).toBe(
+      expect(tree.$V.dom.outerHTML).toBe(
         '<div role="group" class="btn-group">Content</div>'
       )
     })
@@ -80,7 +80,7 @@ describe("Buttons", () => {
     it("Can be rendered vertically", () => {
       const tree = renderIntoDocument(<ButtonGroup vertical="true">Content</ButtonGroup>)
       
-      expect(tree._vNode.dom.outerHTML).toBe(
+      expect(tree.$V.dom.outerHTML).toBe(
         '<div role="group" class="btn-group-vertical">Content</div>'
       )
     })
@@ -90,7 +90,7 @@ describe("Buttons", () => {
     it("Can be rendered", () => {
       const tree = renderIntoDocument(<ButtonToolbar>Content</ButtonToolbar>)
       
-      expect(tree._vNode.dom.outerHTML).toBe(
+      expect(tree.$V.dom.outerHTML).toBe(
         '<div role="toolbar" class="btn-toolbar">Content</div>'
       )
     })

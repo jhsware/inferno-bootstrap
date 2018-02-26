@@ -44,13 +44,13 @@ describe('TetherContent', () => {
   it('should render a Manager by default', () => {
     const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
 
-    expect(tree._vNode.props.children.children._lastInput.children instanceof Manager).toBe(true);
+    expect(tree.$V.props.children.children._lastInput.children instanceof Manager).toBe(true);
   });
   
   it('should render a Manager as a span by default', () => {
     const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
 
-    const instance = getInstance(tree._vNode);
+    const instance = getInstance(tree.$V);
     expect(instance._lastInput.children instanceof Manager).toBe(true);
   });
   
@@ -65,13 +65,13 @@ describe('TetherContent', () => {
   it('should NOT render children when isOpen is false', () => {
     const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
 
-    expect(getInnerHTML(tree._vNode)).toBe('');
+    expect(getInnerHTML(tree.$V)).toBe('');
   });
 
   it('should render children when isOpen is true', () => {
     const tree = renderIntoDocument(<PopperContent target="target" isOpen>Yo!</PopperContent>);
 
-    expect(getInnerHTML(tree._vNode.props.children)).toBe('<div style=\"position: absolute; pointer-events: none; opacity: 0;\" class=\"auto\">Yo!<span class=\"arrow\"></span></div>');
+    expect(getInnerHTML(tree.$V.props.children)).toBe('<div style=\"position: absolute; pointer-events: none; opacity: 0;\" class=\"auto\">Yo!<span class=\"arrow\"></span></div>');
   });
   
   /*

@@ -15,24 +15,24 @@ describe('Form', () => {
   it('should render with "form" tag', () => {
     const tree = renderIntoDocument(<Form>Yo!</Form>)
 
-    expect(getTagName(tree._vNode)).toBe('form')
+    expect(getTagName(tree.$V)).toBe('form')
   })
 
   it('should render children', () => {
     const tree = renderIntoDocument(<Form>Yo!</Form>)
 
-    expect(tree._vNode.dom.innerHTML).toBe('Yo!')
+    expect(tree.$V.dom.innerHTML).toBe('Yo!')
   })
 
   it('should render additional classes', () => {
     const tree = renderIntoDocument(<Form className="other">Yo!</Form>)
 
-    expect(hasClass(tree._vNode, 'other')).toBe(true)
+    expect(hasClass(tree.$V, 'other')).toBe(true)
   })
 
   it('should render custom tag', () => {
     const tree = renderIntoDocument(<Form tag="main">Yo!</Form>)
 
-    expect(getTagName(tree._vNode)).toBe('main')
+    expect(getTagName(tree.$V)).toBe('main')
   })
 })

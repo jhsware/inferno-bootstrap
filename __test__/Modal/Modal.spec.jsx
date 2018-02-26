@@ -64,7 +64,7 @@ describe('Modal', () => {
     );
 
     jest.runTimersToTime(300)
-    expect(tree._vNode.children.length).toBe(undefined);
+    expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
     
   });
@@ -78,7 +78,7 @@ describe('Modal', () => {
     );
 
     jest.runTimersToTime(300)
-    expect(tree._vNode.children.length).toBe(undefined);
+    expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
   });
 
@@ -91,7 +91,7 @@ describe('Modal', () => {
     );
 
     jest.runTimersToTime(300)
-    expect(tree._vNode.children.length).toBe(undefined);
+    expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(0);
     expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
   });
@@ -105,7 +105,7 @@ describe('Modal', () => {
     );
     
     jest.runTimersToTime(300)
-    expect(tree._vNode.children.length).toBe(undefined);
+    expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('my-custom-modal').length).toBe(1);
     expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
     // expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);

@@ -15,31 +15,31 @@ describe('ListGroup', () => {
   it('should render with "list-group" class', () => {
     const tree = renderIntoDocument(<ListGroup>Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree._vNode)).toBe('Yo!');
-    expect(hasClass(tree._vNode, 'list-group')).toBe(true);
+    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(hasClass(tree.$V, 'list-group')).toBe(true);
   });
 
   it('should render with "flush"', () => {
     const tree = renderIntoDocument(<ListGroup flush>Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree._vNode)).toBe('Yo!');
-    expect(hasClass(tree._vNode, 'list-group')).toBe(true);
-    expect(hasClass(tree._vNode, 'list-group-flush')).toBe(true);
+    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(hasClass(tree.$V, 'list-group')).toBe(true);
+    expect(hasClass(tree.$V, 'list-group-flush')).toBe(true);
   });
 
   it('should render additional classes', () => {
     const tree = renderIntoDocument(<ListGroup className="other">Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree._vNode)).toBe('Yo!');
-    expect(hasClass(tree._vNode, 'other')).toBe(true);
-    expect(hasClass(tree._vNode, 'list-group')).toBe(true);
+    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(hasClass(tree.$V, 'other')).toBe(true);
+    expect(hasClass(tree.$V, 'list-group')).toBe(true);
   });
 
   it('should render custom tag', () => {
     const tree = renderIntoDocument(<ListGroup tag="main">Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree._vNode)).toBe('Yo!');
-    expect(hasClass(tree._vNode, 'list-group')).toBe(true);
-    expect(getTagName(tree._vNode)).toBe('main');
+    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(hasClass(tree.$V, 'list-group')).toBe(true);
+    expect(getTagName(tree.$V)).toBe('main');
   });
 });

@@ -15,22 +15,22 @@ describe('CardLink', () => {
   it('should render with "card-link" class', () => {
     const tree = renderIntoDocument(<CardLink>Yo!</CardLink>);
 
-    expect(getInnerHTML(tree._vNode)).toBe('Yo!');
-    expect(hasClass(tree._vNode, 'card-link')).toBe(true);
+    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(hasClass(tree.$V, 'card-link')).toBe(true);
   });
 
   it('should render additional classes', () => {
     const tree = renderIntoDocument(<CardLink className="other">Yo!</CardLink>);
 
-    expect(hasClass(tree._vNode, 'other')).toBe(true);
-    expect(hasClass(tree._vNode, 'card-link')).toBe(true);
+    expect(hasClass(tree.$V, 'other')).toBe(true);
+    expect(hasClass(tree.$V, 'card-link')).toBe(true);
   });
 
   it('should render custom tag', () => {
     const tree = renderIntoDocument(<CardLink tag="button">Yo!</CardLink>);
 
-    expect(getInnerHTML(tree._vNode)).toBe('Yo!');
-    expect(hasClass(tree._vNode, 'card-link')).toBe(true);
-    expect(getTagName(tree._vNode)).toBe('button');
+    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(hasClass(tree.$V, 'card-link')).toBe(true);
+    expect(getTagName(tree.$V)).toBe('button');
   });
 });

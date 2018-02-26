@@ -14,11 +14,11 @@ import ListGroupItemText from "../../dist/List/ListGroupItemText"
 describe('ListGroupItem', () => {
   it('should render children', () => {
     const tree = renderIntoDocument(<ListGroupItemText>Yo!</ListGroupItemText>);
-    expect(getInnerHTML(tree._vNode)).toBe('Yo!');
+    expect(getInnerHTML(tree.$V)).toBe('Yo!');
   });
 
   it('should render with "list-group-item-text" class', () => {
     const tree = renderIntoDocument(<ListGroupItemText>Yo!</ListGroupItemText>);
-    expect(hasClass(tree._vNode, 'list-group-item-text')).toBe(true);
+    expect(hasClass(tree.$V, 'list-group-item-text')).toBe(true);
   });
 });
