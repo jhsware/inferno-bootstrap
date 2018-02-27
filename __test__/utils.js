@@ -1,6 +1,5 @@
-import {
-  render
-} from "inferno";
+import { Component, render, createComponentVNode } from "inferno";
+import { VNodeFlags } from 'inferno-vnode-flags';
 
 export function hasClass(vNode, className) {
   return vNode.dom.classList.value.split(" ").indexOf(className) >= 0
@@ -52,4 +51,15 @@ export function getAnimationFramePolyfill () {
       window.cancelAnimationFrame = function(id) {
           clearTimeout(id);
       };
+}
+
+export class Wrapper extends Component {
+  render() {
+    return this.props.children;
+  }
+}
+
+export function renderIntoDocument(input, container) {
+  if (container === undefined) container = document.createElement('div');
+  return render(createComponentVNode(VNodeFlags.ComponentClass, Wrapper, { children: input }), container);
 }

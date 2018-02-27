@@ -1,7 +1,7 @@
-import { render } from "inferno"
 import sinon from "sinon"
+import { render } from 'inferno'
+import { renderIntoDocument } from './utils'
 import { 
-  renderIntoDocument,
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
   isVNode
@@ -34,37 +34,35 @@ describe("Buttons", () => {
       const tree = renderIntoDocument(<Button href="#">Click me!</Button>)
       
       expect(tree.$V.dom.outerHTML).toBe(
-        '<a href="#" class="btn btn-secondary">Click me!</a>'
+        '<a class="btn btn-secondary" href="#">Click me!</a>'
       )
     })
 
     it("Clicking disabled button does nothing", () => {
-      const testClick = {
-        didClick: () => {}
-      }
-      const clickSpy = sinon.spy(testClick, 'didClick')
+      let container = document.createElement('div')
+      const spy = sinon.spy()
+      const tree = renderIntoDocument(<Button disabled="true" onClick={spy}>Click me!</Button>, container)
 
-      const tree = renderIntoDocument(<Button disabled="true" onClick={testClick.didClick}>Click me!</Button>)
-
-      const vnode = findRenderedVNodeWithType(tree, "button")
-      vnode.dom.click()
-      
-      expect(clickSpy.calledOnce).toBe(false)
+      const button = container.querySelector('button');
+      button.click()
+      //const vnode = findRenderedVNodeWithType(tree, "button")
+      //vnode.props.onClick()
+      expect("This is a false positive!").toBe(false)
+      expect(spy.calledOnce).toBe(false)
     })
 
     it("Clicking button calls onClick", () => {
-
-      const testClick = {
-        didClick: () => {}
-      }
-      const clickSpy = sinon.spy(testClick, 'didClick')
-
-      const tree = renderIntoDocument(<Button onClick={testClick.didClick}>Click me!</Button>)
-
-      const vnode = findRenderedVNodeWithType(tree, "button")
-      vnode.dom.click()
+      let clickCount = 0
       
-      expect(clickSpy.calledOnce).toBe(true)
+      const spy = sinon.spy(obj.func)
+      const tree = renderIntoDocument(<Button onClick={() => clickCount++}>Click me!</Button>)
+
+      const button = container.querySelector('button');
+      button.click()
+      // const vnode = findRenderedVNodeWithType(tree, "button")
+      // vnode.props.onClick()
+      expect(clickCount).toBe(1)
+      // expect(spy.calledOnce).toBe(true)      
     })
   })
 
@@ -73,7 +71,7 @@ describe("Buttons", () => {
       const tree = renderIntoDocument(<ButtonGroup>Content</ButtonGroup>)
       
       expect(tree.$V.dom.outerHTML).toBe(
-        '<div role="group" class="btn-group">Content</div>'
+        '<div class="btn-group" role="group">Content</div>'
       )
     })
 
@@ -81,7 +79,7 @@ describe("Buttons", () => {
       const tree = renderIntoDocument(<ButtonGroup vertical="true">Content</ButtonGroup>)
       
       expect(tree.$V.dom.outerHTML).toBe(
-        '<div role="group" class="btn-group-vertical">Content</div>'
+        '<div class="btn-group-vertical" role="group">Content</div>'
       )
     })
   })
@@ -91,7 +89,7 @@ describe("Buttons", () => {
       const tree = renderIntoDocument(<ButtonToolbar>Content</ButtonToolbar>)
       
       expect(tree.$V.dom.outerHTML).toBe(
-        '<div role="toolbar" class="btn-toolbar">Content</div>'
+        '<div class="btn-toolbar" role="toolbar">Content</div>'
       )
     })
   })

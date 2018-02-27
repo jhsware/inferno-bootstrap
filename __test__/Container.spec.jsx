@@ -1,7 +1,7 @@
 import { render } from "inferno"
 import sinon from "sinon"
+import { renderIntoDocument } from './utils'
 import { 
-  renderIntoDocument,
   scryRenderedDOMElementsWithClass,
   scryRenderedDOMElementsWithTag,
   findRenderedDOMElementWithClass,

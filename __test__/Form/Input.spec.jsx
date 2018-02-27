@@ -1,6 +1,6 @@
 import { render } from "inferno"
+import { renderIntoDocument } from '../utils'
 import { 
-  renderIntoDocument,
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
   isVNode,
@@ -12,19 +12,19 @@ import Input from "../../dist/Form/Input"
 
 describe('Input', () => {
   it('should render with "input" tag when no type is provided', () => {
-    const tree = renderIntoDocument(<Input>Yo!</Input>)
+    const tree = renderIntoDocument(<Input />)
 
     expect(getTagName(tree.$V)).toBe('input')
   })
 
   it('should render with "select" tag when type is "select"', () => {
-    const tree = renderIntoDocument(<Input type="select">Yo!</Input>)
+    const tree = renderIntoDocument(<Input type="select" />)
 
     expect(getTagName(tree.$V)).toBe('select')
   })
 
   it('should render with "textarea" tag when type is "textarea"', () => {
-    const tree = renderIntoDocument(<Input type="textarea">Yo!</Input>)
+    const tree = renderIntoDocument(<Input type="textarea" />)
 
     expect(getTagName(tree.$V)).toBe('textarea')
   })
@@ -65,10 +65,15 @@ describe('Input', () => {
     expect(getTagName(tree.$V)).toBe('input')
   })
 
-  it('should render children', () => {
-    const tree = renderIntoDocument(<Input>Yo!</Input>)
+  it('should not allow children', () => {
+    let fail = false
+    try {
+      const tree = renderIntoDocument(<Input>Yo!</Input>)
+    } catch (e) {
+      fail = true
+    }
 
-    expect(tree.$V.dom.innerHTML).toBe('Yo!')
+    expect(fail).toBe(true)
   })
 
   it('should render with "is-invalid" class when valid is false', () => {
@@ -174,7 +179,7 @@ describe('Input', () => {
   })
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<Input className="other">Yo!</Input>)
+    const tree = renderIntoDocument(<Input className="other" />)
 
     expect(hasClass(tree.$V, 'other')).toBe(true)
   })

@@ -1,7 +1,7 @@
 import { render } from "inferno"
 import sinon from "sinon"
+import { renderIntoDocument } from './utils'
 import { 
-  renderIntoDocument,
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
   isVNode
@@ -14,7 +14,7 @@ describe("Progress", () => {
     const tree = renderIntoDocument(<Progress value="25" />)
     
     expect(tree.$V.dom.outerHTML).toBe(
-      '<div class="progress"><div style="width: 25%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar"></div></div>'
+      '<div class="progress"><div class="progress-bar" style="width: 25%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div>'
     )
   })
 
@@ -22,7 +22,7 @@ describe("Progress", () => {
     const tree = renderIntoDocument(<Progress value="25" bar="true"/>)
     
     expect(tree.$V.dom.outerHTML).toBe(
-      '<div style="width: 25%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar"></div>'
+      '<div class="progress-bar" style="width: 25%;" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>'
     )
   })
 })

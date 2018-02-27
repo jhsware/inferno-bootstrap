@@ -1,6 +1,6 @@
 import { render } from "inferno"
+import { renderIntoDocument } from '../utils'
 import {
-  renderIntoDocument,
   scryRenderedDOMElementsWithClass,
   findRenderedDOMElementWithTag
 } from 'inferno-test-utils'

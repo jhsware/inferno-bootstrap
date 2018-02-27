@@ -1,7 +1,7 @@
 import { render } from "inferno"
 import sinon from "sinon"
+import { renderIntoDocument } from './utils'
 import { 
-  renderIntoDocument,
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
   isVNode
@@ -14,7 +14,7 @@ describe("Alert", () => {
     const tree = renderIntoDocument(<Alert>This looks fine!</Alert>)
     
     expect(tree.$V.dom.outerHTML).toBe(
-      '<div role="alert" class="alert alert-success">This looks fine!</div>'
+      '<div class="alert alert-success" role="alert">This looks fine!</div>'
     )
   })
 
@@ -22,7 +22,7 @@ describe("Alert", () => {
     const tree = renderIntoDocument(<Alert color="warning">This looks fine!</Alert>)
     
     expect(tree.$V.dom.outerHTML).toBe(
-      '<div role="alert" class="alert alert-warning">This looks fine!</div>'
+      '<div class="alert alert-warning" role="alert">This looks fine!</div>'
     )
   })
 
@@ -34,17 +34,12 @@ describe("Alert", () => {
   })
 
   it("Clicking close button calls onClose", () => {
-
-    const testClick = {
-      didClick: () => {}
-    }
-    const clickSpy = sinon.spy(testClick, 'didClick')
-
-    const tree = renderIntoDocument(<Alert onClose={testClick.didClick}>This looks fine!</Alert>)
+    const spy = sinon.spy()
+    const tree = renderIntoDocument(<Alert onClose={spy}>This looks fine!</Alert>)
 
     const vnode = findRenderedVNodeWithType(tree, "button")
-    vnode.dom.click()
+    vnode.props.onClick()
     
-    expect(clickSpy.calledOnce).toBe(true)
+    expect(spy.calledOnce).toBe(true)
   })
 })

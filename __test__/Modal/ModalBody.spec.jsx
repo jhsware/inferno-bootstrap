@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from 'inferno-test-utils'
+import { renderIntoDocument } from '../utils'
 
 import { getInstance, hasClass, getTagName, getInnerHTML } from "../utils"
 
