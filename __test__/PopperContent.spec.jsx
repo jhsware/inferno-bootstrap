@@ -5,6 +5,7 @@ import {
   scryRenderedDOMElementsWithClass,
   scryRenderedDOMElementsWithTag,
   findRenderedDOMElementWithTag,
+  findVNodeWithType,
   isVNode,
   isVNodeOfType
 } from 'inferno-test-utils'
@@ -42,25 +43,26 @@ describe('TetherContent', () => {
   });
 
   it('should render a Manager by default', () => {
-    const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
+    const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
 
-    expect(tree.$V.props.children.children._lastInput.children instanceof Manager).toBe(true);
+    const node = findVNodeWithType(tree.$V, Manager)
+    expect(node).toBeDefined()
   });
   
   it('should render a Manager as a span by default', () => {
-    const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
+    const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
 
-    const instance = getInstance(tree.$V);
-    expect(instance._lastInput.children instanceof Manager).toBe(true);
+    const node = findVNodeWithType(tree.$V, Manager)
+    expect(node).toBeDefined()
   });
   
-  /*
   it('should render a PopperTargetHelper', () => {
-    const wrapper = mount(<PopperContent target="target">Yo!</PopperContent>);
+    const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
 
-    expect(wrapper.containsMatchingElement(<PopperTargetHelper target="target" />)).toBe(true);
+    // expect(wrapper.containsMatchingElement(<PopperTargetHelper target="target" />)).toBe(true);
+    expect(findVNodeWithType(tree.$V, PopperTargetHelper)).toBeDefined();
+    
   });
-  */
 
   it('should NOT render children when isOpen is false', () => {
     const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
@@ -69,24 +71,23 @@ describe('TetherContent', () => {
   });
 
   it('should render children when isOpen is true', () => {
-    const tree = renderIntoDocument(<PopperContent target="target" isOpen>Yo!</PopperContent>);
+    const tree = render(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
 
-    expect(getInnerHTML(tree.$V.props.children)).toBe('<div style=\"position: absolute; pointer-events: none; opacity: 0;\" class=\"auto\">Yo!<span class=\"arrow\"></span></div>');
+    expect(getInnerHTML(tree.$V)).toBe('<div class=\"auto\" style=\"position: absolute; pointer-events: none; opacity: 0;\">Yo!<span class=\"arrow\"></span></div>');
   });
   
-  /*
+  
   it('should render an Arrow in the Popper when isOpen is true', () => {
-    const wrapper = mount(<PopperContent target="target" isOpen>Yo!</PopperContent>);
+    const tree = render(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
 
-    expect(wrapper.containsMatchingElement(<Arrow />)).toBe(true);
+    expect(findVNodeWithType(tree.$V, Arrow)).toBeDefined();
   });
 
   it('should pass additional classNames to the wrap', () => {
-    const wrapper = shallow(<PopperContent wrapClassName="extra" target="target">Yo!</PopperContent>);
+    const tree = render(<PopperContent wrapClassName="extra" target="target">Yo!</PopperContent>, container);
 
-    expect(wrapper.hasClass('extra')).toBe(true);
+    expect(hasClass(tree.$V, 'extra')).toBe(true);
   });
-  */
 
   
   it('should pass additional classNames to the popper', () => {
@@ -101,27 +102,27 @@ describe('TetherContent', () => {
     expect(scryRenderedDOMElementsWithClass(tree, 'auto').length).toBe(1);
   });
   
-  /*
   it('should override placement class', () => {
-    const wrapper = shallow(<PopperContent placement="top" target="target" isOpen>Yo!</PopperContent>);
-
-    expect(wrapper.find('.auto').exists()).toBe(false);
-    expect(wrapper.find('.top').exists()).toBe(true);
+    const tree = render(<PopperContent placement="top" target="target" isOpen>Yo!</PopperContent>, container);
+    
+    expect(scryRenderedDOMElementsWithClass(tree, 'auto').length).toBe(0);
+    expect(scryRenderedDOMElementsWithClass(tree, 'top').length).toBe(1);
   });
-
+  
   it('should allow for a placement prefix', () => {
-    const wrapper = shallow(<PopperContent placementPrefix="dropdown" target="target" isOpen>Yo!</PopperContent>);
-
-    expect(wrapper.find('.dropdown-auto').exists()).toBe(true);
+    const tree = render(<PopperContent placementPrefix="dropdown" target="target" isOpen>Yo!</PopperContent>, container);
+    
+    expect(scryRenderedDOMElementsWithClass(tree, 'dropdown-auto').length).toBe(1);
   });
-
+  
   it('should allow for a placement prefix with custom placement', () => {
-    const wrapper = shallow(<PopperContent placementPrefix="dropdown" placement="top" target="target" isOpen>Yo!</PopperContent>);
-
-    expect(wrapper.find('.dropdown-auto').exists()).toBe(false);
-    expect(wrapper.find('.dropdown-top').exists()).toBe(true);
+    const tree = render(<PopperContent placementPrefix="dropdown" placement="top" target="target" isOpen>Yo!</PopperContent>, container);
+    
+    expect(scryRenderedDOMElementsWithClass(tree, 'dropdown-auto').length).toBe(0);
+    expect(scryRenderedDOMElementsWithClass(tree, 'dropdown-top').length).toBe(1);
   });
-
+  
+  /*
   it('should render custom wrap tag', () => {
     const wrapper = mount(<PopperContent wrapTag="main" target="target">Yo!</PopperContent>);
 

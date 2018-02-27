@@ -63,3 +63,24 @@ export function renderIntoDocument(input, container) {
   if (container === undefined) container = document.createElement('div');
   return render(createComponentVNode(VNodeFlags.ComponentClass, Wrapper, { children: input }), container);
 }
+
+export function triggerEvent(name, element) {
+  let eventType;
+
+  if (name === 'click' || name === 'dblclick' || name === 'mousedown' || name === 'mouseup') {
+    eventType = 'MouseEvents';
+  } else if (name === 'focus' || name === 'change' || name === 'blur' || name === 'input' || name === 'select') {
+    eventType = 'HTMLEvents';
+  } else {
+    throw new Error('Unsupported `"' + name + '"`event');
+  }
+  const event = document.createEvent(eventType);
+  if (eventType === 'MouseEvents') {
+    // Simulate left click always
+    Object.defineProperty(event, 'button', {
+      value: 0
+    });
+  }
+  event.initEvent(name, name !== 'change', true);
+  element.dispatchEvent(event, true);
+}

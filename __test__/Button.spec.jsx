@@ -1,6 +1,6 @@
 import sinon from "sinon"
 import { render } from 'inferno'
-import { renderIntoDocument } from './utils'
+import { renderIntoDocument, triggerEvent } from './utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -12,6 +12,19 @@ import ButtonGroup from "../dist/ButtonGroup"
 import ButtonToolbar from "../dist/ButtonToolbar"
 
 describe("Buttons", () => {
+
+  let container;
+
+  beforeEach(function() {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(function() {
+    render(null, container);
+    container.innerHTML = '';
+    document.body.removeChild(container);
+  });
 
   describe("Button", () => {
     it("Can be rendered", () => {
@@ -39,30 +52,21 @@ describe("Buttons", () => {
     })
 
     it("Clicking disabled button does nothing", () => {
-      let container = document.createElement('div')
-      const spy = sinon.spy()
-      const tree = renderIntoDocument(<Button disabled="true" onClick={spy}>Click me!</Button>, container)
+      const onClick = jest.fn()
+      render(<Button disabled="true" onClick={onClick}>Click me!</Button>, container)
 
-      const button = container.querySelector('button');
-      button.click()
-      //const vnode = findRenderedVNodeWithType(tree, "button")
-      //vnode.props.onClick()
-      expect("This is a false positive!").toBe(false)
-      expect(spy.calledOnce).toBe(false)
+      triggerEvent('click', container.firstChild)
+
+      expect(onClick).toHaveBeenCalledTimes(0)
     })
 
     it("Clicking button calls onClick", () => {
-      let clickCount = 0
-      
-      const spy = sinon.spy(obj.func)
-      const tree = renderIntoDocument(<Button onClick={() => clickCount++}>Click me!</Button>)
+      const onClick = jest.fn()
+      render(<Button onClick={onClick}>Click me!</Button>, container)
 
-      const button = container.querySelector('button');
-      button.click()
-      // const vnode = findRenderedVNodeWithType(tree, "button")
-      // vnode.props.onClick()
-      expect(clickCount).toBe(1)
-      // expect(spy.calledOnce).toBe(true)      
+      triggerEvent('click', container.firstChild)
+
+      expect(onClick).toHaveBeenCalledTimes(1)
     })
   })
 
