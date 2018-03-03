@@ -2,7 +2,7 @@
   "name": "inferno-bootstrap",
   "version": "0.4.3",
   "description": "Bootstrap as Inferno components, adapted from Reactstrap",
-  "main": "index",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "test-browser": "npm run build-test && node test/browser/server",
