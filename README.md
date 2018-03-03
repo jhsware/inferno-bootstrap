@@ -7,7 +7,7 @@ View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
 
 inferno-bootstrap >= 0.4.x supports Inferno v4
 
-Reactstrap components not yet imported:
+Reactstrap components not yet ported:
 - Uncontrolled input components
 - Media
 - Fade
