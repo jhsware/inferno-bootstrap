@@ -29,17 +29,17 @@
   "homepage": "https://github.com/jhsware/inferno-bootstrap#readme",
   "dependencies": {
     "classnames": "^2.2.5",
+    "inferno": "^4.0.3",
     "inferno-animation": "^0.6.0",
+    "inferno-create-element": "^4.0.4",
     "inferno-popper": "^0.2.0",
+    "inferno-shared": "^4.0.3",
     "inferno-vnode-flags": "^4.0.3",
     "lodash.isfunction": "^3.0.8",
     "lodash.isobject": "^3.0.2",
     "lodash.tonumber": "^4.0.3"
   },
   "peerDependencies": {
-    "inferno": "^4.0.3",
-    "inferno-component": "^4.0.3",
-    "inferno-shared": "^4.0.3",
     "bootstrap": "^4.0.0"
   },
   "devDependencies": {
@@ -56,13 +56,8 @@
     "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^4.0.0",
     "express": "^4.16.2",
-    "history": "^4.7.2",
-    "inferno": "^4.0.3",
-    "inferno-component": "^4.0.3",
-    "inferno-create-element": "^4.0.4",
     "inferno-devtools": "^4.0.3",
     "inferno-router": "^4.0.3",
-    "inferno-shared": "^4.0.3",
     "inferno-test-utils": "^4.0.3",
     "jest": "^22.4.2",
     "jsdom": "^11.6.2",
