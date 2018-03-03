@@ -15,7 +15,7 @@ Reactstrap components not yet ported:
 - Tooltip
 - Form inline attribute (you can do it by adding bootstrap classes manually)
 
-To understand how to use this, check the docs, the excellent Bootstrap 4 website and the source code.
+To understand how to use `inferno-bootstrap`, visit the component docs and the excellent Bootstrap 4 website. When confused, check out the source code and tests.
 
 ## Installation
 To use `infern-bootstrap` you need to include the Bootstrap CSS files, but not any of the Bootstrap JavaScript.
@@ -25,7 +25,7 @@ $ npm install --save-prod inferno-bootstrap bootstrap@4
 ```
 
 ## Usage 
-To use the components without requiring transpilation you import from the `/dist` directory:
+To use the components without transpiling you import from the `/dist` directory:
 
 ```JavaScript
 // Cherry pick to reduce size
@@ -36,8 +36,8 @@ import Input from 'inferno-bootstrap/dist/Form/Input'
 import { Input } from 'inferno-bootstrap'
 ```
  
-You can get a nicer debugging experience by importing your
-components from the original source code in the `/lib` directory. However this requires that you transpile `node_module/inferno-bootstrap` imports and add the settinggs in the .babelrc config file from this repos to your project:
+You can get a nicer debugging experience by importing your components from the original source code
+in the `/lib` directory. This requires that you transpile all imports from `node_module/inferno-bootstrap` and add the transpiling options found in the .babelrc config file at the root of this repos:
 
 ```JavaScript
 // Cherry pick to reduce size
@@ -47,8 +47,7 @@ import Input from 'inferno-bootstrap/lib/Form/Input'
 import { Input } from 'inferno-bootstrap/lib'
 ```
 
-You will find a working webpack.config file in the folder `test/browser`. Don't forget to add your .babelrc
-file and babel package devDepencies.
+You will find a working webpack.config file in the folder `test/browser`. Don't forget to add your babel plugin devDepencies etc.
 
 ## Animations ##
 This package uses the standard bootstrap CSS-animations with the help of the [inferno-animation](https://github.com/jhsware/inferno-animation) library.
