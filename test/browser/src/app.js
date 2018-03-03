@@ -2,6 +2,10 @@ import { render, Component } from 'inferno'
 // require('inferno-devtools')
 import { BrowserRouter, Switch, Redirect, Route, Link } from 'inferno-router'
 
+import Nav from '../../../lib/Navigation/Nav'
+import NavItem from '../../../lib/Navigation/NavItem'
+import NavLink from '../../../lib/Navigation/NavLink'
+
 import BasicPage from './BasicPage'
 import CardPage from './CardPage'
 import FormPage from './FormPage'
@@ -43,11 +47,27 @@ class App extends Component {
 
   render () {
     return (
-      <div className="Content">
-        <Switch>
-          <Route path="/inferno-bootstrap-docs" component={ Content } />
-          <Redirect to="/inferno-bootstrap-docs/basic" />
-        </Switch>
+      <div>
+        <Nav>
+          <NavItem>
+            <NavLink href="//jhsware.github.io/inferno-bootstrap-docs">Inferno Bootstrap</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="https://github.com/jhsware/inferno-bootstrap">Github</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="https://infernojs.org/">Inferno.js</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="https://getbootstrap.com/docs/4.0/components/alerts/">Bootstrap 4 Docs</NavLink>
+          </NavItem>
+        </Nav>
+        <div className="Content">
+          <Switch>
+            <Route path="/inferno-bootstrap-docs" component={ Content } />
+            <Redirect to="/inferno-bootstrap-docs/basic" />
+          </Switch>
+        </div>
       </div>
     )
   }

@@ -9,3 +9,4 @@ cp -r node_modules/bootstrap/dist/* docs/bootstrap/
 cp -r node_modules/prismjs/themes/* docs/prism/
 # Rewrite urls
 cat test/browser/index.html | sed 's/href=\"\//href=\"\/inferno-bootstrap-docs\//' | sed 's/src=\"\//src=\"\/inferno-bootstrap-docs\//' >> docs/index.html
+cp docs/index.html docs/404.html
