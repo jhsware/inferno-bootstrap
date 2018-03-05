@@ -22,43 +22,41 @@ describe('Modal', () => {
   let isOpenNested;
   let toggleNested;
 
+  let container;
+
   beforeEach(() => {
     isOpen = false;
     toggle = () => { isOpen = !isOpen; };
 
     isOpenNested = false;
     toggleNested = () => { isOpenNested = !isOpenNested; };
+
+    container = document.createElement('div');
+    document.body.appendChild(container);
   });
 
   afterEach(() => {
-    document.body.innerHTML = ''
-    jest.runTimersToTime(300)
+    render(null, container);
+    container.innerHTML = '';
+    document.body.removeChild(container);
   });
 
   
   it('should render with the class "modal-dialog"', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
-      <Modal isOpen={isOpen} toggle={toggle}>
-        Yo!
-      </Modal>
-    );
+    const tree = render(<Modal isOpen={isOpen} toggle={toggle}>Yo!</Modal>, container);
+    tree.forceUpdate()
+    // jest.runTimersToTime(300)
 
-    // jasmine.clock().tick(300);
-    jest.runTimersToTime(300)
-    // expect(wrapper.children().length).toBe(0);
     expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
     
   });
+  
   it('should render with the backdrop with the class "modal-backdrop" by default', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
-      <Modal isOpen={isOpen} toggle={toggle}>
-        Yo!
-      </Modal>
-    );
+    const tree = render(<Modal isOpen={isOpen} toggle={toggle}>Yo!</Modal>, container);
+    tree.forceUpdate()
 
-    jest.runTimersToTime(300)
     expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
     
@@ -66,26 +64,20 @@ describe('Modal', () => {
 
   it('should render with the backdrop with the class "modal-backdrop" when backdrop is "static"', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
-      <Modal isOpen={isOpen} toggle={toggle} backdrop="static">
-        Yo!
-      </Modal>
-    );
+    const tree = render(<Modal isOpen={isOpen} toggle={toggle} backdrop="static">Yo!</Modal>, container);
+    tree.forceUpdate()
+    // jest.runTimersToTime(300)
 
-    jest.runTimersToTime(300)
     expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
   });
 
   it('should not render with the backdrop with the class "modal-backdrop" when backdrop is "false"', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
-      <Modal isOpen={isOpen} toggle={toggle} backdrop={false}>
-        Yo!
-      </Modal>
-    );
+    const tree = render(<Modal isOpen={isOpen} toggle={toggle} backdrop={false}>Yo!</Modal>, container);
+    tree.forceUpdate()
+    // jest.runTimersToTime(300)
 
-    jest.runTimersToTime(300)
     expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(0);
     expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
@@ -93,18 +85,13 @@ describe('Modal', () => {
 
   it('should render with class "modal-dialog" and have custom class name if provided', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
-      <Modal isOpen={isOpen} toggle={toggle} className="my-custom-modal">
-        Yo!
-      </Modal>
-    );
-    
-    jest.runTimersToTime(300)
+    const tree = render(<Modal isOpen={isOpen} toggle={toggle} className="my-custom-modal">Yo!</Modal>, container);
+    tree.forceUpdate()
+    // jest.runTimersToTime(300)
+
     expect(tree.$V.children.length).toBe(undefined);
     expect(document.getElementsByClassName('my-custom-modal').length).toBe(1);
     expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
-    // expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);
-    // expect(scryRenderedDOMElementsWithClass(tree, 'my-custom-modal').length).toBe(1);
   });
 
   /*
