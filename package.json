@@ -1,6 +1,6 @@
 {
   "name": "inferno-bootstrap",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Bootstrap as Inferno components, adapted from Reactstrap",
   "main": "index",
   "scripts": {
