@@ -28,14 +28,9 @@ describe('Modal', () => {
 
     isOpenNested = false;
     toggleNested = () => { isOpenNested = !isOpenNested; };
-
-    // jasmine.clock().install();
   });
 
   afterEach(() => {
-    // fast forward time for modal to fade out
-    // jasmine.clock().tick(300);
-    // jasmine.clock().uninstall();
     document.body.innerHTML = ''
     jest.runTimersToTime(300)
   });
