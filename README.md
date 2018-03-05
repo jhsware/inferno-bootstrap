@@ -5,7 +5,9 @@ View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
 
 ## Compatibility
 
-inferno-bootstrap >= 0.4.x supports Inferno v4
+inferno-bootstrap 4.x supports Inferno v4 (master)
+
+inferno-bootstrap 3.x supports Inferno v3 (InfernoV3 branch)
 
 Reactstrap components not yet ported:
 - Uncontrolled input components
