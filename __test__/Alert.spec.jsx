@@ -1,15 +1,28 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from './utils'
+import { renderIntoDocument, triggerEvent } from './utils'
 import { 
   findRenderedVNodeWithType,
-  findRenderedDOMElementWithClass,
   isVNode
 } from 'inferno-test-utils'
 
 import Alert from "../dist/Alert"
 
 describe("Alert", () => {
+
+  let container;
+
+  beforeEach(function() {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(function() {
+    render(null, container);
+    container.innerHTML = '';
+    document.body.removeChild(container);
+  });
+
   it("Can be rendered", () => {
     const tree = renderIntoDocument(<Alert>This looks fine!</Alert>)
     
@@ -34,12 +47,12 @@ describe("Alert", () => {
   })
 
   it("Clicking close button calls onClose", () => {
-    const spy = sinon.spy()
-    const tree = renderIntoDocument(<Alert onClose={spy}>This looks fine!</Alert>)
+    const onClick = jest.fn()
+    const tree = renderIntoDocument(<Alert onClose={onClick}>This looks fine!</Alert>, container)
 
-    const vnode = findRenderedVNodeWithType(tree, "button")
-    vnode.props.onClick()
+    const btnEl = container.getElementsByTagName('button')[0]
+    triggerEvent('click', btnEl)
     
-    expect(spy.calledOnce).toBe(true)
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })
