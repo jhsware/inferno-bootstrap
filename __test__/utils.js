@@ -84,3 +84,10 @@ export function triggerEvent(name, element) {
   event.initEvent(name, name !== 'change', true);
   element.dispatchEvent(event, true);
 }
+
+export function setProps (vNode, newPropDiff) {
+  Object.keys(newPropDiff).forEach((key) => {
+    vNode.props[key] = newPropDiff[key];
+  })
+  vNode.forceUpdate();
+}

@@ -14,7 +14,7 @@ Reactstrap components not yet ported:
 - Media
 - Fade
 - Carousel
-- Tooltip
+- ~~Tooltip~~ DONE
 - Form inline attribute (you can do it by adding bootstrap classes manually)
 
 To understand how to use `inferno-bootstrap`, visit the component docs and the excellent Bootstrap 4 website. When confused, check out the source code and tests.

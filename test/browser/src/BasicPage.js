@@ -13,6 +13,7 @@ import TabsSection from './Basic/Tabs'
 import PopoversSection from './Basic/Popovers'
 import PaginationSection from './Basic/Pagination'
 import ListSection from './Basic/List'
+import TooltipSection from './Basic/Tooltip'
 
 // import Modal from '../../../lib/Modal'
 
@@ -30,6 +31,7 @@ export default function BasicPage (props) {
       <LayoutSection />
       <ListSection />
       <TabsSection />
+      <TooltipSection />
       <PopoversSection />
       <PaginationSection />
     </Page>
