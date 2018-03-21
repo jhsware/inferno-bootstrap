@@ -6,12 +6,12 @@ require('prismjs/components/prism-jsx')
 
 export class Section extends Component {
   componentDidMount() {
-    this.context.addSection(this.props.title, this.props.title.toLowerCase())
+    this.context.addSection(this.props.title, this.props.title.toLowerCase().replace(/\s/g, '_'))
   }
 
   render({ title, children }) {
     return (
-      <div class={classnames(this.props.className, "ExampleSection")} id={this.props.title.toLowerCase()}>
+      <div class={classnames(this.props.className, "ExampleSection")} id={this.props.title.toLowerCase().replace(/\s/g, '_')}>
         {title && <h2>{title}</h2>}
         {children}
       </div>

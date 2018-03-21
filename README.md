@@ -4,6 +4,7 @@ Inferno components for Bootstrap 4. Ported from Reactstrap with some modificatio
 View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
 
 ## Compatibility
+inferno-bootstrap 5.x supports Inferno v5 (master)
 
 inferno-bootstrap 4.x supports Inferno v4 (master)
 
