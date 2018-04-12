@@ -33,8 +33,12 @@ To use the components without transpiling you import from the `/dist` directory:
 ```JavaScript
 // Cherry pick to reduce size
 import Input from 'inferno-bootstrap/dist/Form/Input'
+
+// Or keep it simple if you don't worry about file size
+// (tree shaking only works with ES6 imports)
+import { Input } from 'inferno-bootstrap'
 ```
- 
+
 You can get a nicer debugging experience by importing your components from the original source code
 in the `/lib` directory. This requires that you transpile all imports from `node_module/inferno-bootstrap` and add the transpiling options found in the .babelrc config file at the root of this repos:
 
@@ -42,8 +46,7 @@ in the `/lib` directory. This requires that you transpile all imports from `node
 // Cherry pick to reduce size
 import Input from 'inferno-bootstrap/lib/Form/Input'
 
-// Or keep it simple if you don't worry about file size
-// (tree shaking only works with ES6 imports)
+// Or keep it simple and use tree shaking
 import { Input } from 'inferno-bootstrap/lib'
 ```
 
