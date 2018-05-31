@@ -34,6 +34,9 @@ To use the components without transpiling you import from the `/dist` directory:
 // Cherry pick to reduce size
 import Input from 'inferno-bootstrap/dist/Form/Input'
 
+// And if you are using TypeScript
+import * as Input from 'inferno-bootstrap/dist/Form/Input'
+
 // Or keep it simple if you don't worry about file size
 // (tree shaking only works with ES6 imports)
 import { Input } from 'inferno-bootstrap'
