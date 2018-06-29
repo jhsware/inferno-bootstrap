@@ -12,10 +12,6 @@ import FormPage from './FormPage'
 import ModalPage from './ModalPage'
 import NavigationPage from './NavigationPage'
 
-function NoMatch () {
-
-}
-
 function Content ({ match }) {
   return (
     <div>

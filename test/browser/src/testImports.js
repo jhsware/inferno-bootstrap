@@ -1,2 +1,2 @@
-import '../../../lib'
-import '../../../dist'
+import '../../../src'
+import 'inferno-bootstrap'

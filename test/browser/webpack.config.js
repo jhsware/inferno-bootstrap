@@ -33,5 +33,10 @@ module.exports = {
         plugins: babelPlugins
       }
     }]
+  },
+  resolve: {
+    alias: {
+      'inferno-bootstrap': path.resolve(__dirname, '../../lib/index.js')
+    }
   }
 }
