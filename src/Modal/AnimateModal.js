@@ -1,12 +1,12 @@
 import { createElement } from 'inferno-create-element'
-
-import {
+import { utils } from 'inferno-animation'
+const {
   addClassName,
   removeClassName,
   registerTransitionListener,
   forceReflow,
   setDisplay
-} from 'inferno-animation'
+} = utils
 
 /**
  * These are the open and close animation helpers

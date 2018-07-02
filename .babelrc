@@ -8,8 +8,7 @@
     "transform-class-properties"
   ],
   "env": {
-    "production": {
-
-    }
+    "production": {},
+    "test": {}
   }
 }

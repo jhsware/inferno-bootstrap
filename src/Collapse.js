@@ -2,7 +2,8 @@ import { Component } from 'inferno';
 import { createElement } from 'inferno-create-element'
 import classNames from 'classnames';
 import { mapToCssModules, omit } from './utils';
-import {
+import { utils } from 'inferno-animation'
+const {
   addClassName,
   removeClassName,
   registerTransitionListener,
@@ -11,7 +12,7 @@ import {
   getDimensions,
   setDimensions,
   setDisplay
-} from 'inferno-animation'
+} = utils
 
 /**
  * These are the open and close animation helpers

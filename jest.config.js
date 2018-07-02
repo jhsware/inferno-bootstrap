@@ -5,5 +5,5 @@ module.exports = {
     usingJSDOM: true,
     usingJest: true
   },
-  setupTestFrameworkScriptFile: require.resolve("./JEST-DEBUG.js")
+  setupTestFrameworkScriptFile: require.resolve("./JEST-DEBUG.js"),
 }

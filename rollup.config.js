@@ -41,6 +41,7 @@ const baseConfig = (outputFormat) => {
       'inferno-animation',
       'inferno-create-element',
       'inferno-shared',
+      'inferno-popper',
       'lodash.isobject',
       'lodash.tonumber',
       'popper.js'
@@ -55,6 +56,7 @@ const baseConfig = (outputFormat) => {
         inferno: 'Inferno',
         'inferno-animation': 'infernoAnimation',
         'inferno-create-element': 'infernoCreateElement',
+        'inferno-popper': 'infernoPopper',
         'inferno-shared': 'infernoShared',
         'lodash.isobject': 'isobject',
         'lodash.tonumber': 'toNumber',
