@@ -7,7 +7,7 @@ import {
   isVNode
 } from 'inferno-test-utils'
 import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode } from "./utils"
-import Table from '../dist/Table';
+import Table from '../lib/Table';
 
 
 describe('Table', () => {

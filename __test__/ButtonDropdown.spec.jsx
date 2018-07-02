@@ -13,10 +13,10 @@ import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountC
 
 getAnimationFramePolyfill()
 
-import ButtonDropdown from '../dist/ButtonDropdown';
-import DropdownToggle from '../dist/DropdownToggle';
-import DropdownMenu from '../dist/DropdownMenu';
-import DropdownItem from '../dist/DropdownItem';
+import ButtonDropdown from '../lib/ButtonDropdown';
+import DropdownToggle from '../lib/DropdownToggle';
+import DropdownMenu from '../lib/DropdownMenu';
+import DropdownItem from '../lib/DropdownItem';
 
 debugger
 

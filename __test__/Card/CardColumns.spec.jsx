@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardColumns from '../../dist/Card/CardColumns';
+import CardColumns from '../../lib/Card/CardColumns';
 
 describe('CardColumns', () => {
   it('should render with "card-columns" class', () => {

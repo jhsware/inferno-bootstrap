@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardGroup from '../../dist/Card/CardGroup';
+import CardGroup from '../../lib/Card/CardGroup';
 
 describe('CardGroup', () => {
   it('should render with "card-group" class', () => {

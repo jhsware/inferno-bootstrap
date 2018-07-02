@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML, getOuterHTML } from "./utils"
 
-import Jumbotron from '../dist/Jumbotron';
+import Jumbotron from '../lib/Jumbotron';
 
 describe('Jumbotron', () => {
   it('should render children', () => {

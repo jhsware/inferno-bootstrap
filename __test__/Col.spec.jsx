@@ -7,7 +7,7 @@ import {
 } from 'inferno-test-utils'
 import { hasClass, getTagName, getInnerHTML, getOuterHTML } from "./utils"
 
-import Col from '../dist/Col';
+import Col from '../lib/Col';
 
 describe('Col', () => {
   it('should render default .col-* markup', () => {

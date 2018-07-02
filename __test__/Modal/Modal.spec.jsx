@@ -10,8 +10,8 @@ import {
 
 import { hasClass, getTagName, getInnerHTML, getOuterHTML } from "../utils"
 
-import Modal from '../../dist/Modal/Modal'
-import ModalBody from '../../dist/Modal/ModalBody'
+import Modal from '../../lib/Modal/Modal'
+import ModalBody from '../../lib/Modal/ModalBody'
 
 jest.useFakeTimers();
 

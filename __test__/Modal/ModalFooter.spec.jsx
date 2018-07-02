@@ -2,7 +2,7 @@ import { render } from "inferno"
 import { renderIntoDocument } from '../utils'
 
 import { getInstance, hasClass, getTagName, getInnerHTML } from "../utils"
-import ModalFooter from '../../dist/Modal/ModalFooter';
+import ModalFooter from '../../lib/Modal/ModalFooter';
 
 describe('ModalFooter', () => {
   it('should render with "modal-footer" class', () => {

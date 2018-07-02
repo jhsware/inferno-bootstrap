@@ -7,9 +7,9 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import Button from "../dist/Button"
-import ButtonGroup from "../dist/ButtonGroup"
-import ButtonToolbar from "../dist/ButtonToolbar"
+import Button from "../lib/Button"
+import ButtonGroup from "../lib/ButtonGroup"
+import ButtonToolbar from "../lib/ButtonToolbar"
 
 describe("Buttons", () => {
 

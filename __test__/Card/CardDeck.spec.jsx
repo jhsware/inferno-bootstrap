@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardDeck from '../../dist/Card/CardDeck';
+import CardDeck from '../../lib/Card/CardDeck';
 
 describe('CardDeck', () => {
   it('should render with "card-deck" class', () => {

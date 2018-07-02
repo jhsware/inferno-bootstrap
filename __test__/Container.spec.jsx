@@ -11,7 +11,7 @@ import {
 
 import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode } from "./utils"
 
-import Container from '../dist/Container';
+import Container from '../lib/Container';
 
 describe('Container', () => {
   it('should render .container markup', () => {

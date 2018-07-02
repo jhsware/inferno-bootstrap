@@ -9,7 +9,7 @@ import {
 
 import { hasClass, getTagName, getInnerHTML } from "../utils"
 
-import CardBody from '../../dist/Card/CardBody';
+import CardBody from '../../lib/Card/CardBody';
 
 describe('CardBody', () => {
   it('should render with "card-body" class', () => {

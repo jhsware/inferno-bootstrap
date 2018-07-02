@@ -15,8 +15,8 @@ import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountC
 getAnimationFramePolyfill()
 
 import { Arrow, Manager, Popper } from 'inferno-popper';
-import PopperContent from '../dist/PopperContent';
-import PopperTargetHelper from '../dist/PopperTargetHelper';
+import PopperContent from '../lib/PopperContent';
+import PopperTargetHelper from '../lib/PopperTargetHelper';
 
 describe('TetherContent', () => {
   let element;

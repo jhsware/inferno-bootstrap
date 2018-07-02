@@ -1,6 +1,6 @@
 import { render } from "inferno"
-import Tooltip from '../dist/Tooltip';
-import PopperContent from '../dist/PopperContent';
+import Tooltip from '../lib/Tooltip';
+import PopperContent from '../lib/PopperContent';
 import { setProps, triggerEvent } from './utils';
 
 describe('Tooltip', () => {

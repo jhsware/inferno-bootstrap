@@ -6,7 +6,7 @@ import {
   isVNode
 } from 'inferno-test-utils'
 
-import Alert from "../dist/Alert"
+import Alert from "../lib/Alert"
 
 describe("Alert", () => {
 
