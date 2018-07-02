@@ -1,4 +1,6 @@
 # inferno-bootstrap
+[![Build Status](https://travis-ci.org/jhsware/inferno-bootstrap.svg?branch=master)](https://travis-ci.org/jhsware/inferno-bootstrap)
+
 Inferno components for Bootstrap 4. Ported from Reactstrap with some modifications.
 
 View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
