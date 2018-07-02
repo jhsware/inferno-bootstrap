@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import PopperContent from './PopperContent';
 import { getTarget, mapToCssModules, omit } from './utils';
 import {
-  isNaN
+  isNumber
 } from "inferno-shared"
 
 const omitProps = ['placement', 'target', 'isOpen', 'cssModule', 'className', 'delay', 'disabled', 'placementPrefix', 'toggle'];
@@ -51,7 +51,7 @@ class Popover extends Component {
   getDelay(key) {
     const { delay } = this.props;
     if (typeof delay === 'object') {
-      return isNaN(delay[key]) ? DEFAULT_DELAYS[key] : delay[key];
+      return !isNumber(delay[key]) ? DEFAULT_DELAYS[key] : delay[key];
     }
     return delay;
   }
