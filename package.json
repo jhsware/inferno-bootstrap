@@ -42,9 +42,9 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "inferno": "^5.0.1",
-    "inferno-animation": "^5.1.0-beta.2",
+    "inferno-animation": "^5.1.0",
     "inferno-create-element": "^5.2.0",
-    "inferno-popper": "^5.1.0-beta.1",
+    "inferno-popper": "^5.1.0",
     "inferno-shared": "^5.2.0",
     "inferno-vnode-flags": "^5.2.0",
     "lodash.isfunction": "^3.0.9",
