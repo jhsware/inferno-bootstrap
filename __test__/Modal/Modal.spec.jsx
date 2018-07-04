@@ -57,7 +57,7 @@ describe('Modal', () => {
     const tree = render(<Modal isOpen={isOpen} toggle={toggle}>Yo!</Modal>, container);
     tree.forceUpdate()
 
-    expect(tree.$V.children.length).toBe(undefined);
+    expect(tree.$LI.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
     
   });
@@ -68,7 +68,7 @@ describe('Modal', () => {
     tree.forceUpdate()
     // jest.runTimersToTime(300)
 
-    expect(tree.$V.children.length).toBe(undefined);
+    expect(tree.$LI.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
   });
 
@@ -78,7 +78,7 @@ describe('Modal', () => {
     tree.forceUpdate()
     // jest.runTimersToTime(300)
 
-    expect(tree.$V.children.length).toBe(undefined);
+    expect(tree.$LI.children.length).toBe(undefined);
     expect(document.getElementsByClassName('modal-backdrop').length).toBe(0);
     expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
   });
@@ -89,7 +89,7 @@ describe('Modal', () => {
     tree.forceUpdate()
     // jest.runTimersToTime(300)
 
-    expect(tree.$V.children.length).toBe(undefined);
+    expect(tree.$LI.children.length).toBe(undefined);
     expect(document.getElementsByClassName('my-custom-modal').length).toBe(1);
     expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
   });

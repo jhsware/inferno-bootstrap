@@ -14,32 +14,32 @@ import ListGroupItem from "../../lib/List/ListGroupItem"
 describe('ListGroupItem', () => {
   it('should render children', () => {
     const tree = renderIntoDocument(<ListGroupItem>Yo!</ListGroupItem>);
-    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
   });
 
   it('should render with "list-group-item" class', () => {
     const tree = renderIntoDocument(<ListGroupItem>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$V, 'list-group-item')).toBe(true);
+    expect(hasClass(tree.$LI, 'list-group-item')).toBe(true);
   });
 
   it('should render with "active" class when active is passed', () => {
     const tree = renderIntoDocument(<ListGroupItem active>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$V, 'active')).toBe(true);
+    expect(hasClass(tree.$LI, 'active')).toBe(true);
   });
 
   it('should render with "disabled" class when disabled is passed', () => {
     const tree = renderIntoDocument(<ListGroupItem disabled>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$V, 'disabled')).toBe(true);
+    expect(hasClass(tree.$LI, 'disabled')).toBe(true);
   });
 
   it('should render with "list-group-item-action" class when action is passed', () => {
     const tree = renderIntoDocument(<ListGroupItem action>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$V, 'list-group-item-action')).toBe(true);
+    expect(hasClass(tree.$LI, 'list-group-item-action')).toBe(true);
   });
 
   it('should render with "list-group-item-${color}" class when color is passed', () => {
     const tree = renderIntoDocument(<ListGroupItem color="success">Yo!</ListGroupItem>);
-    expect(hasClass(tree.$V, 'list-group-item-success')).toBe(true);
+    expect(hasClass(tree.$LI, 'list-group-item-success')).toBe(true);
   });
 
   it('should prevent click event when disabled is passed', () => {

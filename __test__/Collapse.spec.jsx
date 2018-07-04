@@ -31,7 +31,7 @@ describe('Collapse', () => {
 
   it('should render children', () => {
     const tree = renderIntoDocument(<Collapse isOpen><p>hello</p></Collapse>);
-    expect(getInnerHTML(tree.$V)).toBe('<p>hello</p>');
+    expect(getInnerHTML(tree.$LI)).toBe('<p>hello</p>');
   });
 
   it('should have default isOpen value', () => {
@@ -44,8 +44,8 @@ describe('Collapse', () => {
   // Have I removed this, do we want it? (it can be a simple className)
   it('should render with class "navbar"', () => {
     const tree = renderIntoDocument(<Collapse navbar isOpen />);
-    console.log(getOuterHTML(tree.$V))
-    expect(hasClass(tree.$V, 'navbar')).toEqual(true);
+    console.log(getOuterHTML(tree.$LI))
+    expect(hasClass(tree.$LI, 'navbar')).toEqual(true);
   });
   */
 

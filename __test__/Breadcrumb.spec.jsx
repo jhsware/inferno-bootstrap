@@ -16,7 +16,7 @@ describe("Breadcrumb", () => {
       <BreadcrumbItem active="true">I am here</BreadcrumbItem>
     </Breadcrumb>)
     
-    expect(tree.$V.dom.outerHTML).toBe(
+    expect(tree.$LI.dom.outerHTML).toBe(
       '<ol class="breadcrumb"><li class="breadcrumb-item"><a href="#">Home</a></li><li class="active breadcrumb-item">I am here</li></ol>'
     )
   })

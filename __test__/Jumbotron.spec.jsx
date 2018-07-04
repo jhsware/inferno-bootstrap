@@ -15,7 +15,7 @@ describe('Jumbotron', () => {
   it('should render children', () => {
     const tree = renderIntoDocument(<Jumbotron>Hello World</Jumbotron>);
 
-    expect(getInnerHTML(tree.$V)).toBe('Hello World');
+    expect(getInnerHTML(tree.$LI)).toBe('Hello World');
   });
 
   it('should render elements as children', () => {
@@ -28,19 +28,19 @@ describe('Jumbotron', () => {
   it('should have class jumbotron', () => {
     const tree = renderIntoDocument(<Jumbotron>Hello</Jumbotron>);
 
-    expect(hasClass(tree.$V, 'jumbotron')).toBe(true);
+    expect(hasClass(tree.$LI, 'jumbotron')).toBe(true);
   });
 
   it('should render fluid jumbotron', () => {
     const tree = renderIntoDocument(<Jumbotron fluid>Hello</Jumbotron>);
 
-    expect(hasClass(tree.$V, 'jumbotron')).toBe(true);
-    expect(hasClass(tree.$V, 'jumbotron-fluid')).toBe(true);
+    expect(hasClass(tree.$LI, 'jumbotron')).toBe(true);
+    expect(hasClass(tree.$LI, 'jumbotron-fluid')).toBe(true);
   });
 
   it('should render custom class', () => {
     const tree = renderIntoDocument(<Jumbotron className="custom-class">Hello</Jumbotron>);
 
-    expect(hasClass(tree.$V, 'custom-class')).toBe(true);
+    expect(hasClass(tree.$LI, 'custom-class')).toBe(true);
   });
 });

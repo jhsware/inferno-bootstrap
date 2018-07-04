@@ -26,7 +26,7 @@ describe("Alert", () => {
   it("Can be rendered", () => {
     const tree = renderIntoDocument(<Alert>This looks fine!</Alert>)
     
-    expect(tree.$V.dom.outerHTML).toBe(
+    expect(tree.$LI.dom.outerHTML).toBe(
       '<div class="alert alert-success" role="alert">This looks fine!</div>'
     )
   })
@@ -34,7 +34,7 @@ describe("Alert", () => {
   it("Can be render with color warning", () => {
     const tree = renderIntoDocument(<Alert color="warning">This looks fine!</Alert>)
     
-    expect(tree.$V.dom.outerHTML).toBe(
+    expect(tree.$LI.dom.outerHTML).toBe(
       '<div class="alert alert-warning" role="alert">This looks fine!</div>'
     )
   })

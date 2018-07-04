@@ -15,19 +15,19 @@ describe('InputGroupButton', () => {
   it('should render with "div" tag', () => {
     const tree = renderIntoDocument(<InputGroupButton addonType="append">Yo!</InputGroupButton>);
 
-    expect(getTagName(tree.$V)).toBe('div');
+    expect(getTagName(tree.$LI)).toBe('div');
   });
 
   it('should render with "input-group-append" class', () => {
     const tree = renderIntoDocument(<InputGroupButton addonType="append">Yo!</InputGroupButton>);
 
-    expect(hasClass(tree.$V, 'input-group-append')).toBe(true);
+    expect(hasClass(tree.$LI, 'input-group-append')).toBe(true);
   });
 
   it('should render custom tag', () => {
     const tree = renderIntoDocument(<InputGroupButton addonType="append" tag="main">Yo!</InputGroupButton>);
 
-    expect(getTagName(tree.$V)).toBe('main');
+    expect(getTagName(tree.$LI)).toBe('main');
   });
 
   describe('Standard usage', () => {
@@ -40,8 +40,8 @@ describe('InputGroupButton', () => {
     it('should render additional classes', () => {
       const tree = renderIntoDocument(<InputGroupButton addonType="append" className="other"><span>Yo!</span></InputGroupButton>);
 
-      expect(hasClass(tree.$V, 'other')).toBe(true);
-      expect(hasClass(tree.$V, 'input-group-append')).toBe(true);
+      expect(hasClass(tree.$LI, 'other')).toBe(true);
+      expect(hasClass(tree.$LI, 'input-group-append')).toBe(true);
     });
   });
 
@@ -77,14 +77,14 @@ describe('InputGroupButton', () => {
     it('should render groupClassName as additional classes on the input-group-append wrapper', () => {
       const tree = renderIntoDocument(<InputGroupButton addonType="append" groupClassName="other">Yo!</InputGroupButton>);
 
-      expect(hasClass(tree.$V, 'other')).toBe(true);
-      expect(hasClass(tree.$V, 'input-group-append')).toBe(true);
+      expect(hasClass(tree.$LI, 'other')).toBe(true);
+      expect(hasClass(tree.$LI, 'input-group-append')).toBe(true);
     });
 
     it('should render groupAttributes as additional attributes on the input-group-append wrapper', () => {
       const tree = renderIntoDocument(<InputGroupButton addonType="append" groupAttributes={{ style: { textAlign: 'left' } }}>Yo!</InputGroupButton>);
       
-      expect(tree.$V.dom.style['text-align']).toBe('left');
+      expect(tree.$LI.dom.style['text-align']).toBe('left');
     });
   });
 });

@@ -14,11 +14,11 @@ import ListGroupItemHeading from "../../lib/List/ListGroupItemHeading"
 describe('ListGroupItemHeading', () => {
   it('should render children', () => {
     const tree = renderIntoDocument(<ListGroupItemHeading>Yo!</ListGroupItemHeading>);
-    expect(getInnerHTML(tree.$V)).toBe('Yo!');
+    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
   });
 
   it('should render with "list-group-item-heading" class', () => {
     const tree = renderIntoDocument(<ListGroupItemHeading>Yo!</ListGroupItemHeading>);
-    expect(hasClass(tree.$V, 'list-group-item-heading')).toBe(true);
+    expect(hasClass(tree.$LI, 'list-group-item-heading')).toBe(true);
   });
 });

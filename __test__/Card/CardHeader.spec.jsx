@@ -15,22 +15,22 @@ describe('CardHeader', () => {
   it('should render with "card-header" class', () => {
     const tree = renderIntoDocument(<CardHeader>Yo!</CardHeader>);
 
-    expect(getInnerHTML(tree.$V)).toBe('Yo!');
-    expect(hasClass(tree.$V, 'card-header')).toBe(true);
+    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
+    expect(hasClass(tree.$LI, 'card-header')).toBe(true);
   });
 
   it('should render additional classes', () => {
     const tree = renderIntoDocument(<CardHeader className="other">Yo!</CardHeader>);
 
-    expect(hasClass(tree.$V, 'other')).toBe(true);
-    expect(hasClass(tree.$V, 'card-header')).toBe(true);
+    expect(hasClass(tree.$LI, 'other')).toBe(true);
+    expect(hasClass(tree.$LI, 'card-header')).toBe(true);
   });
 
   it('should render custom tag', () => {
     const tree = renderIntoDocument(<CardHeader tag="main">Yo!</CardHeader>);
 
-    expect(getInnerHTML(tree.$V)).toBe('Yo!');
-    expect(hasClass(tree.$V, 'card-header')).toBe(true);
-    expect(getTagName(tree.$V)).toBe('main')
+    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
+    expect(hasClass(tree.$LI, 'card-header')).toBe(true);
+    expect(getTagName(tree.$LI)).toBe('main')
   });
 });

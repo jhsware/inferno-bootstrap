@@ -45,14 +45,14 @@ describe('TetherContent', () => {
   it('should render a Manager by default', () => {
     const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
 
-    const node = findVNodeWithType(tree.$V, Manager)
+    const node = findVNodeWithType(tree.$LI, Manager)
     expect(node).toBeDefined()
   });
   
   it('should render a Manager as a span by default', () => {
     const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
 
-    const node = findVNodeWithType(tree.$V, Manager)
+    const node = findVNodeWithType(tree.$LI, Manager)
     expect(node).toBeDefined()
   });
   
@@ -60,33 +60,33 @@ describe('TetherContent', () => {
     const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
 
     // expect(wrapper.containsMatchingElement(<PopperTargetHelper target="target" />)).toBe(true);
-    expect(findVNodeWithType(tree.$V, PopperTargetHelper)).toBeDefined();
+    expect(findVNodeWithType(tree.$LI, PopperTargetHelper)).toBeDefined();
     
   });
 
   it('should NOT render children when isOpen is false', () => {
     const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
 
-    expect(getInnerHTML(tree.$V)).toBe('');
+    expect(getInnerHTML(tree.$LI)).toBe('');
   });
 
   it('should render children when isOpen is true', () => {
     const tree = render(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
 
-    expect(getInnerHTML(tree.$V)).toBe('<div class=\"auto\" style=\"position: absolute; pointer-events: none; opacity: 0;\">Yo!<span class=\"arrow\"></span></div>');
+    expect(getInnerHTML(tree.$LI)).toBe('<div class=\"auto\" style=\"position: absolute; pointer-events: none; opacity: 0;\">Yo!<span class=\"arrow\"></span></div>');
   });
   
   
   it('should render an Arrow in the Popper when isOpen is true', () => {
     const tree = render(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
 
-    expect(findVNodeWithType(tree.$V, Arrow)).toBeDefined();
+    expect(findVNodeWithType(tree.$LI, Arrow)).toBeDefined();
   });
 
   it('should pass additional classNames to the wrap', () => {
     const tree = render(<PopperContent wrapClassName="extra" target="target">Yo!</PopperContent>, container);
 
-    expect(hasClass(tree.$V, 'extra')).toBe(true);
+    expect(hasClass(tree.$LI, 'extra')).toBe(true);
   });
 
   

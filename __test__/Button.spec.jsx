@@ -30,7 +30,7 @@ describe("Buttons", () => {
     it("Can be rendered", () => {
       const tree = renderIntoDocument(<Button>Click me!</Button>)
       
-      expect(tree.$V.dom.outerHTML).toBe(
+      expect(tree.$LI.dom.outerHTML).toBe(
         '<button class="btn btn-secondary">Click me!</button>'
       )
     })
@@ -38,7 +38,7 @@ describe("Buttons", () => {
     it("Can be rendered with color primary", () => {
       const tree = renderIntoDocument(<Button color="primary">Click me!</Button>)
       
-      expect(tree.$V.dom.outerHTML).toBe(
+      expect(tree.$LI.dom.outerHTML).toBe(
         '<button class="btn btn-primary">Click me!</button>'
       )
     })
@@ -46,7 +46,7 @@ describe("Buttons", () => {
     it("Renders as a-tag when href provided", () => {
       const tree = renderIntoDocument(<Button href="#">Click me!</Button>)
       
-      expect(tree.$V.dom.outerHTML).toBe(
+      expect(tree.$LI.dom.outerHTML).toBe(
         '<a class="btn btn-secondary" href="#">Click me!</a>'
       )
     })
@@ -74,7 +74,7 @@ describe("Buttons", () => {
     it("Can be rendered", () => {
       const tree = renderIntoDocument(<ButtonGroup>Content</ButtonGroup>)
       
-      expect(tree.$V.dom.outerHTML).toBe(
+      expect(tree.$LI.dom.outerHTML).toBe(
         '<div class="btn-group" role="group">Content</div>'
       )
     })
@@ -82,7 +82,7 @@ describe("Buttons", () => {
     it("Can be rendered vertically", () => {
       const tree = renderIntoDocument(<ButtonGroup vertical="true">Content</ButtonGroup>)
       
-      expect(tree.$V.dom.outerHTML).toBe(
+      expect(tree.$LI.dom.outerHTML).toBe(
         '<div class="btn-group-vertical" role="group">Content</div>'
       )
     })
@@ -92,7 +92,7 @@ describe("Buttons", () => {
     it("Can be rendered", () => {
       const tree = renderIntoDocument(<ButtonToolbar>Content</ButtonToolbar>)
       
-      expect(tree.$V.dom.outerHTML).toBe(
+      expect(tree.$LI.dom.outerHTML).toBe(
         '<div class="btn-toolbar" role="toolbar">Content</div>'
       )
     })

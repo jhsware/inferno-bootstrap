@@ -14,33 +14,33 @@ describe('InputGroupAddon', () => {
   it('should render with "div" tag', () => {
     const tree = renderIntoDocument(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
 
-    expect(getTagName(tree.$V)).toBe('div');
+    expect(getTagName(tree.$LI)).toBe('div');
   });
 
   it('should render children', () => {
     const tree = renderIntoDocument(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
 
-    expect(getInnerHTML(tree.$V)).toBe('<span class="input-group-text">Yo!</span>');
+    expect(getInnerHTML(tree.$LI)).toBe('<span class="input-group-text">Yo!</span>');
   });
 
   it('should render with "input-group-*" classes', () => {
     const treePre = renderIntoDocument(<InputGroupAddon addonType="prepend">Yo!</InputGroupAddon>);
     const treeApp = renderIntoDocument(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
            
-    expect(hasClass(treePre.$V, 'input-group-prepend')).toBe(true);
-    expect(hasClass(treeApp.$V, 'input-group-append')).toBe(true);
+    expect(hasClass(treePre.$LI, 'input-group-prepend')).toBe(true);
+    expect(hasClass(treeApp.$LI, 'input-group-append')).toBe(true);
   });
 
   it('should render additional classes', () => {
     const tree = renderIntoDocument(<InputGroupAddon addonType="append" className="other">Yo!</InputGroupAddon>);
 
-    expect(hasClass(tree.$V, 'other')).toBe(true);
-    expect(hasClass(tree.$V, 'input-group-append')).toBe(true);
+    expect(hasClass(tree.$LI, 'other')).toBe(true);
+    expect(hasClass(tree.$LI, 'input-group-append')).toBe(true);
   });
 
   it('should render custom tag', () => {
     const tree = renderIntoDocument(<InputGroupAddon addonType="append" tag="main">Yo!</InputGroupAddon>);
 
-    expect(getTagName(tree.$V)).toBe('main');
+    expect(getTagName(tree.$LI)).toBe('main');
   });
 });
