@@ -10,7 +10,7 @@ const defaultProps = {
 const omitProps = ['tag', 'activeTab', 'className', 'cssModule'];
 
 function getContentSize() {
-  const domEl = this.$V.dom
+  const domEl = this.$LI.dom
   return {
     width: domEl.offsetWidth + 'px',
     height: domEl.offsetHeight + 'px'
@@ -19,7 +19,7 @@ function getContentSize() {
 
 // This could probably be generalised in inferno-animation as part of animateOnAdd
 function animateCrossFadeIn(component, currSize, animationName, callback) {
-  const domEl = component.$V.dom
+  const domEl = component.$LI.dom
 
   const height = domEl.offsetHeight + 'px'
   const width = domEl.offsetWidth + 'px'

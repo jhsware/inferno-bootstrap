@@ -50,7 +50,7 @@ class Dropdown extends Component {
   }
 
   getContainer() {
-    return this.$V.dom;
+    return this.$LI.dom;
   }
 
   addEvents() {
