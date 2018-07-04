@@ -5,6 +5,9 @@ Inferno components for Bootstrap 4. Ported from Reactstrap with some modificatio
 
 View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
 
+## Upgrade notes
+NOTE! If you have cherry picked from /dist, please change to /lib
+
 ## Compatibility
 inferno-bootstrap 5.x supports Inferno v5 (master)
 
@@ -30,29 +33,26 @@ $ npm install --save-prod inferno-bootstrap bootstrap@4
 ```
 
 ## Usage 
-To use the components without transpiling you import from the `/dist` directory:
-
 ```JavaScript
-// Cherry pick to reduce size
-import Input from 'inferno-bootstrap/dist/Form/Input'
-
-// And if you are using TypeScript
-import * as Input from 'inferno-bootstrap/dist/Form/Input'
-
-// Or keep it simple if you don't worry about file size
-// (tree shaking only works with ES6 imports)
+// Use ES6 style imports and optionally tree-shaking
 import { Input } from 'inferno-bootstrap'
+
+// ...or, cherry pick to reduce size if you don't have tree-shaking
+import Input from 'inferno-bootstrap/lib/Form/Input'
+
+// ...or, if you are cherry picking and using TypeScript
+import * as Input from 'inferno-bootstrap/lib/Form/Input'
 ```
 
 You can get a nicer debugging experience by importing your components from the original source code
-in the `/lib` directory. This requires that you transpile all imports from `node_module/inferno-bootstrap` and add the transpiling options found in the .babelrc config file at the root of this repos:
+in the `/src` directory. This requires that you transpile all imports from `node_module/inferno-bootstrap` and add the transpiling options found in the .babelrc config file at the root of this repos:
 
 ```JavaScript
 // Cherry pick to reduce size
-import Input from 'inferno-bootstrap/lib/Form/Input'
+import Input from 'inferno-bootstrap/src/Form/Input'
 
 // Or keep it simple and use tree shaking
-import { Input } from 'inferno-bootstrap/lib'
+import { Input } from 'inferno-bootstrap/src'
 ```
 
 You will find a working webpack.config file in the folder `test/browser`. Don't forget to add your babel plugin devDepencies etc.
