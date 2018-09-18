@@ -1,5 +1,6 @@
 # inferno-bootstrap
 [![Build Status](https://travis-ci.org/jhsware/inferno-bootstrap.svg?branch=master)](https://travis-ci.org/jhsware/inferno-bootstrap)
+[![gzip size](http://img.badgesize.io/https://unpkg.com/inferno-bootstrap/dist/cjs/index.min.js?compression=gzip)](https://unpkg.com/inferno-bootstrap/dist/cjs/index.min.js)
 
 Inferno components for Bootstrap 4. Ported from Reactstrap with some modifications.
 
