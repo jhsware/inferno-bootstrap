@@ -1,12 +1,12 @@
 import { Section, Stage, Scene, Code, Narrative,  } from '../components'
 
-import Card from '../../../../lib/Card/Card'
-import CardBody from '../../../../lib/Card/CardBody'
-import CardHeader from '../../../../lib/Card/CardHeader'
-import CardFooter from '../../../../lib/Card/CardFooter'
-import CardText from '../../../../lib/Card/CardText'
-import CardTitle from '../../../../lib/Card/CardTitle'
-import Button from '../../../../lib/Button'
+import Card from '../../../../src/Card/Card'
+import CardBody from '../../../../src/Card/CardBody'
+import CardHeader from '../../../../src/Card/CardHeader'
+import CardFooter from '../../../../src/Card/CardFooter'
+import CardText from '../../../../src/Card/CardText'
+import CardTitle from '../../../../src/Card/CardTitle'
+import Button from '../../../../src/Button'
 
 export default function () {
   return (

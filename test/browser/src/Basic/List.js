@@ -1,11 +1,11 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import ListGroup from '../../../../lib/List/ListGroup'
-import ListGroupItem from '../../../../lib/List/ListGroupItem'
-import ListGroupItemHeading from '../../../../lib/List/ListGroupItemHeading'
-import ListGroupItemText from '../../../../lib/List/ListGroupItemText'
+import ListGroup from '../../../../src/List/ListGroup'
+import ListGroupItem from '../../../../src/List/ListGroupItem'
+import ListGroupItemHeading from '../../../../src/List/ListGroupItemHeading'
+import ListGroupItemText from '../../../../src/List/ListGroupItemText'
 
-import Badge from '../../../../lib/Badge'
+import Badge from '../../../../src/Badge'
 
 export default function () {
   return (

@@ -1,11 +1,11 @@
 import { Section, Stage, Scene, Code } from '../components'
 
-import Form from '../../../../lib/Form/Form'
-import FormGroup from '../../../../lib/Form/FormGroup'
-import FormText from '../../../../lib/Form/FormGroup'
-import FormFeedback from '../../../../lib/Form/FormGroup'
-import Label from '../../../../lib/Form/Label'
-import Input from '../../../../lib/Form/Input'
+import Form from '../../../../src/Form/Form'
+import FormGroup from '../../../../src/Form/FormGroup'
+import FormText from '../../../../src/Form/FormGroup'
+import FormFeedback from '../../../../src/Form/FormGroup'
+import Label from '../../../../src/Form/Label'
+import Input from '../../../../src/Form/Input'
 
 export default function () {
   return (

@@ -1,7 +1,7 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Jumbotron from '../../../../lib/Jumbotron'
-import Button from '../../../../lib/Button'
+import Jumbotron from '../../../../src/Jumbotron'
+import Button from '../../../../src/Button'
 
 export default function () {
   return (

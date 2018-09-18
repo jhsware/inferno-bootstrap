@@ -1,10 +1,10 @@
 import { Component } from 'inferno';
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Button from '../../../../lib/Button'
-import Collapse from '../../../../lib/Collapse'
-import Card from '../../../../lib/Card/Card'
-import CardBody from '../../../../lib/Card/CardBody'
+import Button from '../../../../src/Button'
+import Collapse from '../../../../src/Collapse'
+import Card from '../../../../src/Card/Card'
+import CardBody from '../../../../src/Card/CardBody'
 
 export default function () {
   return (

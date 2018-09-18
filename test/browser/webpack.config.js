@@ -36,7 +36,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'inferno-bootstrap': path.resolve(__dirname, '../../lib/index.js')
+      'inferno-bootstrap': path.resolve(__dirname, '../../src/index.js')
     }
   }
 }

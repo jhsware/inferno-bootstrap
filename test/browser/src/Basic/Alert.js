@@ -1,6 +1,6 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Alert from '../../../../lib/Alert'
+import Alert from '../../../../src/Alert'
 
 export default function () {
   return (

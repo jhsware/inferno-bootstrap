@@ -1,20 +1,20 @@
 import { Component } from 'inferno'
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Form from '../../../../lib/Form/Form'
-import FormGroup from '../../../../lib/Form/FormGroup'
-import Input from '../../../../lib/Form/Input'
-import InputGroup from '../../../../lib/Form/InputGroup'
-import InputGroupAddon from '../../../../lib/Form/InputGroupAddon'
-import InputGroupButtonDropdown from '../../../../lib/Form/InputGroupButtonDropdown'
+import Form from '../../../../src/Form/Form'
+import FormGroup from '../../../../src/Form/FormGroup'
+import Input from '../../../../src/Form/Input'
+import InputGroup from '../../../../src/Form/InputGroup'
+import InputGroupAddon from '../../../../src/Form/InputGroupAddon'
+import InputGroupButtonDropdown from '../../../../src/Form/InputGroupButtonDropdown'
 
-import Label from '../../../../lib/Form/Label'
+import Label from '../../../../src/Form/Label'
 
-import Button from '../../../../lib/Button';
-import ButtonDropdown from '../../../../lib/ButtonDropdown';
-import DropdownToggle from '../../../../lib/DropdownToggle';
-import DropdownMenu from '../../../../lib/DropdownMenu';
-import DropdownItem from '../../../../lib/DropdownItem';
+import Button from '../../../../src/Button';
+import ButtonDropdown from '../../../../src/ButtonDropdown';
+import DropdownToggle from '../../../../src/DropdownToggle';
+import DropdownMenu from '../../../../src/DropdownMenu';
+import DropdownItem from '../../../../src/DropdownItem';
 
 export default function () {
   return (

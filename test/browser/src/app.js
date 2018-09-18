@@ -2,9 +2,9 @@ import { render, Component } from 'inferno'
 // require('inferno-devtools')
 import { BrowserRouter, Switch, Redirect, Route, Link } from 'inferno-router'
 
-import Nav from '../../../lib/Navigation/Nav'
-import NavItem from '../../../lib/Navigation/NavItem'
-import NavLink from '../../../lib/Navigation/NavLink'
+import Nav from '../../../src/Navigation/Nav'
+import NavItem from '../../../src/Navigation/NavItem'
+import NavLink from '../../../src/Navigation/NavLink'
 
 import BasicPage from './BasicPage'
 import CardPage from './CardPage'

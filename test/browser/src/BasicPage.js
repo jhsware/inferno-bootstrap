@@ -15,7 +15,7 @@ import PaginationSection from './Basic/Pagination'
 import ListSection from './Basic/List'
 import TooltipSection from './Basic/Tooltip'
 
-// import Modal from '../../../lib/Modal'
+// import Modal from '../../../src/Modal'
 
 export default function BasicPage (props) {
   return (

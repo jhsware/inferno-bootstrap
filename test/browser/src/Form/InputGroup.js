@@ -1,11 +1,11 @@
 import { Section, Stage, Scene, Code } from '../components'
 
-import Form from '../../../../lib/Form/Form'
-import FormGroup from '../../../../lib/Form/FormGroup'
-import Input from '../../../../lib/Form/Input'
-import InputGroup from '../../../../lib/Form/InputGroup'
-import InputGroupAddon from '../../../../lib/Form/InputGroupAddon'
-import Label from '../../../../lib/Form/Label'
+import Form from '../../../../src/Form/Form'
+import FormGroup from '../../../../src/Form/FormGroup'
+import Input from '../../../../src/Form/Input'
+import InputGroup from '../../../../src/Form/InputGroup'
+import InputGroupAddon from '../../../../src/Form/InputGroupAddon'
+import Label from '../../../../src/Form/Label'
 
 export default function () {
   return (

@@ -1,8 +1,8 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Pagination from '../../../../lib/Pagination'
-import PaginationItem from '../../../../lib/PaginationItem'
-import PaginationLink from '../../../../lib/PaginationLink'
+import Pagination from '../../../../src/Pagination'
+import PaginationItem from '../../../../src/PaginationItem'
+import PaginationLink from '../../../../src/PaginationLink'
 
 export default function () {
   return (

@@ -1,6 +1,6 @@
 import { Code, Section, Stage, Scene, Narrative } from '../components'
 
-import Badge from '../../../../lib/Badge'
+import Badge from '../../../../src/Badge'
 
 export default function () {
   return (

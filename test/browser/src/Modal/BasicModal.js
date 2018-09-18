@@ -1,12 +1,12 @@
 import { Component } from 'inferno'
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Button from '../../../../lib/Button'
-import ButtonGroup from '../../../../lib/ButtonGroup'
-import Modal from '../../../../lib/Modal/Modal'
-import ModalHeader from '../../../../lib/Modal/ModalHeader'
-import ModalBody from '../../../../lib/Modal/ModalBody'
-import ModalFooter from '../../../../lib/Modal/ModalFooter'
+import Button from '../../../../src/Button'
+import ButtonGroup from '../../../../src/ButtonGroup'
+import Modal from '../../../../src/Modal/Modal'
+import ModalHeader from '../../../../src/Modal/ModalHeader'
+import ModalBody from '../../../../src/Modal/ModalBody'
+import ModalFooter from '../../../../src/Modal/ModalFooter'
 
 export default function () {
   return (

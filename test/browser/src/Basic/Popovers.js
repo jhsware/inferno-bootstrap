@@ -1,10 +1,10 @@
 import { Component } from 'inferno'
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Button from '../../../../lib/Button'
-import Popover from '../../../../lib/Popover'
-import PopoverHeader from '../../../../lib/PopoverHeader'
-import PopoverBody from '../../../../lib/PopoverBody'
+import Button from '../../../../src/Button'
+import Popover from '../../../../src/Popover'
+import PopoverHeader from '../../../../src/PopoverHeader'
+import PopoverBody from '../../../../src/PopoverBody'
 
 export default function () {
   return (

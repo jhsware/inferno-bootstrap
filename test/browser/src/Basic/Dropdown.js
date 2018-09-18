@@ -2,10 +2,10 @@
 import { Component } from 'inferno';
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Dropdown from '../../../../lib/Dropdown';
-import DropdownToggle from '../../../../lib/DropdownToggle';
-import DropdownMenu from '../../../../lib/DropdownMenu';
-import DropdownItem from '../../../../lib/DropdownItem';
+import Dropdown from '../../../../src/Dropdown';
+import DropdownToggle from '../../../../src/DropdownToggle';
+import DropdownMenu from '../../../../src/DropdownMenu';
+import DropdownItem from '../../../../src/DropdownItem';
 
 
 export default function () {

@@ -2,14 +2,14 @@ import { Component } from 'inferno'
 
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Button from '../../../../lib/Button'
-import ButtonGroup from '../../../../lib/ButtonGroup'
-import ButtonToolbar from '../../../../lib/ButtonToolbar'
+import Button from '../../../../src/Button'
+import ButtonGroup from '../../../../src/ButtonGroup'
+import ButtonToolbar from '../../../../src/ButtonToolbar'
 
-import ButtonDropdown from '../../../../lib/ButtonDropdown';
-import DropdownToggle from '../../../../lib/DropdownToggle';
-import DropdownMenu from '../../../../lib/DropdownMenu';
-import DropdownItem from '../../../../lib/DropdownItem';
+import ButtonDropdown from '../../../../src/ButtonDropdown';
+import DropdownToggle from '../../../../src/DropdownToggle';
+import DropdownMenu from '../../../../src/DropdownMenu';
+import DropdownItem from '../../../../src/DropdownItem';
 
 export default function () {
   return (

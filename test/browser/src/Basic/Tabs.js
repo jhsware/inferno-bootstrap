@@ -2,17 +2,17 @@ import { Component } from 'inferno'
 import classnames from 'classnames';
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Nav from '../../../../lib/Navigation/Nav'
-import NavItem from '../../../../lib/Navigation/NavItem'
-import NavLink from '../../../../lib/Navigation/NavLink'
-import TabContent from '../../../../lib/TabContent'
-import TabPane from '../../../../lib/TabPane'
-import Row from '../../../../lib/Row'
-import Col from '../../../../lib/Col'
-import Card from '../../../../lib/Card/Card'
-import CardTitle from '../../../../lib/Card/CardTitle'
-import CardText from '../../../../lib/Card/CardText'
-import Button from '../../../../lib/Button'
+import Nav from '../../../../src/Navigation/Nav'
+import NavItem from '../../../../src/Navigation/NavItem'
+import NavLink from '../../../../src/Navigation/NavLink'
+import TabContent from '../../../../src/TabContent'
+import TabPane from '../../../../src/TabPane'
+import Row from '../../../../src/Row'
+import Col from '../../../../src/Col'
+import Card from '../../../../src/Card/Card'
+import CardTitle from '../../../../src/Card/CardTitle'
+import CardText from '../../../../src/Card/CardText'
+import Button from '../../../../src/Button'
 
 export default function () {
   return (

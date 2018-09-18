@@ -1,7 +1,7 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Breadcrumb from '../../../../lib/Breadcrumb'
-import BreadcrumbItem from '../../../../lib/BreadcrumbItem'
+import Breadcrumb from '../../../../src/Breadcrumb'
+import BreadcrumbItem from '../../../../src/BreadcrumbItem'
 
 export default function () {
   return (

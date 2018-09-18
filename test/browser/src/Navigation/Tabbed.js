@@ -1,14 +1,14 @@
 import { Component } from 'inferno'
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Nav from '../../../../lib/Navigation/Nav'
-import NavItem from '../../../../lib/Navigation/NavItem'
-import NavLink from '../../../../lib/Navigation/NavLink'
-import NavDropdown from '../../../../lib/Navigation/NavDropdown'
-import Dropdown from '../../../../lib/Dropdown'
-import DropdownMenu from '../../../../lib/DropdownMenu'
-import DropdownToggle from '../../../../lib/DropdownToggle'
-import DropdownItem from '../../../../lib/DropdownItem'
+import Nav from '../../../../src/Navigation/Nav'
+import NavItem from '../../../../src/Navigation/NavItem'
+import NavLink from '../../../../src/Navigation/NavLink'
+import NavDropdown from '../../../../src/Navigation/NavDropdown'
+import Dropdown from '../../../../src/Dropdown'
+import DropdownMenu from '../../../../src/DropdownMenu'
+import DropdownToggle from '../../../../src/DropdownToggle'
+import DropdownItem from '../../../../src/DropdownItem'
 
 export default function () {
   return (

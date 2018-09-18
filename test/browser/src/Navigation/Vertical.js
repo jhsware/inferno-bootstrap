@@ -1,8 +1,8 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Nav from '../../../../lib/Navigation/Nav'
-import NavItem from '../../../../lib/Navigation/NavItem'
-import NavLink from '../../../../lib/Navigation/NavLink'
+import Nav from '../../../../src/Navigation/Nav'
+import NavItem from '../../../../src/Navigation/NavItem'
+import NavLink from '../../../../src/Navigation/NavLink'
 
 export default function () {
   return (

@@ -1,8 +1,8 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Container from '../../../../lib/Container'
-import Row from '../../../../lib/Row'
-import Col from '../../../../lib/Col'
+import Container from '../../../../src/Container'
+import Row from '../../../../src/Row'
+import Col from '../../../../src/Col'
 
 export default function () {
   return (

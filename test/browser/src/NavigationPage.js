@@ -5,7 +5,7 @@ import VerticalSection from './Navigation/Vertical'
 import TabbedSection from './Navigation/Tabbed'
 import PillsSection from './Navigation/Pills'
 
-// import Modal from '../../../lib/Modal'
+// import Modal from '../../../src/Modal'
 
 
 export default function NavigationPage (props) {

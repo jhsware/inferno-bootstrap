@@ -1,7 +1,7 @@
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Progress from '../../../../lib/Progress'
-import Button from '../../../../lib/Button'
+import Progress from '../../../../src/Progress'
+import Button from '../../../../src/Button'
 
 export default function () {
   return (

@@ -2,7 +2,7 @@ import { Component } from 'inferno'
 import classnames from 'classnames';
 import { Section, Stage, Scene, Code, Narrative } from '../components'
 
-import Tooltip from '../../../../lib/Tooltip';
+import Tooltip from '../../../../src/Tooltip';
 
 export default function () {
   return (
