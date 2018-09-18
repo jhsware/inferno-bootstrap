@@ -6,4 +6,5 @@ module.exports = {
     usingJest: true
   },
   setupTestFrameworkScriptFile: require.resolve("./JEST-DEBUG.js"),
+  testURL: "http://localhost/"
 }
