@@ -1,4 +1,3 @@
-import inferno from 'inferno';
 import { createElement } from 'inferno-create-element';
 import classNames from 'classnames';
 import { mapToCssModules } from './utils';

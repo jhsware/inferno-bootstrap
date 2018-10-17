@@ -4,8 +4,8 @@
     "inferno-app"
   ],
   "plugins": [
-    "@babel/proposal-class-properties",
-    "@babel/transform-runtime",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
     "@babel/plugin-syntax-object-rest-spread",
     "@babel/plugin-syntax-jsx"
   ],
