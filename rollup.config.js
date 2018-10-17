@@ -25,8 +25,9 @@ const baseConfig = (outputFormat) => {
         plugins: [
           // Ensure "external-helpers" is only included in rollup builds
           // Issue: https://github.com/rollup/rollup/issues/1595
-          'external-helpers',
+          '@babel/external-helpers'
         ],
+        runtimeHelpers: true
       }),
       replace({
         'process.env.NODE_ENV': JSON.stringify('production')
