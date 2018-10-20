@@ -1,5 +1,6 @@
 import { Component } from 'inferno';
 import { createElement } from 'inferno-create-element';
+import { findDOMNode } from 'inferno-extras'
 import classNames from 'classnames';
 import { mapToCssModules, omit } from './utils';
 
@@ -10,7 +11,7 @@ const defaultProps = {
 const omitProps = ['tag', 'activeTab', 'className', 'cssModule'];
 
 function getContentSize() {
-  const domEl = this.$LI.dom
+  const domEl = findDOMNode(this)
   return {
     width: domEl.offsetWidth + 'px',
     height: domEl.offsetHeight + 'px'
@@ -19,7 +20,7 @@ function getContentSize() {
 
 // This could probably be generalised in inferno-animation as part of animateOnAdd
 function animateCrossFadeIn(component, currSize, animationName, callback) {
-  const domEl = component.$LI.dom
+  const domEl = findDOMNode(component)
 
   const height = domEl.offsetHeight + 'px'
   const width = domEl.offsetWidth + 'px'

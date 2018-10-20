@@ -2,6 +2,7 @@
 // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-find-dom-node.md
 
 import { Component } from 'inferno'
+import { findDOMNode } from 'inferno-extras'
 import classNames from 'classnames';
 import { mapToCssModules, omit, keyCodes } from './utils';
 import { isNullOrUndef, isUndefined, isArray } from 'inferno-shared';
@@ -50,7 +51,7 @@ class Dropdown extends Component {
   }
 
   getContainer() {
-    return this.$LI.dom;
+    return findDOMNode(this);
   }
 
   addEvents() {

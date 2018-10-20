@@ -36,4 +36,4 @@ module.exports = function (PORT, done) {
   return app.listen(PORT, done)
 }
 
-module.exports(8080)
+module.exports(process.env.PORT || 8080)
