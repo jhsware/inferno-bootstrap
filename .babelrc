@@ -1,16 +1,26 @@
 {
   "presets": [
-    ["@babel/env", { "modules": false }],
-    "inferno-app"
+    ["@babel/env", { "modules": false }]
   ],
   "plugins": [
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-transform-runtime",
-    "@babel/plugin-syntax-object-rest-spread",
-    "@babel/plugin-syntax-jsx"
+    "@babel/proposal-class-properties",
+    "@babel/transform-runtime",
+    "@babel/syntax-object-rest-spread",
+    "@babel/syntax-jsx",
+    [
+      "babel-plugin-inferno",
+      {
+        "imports": true
+      }
+    ]
   ],
   "env": {
     "production": {},
-    "test": {}
+    "test": {
+      "presets": [
+        ["@babel/env", { "modules": false }],
+        "inferno-app"
+      ]
+    }
   }
 }
