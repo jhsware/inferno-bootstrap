@@ -10,18 +10,21 @@ View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
 NOTE! If you have cherry picked from /dist, please change to /lib
 
 ## Compatibility
-inferno-bootstrap 5.x supports Inferno v5 (master)
+inferno-bootstrap 7.x supports Inferno v7
 
-inferno-bootstrap 4.x supports Inferno v4 (master)
+inferno-bootstrap 6.x supports Inferno v6
 
-inferno-bootstrap 3.x supports Inferno v3 (InfernoV3 branch)
+inferno-bootstrap 5.x supports Inferno v5
+
+inferno-bootstrap 4.x supports Inferno v4
+
+inferno-bootstrap 3.x supports Inferno v3 (code in InfernoV3 branch)
 
 Reactstrap components not yet ported:
 - Uncontrolled input components
 - Media
 - Fade
 - Carousel
-- ~~Tooltip~~ DONE
 - Form inline attribute (you can do it by adding bootstrap classes manually)
 
 To understand how to use `inferno-bootstrap`, visit the component docs and the excellent Bootstrap 4 website. When confused, check out the source code and tests.
