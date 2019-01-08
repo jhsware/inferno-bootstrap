@@ -1,6 +1,6 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,12 +13,12 @@ import ListGroupItemText from "../../lib/List/ListGroupItemText"
 
 describe('ListGroupItem', () => {
   it('should render children', () => {
-    const tree = renderIntoDocument(<ListGroupItemText>Yo!</ListGroupItemText>);
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
+    const DOM = renderIntoElement(<ListGroupItemText>Yo!</ListGroupItemText>);
+    expect(DOM.innerHTML).toBe('Yo!');
   });
 
   it('should render with "list-group-item-text" class', () => {
-    const tree = renderIntoDocument(<ListGroupItemText>Yo!</ListGroupItemText>);
-    expect(hasClass(tree.$LI, 'list-group-item-text')).toBe(true);
+    const DOM = renderIntoElement(<ListGroupItemText>Yo!</ListGroupItemText>);
+    expect(hasClass(DOM, 'list-group-item-text')).toBe(true);
   });
 });

@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,24 +13,24 @@ import CardHeader from '../../lib/Card/CardHeader';
 
 describe('CardHeader', () => {
   it('should render with "card-header" class', () => {
-    const tree = renderIntoDocument(<CardHeader>Yo!</CardHeader>);
+    const DOM = renderIntoElement(<CardHeader>Yo!</CardHeader>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'card-header')).toBe(true);
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'card-header')).toBe(true);
   });
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<CardHeader className="other">Yo!</CardHeader>);
+    const DOM = renderIntoElement(<CardHeader className="other">Yo!</CardHeader>);
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true);
-    expect(hasClass(tree.$LI, 'card-header')).toBe(true);
+    expect(hasClass(DOM, 'other')).toBe(true);
+    expect(hasClass(DOM, 'card-header')).toBe(true);
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardHeader tag="main">Yo!</CardHeader>);
+    const DOM = renderIntoElement(<CardHeader tag="main">Yo!</CardHeader>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'card-header')).toBe(true);
-    expect(getTagName(tree.$LI)).toBe('main')
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'card-header')).toBe(true);
+    expect(getTagName(DOM)).toBe('main')
   });
 });

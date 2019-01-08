@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,26 +13,26 @@ import Form from "../../lib/Form/Form"
 
 describe('Form', () => {
   it('should render with "form" tag', () => {
-    const tree = renderIntoDocument(<Form>Yo!</Form>)
+    const DOM = renderIntoElement(<Form>Yo!</Form>)
 
-    expect(getTagName(tree.$LI)).toBe('form')
+    expect(getTagName(DOM)).toBe('form')
   })
 
   it('should render children', () => {
-    const tree = renderIntoDocument(<Form>Yo!</Form>)
+    const DOM = renderIntoElement(<Form>Yo!</Form>)
 
-    expect(tree.$LI.dom.innerHTML).toBe('Yo!')
+    expect(DOM.innerHTML).toBe('Yo!')
   })
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<Form className="other">Yo!</Form>)
+    const DOM = renderIntoElement(<Form className="other">Yo!</Form>)
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true)
+    expect(hasClass(DOM, 'other')).toBe(true)
   })
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<Form tag="main">Yo!</Form>)
+    const DOM = renderIntoElement(<Form tag="main">Yo!</Form>)
 
-    expect(getTagName(tree.$LI)).toBe('main')
+    expect(getTagName(DOM)).toBe('main')
   })
 })

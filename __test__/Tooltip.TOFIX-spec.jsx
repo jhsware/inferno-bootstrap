@@ -1,7 +1,7 @@
-import { render } from "inferno"
 import Tooltip from '../lib/Tooltip';
 import PopperContent from '../lib/PopperContent';
 import { setProps, triggerEvent } from './utils';
+import { renderIntoContainer } from 'inferno-test-utils'
 
 describe('Tooltip', () => {
   let isOpen;
@@ -39,7 +39,7 @@ describe('Tooltip', () => {
   });
 
   it('should render with "hideArrow" false by default', () => {
-    const wrapper = render(
+    const wrapper = renderIntoContainer(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle}>
         Tooltip Content
       </Tooltip>, container
@@ -49,7 +49,7 @@ describe('Tooltip', () => {
   });
 
   it('should render with "hideArrow" true when "hideArrow" prop is truthy', () => {
-    const wrapper = render(
+    const wrapper = renderIntoContainer(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle} hideArrow>
       Tooltip Content
       </Tooltip>, container
@@ -58,23 +58,25 @@ describe('Tooltip', () => {
     expect(wrapper.props['hideArrow']).toBe(true);
   });
   
-  it('should not render children if isOpen is false', () => {
-    const wrapper = render(
+  it('should not render children if isOpen is false', (done) => {
+    const wrapper = renderIntoContainer(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle}>
       Tooltip Content
       </Tooltip>, container
     );
     
-    wrapper.forceUpdate();
+    wrapper.forceUpdate(() => {
+      const tooltips = document.getElementsByClassName('tooltip');
+      
+      expect(container.querySelector('.tooltip.show')).toBe(null);
+      expect(target.className).toBe('');
+      expect(tooltips.length).toBe(0);
+      done();
+    });
 
-    const tooltips = document.getElementsByClassName('tooltip');
-    
-    expect(container.querySelector('.tooltip.show')).toBe(null);
-    expect(target.className).toBe('');
-    expect(tooltips.length).toBe(0);
   });
   
-  it('should render if isOpen is true', () => {
+  it('should render if isOpen is true', (done) => {
     isOpen = true;
     const wrapper = render(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle}>
@@ -82,48 +84,54 @@ describe('Tooltip', () => {
       </Tooltip>, container
     );
 
-    wrapper.forceUpdate();
+    wrapper.forceUpdate(() => {
+      const tooltips = document.getElementsByClassName('tooltip');
+      
+      expect(container.querySelector('.tooltip.show')).toBeDefined();
+      expect(tooltips.length).toBe(1);
+      expect(tooltips[0].textContent).toBe('Tooltip Content');
+      done();
+    });
 
-    const tooltips = document.getElementsByClassName('tooltip');
-    
-    expect(container.querySelector('.tooltip.show')).toBeDefined();
-    expect(tooltips.length).toBe(1);
-    expect(tooltips[0].textContent).toBe('Tooltip Content');
   });
   
-  it('should render with target object', () => {
+  it('should render with target object', (done) => {
     isOpen = true;
-    const wrapper = render(
+    const wrapper = renderIntoContainer(
       <Tooltip target={document.getElementById('target')} isOpen={isOpen} toggle={toggle}>
       Tooltip Content
       </Tooltip>, container
     );
-    wrapper.forceUpdate();
+    wrapper.forceUpdate(() => {
+      const tooltips = document.getElementsByClassName('tooltip');
+      
+      expect(container.querySelector('.tooltip.show')).toBeDefined();
+      expect(tooltips.length).toBe(1);
+      expect(tooltips[0].textContent).toBe('Tooltip Content');
+      done();
+    });
     
-    const tooltips = document.getElementsByClassName('tooltip');
-    
-    expect(container.querySelector('.tooltip.show')).toBeDefined();
-    expect(tooltips.length).toBe(1);
-    expect(tooltips[0].textContent).toBe('Tooltip Content');
   });
   
-  it('should toggle isOpen', () => {
-    const wrapper = render(
+  it('should toggle isOpen', (done) => {
+    const wrapper = renderIntoContainer(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle}>
       Tooltip Content
       </Tooltip>, container
     );
-    wrapper.forceUpdate();
+    wrapper.forceUpdate(() => {
+      expect(document.getElementsByClassName('tooltip').length).toBe(0);
+      setProps(wrapper, { isOpen: true });
+      expect(document.getElementsByClassName('tooltip').length).toBe(1);
+      setProps(wrapper, { isOpen: false });
+      expect(document.getElementsByClassName('tooltip').length).toBe(0);
+      done();
+    });
     
-    expect(document.getElementsByClassName('tooltip').length).toBe(0);
-    setProps(wrapper, { isOpen: true });
-    expect(document.getElementsByClassName('tooltip').length).toBe(1);
-    setProps(wrapper, { isOpen: false });
-    expect(document.getElementsByClassName('tooltip').length).toBe(0);
   });
   
   it('should handle target clicks', () => {
-    const wrapper = render(
+    const wrapper = renderIntoContainer(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle}>
       Tooltip Content
       </Tooltip>, container
@@ -139,7 +147,7 @@ describe('Tooltip', () => {
   });
   
   it('should handle inner target clicks', () => {
-    const wrapper = render(
+    const wrapper = renderIntoContainer(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle}>
       Tooltip Content
       </Tooltip>, container
@@ -151,7 +159,7 @@ describe('Tooltip', () => {
   });
   
   it('should not do anything when document click outside of target', () => {
-    const wrapper = render(
+    const wrapper = renderIntoContainer(
       <Tooltip target="target" isOpen={isOpen} toggle={toggle}>
       Tooltip Content
       </Tooltip>, container

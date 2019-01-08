@@ -1,11 +1,5 @@
-import sinon from "sinon"
 import { render } from 'inferno'
-import { renderIntoDocument, triggerEvent } from './utils'
-import { 
-  findRenderedVNodeWithType,
-  findRenderedDOMElementWithClass,
-  isVNode
-} from 'inferno-test-utils'
+import { renderIntoElement, triggerEvent } from './utils'
 
 import Button from "../lib/Button"
 import ButtonGroup from "../lib/ButtonGroup"
@@ -28,25 +22,25 @@ describe("Buttons", () => {
 
   describe("Button", () => {
     it("Can be rendered", () => {
-      const tree = renderIntoDocument(<Button>Click me!</Button>)
+      const DOM = renderIntoElement(<Button>Click me!</Button>)
       
-      expect(tree.$LI.dom.outerHTML).toBe(
+      expect(DOM.outerHTML).toBe(
         '<button class="btn btn-secondary">Click me!</button>'
       )
     })
 
     it("Can be rendered with color primary", () => {
-      const tree = renderIntoDocument(<Button color="primary">Click me!</Button>)
+      const DOM = renderIntoElement(<Button color="primary">Click me!</Button>)
       
-      expect(tree.$LI.dom.outerHTML).toBe(
+      expect(DOM.outerHTML).toBe(
         '<button class="btn btn-primary">Click me!</button>'
       )
     })
 
     it("Renders as a-tag when href provided", () => {
-      const tree = renderIntoDocument(<Button href="#">Click me!</Button>)
+      const DOM = renderIntoElement(<Button href="#">Click me!</Button>)
       
-      expect(tree.$LI.dom.outerHTML).toBe(
+      expect(DOM.outerHTML).toBe(
         '<a class="btn btn-secondary" href="#">Click me!</a>'
       )
     })
@@ -72,17 +66,17 @@ describe("Buttons", () => {
 
   describe("ButtonGroup", () => {
     it("Can be rendered", () => {
-      const tree = renderIntoDocument(<ButtonGroup>Content</ButtonGroup>)
+      const DOM = renderIntoElement(<ButtonGroup>Content</ButtonGroup>)
       
-      expect(tree.$LI.dom.outerHTML).toBe(
+      expect(DOM.outerHTML).toBe(
         '<div class="btn-group" role="group">Content</div>'
       )
     })
 
     it("Can be rendered vertically", () => {
-      const tree = renderIntoDocument(<ButtonGroup vertical="true">Content</ButtonGroup>)
+      const DOM = renderIntoElement(<ButtonGroup vertical="true">Content</ButtonGroup>)
       
-      expect(tree.$LI.dom.outerHTML).toBe(
+      expect(DOM.outerHTML).toBe(
         '<div class="btn-group-vertical" role="group">Content</div>'
       )
     })
@@ -90,9 +84,9 @@ describe("Buttons", () => {
 
   describe("ButtonToolbar", () => {
     it("Can be rendered", () => {
-      const tree = renderIntoDocument(<ButtonToolbar>Content</ButtonToolbar>)
+      const DOM = renderIntoElement(<ButtonToolbar>Content</ButtonToolbar>)
       
-      expect(tree.$LI.dom.outerHTML).toBe(
+      expect(DOM.outerHTML).toBe(
         '<div class="btn-toolbar" role="toolbar">Content</div>'
       )
     })

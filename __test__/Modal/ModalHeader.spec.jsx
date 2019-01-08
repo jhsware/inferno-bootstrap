@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import {
   scryRenderedDOMElementsWithClass,
   findRenderedDOMElementWithTag
@@ -10,37 +10,37 @@ import ModalHeader from '../../lib/Modal/ModalHeader';
 
 describe('ModalHeader', () => {
   it('should render with "modal-header" class', () => {
-    const tree = renderIntoDocument(<ModalHeader>Yo!</ModalHeader>);
+    const DOM = renderIntoElement(<ModalHeader>Yo!</ModalHeader>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('<h4 class=\"modal-title\">Yo!</h4>');
-    expect(hasClass(tree.$LI, 'modal-header')).toBe(true);
+    expect(DOM.innerHTML).toBe('<h4 class=\"modal-title\">Yo!</h4>');
+    expect(hasClass(DOM, 'modal-header')).toBe(true);
   });
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<ModalHeader className="other">Yo!</ModalHeader>);
+    const DOM = renderIntoElement(<ModalHeader className="other">Yo!</ModalHeader>);
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true);
-    expect(hasClass(tree.$LI, 'modal-header')).toBe(true);
+    expect(hasClass(DOM, 'other')).toBe(true);
+    expect(hasClass(DOM, 'modal-header')).toBe(true);
   });
 
   it('should render close button', () => {
-    const tree = renderIntoDocument(<ModalHeader toggle={() => {}} className="other">Yo!</ModalHeader>);
+    const DOM = renderIntoElement(<ModalHeader toggle={() => {}} className="other">Yo!</ModalHeader>);
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true);
-    expect(hasClass(tree.$LI, 'modal-header')).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'close').length).toBe(1);
+    expect(hasClass(DOM, 'other')).toBe(true);
+    expect(hasClass(DOM, 'modal-header')).toBe(true);
+    expect(DOM.getElementsByClassName('close').length).toBe(1);
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<ModalHeader tag="p">Yo!</ModalHeader>);
+    const DOM = renderIntoElement(<ModalHeader tag="p">Yo!</ModalHeader>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('<p class=\"modal-title\">Yo!</p>');
-    expect(findRenderedDOMElementWithTag(tree, 'p')).toBeDefined();
+    expect(DOM.innerHTML).toBe('<p class="modal-title">Yo!</p>');
+    //expect(findRenderedDOMElementWithTag(tree, 'p')).toBeDefined();
   });
 
   it('should render custom wrapping tag', () => {
-    const tree = renderIntoDocument(<ModalHeader wrapTag="main">Yo!</ModalHeader>);
+    const DOM = renderIntoElement(<ModalHeader wrapTag="main">Yo!</ModalHeader>);
 
-    expect(getTagName(tree.$LI)).toBe('main');
+    expect(getTagName(DOM)).toBe('main');
   });
 });

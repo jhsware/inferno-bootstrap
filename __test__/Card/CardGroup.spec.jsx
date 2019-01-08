@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,24 +13,24 @@ import CardGroup from '../../lib/Card/CardGroup';
 
 describe('CardGroup', () => {
   it('should render with "card-group" class', () => {
-    const tree = renderIntoDocument(<CardGroup>Yo!</CardGroup>);
+    const DOM = renderIntoElement(<CardGroup>Yo!</CardGroup>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'card-group')).toBe(true);
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'card-group')).toBe(true);
   });
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<CardGroup className="other">Yo!</CardGroup>);
+    const DOM = renderIntoElement(<CardGroup className="other">Yo!</CardGroup>);
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true);
-    expect(hasClass(tree.$LI, 'card-group')).toBe(true);
+    expect(hasClass(DOM, 'other')).toBe(true);
+    expect(hasClass(DOM, 'card-group')).toBe(true);
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<CardGroup tag="main">Yo!</CardGroup>);
+    const DOM = renderIntoElement(<CardGroup tag="main">Yo!</CardGroup>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'card-group')).toBe(true);
-    expect(getTagName(tree.$LI)).toBe('main')
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'card-group')).toBe(true);
+    expect(getTagName(DOM)).toBe('main')
   });
 });

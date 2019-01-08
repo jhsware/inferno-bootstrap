@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,76 +13,76 @@ import FormGroup from "../../lib/Form/FormGroup"
 
 describe('FormGroup', () => {
   it('should render with "div" tag by default', () => {
-    const tree = renderIntoDocument(<FormGroup>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup>Yo!</FormGroup>)
 
-    expect(getTagName(tree.$LI)).toBe('div')
+    expect(getTagName(DOM)).toBe('div')
   })
 
   it('should render children', () => {
-    const tree = renderIntoDocument(<FormGroup>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup>Yo!</FormGroup>)
 
-    expect(tree.$LI.dom.innerHTML).toBe('Yo!')
+    expect(DOM.innerHTML).toBe('Yo!')
   })
 
   it('should render with "form-group" class by default', () => {
-    const tree = renderIntoDocument(<FormGroup>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'form-group')).toBe(true)
+    expect(hasClass(DOM, 'form-group')).toBe(true)
   })
 
   it('should not render with "form-check" class by default', () => {
-    const tree = renderIntoDocument(<FormGroup>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'form-check')).toBe(false)
+    expect(hasClass(DOM, 'form-check')).toBe(false)
   })
 
   it('should render with "form-check" class when check prop is truthy', () => {
-    const tree = renderIntoDocument(<FormGroup check>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup check>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'form-check')).toBe(true)
+    expect(hasClass(DOM, 'form-check')).toBe(true)
     
   })
 
   it('should not render with "form-group" class when check prop is truthy', () => {
-    const tree = renderIntoDocument(<FormGroup check>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup check>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'form-group')).toBe(false)
+    expect(hasClass(DOM, 'form-group')).toBe(false)
   })
 
   it('should not render with "disabled" class when disabled prop is truthy but check is not', () => {
-    const tree = renderIntoDocument(<FormGroup disabled>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup disabled>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'disabled')).toBe(false)
+    expect(hasClass(DOM, 'disabled')).toBe(false)
   })
 
   it('should render with "disabled" class when both check disabled props are truthy', () => {
-    const tree = renderIntoDocument(<FormGroup check disabled>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup check disabled>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'disabled')).toBe(true)
-    expect(hasClass(tree.$LI, 'form-check')).toBe(true)
+    expect(hasClass(DOM, 'disabled')).toBe(true)
+    expect(hasClass(DOM, 'form-check')).toBe(true)
   })
 
   it('should render with "row" class when row prop is truthy', () => {
-    const tree = renderIntoDocument(<FormGroup row>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup row>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'row')).toBe(true)
+    expect(hasClass(DOM, 'row')).toBe(true)
   })
 
   it('should not render with "row" class when row prop is not truthy', () => {
-    const tree = renderIntoDocument(<FormGroup>Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup>Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'row')).toBe(false)
+    expect(hasClass(DOM, 'row')).toBe(false)
   })
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<FormGroup className="other">Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup className="other">Yo!</FormGroup>)
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true)
+    expect(hasClass(DOM, 'other')).toBe(true)
   })
 
   it('should render custom element', () => {
-    const tree = renderIntoDocument(<FormGroup tag="main">Yo!</FormGroup>)
+    const DOM = renderIntoElement(<FormGroup tag="main">Yo!</FormGroup>)
 
-    expect(getTagName(tree.$LI)).toBe('main')
+    expect(getTagName(DOM)).toBe('main')
   })
 })

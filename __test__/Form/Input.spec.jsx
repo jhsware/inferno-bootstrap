@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -12,63 +12,63 @@ import Input from "../../lib/Form/Input"
 
 describe('Input', () => {
   it('should render with "input" tag when no type is provided', () => {
-    const tree = renderIntoDocument(<Input />)
+    const DOM = renderIntoElement(<Input />)
 
-    expect(getTagName(tree.$LI)).toBe('input')
+    expect(getTagName(DOM)).toBe('input')
   })
 
   it('should render with "select" tag when type is "select"', () => {
-    const tree = renderIntoDocument(<Input type="select" />)
+    const DOM = renderIntoElement(<Input type="select" />)
 
-    expect(getTagName(tree.$LI)).toBe('select')
+    expect(getTagName(DOM)).toBe('select')
   })
 
   it('should render with "textarea" tag when type is "textarea"', () => {
-    const tree = renderIntoDocument(<Input type="textarea" />)
+    const DOM = renderIntoElement(<Input type="textarea" />)
 
-    expect(getTagName(tree.$LI)).toBe('textarea')
+    expect(getTagName(DOM)).toBe('textarea')
   })
 
   it('should render with "p" tag when plaintext prop is truthy', () => {
-    const tree = renderIntoDocument(<Input type="select" plaintext />)
+    const DOM = renderIntoElement(<Input type="select" plaintext />)
 
-    expect(getTagName(tree.$LI)).toBe('p')
+    expect(getTagName(DOM)).toBe('p')
   })
 
   it('should render with "form-control-plaintext" class when plaintext prop is truthy', () => {
-    const tree = renderIntoDocument(<Input type="select" plaintext />)
+    const DOM = renderIntoElement(<Input type="select" plaintext />)
 
-    expect(hasClass(tree.$LI, 'form-control-plaintext')).toBe(true)
+    expect(hasClass(DOM, 'form-control-plaintext')).toBe(true)
   })
 
   it('should not render with "form-control" class when plaintext prop is truthy', () => {
-    const tree = renderIntoDocument(<Input type="select" plaintext />)
+    const DOM = renderIntoElement(<Input type="select" plaintext />)
 
-    expect(hasClass(tree.$LI, 'form-control')).toBe(false)
+    expect(hasClass(DOM, 'form-control')).toBe(false)
   })
 
   it('should render with custom tag when plaintext prop is truthy and tag is provided', () => {
-    const tree = renderIntoDocument(<Input type="select" plaintext tag="div" />)
+    const DOM = renderIntoElement(<Input type="select" plaintext tag="div" />)
 
-    expect(getTagName(tree.$LI)).toBe('div')
+    expect(getTagName(DOM)).toBe('div')
   })
 
   it('should not render with custom tag when plaintext prop is not truthy and tag is provided', () => {
-    const tree = renderIntoDocument(<Input type="select" tag="div" />)
+    const DOM = renderIntoElement(<Input type="select" tag="div" />)
 
-    expect(getTagName(tree.$LI)).toBe('select')
+    expect(getTagName(DOM)).toBe('select')
   })
 
   it('should render with "input" tag when type is not a special case', () => {
-    const tree = renderIntoDocument(<Input type="email" />)
+    const DOM = renderIntoElement(<Input type="email" />)
 
-    expect(getTagName(tree.$LI)).toBe('input')
+    expect(getTagName(DOM)).toBe('input')
   })
 
   it('should not allow children', () => {
     let fail = false
     try {
-      const tree = renderIntoDocument(<Input>Yo!</Input>)
+      const DOM = renderIntoElement(<Input>Yo!</Input>)
     } catch (e) {
       fail = true
     }
@@ -77,110 +77,110 @@ describe('Input', () => {
   })
 
   it('should render with "is-invalid" class when valid is false', () => {
-    const tree = renderIntoDocument(<Input valid={false} />)
+    const DOM = renderIntoElement(<Input valid={false} />)
 
-    expect(hasClass(tree.$LI, 'is-invalid')).toBe(true)
+    expect(hasClass(DOM, 'is-invalid')).toBe(true)
   })
 
   it('should render with "is-invalid" class when valid is false', () => {
-    const tree = renderIntoDocument(<Input valid />)
+    const DOM = renderIntoElement(<Input valid />)
 
-    expect(hasClass(tree.$LI, 'is-valid')).toBe(true)
+    expect(hasClass(DOM, 'is-valid')).toBe(true)
   })
 
   it('should render with "form-control-${size}" class when bsSize is "lg" or "sm"', () => {
-    const tree = renderIntoDocument(<Input bsSize="lg" />)
+    const DOM = renderIntoElement(<Input bsSize="lg" />)
 
-    expect(hasClass(tree.$LI, 'form-control-lg')).toBe(true)
+    expect(hasClass(DOM, 'form-control-lg')).toBe(true)
   })
 
   it('should render with "form-control-${bsSize}" class when bsSize is provided', () => {
-    const tree = renderIntoDocument(<Input bsSize="sm" />);
+    const DOM = renderIntoElement(<Input bsSize="sm" />);
   
-    expect(hasClass(tree.$LI, 'form-control-sm')).toBe(true)
+    expect(hasClass(DOM, 'form-control-sm')).toBe(true)
   });
 
   it('should render with "form-control" class by default', () => {
-    const tree = renderIntoDocument(<Input />)
+    const DOM = renderIntoElement(<Input />)
 
-    expect(hasClass(tree.$LI, 'form-control')).toBe(true)
+    expect(hasClass(DOM, 'form-control')).toBe(true)
   })
 
   it('should not render with "form-control-file" nor "form-control-plaintext" nor "form-check-input" class by default', () => {
-    const tree = renderIntoDocument(<Input />)
+    const DOM = renderIntoElement(<Input />)
 
-    expect(hasClass(tree.$LI, 'form-control-file')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control-plaintext')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-check-input')).toBe(false)
+    expect(hasClass(DOM, 'form-control-file')).toBe(false)
+    expect(hasClass(DOM, 'form-control-plaintext')).toBe(false)
+    expect(hasClass(DOM, 'form-check-input')).toBe(false)
   })
 
   it('should not render with "form-control" nor "form-control-plaintext" nor "form-check-input" class when type is file', () => {
-    const tree = renderIntoDocument(<Input type="file" />)
+    const DOM = renderIntoElement(<Input type="file" />)
 
-    expect(hasClass(tree.$LI, 'form-control')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control-plaintext')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-check-input')).toBe(false)
+    expect(hasClass(DOM, 'form-control')).toBe(false)
+    expect(hasClass(DOM, 'form-control-plaintext')).toBe(false)
+    expect(hasClass(DOM, 'form-check-input')).toBe(false)
   })
 
   it('should not render with "form-control-file" nor "form-control" nor "form-check-input" class when plaintext prop is truthy', () => {
-    const tree = renderIntoDocument(<Input type="file" plaintext />)
+    const DOM = renderIntoElement(<Input type="file" plaintext />)
 
-    expect(hasClass(tree.$LI, 'form-control-file')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-check-input')).toBe(false)
+    expect(hasClass(DOM, 'form-control-file')).toBe(false)
+    expect(hasClass(DOM, 'form-control')).toBe(false)
+    expect(hasClass(DOM, 'form-check-input')).toBe(false)
   })
 
   it('should not render with "form-control-file" nor "form-control-plaintext" nor "form-control" class when type is radio', () => {
-    const tree = renderIntoDocument(<Input type="radio" />)
+    const DOM = renderIntoElement(<Input type="radio" />)
 
-    expect(hasClass(tree.$LI, 'form-control-file')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control-plaintext')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control')).toBe(false)
+    expect(hasClass(DOM, 'form-control-file')).toBe(false)
+    expect(hasClass(DOM, 'form-control-plaintext')).toBe(false)
+    expect(hasClass(DOM, 'form-control')).toBe(false)
   })
 
   it('should not render with "form-control-file" nor "form-control-plaintext" nor "form-control" class when type is checkbox', () => {
-    const tree = renderIntoDocument(<Input type="checkbox" />)
+    const DOM = renderIntoElement(<Input type="checkbox" />)
 
-    expect(hasClass(tree.$LI, 'form-control-file')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control-plaintext')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control')).toBe(false)
+    expect(hasClass(DOM, 'form-control-file')).toBe(false)
+    expect(hasClass(DOM, 'form-control-plaintext')).toBe(false)
+    expect(hasClass(DOM, 'form-control')).toBe(false)
   })
 
   it('should render with "form-check-input" class when type is checkbox', () => {
-    const tree = renderIntoDocument(<Input type="checkbox" />)
+    const DOM = renderIntoElement(<Input type="checkbox" />)
 
-    expect(hasClass(tree.$LI, 'form-check-input')).toBe(true)
+    expect(hasClass(DOM, 'form-check-input')).toBe(true)
   })
 
   it('should render with "form-check-input" class when type is radio', () => {
-    const tree = renderIntoDocument(<Input type="radio" />)
+    const DOM = renderIntoElement(<Input type="radio" />)
 
-    expect(hasClass(tree.$LI, 'form-check-input')).toBe(true)
+    expect(hasClass(DOM, 'form-check-input')).toBe(true)
   })
 
   it('should not render with "form-check-input" nor "form-control" class when type is checkbox and addon is truthy', () => {
-    const tree = renderIntoDocument(<Input addon type="checkbox" />)
+    const DOM = renderIntoElement(<Input addon type="checkbox" />)
 
-    expect(hasClass(tree.$LI, 'form-check-input')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control')).toBe(false)
+    expect(hasClass(DOM, 'form-check-input')).toBe(false)
+    expect(hasClass(DOM, 'form-control')).toBe(false)
   })
 
   it('should not render with "form-check-input" nor "form-control" class when type is radio and addon is truthy', () => {
-    const tree = renderIntoDocument(<Input addon type="radio" />)
+    const DOM = renderIntoElement(<Input addon type="radio" />)
 
-    expect(hasClass(tree.$LI, 'form-check-input')).toBe(false)
-    expect(hasClass(tree.$LI, 'form-control')).toBe(false)
+    expect(hasClass(DOM, 'form-check-input')).toBe(false)
+    expect(hasClass(DOM, 'form-control')).toBe(false)
   })
 
   it('should render with "form-control-file" class when type is file', () => {
-    const tree = renderIntoDocument(<Input type="file" />)
+    const DOM = renderIntoElement(<Input type="file" />)
 
-    expect(hasClass(tree.$LI, 'form-control-file')).toBe(true)
+    expect(hasClass(DOM, 'form-control-file')).toBe(true)
   })
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<Input className="other" />)
+    const DOM = renderIntoElement(<Input className="other" />)
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true)
+    expect(hasClass(DOM, 'other')).toBe(true)
   })
 })

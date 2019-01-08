@@ -1,24 +1,12 @@
 import { Component, render, createComponentVNode } from "inferno";
 import { VNodeFlags } from 'inferno-vnode-flags';
 
-export function hasClass(vNode, className) {
-  return vNode.dom.classList.value.split(" ").indexOf(className) >= 0
+export function hasClass(DOM, className) {
+  return DOM.classList.value.split(" ").indexOf(className) >= 0
 }
 
-export function getTagName(vNode) {
-  return vNode.dom.tagName.toLowerCase()
-}
-
-export function getInnerHTML (vNode) {
-  return vNode.dom.innerHTML
-}
-
-export function getOuterHTML (vNode) {
-  return vNode.dom.outerHTML
-}
-
-export function getInstance(tree) {
-  return tree.props.children.children
+export function getTagName(DOM) {
+  return DOM.tagName.toLowerCase()
 }
 
 export function unmountComponentAtNode(container) {
@@ -59,11 +47,12 @@ export class Wrapper extends Component {
   }
 }
 
-export function renderIntoDocument(input, container) {
-  if (container === undefined) container = document.createElement('div');
-  return render(createComponentVNode(VNodeFlags.ComponentClass, Wrapper, { children: input }), container);
+export function renderIntoElement(vNodeTree, DOM) {
+  const fallbackDOM = document.createElement('div');
+  render(vNodeTree, DOM || fallbackDOM);
+  return DOM || fallbackDOM.firstChild
 }
-
+  
 export function triggerEvent(name, element) {
   let eventType;
 

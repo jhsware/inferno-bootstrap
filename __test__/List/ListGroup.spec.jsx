@@ -1,6 +1,6 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,33 +13,33 @@ import ListGroup from "../../lib/List/ListGroup"
 
 describe('ListGroup', () => {
   it('should render with "list-group" class', () => {
-    const tree = renderIntoDocument(<ListGroup>Yo!</ListGroup>);
+    const DOM = renderIntoElement(<ListGroup>Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'list-group')).toBe(true);
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'list-group')).toBe(true);
   });
 
   it('should render with "flush"', () => {
-    const tree = renderIntoDocument(<ListGroup flush>Yo!</ListGroup>);
+    const DOM = renderIntoElement(<ListGroup flush>Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'list-group')).toBe(true);
-    expect(hasClass(tree.$LI, 'list-group-flush')).toBe(true);
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'list-group')).toBe(true);
+    expect(hasClass(DOM, 'list-group-flush')).toBe(true);
   });
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<ListGroup className="other">Yo!</ListGroup>);
+    const DOM = renderIntoElement(<ListGroup className="other">Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'other')).toBe(true);
-    expect(hasClass(tree.$LI, 'list-group')).toBe(true);
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'other')).toBe(true);
+    expect(hasClass(DOM, 'list-group')).toBe(true);
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<ListGroup tag="main">Yo!</ListGroup>);
+    const DOM = renderIntoElement(<ListGroup tag="main">Yo!</ListGroup>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
-    expect(hasClass(tree.$LI, 'list-group')).toBe(true);
-    expect(getTagName(tree.$LI)).toBe('main');
+    expect(DOM.innerHTML).toBe('Yo!');
+    expect(hasClass(DOM, 'list-group')).toBe(true);
+    expect(getTagName(DOM)).toBe('main');
   });
 });

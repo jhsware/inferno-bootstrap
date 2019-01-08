@@ -1,11 +1,12 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from './utils'
+import { renderIntoElement } from './utils'
 import { 
   scryRenderedDOMElementsWithClass,
   scryRenderedDOMElementsWithTag,
   findRenderedDOMElementWithTag,
   findVNodeWithType,
+  renderIntoContainer,
   isVNode,
   isVNodeOfType
 } from 'inferno-test-utils'
@@ -43,83 +44,83 @@ describe('TetherContent', () => {
   });
 
   it('should render a Manager by default', () => {
-    const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
+    const renderedTree = renderIntoContainer(<PopperContent target="target">Yo!</PopperContent>, container);
 
-    const node = findVNodeWithType(tree.$LI, Manager)
+    const node = findVNodeWithType(renderedTree, Manager)
     expect(node).toBeDefined()
   });
   
   it('should render a Manager as a span by default', () => {
-    const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
+    const renderedTree = renderIntoContainer(<PopperContent target="target">Yo!</PopperContent>, container);
 
-    const node = findVNodeWithType(tree.$LI, Manager)
+    const node = findVNodeWithType(renderedTree, Manager)
     expect(node).toBeDefined()
   });
   
   it('should render a PopperTargetHelper', () => {
-    const tree = render(<PopperContent target="target">Yo!</PopperContent>, container);
+    const renderedTree = renderIntoContainer(<PopperContent target="target">Yo!</PopperContent>, container);
 
     // expect(wrapper.containsMatchingElement(<PopperTargetHelper target="target" />)).toBe(true);
-    expect(findVNodeWithType(tree.$LI, PopperTargetHelper)).toBeDefined();
+    expect(findVNodeWithType(renderedTree, PopperTargetHelper)).toBeDefined();
     
   });
 
   it('should NOT render children when isOpen is false', () => {
-    const tree = renderIntoDocument(<PopperContent target="target">Yo!</PopperContent>);
+    const DOM = renderIntoElement(<PopperContent target="target">Yo!</PopperContent>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('');
+    expect(DOM.innerHTML).toBe('');
   });
 
   it('should render children when isOpen is true', () => {
-    const tree = render(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
+    const DOM = renderIntoElement(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
 
-    expect(getInnerHTML(tree.$LI)).toBe('<div class=\"auto\" style=\"position: absolute; pointer-events: none; opacity: 0;\">Yo!<span class=\"arrow\"></span></div>');
+    expect(DOM.innerHTML).toBe('<div class=\"auto\" style=\"position: absolute; pointer-events: none; opacity: 0;\">Yo!<span class=\"arrow\"></span></div>');
   });
   
   
   it('should render an Arrow in the Popper when isOpen is true', () => {
-    const tree = render(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
+    const renderedTree = renderIntoContainer(<PopperContent target="target" isOpen>Yo!</PopperContent>, container);
 
-    expect(findVNodeWithType(tree.$LI, Arrow)).toBeDefined();
+    expect(findVNodeWithType(renderedTree, Arrow)).toBeDefined();
   });
 
   it('should pass additional classNames to the wrap', () => {
-    const tree = render(<PopperContent wrapClassName="extra" target="target">Yo!</PopperContent>, container);
+    const DOM = renderIntoElement(<PopperContent wrapClassName="extra" target="target">Yo!</PopperContent>, container);
 
-    expect(hasClass(tree.$LI, 'extra')).toBe(true);
+    expect(hasClass(DOM, 'extra')).toBe(true);
   });
 
   
   it('should pass additional classNames to the popper', () => {
-    const tree = renderIntoDocument(<PopperContent className="extra" target="target" isOpen>Yo!</PopperContent>);
+    const DOM = renderIntoElement(<PopperContent className="extra" target="target" isOpen>Yo!</PopperContent>);
 
-    expect(scryRenderedDOMElementsWithClass(tree, 'extra').length).toBe(1);
+    expect(DOM.getElementsByClassName('extra').length).toBe(1);
   });
 
   it('should have placement class of top by default', () => {
-    const tree = renderIntoDocument(<PopperContent target="target" isOpen>Yo!</PopperContent>);
+    const DOM = renderIntoElement(<PopperContent target="target" isOpen>Yo!</PopperContent>);
     
-    expect(scryRenderedDOMElementsWithClass(tree, 'auto').length).toBe(1);
+    expect(DOM.getElementsByClassName('auto').length).toBe(1);
   });
   
   it('should override placement class', () => {
-    const tree = render(<PopperContent placement="top" target="target" isOpen>Yo!</PopperContent>, container);
+    const DOM = renderIntoElement(<PopperContent placement="top" target="target" isOpen>Yo!</PopperContent>, container);
     
-    expect(scryRenderedDOMElementsWithClass(tree, 'auto').length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'top').length).toBe(1);
+    expect(DOM.getElementsByClassName('auto').length).toBe(0);
+    expect(DOM.getElementsByClassName('top').length).toBe(1);
   });
   
   it('should allow for a placement prefix', () => {
-    const tree = render(<PopperContent placementPrefix="dropdown" target="target" isOpen>Yo!</PopperContent>, container);
+    const DOM = renderIntoElement(<PopperContent placementPrefix="dropdown" target="target" isOpen>Yo!</PopperContent>, container);
     
-    expect(scryRenderedDOMElementsWithClass(tree, 'dropdown-auto').length).toBe(1);
+    expect(DOM.getElementsByClassName('dropdown-auto').length).toBe(1);
   });
   
   it('should allow for a placement prefix with custom placement', () => {
-    const tree = render(<PopperContent placementPrefix="dropdown" placement="top" target="target" isOpen>Yo!</PopperContent>, container);
+    const DOM = renderIntoElement(<PopperContent placementPrefix="dropdown" placement="top" target="target" isOpen>Yo!</PopperContent>, container);
     
-    expect(scryRenderedDOMElementsWithClass(tree, 'dropdown-auto').length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'dropdown-top').length).toBe(1);
+    expect(DOM.getElementsByClassName('dropdown-auto').length).toBe(0);
+    expect(DOM.getElementsByClassName('dropdown-top').length).toBe(1);
   });
   
   /*

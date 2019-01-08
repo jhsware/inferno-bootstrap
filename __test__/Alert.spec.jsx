@@ -1,6 +1,6 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument, triggerEvent } from './utils'
+import { renderIntoElement, triggerEvent } from './utils'
 import { 
   findRenderedVNodeWithType,
   isVNode
@@ -24,31 +24,29 @@ describe("Alert", () => {
   });
 
   it("Can be rendered", () => {
-    const tree = renderIntoDocument(<Alert>This looks fine!</Alert>)
+    const DOM = renderIntoElement(<Alert>This looks fine!</Alert>)
     
-    expect(tree.$LI.dom.outerHTML).toBe(
+    expect(DOM.outerHTML).toBe(
       '<div class="alert alert-success" role="alert">This looks fine!</div>'
     )
   })
 
   it("Can be render with color warning", () => {
-    const tree = renderIntoDocument(<Alert color="warning">This looks fine!</Alert>)
+    const DOM = renderIntoElement(<Alert color="warning">This looks fine!</Alert>)
     
-    expect(tree.$LI.dom.outerHTML).toBe(
+    expect(DOM.outerHTML).toBe(
       '<div class="alert alert-warning" role="alert">This looks fine!</div>'
     )
   })
 
   it("Can be render with a close button", () => {
-    const tree = renderIntoDocument(<Alert onClose={() => {}}>This looks fine!</Alert>)
-    
-    const buttonNode = findRenderedVNodeWithType(tree, 'button')
-    expect(isVNode(buttonNode)).toBe(true)
+    const DOM = renderIntoElement(<Alert onClose={() => {}}>This looks fine!</Alert>)
+    expect(DOM.getElementsByTagName('button').length).toBe(1)
   })
 
   it("Clicking close button calls onClose", () => {
     const onClick = jest.fn()
-    const tree = renderIntoDocument(<Alert onClose={onClick}>This looks fine!</Alert>, container)
+    const DOM = renderIntoElement(<Alert onClose={onClick}>This looks fine!</Alert>, container)
 
     const btnEl = container.getElementsByTagName('button')[0]
     triggerEvent('click', btnEl)

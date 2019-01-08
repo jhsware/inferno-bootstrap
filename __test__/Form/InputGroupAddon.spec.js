@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -12,35 +12,35 @@ import InputGroupAddon from '../../lib/Form/InputGroupAddon';
 
 describe('InputGroupAddon', () => {
   it('should render with "div" tag', () => {
-    const tree = renderIntoDocument(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
+    const DOM = renderIntoElement(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
 
-    expect(getTagName(tree.$LI)).toBe('div');
+    expect(getTagName(DOM)).toBe('div');
   });
 
   it('should render children', () => {
-    const tree = renderIntoDocument(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
+    const DOM = renderIntoElement(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('<span class="input-group-text">Yo!</span>');
+    expect(DOM.innerHTML).toBe('<span class="input-group-text">Yo!</span>');
   });
 
   it('should render with "input-group-*" classes', () => {
-    const treePre = renderIntoDocument(<InputGroupAddon addonType="prepend">Yo!</InputGroupAddon>);
-    const treeApp = renderIntoDocument(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
+    const treePre = renderIntoElement(<InputGroupAddon addonType="prepend">Yo!</InputGroupAddon>);
+    const treeApp = renderIntoElement(<InputGroupAddon addonType="append">Yo!</InputGroupAddon>);
            
-    expect(hasClass(treePre.$LI, 'input-group-prepend')).toBe(true);
-    expect(hasClass(treeApp.$LI, 'input-group-append')).toBe(true);
+    expect(hasClass(treePre, 'input-group-prepend')).toBe(true);
+    expect(hasClass(treeApp, 'input-group-append')).toBe(true);
   });
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<InputGroupAddon addonType="append" className="other">Yo!</InputGroupAddon>);
+    const DOM = renderIntoElement(<InputGroupAddon addonType="append" className="other">Yo!</InputGroupAddon>);
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true);
-    expect(hasClass(tree.$LI, 'input-group-append')).toBe(true);
+    expect(hasClass(DOM, 'other')).toBe(true);
+    expect(hasClass(DOM, 'input-group-append')).toBe(true);
   });
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<InputGroupAddon addonType="append" tag="main">Yo!</InputGroupAddon>);
+    const DOM = renderIntoElement(<InputGroupAddon addonType="append" tag="main">Yo!</InputGroupAddon>);
 
-    expect(getTagName(tree.$LI)).toBe('main');
+    expect(getTagName(DOM)).toBe('main');
   });
 });

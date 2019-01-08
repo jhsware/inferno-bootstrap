@@ -1,13 +1,9 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from './utils'
+import { renderIntoElement } from './utils'
 import { 
-  findRenderedVNodeWithType,
-  findRenderedDOMElementWithClass,
-  isVNode
+  renderIntoContainer
 } from 'inferno-test-utils'
-
-import { hasClass, getTagName, getOuterHTML, getInnerHTML, getInstance } from "./utils"
 
 import Collapse from "../lib/Collapse"
 
@@ -30,28 +26,27 @@ describe('Collapse', () => {
   });
 
   it('should render children', () => {
-    const tree = renderIntoDocument(<Collapse isOpen><p>hello</p></Collapse>);
-    expect(getInnerHTML(tree.$LI)).toBe('<p>hello</p>');
+    const DOM = renderIntoElement(<Collapse isOpen><p>hello</p></Collapse>);
+    expect(DOM.innerHTML).toBe('<p>hello</p>');
   });
 
   it('should have default isOpen value', () => {
-    const tree = renderIntoDocument(<Collapse />);
-    const instance = getInstance(tree)
-    expect(instance.props.isOpen).toEqual(false);
+    const renderTree = renderIntoContainer(<Collapse />);
+    expect(renderTree.props.isOpen).toEqual(false);
   });
 
   /*
   // Have I removed this, do we want it? (it can be a simple className)
   it('should render with class "navbar"', () => {
-    const tree = renderIntoDocument(<Collapse navbar isOpen />);
-    console.log(getOuterHTML(tree.$LI))
-    expect(hasClass(tree.$LI, 'navbar')).toEqual(true);
+    const DOM = renderIntoElement(<Collapse navbar isOpen />);
+    console.log(DOM.outerHTML)
+    expect(hasClass(DOM, 'navbar')).toEqual(true);
   });
   */
 
   /*
   it('should render with class "collapse" with default collapse state', () => {
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     wrapper.setState({ collapse: null });
     jasmine.clock().tick(360);
     wrapper.update();
@@ -60,7 +55,7 @@ describe('Collapse', () => {
   });
 
   it('should change state with { collapse: ${State} } when isOpen change to true before transition', () => {
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     toggle();
     wrapper.setProps({ isOpen: isOpen });
     expect(wrapper.state('collapse')).toEqual('SHOW');
@@ -68,7 +63,7 @@ describe('Collapse', () => {
   });
 
   it('should change state with { collapse: ${State} } when isOpen change to true after transition', () => {
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     toggle();
     wrapper.setProps({ isOpen: isOpen });
     jasmine.clock().tick(350);
@@ -78,7 +73,7 @@ describe('Collapse', () => {
 
   it('should change state with { collapse: ${State} } when isOpen change to false before transition', () => {
     isOpen = true;
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     toggle();
     wrapper.setProps({ isOpen: isOpen });
     expect(wrapper.state('collapse')).toEqual('HIDE');
@@ -87,7 +82,7 @@ describe('Collapse', () => {
 
   it('should change state with { collapse: ${State} } when isOpen change to false after transition', () => {
     isOpen = true;
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     toggle();
     wrapper.setProps({ isOpen: isOpen });
     jasmine.clock().tick(360);
@@ -97,7 +92,7 @@ describe('Collapse', () => {
 
   it('should set inline style to 0 when isOpen change to false', () => {
     isOpen = true;
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     toggle();
     wrapper.setProps({ isOpen: isOpen });
     expect(wrapper.state('height')).toBe(0);
@@ -105,7 +100,7 @@ describe('Collapse', () => {
   });
 
   it('should remove inline style when isOpen change to true after transition', () => {
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     toggle();
     wrapper.setProps({ isOpen: isOpen });
     jasmine.clock().tick(380);
@@ -115,7 +110,7 @@ describe('Collapse', () => {
 
   it('should remove timeout tag after unmount', () => {
     spyOn(Collapse.prototype, 'componentWillUnmount').and.callThrough();
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} />);
     wrapper.unmount();
     expect(Collapse.prototype.componentWillUnmount).toHaveBeenCalled();
   });
@@ -123,7 +118,7 @@ describe('Collapse', () => {
   it('should call onOpened after opening', () => {
     const onOpened = jasmine.createSpy('onOpenedSpy');
     const onClosed = jasmine.createSpy('onClosedSpy');
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} onOpened={onOpened} onClosed={onClosed} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} onOpened={onOpened} onClosed={onClosed} />);
 
     jasmine.clock().tick(300);
     expect(isOpen).toBe(false);
@@ -144,7 +139,7 @@ describe('Collapse', () => {
     const onOpened = jasmine.createSpy('onOpenedSpy');
     const onClosed = jasmine.createSpy('onClosedSpy');
     toggle();
-    const tree = renderIntoDocument(<Collapse isOpen={isOpen} onOpened={onOpened} onClosed={onClosed} />);
+    const DOM = renderIntoElement(<Collapse isOpen={isOpen} onOpened={onOpened} onClosed={onClosed} />);
 
     jasmine.clock().tick(380);
     expect(isOpen).toBe(true);

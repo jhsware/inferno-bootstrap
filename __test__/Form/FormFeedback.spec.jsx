@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,32 +13,32 @@ import FormFeedback from "../../lib/Form/FormFeedback"
 
 describe('FormFeedback', () => {
   it('should render with "div" tag by default', () => {
-    const tree = renderIntoDocument(<FormFeedback>Yo!</FormFeedback>)
+    const DOM = renderIntoElement(<FormFeedback>Yo!</FormFeedback>)
 
-    expect(getTagName(tree.$LI)).toBe('div')
+    expect(getTagName(DOM)).toBe('div')
   })
 
   it('should render children', () => {
-    const tree = renderIntoDocument(<FormFeedback>Yo!</FormFeedback>)
+    const DOM = renderIntoElement(<FormFeedback>Yo!</FormFeedback>)
 
-    expect(tree.$LI.dom.innerHTML).toBe('Yo!')
+    expect(DOM.innerHTML).toBe('Yo!')
   })
 
   it('should render with "invalid-feedback" class', () => {
-    const tree = renderIntoDocument(<FormFeedback>Yo!</FormFeedback>)
+    const DOM = renderIntoElement(<FormFeedback>Yo!</FormFeedback>)
 
-    expect(hasClass(tree.$LI, 'invalid-feedback')).toBe(true)
+    expect(hasClass(DOM, 'invalid-feedback')).toBe(true)
   })
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<FormFeedback className="other">Yo!</FormFeedback>)
+    const DOM = renderIntoElement(<FormFeedback className="other">Yo!</FormFeedback>)
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true)
+    expect(hasClass(DOM, 'other')).toBe(true)
   })
 
   it('should render custom tag', () => {
-    const tree = renderIntoDocument(<FormFeedback tag="main">Yo!</FormFeedback>)
+    const DOM = renderIntoElement(<FormFeedback tag="main">Yo!</FormFeedback>)
 
-    expect(getTagName(tree.$LI)).toBe('main')
+    expect(getTagName(DOM)).toBe('main')
   })
 })

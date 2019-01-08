@@ -1,11 +1,12 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
   scryRenderedDOMElementsWithClass,
   isVNode,
-  isVNodeOfType
+  isVNodeOfType,
+  renderIntoContainer
 } from 'inferno-test-utils'
 
 import { hasClass, getTagName, getInnerHTML, getOuterHTML } from "../utils"
@@ -39,65 +40,69 @@ describe('Modal', () => {
     render(null, container);
     container.innerHTML = '';
     document.body.removeChild(container);
+    document.body.innerHTML = '';
   });
 
   
-  it('should render with the class "modal-dialog"', () => {
+  it('should render with the class "modal-dialog"', (done) => {
     isOpen = true;
-    const tree = render(<Modal isOpen={isOpen} toggle={toggle}>Yo!</Modal>, container);
-    tree.forceUpdate()
-    // jest.runTimersToTime(300)
-
-    expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
-    
+    const renderedTree = renderIntoContainer(<Modal isOpen={isOpen} toggle={toggle}>Yo!</Modal>, container);
+    renderedTree.forceUpdate(() => {
+      // jest.runTimersToTime(300)
+      expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
+      done()
+    })
   });
   
-  it('should render with the backdrop with the class "modal-backdrop" by default', () => {
+  it('should render with the backdrop with the class "modal-backdrop" by default', (done) => {
     isOpen = true;
-    const tree = render(<Modal isOpen={isOpen} toggle={toggle}>Yo!</Modal>, container);
-    tree.forceUpdate()
+    const renderedTree = renderIntoContainer(<Modal isOpen={isOpen} toggle={toggle}>Yo!</Modal>, container);
+    renderedTree.forceUpdate(() => {
+      expect(container.innerHTML).toBe('');
+      expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
+      done()
+    })
 
-    expect(tree.$LI.children.length).toBe(undefined);
-    expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
     
   });
 
-  it('should render with the backdrop with the class "modal-backdrop" when backdrop is "static"', () => {
+  it('should render with the backdrop with the class "modal-backdrop" when backdrop is "static"', (done) => {
     isOpen = true;
-    const tree = render(<Modal isOpen={isOpen} toggle={toggle} backdrop="static">Yo!</Modal>, container);
-    tree.forceUpdate()
-    // jest.runTimersToTime(300)
+    const renderedTree = renderIntoContainer(<Modal isOpen={isOpen} toggle={toggle} backdrop="static">Yo!</Modal>, container);
+    renderedTree.forceUpdate(() => {
+      expect(container.innerHTML).toBe('');
+      expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
+      done()
+    })
 
-    expect(tree.$LI.children.length).toBe(undefined);
-    expect(document.getElementsByClassName('modal-backdrop').length).toBe(1);
   });
 
-  it('should not render with the backdrop with the class "modal-backdrop" when backdrop is "false"', () => {
+  it('should not render with the backdrop with the class "modal-backdrop" when backdrop is "false"', (done) => {
     isOpen = true;
-    const tree = render(<Modal isOpen={isOpen} toggle={toggle} backdrop={false}>Yo!</Modal>, container);
-    tree.forceUpdate()
-    // jest.runTimersToTime(300)
-
-    expect(tree.$LI.children.length).toBe(undefined);
-    expect(document.getElementsByClassName('modal-backdrop').length).toBe(0);
-    expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
+    const renderedTree = renderIntoContainer(<Modal isOpen={isOpen} toggle={toggle} backdrop={false}>Yo!</Modal>, container);
+    renderedTree.forceUpdate(() => {
+      expect(container.innerHTML).toBe('');
+      expect(document.getElementsByClassName('modal-backdrop').length).toBe(0);
+      expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
+      done()
+    })
   });
 
-  it('should render with class "modal-dialog" and have custom class name if provided', () => {
+  it('should render with class "modal-dialog" and have custom class name if provided', (done) => {
     isOpen = true;
-    const tree = render(<Modal isOpen={isOpen} toggle={toggle} className="my-custom-modal">Yo!</Modal>, container);
-    tree.forceUpdate()
-    // jest.runTimersToTime(300)
-
-    expect(tree.$LI.children.length).toBe(undefined);
-    expect(document.getElementsByClassName('my-custom-modal').length).toBe(1);
-    expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
+    const renderedTree = renderIntoContainer(<Modal isOpen={isOpen} toggle={toggle} className="my-custom-modal">Yo!</Modal>, container);
+    renderedTree.forceUpdate(() => {
+      expect(container.innerHTML).toBe('');
+      expect(document.getElementsByClassName('my-custom-modal').length).toBe(1);
+      expect(document.getElementsByClassName('modal-dialog').length).toBe(1);
+      done()
+    })
   });
 
   /*
   it('should render with additional props if provided', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} style={{ maxWidth: '95%' }}>
         Yo!
       </Modal>
@@ -105,14 +110,14 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog')[0].style.maxWidth).toBe('95%');
+    expect(DOM.getElementsByClassName('modal-dialog').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal-dialog')[0].style.maxWidth).toBe('95%');
     
   });
 
   it('should render without fade transition if provided with fade={false}', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} fade={false} modalClassName="fadeless-modal">
         Howdy!
       </Modal>
@@ -122,7 +127,7 @@ describe('Modal', () => {
     jasmine.clock().tick(1);
     expect(wrapper.children().length).toBe(0);
 
-    const matchedModals = scryRenderedDOMElementsWithClass(tree, 'fadeless-modal');
+    const matchedModals = DOM.getElementsByClassName('fadeless-modal');
     const matchedModal = matchedModals[0];
 
     expect(matchedModals.length).toBe(1);
@@ -134,7 +139,7 @@ describe('Modal', () => {
 
   it('should render when expected when passed modalTransitionTimeout and backdropTransitionTimeout props', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} modalTransitionTimeout={20} backdropTransitionTimeout={10} modalClassName="custom-timeout-modal">
         Hello, world!
       </Modal>
@@ -143,7 +148,7 @@ describe('Modal', () => {
     jasmine.clock().tick(20);
     expect(wrapper.children().length).toBe(0);
 
-    const matchedModals = scryRenderedDOMElementsWithClass(tree, 'custom-timeout-modal');
+    const matchedModals = DOM.getElementsByClassName('custom-timeout-modal');
 
     expect(matchedModals.length).toBe(1);
 
@@ -152,7 +157,7 @@ describe('Modal', () => {
 
   it('should render with class "modal" and have custom class name if provided with modalClassName', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} modalClassName="my-custom-modal">
         Yo!
       </Modal>
@@ -166,7 +171,7 @@ describe('Modal', () => {
 
   it('should render with custom class name if provided with wrapClassName', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} wrapClassName="my-custom-modal">
         Yo!
       </Modal>
@@ -174,13 +179,13 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'my-custom-modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('my-custom-modal').length).toBe(1);
     
   });
 
   it('should render with class "modal-content" and have custom class name if provided with contentClassName', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} contentClassName="my-custom-modal">
         Yo!
       </Modal>
@@ -194,7 +199,7 @@ describe('Modal', () => {
 
   it('should render with class "modal-backdrop" and have custom class name if provided with backdropClassName', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} backdropClassName="my-custom-modal">
         Yo!
       </Modal>
@@ -208,7 +213,7 @@ describe('Modal', () => {
 
   it('should render with the class "modal-${size}" when size is passed', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} size="crazy">
         Yo!
       </Modal>
@@ -216,15 +221,15 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(1);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-crazy').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal-dialog').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal-crazy').length).toBe(1);
     
   });
 
 
   it('should render modal when isOpen is true', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         Yo!
       </Modal>
@@ -232,13 +237,13 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-backdrop').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal-backdrop').length).toBe(1);
     
   });
 
   it('should not render modal when isOpen is false', () => {
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         Yo!
       </Modal>
@@ -246,13 +251,13 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-backdrop').length).toBe(0);
+    expect(DOM.getElementsByClassName('modal').length).toBe(0);
+    expect(DOM.getElementsByClassName('modal-backdrop').length).toBe(0);
     
   });
 
   it('should toggle modal', () => {
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         Yo!
       </Modal>
@@ -260,8 +265,8 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(isOpen).toBe(false);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-backdrop').length).toBe(0);
+    expect(DOM.getElementsByClassName('modal').length).toBe(0);
+    expect(DOM.getElementsByClassName('modal-backdrop').length).toBe(0);
 
     toggle();
     wrapper.setProps({
@@ -270,8 +275,8 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(isOpen).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-backdrop').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal-backdrop').length).toBe(1);
     
   });
 
@@ -280,7 +285,7 @@ describe('Modal', () => {
     spyOn(Modal.prototype, 'onClosed').and.callThrough();
     const onOpened = jasmine.createSpy('spy');
     const onClosed = jasmine.createSpy('spy');
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} onOpened={onOpened} onClosed={onClosed} toggle={toggle}>
         Yo!
       </Modal>
@@ -323,7 +328,7 @@ describe('Modal', () => {
     spyOn(Modal.prototype, 'onClosed').and.callThrough();
     const onOpened = jasmine.createSpy('spy');
     const onClosed = jasmine.createSpy('spy');
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} onOpened={onOpened} onClosed={onClosed} toggle={toggle} fade={false}>
         Yo!
       </Modal>
@@ -364,7 +369,7 @@ describe('Modal', () => {
   it('should not call togglePortal when isOpen does not change', () => {
     spyOn(Modal.prototype, 'togglePortal').and.callThrough();
     spyOn(Modal.prototype, 'componentDidUpdate').and.callThrough();
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         Yo!
       </Modal>
@@ -391,7 +396,7 @@ describe('Modal', () => {
     isOpen = true;
     spyOn(Modal.prototype, 'togglePortal').and.callThrough();
     spyOn(Modal.prototype, 'renderIntoSubtree').and.callThrough();
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         Yo!
       </Modal>
@@ -416,7 +421,7 @@ describe('Modal', () => {
 
   it('should close modal when escape key pressed', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         Yo!
       </Modal>
@@ -426,13 +431,13 @@ describe('Modal', () => {
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
 
     instance.handleEscape({ keyCode: 13 });
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
 
     instance.handleEscape({ keyCode: 27 });
     jasmine.clock().tick(300);
@@ -444,14 +449,14 @@ describe('Modal', () => {
     });
     jasmine.clock().tick(300);
 
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(0);
+    expect(DOM.getElementsByClassName('modal').length).toBe(0);
 
     
   });
 
   it('should not close modal when escape key pressed when keyboard is false', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} keyboard={false}>
         Yo!
       </Modal>
@@ -461,13 +466,13 @@ describe('Modal', () => {
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
 
     instance.handleEscape({ keyCode: 13 });
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
 
     instance.handleEscape({ keyCode: 27 });
     jasmine.clock().tick(300);
@@ -479,14 +484,14 @@ describe('Modal', () => {
     });
     jasmine.clock().tick(300);
 
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
 
     
   });
 
   it('should close modal when clicking backdrop', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         <button id="clicker">Does Nothing</button>
       </Modal>
@@ -495,14 +500,14 @@ describe('Modal', () => {
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
     //
     document.getElementById('clicker').click();
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
 
-    scryRenderedDOMElementsWithClass(tree, 'modal')[0].click();
+    DOM.getElementsByClassName('modal')[0].click();
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(false);
@@ -512,7 +517,7 @@ describe('Modal', () => {
 
   it('should not close modal when clicking backdrop and backdrop is "static"', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle} backdrop="static">
         <button id="clicker">Does Nothing</button>
       </Modal>
@@ -521,14 +526,14 @@ describe('Modal', () => {
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal').length).toBe(1);
+    expect(DOM.getElementsByClassName('modal').length).toBe(1);
 
     document.getElementById('clicker').click();
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
 
-    scryRenderedDOMElementsWithClass(tree, 'modal-backdrop')[0].click();
+    DOM.getElementsByClassName('modal-backdrop')[0].click();
     jasmine.clock().tick(300);
 
     expect(isOpen).toBe(true);
@@ -538,7 +543,7 @@ describe('Modal', () => {
 
   it('should destroy this._element', () => {
     isOpen = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         <button id="clicker">Does Nothing</button>
       </Modal>
@@ -559,7 +564,7 @@ describe('Modal', () => {
   it('should render nested modals', () => {
     isOpen = true;
     isOpenNested = true;
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         <ModalBody>
           <Modal isOpen={isOpenNested} toggle={toggleNested}>
@@ -571,11 +576,11 @@ describe('Modal', () => {
 
     jasmine.clock().tick(300);
     expect(wrapper.children().length).toBe(0);
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(2);
+    expect(DOM.getElementsByClassName('modal-dialog').length).toBe(2);
     expect(document.body.className).toBe('modal-open modal-open');
 
     
-    expect(scryRenderedDOMElementsWithClass(tree, 'modal-dialog').length).toBe(0);
+    expect(DOM.getElementsByClassName('modal-dialog').length).toBe(0);
     expect(document.body.className).toBe('');
   });
 
@@ -583,7 +588,7 @@ describe('Modal', () => {
     // set a body class which includes modal-open
     document.body.className = 'my-modal-opened';
 
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} toggle={toggle}>
         Yo!
       </Modal>
@@ -625,7 +630,7 @@ describe('Modal', () => {
   it('should call onEnter & onExit props if provided', () => {
     const onEnter = jasmine.createSpy('spy');
     const onExit = jasmine.createSpy('spy');
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <Modal isOpen={isOpen} onEnter={onEnter} onExit={onExit} toggle={toggle}>
         Yo!
       </Modal>

@@ -1,6 +1,6 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from './utils'
+import { renderIntoElement } from './utils'
 import { 
   scryRenderedDOMElementsWithTag,
   findRenderedDOMElementWithTag,
@@ -13,34 +13,34 @@ import Jumbotron from '../lib/Jumbotron';
 
 describe('Jumbotron', () => {
   it('should render children', () => {
-    const tree = renderIntoDocument(<Jumbotron>Hello World</Jumbotron>);
+    const DOM = renderIntoElement(<Jumbotron>Hello World</Jumbotron>);
 
-    expect(getInnerHTML(tree.$LI)).toBe('Hello World');
+    expect(DOM.innerHTML).toBe('Hello World');
   });
 
   it('should render elements as children', () => {
-    const tree = renderIntoDocument(<Jumbotron><h1>Hello from h1</h1></Jumbotron>);
+    const DOM = renderIntoElement(<Jumbotron><h1>Hello from h1</h1></Jumbotron>);
 
-    expect(scryRenderedDOMElementsWithTag(tree, 'h1').length).toBe(1);
-    expect(findRenderedDOMElementWithTag(tree, 'h1').innerHTML).toBe('Hello from h1');
+    expect(DOM.getElementsByTagName('h1').length).toBe(1);
+    expect(DOM.getElementsByTagName('h1')[0].innerHTML).toBe('Hello from h1');
   });
 
   it('should have class jumbotron', () => {
-    const tree = renderIntoDocument(<Jumbotron>Hello</Jumbotron>);
+    const DOM = renderIntoElement(<Jumbotron>Hello</Jumbotron>);
 
-    expect(hasClass(tree.$LI, 'jumbotron')).toBe(true);
+    expect(hasClass(DOM, 'jumbotron')).toBe(true);
   });
 
   it('should render fluid jumbotron', () => {
-    const tree = renderIntoDocument(<Jumbotron fluid>Hello</Jumbotron>);
+    const DOM = renderIntoElement(<Jumbotron fluid>Hello</Jumbotron>);
 
-    expect(hasClass(tree.$LI, 'jumbotron')).toBe(true);
-    expect(hasClass(tree.$LI, 'jumbotron-fluid')).toBe(true);
+    expect(hasClass(DOM, 'jumbotron')).toBe(true);
+    expect(hasClass(DOM, 'jumbotron-fluid')).toBe(true);
   });
 
   it('should render custom class', () => {
-    const tree = renderIntoDocument(<Jumbotron className="custom-class">Hello</Jumbotron>);
+    const DOM = renderIntoElement(<Jumbotron className="custom-class">Hello</Jumbotron>);
 
-    expect(hasClass(tree.$LI, 'custom-class')).toBe(true);
+    expect(hasClass(DOM, 'custom-class')).toBe(true);
   });
 });

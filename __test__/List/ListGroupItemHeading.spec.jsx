@@ -1,6 +1,6 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,12 +13,12 @@ import ListGroupItemHeading from "../../lib/List/ListGroupItemHeading"
 
 describe('ListGroupItemHeading', () => {
   it('should render children', () => {
-    const tree = renderIntoDocument(<ListGroupItemHeading>Yo!</ListGroupItemHeading>);
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
+    const DOM = renderIntoElement(<ListGroupItemHeading>Yo!</ListGroupItemHeading>);
+    expect(DOM.innerHTML).toBe('Yo!');
   });
 
   it('should render with "list-group-item-heading" class', () => {
-    const tree = renderIntoDocument(<ListGroupItemHeading>Yo!</ListGroupItemHeading>);
-    expect(hasClass(tree.$LI, 'list-group-item-heading')).toBe(true);
+    const DOM = renderIntoElement(<ListGroupItemHeading>Yo!</ListGroupItemHeading>);
+    expect(hasClass(DOM, 'list-group-item-heading')).toBe(true);
   });
 });

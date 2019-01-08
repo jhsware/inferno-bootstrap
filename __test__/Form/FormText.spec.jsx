@@ -1,5 +1,5 @@
 import { render } from "inferno"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,51 +13,51 @@ import FormText from "../../lib/Form/FormText"
 
 describe('FormText', () => {
   it('should render with "small" el', () => {
-    const tree = renderIntoDocument(<FormText>Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText>Yo!</FormText>)
 
-    expect(getTagName(tree.$LI)).toBe('small')
+    expect(getTagName(DOM)).toBe('small')
   })
 
   it('should render children', () => {
-    const tree = renderIntoDocument(<FormText>Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText>Yo!</FormText>)
 
-    expect(tree.$LI.dom.innerHTML).toBe('Yo!')
+    expect(DOM.innerHTML).toBe('Yo!')
   })
 
   it('should render with "form-text" class when not inline', () => {
-    const tree = renderIntoDocument(<FormText>Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText>Yo!</FormText>)
 
-    expect(hasClass(tree.$LI, 'form-text')).toBe(true)
+    expect(hasClass(DOM, 'form-text')).toBe(true)
   })
 
   it('should render with "text-muted" class by default', () => {
-    const tree = renderIntoDocument(<FormText>Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText>Yo!</FormText>)
 
-    expect(hasClass(tree.$LI, 'text-muted')).toBe(true)
+    expect(hasClass(DOM, 'text-muted')).toBe(true)
   });
 
   it('should render without "text-*" class when color is and empty string', () => {
-    const tree = renderIntoDocument(<FormText color="">Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText color="">Yo!</FormText>)
 
-    expect(hasClass(tree.$LI, 'text-muted')).toBe(false)
-    expect(hasClass(tree.$LI, 'text-')).toBe(false)
+    expect(hasClass(DOM, 'text-muted')).toBe(false)
+    expect(hasClass(DOM, 'text-')).toBe(false)
   });
 
   it('should render with "text-${color}" class when color is provided', () => {
-    const tree = renderIntoDocument(<FormText color="yoyo">Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText color="yoyo">Yo!</FormText>)
 
-    expect(hasClass(tree.$LI, 'text-yoyo')).toBe(true)
+    expect(hasClass(DOM, 'text-yoyo')).toBe(true)
   })
 
   it('should render additional classes', () => {
-    const tree = renderIntoDocument(<FormText className="other">Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText className="other">Yo!</FormText>)
 
-    expect(hasClass(tree.$LI, 'other')).toBe(true)
+    expect(hasClass(DOM, 'other')).toBe(true)
   })
 
   it('should render custom element', () => {
-    const tree = renderIntoDocument(<FormText tag="main">Yo!</FormText>)
+    const DOM = renderIntoElement(<FormText tag="main">Yo!</FormText>)
 
-    expect(getTagName(tree.$LI)).toBe('main')
+    expect(getTagName(DOM)).toBe('main')
   })
 })

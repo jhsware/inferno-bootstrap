@@ -1,6 +1,6 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from '../utils'
+import { renderIntoElement, triggerEvent } from '../utils'
 import { 
   findRenderedVNodeWithType,
   findRenderedDOMElementWithClass,
@@ -13,33 +13,33 @@ import ListGroupItem from "../../lib/List/ListGroupItem"
 
 describe('ListGroupItem', () => {
   it('should render children', () => {
-    const tree = renderIntoDocument(<ListGroupItem>Yo!</ListGroupItem>);
-    expect(getInnerHTML(tree.$LI)).toBe('Yo!');
+    const DOM = renderIntoElement(<ListGroupItem>Yo!</ListGroupItem>);
+    expect(DOM.innerHTML).toBe('Yo!');
   });
 
   it('should render with "list-group-item" class', () => {
-    const tree = renderIntoDocument(<ListGroupItem>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$LI, 'list-group-item')).toBe(true);
+    const DOM = renderIntoElement(<ListGroupItem>Yo!</ListGroupItem>);
+    expect(hasClass(DOM, 'list-group-item')).toBe(true);
   });
 
   it('should render with "active" class when active is passed', () => {
-    const tree = renderIntoDocument(<ListGroupItem active>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$LI, 'active')).toBe(true);
+    const DOM = renderIntoElement(<ListGroupItem active>Yo!</ListGroupItem>);
+    expect(hasClass(DOM, 'active')).toBe(true);
   });
 
   it('should render with "disabled" class when disabled is passed', () => {
-    const tree = renderIntoDocument(<ListGroupItem disabled>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$LI, 'disabled')).toBe(true);
+    const DOM = renderIntoElement(<ListGroupItem disabled>Yo!</ListGroupItem>);
+    expect(hasClass(DOM, 'disabled')).toBe(true);
   });
 
   it('should render with "list-group-item-action" class when action is passed', () => {
-    const tree = renderIntoDocument(<ListGroupItem action>Yo!</ListGroupItem>);
-    expect(hasClass(tree.$LI, 'list-group-item-action')).toBe(true);
+    const DOM = renderIntoElement(<ListGroupItem action>Yo!</ListGroupItem>);
+    expect(hasClass(DOM, 'list-group-item-action')).toBe(true);
   });
 
   it('should render with "list-group-item-${color}" class when color is passed', () => {
-    const tree = renderIntoDocument(<ListGroupItem color="success">Yo!</ListGroupItem>);
-    expect(hasClass(tree.$LI, 'list-group-item-success')).toBe(true);
+    const DOM = renderIntoElement(<ListGroupItem color="success">Yo!</ListGroupItem>);
+    expect(hasClass(DOM, 'list-group-item-success')).toBe(true);
   });
 
   it('should prevent click event when disabled is passed', () => {
@@ -48,10 +48,9 @@ describe('ListGroupItem', () => {
     }
     const clickSpy = sinon.spy(testClick, 'didClick')
     
-    const tree = renderIntoDocument(<ListGroupItem disabled onClick={testClick.didClick}>Yo!</ListGroupItem>);
+    const DOM = renderIntoElement(<ListGroupItem disabled onClick={testClick.didClick}>Yo!</ListGroupItem>);
 
-    const vnode = findRenderedVNodeWithType(tree, "li")
-    vnode.dom.click()
+    triggerEvent('click', DOM)
     
     expect(clickSpy.callCount).toBe(0)
   });

@@ -1,12 +1,9 @@
 import { render } from "inferno"
 import sinon from "sinon"
-import { renderIntoDocument } from './utils'
+import { renderIntoElement } from './utils'
 import { 
   scryRenderedDOMElementsWithClass,
-  scryRenderedDOMElementsWithTag,
   findRenderedDOMElementWithClass,
-  findRenderedDOMElementWithTag,
-  isVNode
 } from 'inferno-test-utils'
 
 import { hasClass, getTagName, getInstance, getInnerHTML, getOuterHTML, unmountComponentAtNode, getAnimationFramePolyfill } from "./utils"
@@ -18,8 +15,6 @@ import DropdownToggle from '../lib/DropdownToggle';
 import DropdownMenu from '../lib/DropdownMenu';
 import DropdownItem from '../lib/DropdownItem';
 
-debugger
-
 describe('ButtonDropdown', () => {
   let isOpen;
   let toggle;
@@ -30,15 +25,15 @@ describe('ButtonDropdown', () => {
   });
 
   it('should render a single child', () => {
-    const tree = renderIntoDocument(<ButtonDropdown isOpen={isOpen} toggle={toggle}>Ello world</ButtonDropdown>);
+    const DOM = renderIntoElement(<ButtonDropdown isOpen={isOpen} toggle={toggle}>Ello world</ButtonDropdown>);
 
-    expect(findRenderedDOMElementWithClass(tree, 'btn-group').innerHTML).toBe('Ello world');
+    expect(DOM.getElementsByClassName('btn-group').innerHTML).toBe('Ello world');
   });
 
   it('should render multiple children when isOpen', () => {
     isOpen = true;
     
-    const tree = renderIntoDocument(
+    const DOM = renderIntoElement(
       <ButtonDropdown isOpen={isOpen} toggle={toggle}>
         <DropdownToggle>Toggle</DropdownToggle>
         <DropdownMenu>
@@ -47,9 +42,9 @@ describe('ButtonDropdown', () => {
       </ButtonDropdown>
     );
 
-    expect(findRenderedDOMElementWithClass(tree, 'btn').innerHTML).toBe('Toggle');
-    expect(scryRenderedDOMElementsWithClass(tree, 'btn-group').length).toBe(1);
-    expect(scryRenderedDOMElementsWithClass(tree, 'dropdown-item').length).toBe(1);
+    expect(DOM.getElementsByClassName('btn').innerHTML).toBe('Toggle');
+    expect(DOM.getElementsByClassName('btn-group').length).toBe(1);
+    expect(DOM.getElementsByClassName('dropdown-item').length).toBe(1);
     // expect(wrapper.children().length).toBe(2);
   });
 });
