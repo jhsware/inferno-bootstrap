@@ -1,6 +1,6 @@
 {
   "name": "inferno-bootstrap",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "Bootstrap as Inferno components, adapted from Reactstrap",
   "main": "dist/cjs/index.js",
   "umd:main": "dist/umd/index.js",
