@@ -86,6 +86,8 @@ import ListGroupItem from './List/ListGroupItem';
 import ListGroupItemHeading from './List/ListGroupItemHeading';
 import ListGroupItemText from './List/ListGroupItemText';
 
+import Spinner from './Spinner'
+
 /*
 import UncontrolledAlert from './UncontrolledAlert';
 import UncontrolledButtonDropdown from './UncontrolledButtonDropdown';
@@ -189,5 +191,7 @@ export {
   // UncontrolledDropdown,
   // UncontrolledNavDropdown,
   // UncontrolledTooltip,
+
+  Spinner,
   Util,
 };
