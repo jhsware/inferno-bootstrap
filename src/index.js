@@ -86,6 +86,7 @@ import ListGroupItem from './List/ListGroupItem';
 import ListGroupItemHeading from './List/ListGroupItemHeading';
 import ListGroupItemText from './List/ListGroupItemText';
 
+import { Media, MediaBody, Image } from './Media'
 import Spinner from './Spinner'
 
 /*
@@ -193,5 +194,6 @@ export {
   // UncontrolledTooltip,
 
   Spinner,
+  Media, MediaBody, Image,
   Util,
 };

@@ -14,6 +14,7 @@ import PopoversSection from './Basic/Popovers'
 import PaginationSection from './Basic/Pagination'
 import ListSection from './Basic/List'
 import TooltipSection from './Basic/Tooltip'
+import MediaSection from './Basic/Media'
 import SpinnerSection from './Basic/Spinner'
 
 // import Modal from '../../../src/Modal'
@@ -35,6 +36,7 @@ export default function BasicPage (props) {
       <TooltipSection />
       <PopoversSection />
       <PaginationSection />
+      <MediaSection />
       <SpinnerSection />
     </Page>
   )

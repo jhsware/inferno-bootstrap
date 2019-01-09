@@ -22,7 +22,7 @@ inferno-bootstrap 3.x supports Inferno v3 (code in InfernoV3 branch)
 
 Reactstrap components not yet ported:
 - Uncontrolled input components
-- Media
+- ~Media~ DONE
 - Fade
 - Carousel
 - Form inline attribute (you can do it by adding bootstrap classes manually)
