@@ -1,13 +1,6 @@
-import { render } from "inferno"
-import sinon from "sinon"
 import { renderIntoElement } from './utils'
-import { 
-  scryRenderedDOMElementsWithTag,
-  findRenderedDOMElementWithTag,
-  isVNode
-} from 'inferno-test-utils'
 
-import { hasClass, getTagName, getInnerHTML, getOuterHTML } from "./utils"
+import { hasClass } from "./utils"
 
 import Jumbotron from '../lib/Jumbotron';
 
