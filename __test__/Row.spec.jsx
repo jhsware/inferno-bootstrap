@@ -24,4 +24,12 @@ describe("Row", () => {
       '<div class="no-gutters row">Content</div>'
     )
   })
+
+  it("Can be rendered with included col", () => {
+    const DOM = renderIntoElement(<Row col>Content</Row>)
+    
+    expect(DOM.outerHTML).toBe(
+      '<div class="col mr-0 row">Content</div>'
+    )
+  })
 })

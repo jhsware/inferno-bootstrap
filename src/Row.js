@@ -10,6 +10,7 @@ const Row = (props) => {
   const {
     children,
     className,
+    col,
     cssModule,
     noGutters,
     tag: Tag,
@@ -17,9 +18,10 @@ const Row = (props) => {
   } = props;
 
   const classes = mapToCssModules(classNames(
+    col ? 'col mr-0' : null,
     className,
     noGutters ? 'no-gutters' : null,
-    'row'
+    'row',
   ), cssModule);
 
   Object.assign(attributes, { className: classes })
