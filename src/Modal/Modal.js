@@ -47,6 +47,8 @@ const defaultProps = {
   fade: true
 };
 
+var _modalStack = []
+
 class Modal extends Component {
   constructor(props) {
     super(props);
@@ -111,7 +113,7 @@ class Modal extends Component {
 
     const container = this._dialog;
 
-    if (e.target && !container.contains(e.target) && this.props.toggle) {
+    if (_modalStack[_modalStack.length -1] === this && e.target && !container.contains(e.target) && this.props.toggle) {
       this.props.toggle();
     }
   }
@@ -150,6 +152,10 @@ class Modal extends Component {
   }
 
   hide() {
+    // Remove this modal from stack. Using filter to avoid really strange bugs
+    // if they are closed out of order
+    _modalStack = _modalStack.filter((modal) => modal !== this)
+
     // Need to trigger cleanup if the animation doesn't play
     if (!this.props.fade) {
       this.destroy()
@@ -157,6 +163,9 @@ class Modal extends Component {
   }
 
   show() {
+    // Add to modal stack so we can figure out who is on top
+    _modalStack.push(this)
+
     const classes = document.body.className;
     const _element = document.createElement('div');
     _element.setAttribute('tabindex', '-1');
